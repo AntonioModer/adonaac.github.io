@@ -9,23 +9,21 @@ sidebar: false
 ---
 
 
-**Mogamett** is composed of two parts: the <code class="text">framework</code> and the <code class="text">engine</code>. 
+**FuccboiGDX** is composed of two parts: the <code class="text">framework</code> and the <code class="text">engine</code>. 
 
-The <code class="text">framework</code> part contains some [user created LÖVE libraries](http://www.love2d.org/wiki/Category:Libraries) that I found useful for game development. A few of them have been
+The <code class="text">framework</code> contains some [user created LÖVE libraries](http://www.love2d.org/wiki/Category:Libraries) that I found useful for game development. A few of them have been
 improved upon, while others work pretty much the same. All libraries chosen are self-contained, composable and well designed enough that they can be used independently of each
 other with no problems. This is in a similar fashion to how LÖVE's own modules work.
 
-The <code class="text">engine</code> part uses libraries from the framework to build a higher level programming experience **at the cost of customizability and control**. 
+The <code class="text">engine</code> uses libraries from the framework to build a higher level programming experience **at the cost of customizability and control**. 
 The features provided by the engine have the goal of making your life easier, taking care of some boring/tedious work that usually goes into making a game, things like: 
-box2d physics wrapping, collision handling, map saving/loading, level transitioning and so on... This is ideal for game jams or fast prototypes. 
-
-Some helpful snippets/templates can be found [here](/snippets). Use the main.lua one to get started with the engine.
+box2d physics wrapping, collision handling, map saving/loading, level transitioning and so on...
 
 <h3 id="module_reference" data-magellan-destination="module_reference">Module Reference</h3>
 
 **Main**
 
-*   [mg](mg) - holds all framework and engine functionality
+*   []() - holds all framework and engine functionality
 *   Core (Engine) - not done yet
 *   Render (Engine) - not done yet
 *   [World (Engine)](world) - orchestrates all engine functionality, an instance <code class="text">mg.world</code> is automatically created on init

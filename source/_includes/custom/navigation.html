@@ -1,0 +1,254 @@
+{% if site.fixed_navigation %}
+<div class="sticky" data-options="">
+{% endif %}
+  <div data-magellan-expedition="fixed">
+  <nav class="top-bar" data-topbar>
+
+    <!--
+    <ul class="title-area right">
+        <li class="name">
+          <h1><a href="{{ root_url }}/">{{ site.title }} <i class="fa fa-heart"></i></i></i></a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    -->
+
+
+    <section class="top-bar-section">
+      <ul class="main-navigation right">
+          <li><a href="https://github.com/adonaac/mogamett"><i class="fa fa-github"></i></a></li>
+          <li><a href="https://twitter.com/adnzzzzZ"><i class="fa fa-dot-circle-o"></i></a></li>
+      </ul>
+
+      <ul class="main-navigation left">
+
+          {% if page.url == '/index.html' %}
+
+          {% endif %}
+
+          {% if page.url == '/tutorials/basic_programming_concepts/index.html' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="first_steps"><a href="#first_steps">First Steps</a></li>
+          <li data-magellan-arrival="program_structure"><a href="#program_structure">Program Structure</a></li>
+          <li data-magellan-arrival="variables"><a href="#variables">Variables</a></li>
+          <li data-magellan-arrival="types"><a href="#types">Types</a></li>
+          {% endif %}
+
+          {% if page.url == '/documentation/index.html' %}
+          <li><a href="/">Mogamett</a></li>
+          {% endif %}
+
+          {% if page.url == '/snippets/index.html' %}
+
+          {% endif %}
+
+          {% if page.title == 'Text' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="example"><a href="#example">Example</a></li>
+          <li data-magellan-arrival="description"><a href="#description">Description</a></li>
+          <li data-magellan-arrival="character"><a href="#character">Character</a></li>
+          <li data-magellan-arrival="text"><a href="#text">Text</a></li>
+          {% endif %}
+
+          {% if page.title == 'Group' or page.title == 'Background' or page.title == 'Tilemap' or page.title == 'PhysicsBody' or page.title == 'Timer' or page.title == 'Camera' or page.title == 'Animation' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="example"><a href="#example">Example</a></li>
+          <li data-magellan-arrival="description"><a href="#description">Description</a></li>
+          <li data-magellan-arrival="methods"><a href="#methods">Methods</a></li>
+          <li data-magellan-arrival="attributes"><a href="#attributes">Attributes</a></li>
+          {% endif %}
+
+          {% if page.title == 'Input' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="example"><a href="#example">Example</a></li>
+          <li data-magellan-arrival="description"><a href="#description">Description</a></li>
+          <li data-magellan-arrival="methods"><a href="#methods">Methods</a></li>
+          <li data-magellan-arrival="attributes"><a href="#attributes">Attributes</a></li>
+          <li data-magellan-arrival="constants"><a href="#constants">Constants</a></li>
+          {% endif %}
+
+          {% if page.title == 'Class' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="description"><a href="#description">Description</a></li>
+          <li data-magellan-arrival="example"><a href="#example">Example</a></li>
+          {% endif %}
+
+          {% if page.title == 'Collision' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="description"><a href="#description">Description</a></li>
+          <li data-magellan-arrival="physics_entities"><a href="#physics_entities">Physics Entities</a></li>
+          <li data-magellan-arrival="collision_classes"><a href="#collision_classes">Collision Classes</a></li>
+          {% endif %}
+
+          {% if page.title == 'Debug' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="description"><a href="#description">Description</a></li>
+          {% endif %}
+
+          {% if page.title == 'Entity' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="description"><a href="#description">Description</a></li>
+          <li data-magellan-arrival="attributes"><a href="#attributes">Attributes</a></li>
+          {% endif %}
+
+          {% if page.title == 'Gamestate' or page.title == 'Loader' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="description"><a href="#description">Description</a></li>
+          {% endif %}
+
+          {% if page.title == 'Utils' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="example"><a href="#example">Example</a></li>
+          <li data-magellan-arrival="description"><a href="#description">Description</a></li>
+          <li data-magellan-arrival="methods"><a href="#methods">Methods</a></li>
+          {% endif %}
+
+          {% if page.title == 'Vector' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="description"><a href="#description">Description</a></li>
+          {% endif %}
+
+          {% if page.title == 'Solid' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="description"><a href="#description">Description</a></li>
+          {% endif %}
+
+          {% if page.title == 'World' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="description"><a href="#description">Description</a></li>
+          <li data-magellan-arrival="world_methods"><a href="#world_methods">World Methods</a></li>
+          <li data-magellan-arrival="render_methods"><a href="#render_methods">Render Methods</a></li>
+          <li data-magellan-arrival="creation_methods"><a href="#creation_methods">Creation Methods</a></li>
+          <li data-magellan-arrival="query_methods"><a href="#query_methods">Query Methods</a></li>
+          <li data-magellan-arrival="attributes"><a href="#attributes">Attributes</a></li>
+          {% endif %}
+
+          {% if page.title == 'mg' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="description"><a href="#description">Description</a></li>
+          <li data-magellan-arrival="modules_and_instances"><a href="#modules_and_instances">Modules and Instances</a></li>
+          <li data-magellan-arrival="entities_and_mixins"><a href="#entities_and_mixins">Entities and Mixins</a></li>
+          <li data-magellan-arrival="methods"><a href="#methods">Methods</a></li>
+          <li data-magellan-arrival="attributes"><a href="#attributes">Attributes</a></li>
+          {% endif %}
+
+          {% if page.title == 'Particles' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="example"><a href="#example">Example</a></li>
+          <li data-magellan-arrival="description"><a href="#description">Description</a></li>
+          <li data-magellan-arrival="methods"><a href="#methods">Methods</a></li>
+          {% endif %}
+
+          {% if page.title == 'Snippets' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="framework"><a href="#engine">Framework</a></li>
+          <li data-magellan-arrival="engine"><a href="#engine">Engine</a></li>
+          {% endif %}
+
+          {% if page.title == '2D Platformer' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="player_creation"><a href="#player_creation">Player Creation</a></li>
+          <li data-magellan-arrival="animations_and_movement"><a href="#animations_and_movement">Animations and Movement</a></li>
+          <li data-magellan-arrival="tilemap"><a href="#tilemap">Tilemap</a></li>
+          <li data-magellan-arrival="jump"><a href="#jump">Jump</a></li>
+          <li data-magellan-arrival="camera_and_background"><a href="#camera_and_background">Camera and Background</a></li>
+          <li data-magellan-arrival="the_end"><a href="#the_end">The End</a></li>
+          {% endif %}
+
+          {% if page.title == 'CurveMaster' %}
+          <li><a href="/">Mogamett</a></li>
+          <li data-magellan-arrival="ball"><a href="#ball">Ball</a></li>
+          <li data-magellan-arrival="paddles"><a href="#paddles">Paddles</a></li>
+          <li data-magellan-arrival="collision"><a href="#collision">Ball-Paddle Collision</a></li>
+          <li data-magellan-arrival="game_loop"><a href="#game_loop">Game Loop</a></li>
+          <li data-magellan-arrival="curve"><a href="#curve">Curve</a></li>
+          <li data-magellan-arrival="ai"><a href="#ai">AI</a></li>
+          <li data-magellan-arrival="polish"><a href="#polish">Polish</a></li>
+          <li data-magellan-arrival="the_end"><a href="#the_end">The End</a></li>
+          {% endif %}
+
+          {% if page.title == 'How to Exercise' %}
+          <li><a href="/">Mogamett</a></li>
+          {% endif %}
+
+          {% if page.title == 'How to Read Requirements' %}
+          <li><a href="/">Mogamett</a></li>
+          {% endif %}
+          <!--
+          <li class="has-dropdown{% if page.url == '/no-sidebar/index.html' or page.url == '/no-sidebar/left-sidebar/index.html' or page.url == '/no-sidebar/right-sidebar/index.html' or page.url == '/no-sidebar/example-formatting/index.html' %} active{% endif %}">
+            <a href="{{ root_url }}/no-sidebar">No Sidebar Page</a>
+
+            <ul class="dropdown">
+              <li><a href="{{ root_url }}/no-sidebar/left-sidebar">Left Sidebar Page</a></li>
+              <li><a href="{{ root_url }}/no-sidebar/right-sidebar">Right Sidebar Page</a></li>
+              <li><a href="{{ root_url }}/no-sidebar/example-formatting">Example Formatting</a></li>
+            </ul>
+
+          </li>
+
+          <li{% if page.url == '/blog/index.html' %} class="active"{% endif %}><a href="{{ root_url }}/blog">Blog</a></li>
+
+          <li{% if page.url == '/blog/archives/index.html' %} class="active"{% endif %}><a href="{{ root_url }}/blog/archives">Archives</a></li>
+          -->
+
+      </ul>
+
+    </section>
+  </nav>
+  </div>
+{% if site.fixed_navigation %}
+</div>
+{% endif %}
+
+<div id="nav" class="fixed right show-for-large-up">
+<p>
+
+{% if page.title == 'Documentation' %}
+<strong>Documentation</strong><br>
+{% if page.url == '/documentation/mg/index.html' %}mg{% else %}<a href="/documentation/mg">mg</a>{% endif %}<br>
+{% if page.url == '/documentation/animation/index.html' %}Animation{% else %}<a href="/documentation/animation">Animation</a>{% endif %}<br>
+{% if page.url == '/documentation/background/index.html' %}Background{% else %}<a href="/documentation/background">Background</a>{% endif %}<br>
+{% if page.url == '/documentation/camera/index.html' %}Camera{% else %}<a href="/documentation/camera">Camera</a>{% endif %}<br>
+{% if page.url == '/documentation/class/index.html' %}Class{% else %}<a href="/documentation/class">Class</a>{% endif %}<br>
+{% if page.url == '/documentation/collision/index.html' %}Collision (Engine){% else %}<a href="/documentation/collision">Collision (Engine)</a>{% endif %}<br>
+{% if page.url == '/documentation/debug/index.html' %}Debug{% else %}<a href="/documentation/debug">Debug</a>{% endif %}<br>
+{% if page.url == '/documentation/entity/index.html' %}Entity{% else %}<a href="/documentation/entity">Entity</a>{% endif %}<br>
+{% if page.url == '/documentation/gamestate/index.html' %}Gamestate{% else %}<a href="/documentation/gamestate">Gamestate</a>{% endif %}<br>
+{% if page.url == '/documentation/group/index.html' %}Group{% else %}<a href="/documentation/group">Group</a>{% endif %}<br>
+{% if page.url == '/documentation/input/index.html' %}Input{% else %}<a href="/documentation/input">Input</a>{% endif %}<br>
+{% if page.url == '/documentation/loader/index.html' %}Loader{% else %}<a href="/documentation/loader">Loader</a>{% endif %}<br>
+{% if page.url == '/documentation/particles/index.html' %}Particles (Engine){% else %}<a href="/documentation/particles">Particles (Engine)</a>{% endif %}<br>
+{% if page.url == '/documentation/physicsbody/index.html' %}PhysicsBody (Engine){% else %}<a href="/documentation/physicsbody">PhysicsBody (Engine)</a>{% endif %}<br>
+{% if page.url == '/documentation/solid/index.html' %}Solid (Engine){% else %}<a href="/documentation/solid">Solid (Engine)</a>{% endif %}<br>
+{% if page.url == '/documentation/text/index.html' %}Text{% else %}<a href="/documentation/text">Text</a>{% endif %}<br>
+{% if page.url == '/documentation/tilemap/index.html' %}Tilemap{% else %}<a href="/documentation/tilemap">Tilemap</a>{% endif %}<br>
+{% if page.url == '/documentation/timer/index.html' %}Timer{% else %}<a href="/documentation/timer">Timer</a>{% endif %}<br>
+{% if page.url == '/documentation/utils/index.html' %}Utils{% else %}<a href="/documentation/utils">Utils</a>{% endif %}<br>
+{% if page.url == '/documentation/vector/index.html' %}Vector{% else %}<a href="/documentation/vector">Vector</a>{% endif %}<br>
+{% if page.url == '/documentation/world/index.html' %}World (Engine){% else %}<a href="/documentation/world">World (Engine)</a>{% endif %}<br>
+{% elsif page.title == 'mg' or page.title == 'World' or page.title == 'Class' or page.title == 'Collision' or page.title == 'Text' or page.title == 'Loader' or page.title == 'Gamestate' or page.title == 'Particles' or page.title == 'Solid' or page.title == 'Background' or page.title == 'Debug' or page.title == 'Tilemap' or page.title == 'Entity' or page.title == 'Group' or page.title == 'Input' or page.title == 'PhysicsBody' or page.title == 'Timer' or page.title == 'Utils' or page.title == 'Vector' or page.title == 'Animation' or page.title == 'Camera' %}
+<strong><a href="../">Documentation</a></strong><br>
+{% if page.url == '/documentation/mg/index.html' %}mg{% else %}<a href="../mg">mg</a>{% endif %}<br>
+{% if page.url == '/documentation/animation/index.html' %}Animation{% else %}<a href="../animation">Animation</a>{% endif %}<br>
+{% if page.url == '/documentation/background/index.html' %}Background{% else %}<a href="../background">Background</a>{% endif %}<br>
+{% if page.url == '/documentation/camera/index.html' %}Camera{% else %}<a href="../camera">Camera</a>{% endif %}<br>
+{% if page.url == '/documentation/class/index.html' %}Class{% else %}<a href="../class">Class</a>{% endif %}<br>
+{% if page.url == '/documentation/collision/index.html' %}Collision (Engine){% else %}<a href="../collision">Collision (Engine)</a>{% endif %}<br>
+{% if page.url == '/documentation/debug/index.html' %}Debug{% else %}<a href="../debug">Debug</a>{% endif %}<br>
+{% if page.url == '/documentation/entity/index.html' %}Entity{% else %}<a href="../entity">Entity</a>{% endif %}<br>
+{% if page.url == '/documentation/gamestate/index.html' %}Gamestate{% else %}<a href="../gamestate">Gamestate</a>{% endif %}<br>
+{% if page.url == '/documentation/group/index.html' %}Group{% else %}<a href="../group">Group</a>{% endif %}<br>
+{% if page.url == '/documentation/input/index.html' %}Input{% else %}<a href="../input">Input</a>{% endif %}<br>
+{% if page.url == '/documentation/loader/index.html' %}Loader{% else %}<a href="../loader">Loader</a>{% endif %}<br>
+{% if page.url == '/documentation/particles/index.html' %}Particles (Engine){% else %}<a href="../particles">Particles (Engine)</a>{% endif %}<br>
+{% if page.url == '/documentation/physicsbody/index.html' %}PhysicsBody (Engine){% else %}<a href="../physicsbody">PhysicsBody (Engine)</a>{% endif %}<br>
+{% if page.url == '/documentation/solid/index.html' %}Solid (Engine){% else %}<a href="../solid">Solid (Engine)</a>{% endif %}<br>
+{% if page.url == '/documentation/text/index.html' %}Text{% else %}<a href="../text">Text</a>{% endif %}<br>
+{% if page.url == '/documentation/tilemap/index.html' %}Tilemap{% else %}<a href="../tilemap">Tilemap</a>{% endif %}<br>
+{% if page.url == '/documentation/timer/index.html' %}Timer{% else %}<a href="../timer">Timer</a>{% endif %}<br>
+{% if page.url == '/documentation/utils/index.html' %}Utils{% else %}<a href="../utils">Utils</a>{% endif %}<br>
+{% if page.url == '/documentation/vector/index.html' %}Vector{% else %}<a href="../vector">Vector</a>{% endif %}<br>
+{% if page.url == '/documentation/world/index.html' %}World (Engine){% else %}<a href="../world">World (Engine)</a>{% endif %}<br>
+{% endif %}
+</p>
+</div>

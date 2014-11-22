@@ -8,27 +8,10 @@ footer: true
 sidebar: false 
 ---
 
-<h3 id="example" data-magellan-destination="example">Example</h3>
+{% title Example %}
 
 ~~~ lua
--- create a tilemap, parameters are: x, y (center) position, tile width and height, tileset image, tilemap data
-tilemap = mg.Tilemap(400, 300, 32, 32, love.graphics.newImage('tileset.png'), {
-    {1, 1, 1, 1, 1, 1},
-    {1, 1, 0, 0, 1, 1},
-    {1, 1, 0, 0, 1, 1},
-    {1, 1, 1, 1, 1, 1},
-})
 
--- set the tileset's auto tiling rules
-tilemap:setAutoTileRules({6, 14, 12, 2, 10, 8, 7, 15, 13, 3, 11, 9})
-
--- auto tile based on the auto tiling rules
-tilemap:autoTile()
-
--- if using the engine then generate box2d collision solids
--- and add the tilemap to the 'Default' layer so it can be drawn
-mg.world:generateCollisionSolids(tilemap)
-mg.world:addToLayer('Default', tilemap)
 ~~~
 
 Using the code above the and the below tileset:
@@ -39,47 +22,43 @@ We get something like this (blue lines are collision solid's debug drawing):
 
 {% img center /assets/tilemap.png %}
 
-<h3 id="description" data-magellan-destination="description">Description</h3>
+{% title Description %}
 
-The <code class="text">mg.Tilemap</code> deals with everything related to creating, manipulating and drawing a map made of tiles.
+The {% text fg.Tilemap %} module deals with everything related to creating, manipulating and drawing a map made of tiles.
 It has support for [autotiling](http://www.saltgames.com/2010/a-bitwise-method-for-applying-tilemaps/) with simple and advanced rule sets, as well as
-automatic box2d collision solid generation, if you're using the <code class="text">engine</code>. Right now the only way to specify the map's data is by hand,
-but in the future I'll add Tiled support as well as a custom editor.
+automatic box2d collision solid generation, if you're using the {% text engine %}. You can also load Tiled maps directly:
+
+~~~ lua
+
+~~~
 <br><br>
 
-<h3 id="methods" data-magellan-destination="methods">Methods</h3>
+{% title Methods %}
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">new</span>(x<span class="tag"><span class="tag">[number]</span></span>, y<span class="tag"><span class="tag">[number]</span></span>, tile_width<span class="tag"><span class="tag">[number]</span></span>, tile_height<span class="tag"><span class="tag">[number]</span></span>, tileset<span class="tag">[Image]</span>, tile_data<span class="tag">[table]</span>) 
-</pre></td>
-</table></div>
+{% method new x number y number tile_width number tile_height number images table tile_grid table settings table %}
 
-*   <code>x, y</code>: the center position of the map
-*   <code>tile_size_x, tile_size_y</code>: the width and height of the tiles in this tileset
-*   <code>tileset</code>: the tileset image
-*   <code>tile_data</code>: the 2D array containing the tile map data
+*   {% param x, y %}: the center position of the map
+*   {% param tile_width, tile_height %}: the width and height of the tiles in this tileset
+*   {% param images %}: the tileset image
+*   {% param tile_grid %}: the 2D array containing the tile map data
+*   {% param settings %}: a table containing related settings, all values are optional
+
+Possible settings:
+
+*   {% param padding %}: horizontal and vertical padding in pixels between each tile
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">draw</span>()
-</pre></td>
-</table></div>
+{% method draw %}
 
-*   draws the tilemap, if using the <code class="text">engine</code>, use <code class="atrm">.world:addToLayer(layer_name, tilemap)</code> instead
+*   draws the tilemap, if using the {% text engine %}, use {% call .world:addToLayer(layer_name, tilemap) %} instead
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">autoTile</span>(auto_tile_rules<span class="tag">[table]</span>, extended_rules<span class="tag">[table]</span>)
-</pre></td>
-</table></div>
+{% method autoTile auto_tile_rules table extended_rules table %}
 
 The autotiling function follows the technique explained in [this tutorial](http://www.saltgames.com/2010/a-bitwise-method-for-applying-tilemaps/).
-The <code class="text">auto_tile_rules</code> table is a table where the position of each number corresponds to the tile number based on the tileset, while 
-the value of each number corresponds to its "bit-value", the sum of its neighbors following the <code class="number">1-2-4-8</code> scheme. So, for instance, for the image from the first
-example:
+The {% text auto_tile_rules %} table is a table where the position of each number corresponds to the tile number based on the tileset, while 
+the value of each number corresponds to its "bit-value", the sum of its neighbors following the {% number 1-2-4-8 %} scheme explained in the linked tutorial. 
+So, for instance, for the image from the first example:
 
 {% img center /assets/tileset.png %}
 
@@ -89,49 +68,53 @@ We have the following rule set:
 {6, 14, 12, 2, 10, 8, 7, 15, 13, 3, 11, 9}
 ~~~
 
-The array position <code class="number">1</code> has the value <code class="number">6</code>, meaning, the tileset tile <code class="number">1</code> (top left most) has a value of
-<code class="number">6</code>, which corresponds to a neighbor on the right and down, which is exactly when that tile is used. Similarly, the array position <code class="number">7</code>
-has the value <code class="number">7</code>, meaning, bottom left most tile has a value that corresponds to a neighbor up, right and down, which is also exactly what that particular tile
-is used. When you're using your own tilesets in your own games, coming up with this simple list of correspondencies is your first job before calling the <code class="atrm">:autoTile</code> 
-method. This simple list is the <code class="text">auto_tile_rules</code> table.
+The array position {% number 1 %} has the value {% number 6 %}, meaning, the tileset tile {% number 1 %} (top left most) has a value of
+{% number 6 %}, which corresponds to a neighbor on the right and down, which is exactly when that tile is used. Similarly, the array position {% number 7 %}
+has the value {% number 7 %}, meaning, the bottom left most tile has a value that corresponds to a neighbor up, right and down, which is also exactly what that particular tile
+is used. When you're using your own tilesets in your own games, coming up with this simple list of correspondencies is your first job before calling the {% call :autoTile %}
+method. This simple list is the {% text auto_tile_rules %} table.
 
 Sometimes, though, tiles will collide with one another in terms of their bit-value. For instance, the below tileset is an example of this:
 
 {% img center /assets/tileset2.png %}
 
-Tiles <code class="number">13</code>, <code class="number">15</code> and <code class="number">8</code> all have a bit-value of <code class="number">15</code> (neighbors up, down, left and right), 
-while tiles <code class="number">16</code>, <code class="number">18</code> and <code class="number">10</code> all have a bit-value of <code class="number">11</code> (neighbors up, left and right).
-Using a single table for this, like in the previous example, isn't enough. That's where the <code class="text">extended_rules</code> table comes in. Revisting the code from the first example on this
-page, it would look something like this:
+Tiles {% number 13 %}, {% number 15 %} and {% number 8 %} all have a bit-value of {% number 15 %} (neighbors up, down, left and right), 
+while tiles {% number 16 %}, {% number 18 %} and {% number 10 %} all have a bit-value of {% number 11 %} (neighbors up, left and right).
+Using a single table for this, like in the previous example, isn't enough. That's where the {% text extended_rules %} table comes in. 
 
 ~~~ lua
-tilemap = mg.Tilemap(400, 300, 32, 32, love.graphics.newImage('tileset.png'), {
+-- Create a new tilemap
+tilemap = fg.Tilemap(400, 300, 64, 64, love.graphics.newImage('tileset.png'), {
     {1, 1, 1, 1, 1, 1},
     {1, 1, 0, 0, 1, 1},
     {1, 1, 0, 0, 1, 1},
     {1, 1, 1, 1, 1, 1},
 })
+
+-- Set auto tiling rules
 tilemap:setAutoTileRules({6, 14, 12, 2, 10, 8, 7, 15, 13, 3, 11, 9}, {
+    -- Extended rules
     {tile = 13, bit_value = 15, left = {1, 2}, right = {8, 9, 15}, up = {1, 7}, down = {8, 11}},
     {tile = 15, bit_value = 15, left = {7, 8, 13}, right = {2, 3}, up = {3, 9}, down = {8, 11}},
     {tile = 16, bit_value = 11, left = {4, 5}, right = {11, 12, 18}, up = {1, 7}, down = nil},
     {tile = 18, bit_value = 11, left = {10, 11, 16}, right = {5, 6}, up = {3, 9}, down = nil},
 })
+
+-- Auto tile, collision solids and drawing
 tilemap:autoTile()
-mg.world:generateCollisionSolids(tilemap)
-mg.world:addToLayer('Default', tilemap)
+fg.world:generateCollisionSolids(tilemap)
+fg.world:addToLayer('Default', tilemap)
 ~~~
 
-
-The <code class="text">extended_rules</code> should have additional information about the bit-value colliding tiles, such that the algorithm can tell where each one should go 
+The {% text extended_rules %} table should have additional information about the bit-value colliding tiles, such that the algorithm can tell where each one should go 
 with certainty. This information is given as a table with these attributes: 
 
-*   <code>tile</code>: the tile value being specified
-*   <code>bit_value</code>: the bit-value of the tile
-*   <code>left</code>: a table containing all possible values of tiles that can be to the left of this tile
-*   <code>right</code>: a table containing all possible values of tiles that can be to the right of this tile
-*   <code>up</code>: a table containing all possible values of tiles that can be above this tile
-*   <code>down</code>: a table containing all possible values of tiles that can be below this tile
+*   {% param tile %}: the tile value being specified
+*   {% param bit_value %}: the bit-value of the tile
+*   {% param left %}: a table containing all possible values of tiles that can be to the left of this tile
+*   {% param right %}: a table containing all possible values of tiles that can be to the right of this tile
+*   {% param up %}: a table containing all possible values of tiles that can be above this tile
+*   {% param down %}: a table containing all possible values of tiles that can be below this tile
 <br><br>
 
 The autotiling algorithm will then first check the <code class="text">auto_tile_rules</code> table to see if the current tile being analyzed maps to something there.
@@ -142,7 +125,6 @@ that tile. Using the new code example above and the new tileset, something like 
 {% img center /assets/tilemap2.png %}
 
 The new corners are correctly placed because the tables in the <code class="text">extended_rule</code> table specify which tiles can be neighbors to each one of those new corners.
-If only the simple rules were used, then the right corner would be placed as the left corner, because the algorithm would have no way of knowing which is which (test it)!
 <br><br>
 
 <div><table class="CodeRay">

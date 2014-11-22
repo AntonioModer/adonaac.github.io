@@ -23,6 +23,50 @@
       <ul class="main-navigation left">
           <li><a href="/">FuccboiGDX</a></li>
 
+          <li class="has-dropdown">
+          <a href="/documentation">Documentation</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Main</a>
+            <ul class="dropdown">
+                <li><a href="/documentation/fg">fg</a></li>
+                <li><a href="/documentation/render">Render</a></li>
+                <li><a href="/documentation/world">World</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Logic</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/class">Class</a></li>
+            <li><a href="/documentation/collision">Collision</a></li>
+            <li><a href="/documentation/debug">Debug</a></li>
+            <li><a href="/documentation/entity">Entity</a></li>
+            <li><a href="/documentation/gamestate">Gamestate</a></li>
+            <li><a href="/documentation/input">Input</a></li>
+            <li><a href="/documentation/level">Level</a></li>
+            <li><a href="/documentation/loader">Loader</a></li>
+            <li><a href="/documentation/objectpool">Object Pool</a></li>
+            <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
+            <li><a href="/documentation/serialization">Serialization</a></li>
+            <li><a href="/documentation/solid">Solid</a></li>
+            <li><a href="/documentation/tilemap">Tilemap</a></li>
+            <li><a href="/documentation/timer">Timer</a></li>
+            <li><a href="/documentation/utils">Utils</a></li>
+            <li><a href="/documentation/vector">Vector</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Visual</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/animation">Animation</a></li>
+            <li><a href="/documentation/background">Background</a></li>
+            <li><a href="/documentation/camera">Camera</a></li>
+            <li><a href="/documentation/layer">Layer</a></li>
+            <li><a href="/documentation/particles">Particles</a></li>
+            <li><a href="/documentation/text">Text</a></li>
+            <li><a href="/documentation/uitools">UI Tools</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
           <!--
           <li class="has-dropdown{% if page.url == '/no-sidebar/index.html' or page.url == '/no-sidebar/left-sidebar/index.html' or page.url == '/no-sidebar/right-sidebar/index.html' or page.url == '/no-sidebar/example-formatting/index.html' %} active{% endif %}">
             <a href="{{ root_url }}/no-sidebar">No Sidebar Page</a>
@@ -49,55 +93,45 @@
 </div>
 {% endif %}
 
+{% if page.title == 'Documentation' %}
 <div id="nav" class="fixed right show-for-large-up">
 <p>
 
 {% if page.title == 'Documentation' %}
 <strong>Documentation</strong><br>
-{% if page.url == '/documentation/mg/index.html' %}mg{% else %}<a href="/documentation/mg">mg</a>{% endif %}<br>
-{% if page.url == '/documentation/animation/index.html' %}Animation{% else %}<a href="/documentation/animation">Animation</a>{% endif %}<br>
-{% if page.url == '/documentation/background/index.html' %}Background{% else %}<a href="/documentation/background">Background</a>{% endif %}<br>
-{% if page.url == '/documentation/camera/index.html' %}Camera{% else %}<a href="/documentation/camera">Camera</a>{% endif %}<br>
-{% if page.url == '/documentation/class/index.html' %}Class{% else %}<a href="/documentation/class">Class</a>{% endif %}<br>
-{% if page.url == '/documentation/collision/index.html' %}Collision (Engine){% else %}<a href="/documentation/collision">Collision (Engine)</a>{% endif %}<br>
-{% if page.url == '/documentation/debug/index.html' %}Debug{% else %}<a href="/documentation/debug">Debug</a>{% endif %}<br>
-{% if page.url == '/documentation/entity/index.html' %}Entity{% else %}<a href="/documentation/entity">Entity</a>{% endif %}<br>
-{% if page.url == '/documentation/gamestate/index.html' %}Gamestate{% else %}<a href="/documentation/gamestate">Gamestate</a>{% endif %}<br>
-{% if page.url == '/documentation/group/index.html' %}Group{% else %}<a href="/documentation/group">Group</a>{% endif %}<br>
-{% if page.url == '/documentation/input/index.html' %}Input{% else %}<a href="/documentation/input">Input</a>{% endif %}<br>
-{% if page.url == '/documentation/loader/index.html' %}Loader{% else %}<a href="/documentation/loader">Loader</a>{% endif %}<br>
-{% if page.url == '/documentation/particles/index.html' %}Particles (Engine){% else %}<a href="/documentation/particles">Particles (Engine)</a>{% endif %}<br>
-{% if page.url == '/documentation/physicsbody/index.html' %}PhysicsBody (Engine){% else %}<a href="/documentation/physicsbody">PhysicsBody (Engine)</a>{% endif %}<br>
-{% if page.url == '/documentation/solid/index.html' %}Solid (Engine){% else %}<a href="/documentation/solid">Solid (Engine)</a>{% endif %}<br>
-{% if page.url == '/documentation/text/index.html' %}Text{% else %}<a href="/documentation/text">Text</a>{% endif %}<br>
-{% if page.url == '/documentation/tilemap/index.html' %}Tilemap{% else %}<a href="/documentation/tilemap">Tilemap</a>{% endif %}<br>
-{% if page.url == '/documentation/timer/index.html' %}Timer{% else %}<a href="/documentation/timer">Timer</a>{% endif %}<br>
-{% if page.url == '/documentation/utils/index.html' %}Utils{% else %}<a href="/documentation/utils">Utils</a>{% endif %}<br>
-{% if page.url == '/documentation/vector/index.html' %}Vector{% else %}<a href="/documentation/vector">Vector</a>{% endif %}<br>
-{% if page.url == '/documentation/world/index.html' %}World (Engine){% else %}<a href="/documentation/world">World (Engine)</a>{% endif %}<br>
-{% elsif page.title == 'mg' or page.title == 'World' or page.title == 'Class' or page.title == 'Collision' or page.title == 'Text' or page.title == 'Loader' or page.title == 'Gamestate' or page.title == 'Particles' or page.title == 'Solid' or page.title == 'Background' or page.title == 'Debug' or page.title == 'Tilemap' or page.title == 'Entity' or page.title == 'Group' or page.title == 'Input' or page.title == 'PhysicsBody' or page.title == 'Timer' or page.title == 'Utils' or page.title == 'Vector' or page.title == 'Animation' or page.title == 'Camera' %}
-<strong><a href="../">Documentation</a></strong><br>
-{% if page.url == '/documentation/mg/index.html' %}mg{% else %}<a href="../mg">mg</a>{% endif %}<br>
-{% if page.url == '/documentation/animation/index.html' %}Animation{% else %}<a href="../animation">Animation</a>{% endif %}<br>
-{% if page.url == '/documentation/background/index.html' %}Background{% else %}<a href="../background">Background</a>{% endif %}<br>
-{% if page.url == '/documentation/camera/index.html' %}Camera{% else %}<a href="../camera">Camera</a>{% endif %}<br>
-{% if page.url == '/documentation/class/index.html' %}Class{% else %}<a href="../class">Class</a>{% endif %}<br>
-{% if page.url == '/documentation/collision/index.html' %}Collision (Engine){% else %}<a href="../collision">Collision (Engine)</a>{% endif %}<br>
-{% if page.url == '/documentation/debug/index.html' %}Debug{% else %}<a href="../debug">Debug</a>{% endif %}<br>
-{% if page.url == '/documentation/entity/index.html' %}Entity{% else %}<a href="../entity">Entity</a>{% endif %}<br>
-{% if page.url == '/documentation/gamestate/index.html' %}Gamestate{% else %}<a href="../gamestate">Gamestate</a>{% endif %}<br>
-{% if page.url == '/documentation/group/index.html' %}Group{% else %}<a href="../group">Group</a>{% endif %}<br>
-{% if page.url == '/documentation/input/index.html' %}Input{% else %}<a href="../input">Input</a>{% endif %}<br>
-{% if page.url == '/documentation/loader/index.html' %}Loader{% else %}<a href="../loader">Loader</a>{% endif %}<br>
-{% if page.url == '/documentation/particles/index.html' %}Particles (Engine){% else %}<a href="../particles">Particles (Engine)</a>{% endif %}<br>
-{% if page.url == '/documentation/physicsbody/index.html' %}PhysicsBody (Engine){% else %}<a href="../physicsbody">PhysicsBody (Engine)</a>{% endif %}<br>
-{% if page.url == '/documentation/solid/index.html' %}Solid (Engine){% else %}<a href="../solid">Solid (Engine)</a>{% endif %}<br>
-{% if page.url == '/documentation/text/index.html' %}Text{% else %}<a href="../text">Text</a>{% endif %}<br>
-{% if page.url == '/documentation/tilemap/index.html' %}Tilemap{% else %}<a href="../tilemap">Tilemap</a>{% endif %}<br>
-{% if page.url == '/documentation/timer/index.html' %}Timer{% else %}<a href="../timer">Timer</a>{% endif %}<br>
-{% if page.url == '/documentation/utils/index.html' %}Utils{% else %}<a href="../utils">Utils</a>{% endif %}<br>
-{% if page.url == '/documentation/vector/index.html' %}Vector{% else %}<a href="../vector">Vector</a>{% endif %}<br>
-{% if page.url == '/documentation/world/index.html' %}World (Engine){% else %}<a href="../world">World (Engine)</a>{% endif %}<br>
+<a href="/documentation/mg">mg</a><br>
+<a href="/documentation/animation">Animation</a><br>
+<a href="/documentation/background">Background</a><br>
+<a href="/documentation/camera">Camera</a><br>
+<a href="/documentation/class">Class</a><br>
+<a href="/documentation/collision">Collision (Engine)</a><br>
+<a href="/documentation/debug">Debug</a><br>
+<a href="/documentation/entity">Entity</a><br>
+<a href="/documentation/gamestate">Gamestate</a><br>
+<a href="/documentation/group">Group</a><br>
+<a href="/documentation/input">Input</a><br>
+<a href="/documentation/loader">Loader</a><br>
+<a href="/documentation/particles">Particles (Engine)</a><br>
+<a href="/documentation/physicsbody">PhysicsBody (Engine)</a><br>
+<a href="/documentation/solid">Solid (Engine)</a><br>
+<a href="/documentation/text">Text</a><br>
+<a href="/documentation/tilemap">Tilemap</a><br>
+<a href="/documentation/timer">Timer</a><br>
+<a href="/documentation/utils">Utils</a><br>
+<a href="/documentation/vector">Vector</a><br>
+<a href="/documentation/world">World (Engine)</a><br>
 {% endif %}
+
 </p>
 </div>
+{% endif %}
+
+<!--
+<div data-magellan-expedition="fixed"> 
+<dl class="side-nav fixed"> 
+    <dd data-magellan-arrival="module_reference">
+    <a href="#module_reference">Module Reference</a>
+    </dd> 
+</dl> 
+</div>
+-->

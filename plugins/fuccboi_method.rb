@@ -9,7 +9,7 @@ module Jekyll
         end
 
         def render(context)
-            method = "<div><table class='CodeRay'><td class='code'><pre>"
+            method = "<div id='#{@method_name}' data-magellan-destination='#{@method_name}'></div><div><table class='CodeRay'><td class='code'><pre>"
             method += ":<span class='annotation'>" + @method_name + "</span>("
             for i in (0..(@elements.length-1)).step(2) do
                 method += "#{@elements[i]}<span class='tag'>[#{@elements[i+1]}]</span>, "

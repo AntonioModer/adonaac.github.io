@@ -76,6 +76,12 @@ ul.require {
     margin-left: 1.7em;
 }
 
+ul.nav {
+    margin-left: 1em;
+    margin-top: -1em;
+
+}
+
 p.spoiler{
     background-color: #141414;
     color: #141414;
@@ -273,7 +279,17 @@ aside{
 
 #nav {
     white-space: nowrap;
-    top: 85px;
+    top: 65px;
+    width: 0px;
+    @media #{$large-up} {
+        left: 1em;
+    }
+}
+
+.nav-level1 {
+    white-space: nowrap;
+    left: 30px;
+    top: 65px;
     width: 0px;
     @media #{$large-up} {
         left: 1em;

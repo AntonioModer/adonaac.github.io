@@ -127,11 +127,20 @@
 {% endif %}
 
 <!--
-<div data-magellan-expedition="fixed"> 
-<dl class="side-nav fixed"> 
-    <dd data-magellan-arrival="module_reference">
-    <a href="#module_reference">Module Reference</a>
-    </dd> 
-</dl> 
-</div>
 -->
+
+{% if page.title == 'Tilemap' %}
+<div id="nav" class="fixed right show-for-large-up">
+<p>
+<a href="#Example">Example</a><br>
+<a href="#Description">Description</a><br>
+<a href="#Methods">Methods</a><br>
+<ul class="nav">
+    <li><a href="#new">new</a><br></li>
+    <li><a href="#draw">draw</a><br></li>
+    <li><a href="#autoTile">autoTile</a><br></li>
+</ul>
+
+</p>
+</div>
+{% endif %}

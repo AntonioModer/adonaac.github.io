@@ -11,7 +11,28 @@ sidebar: false
 {% title Example %}
 
 ~~~ lua
+-- create a new tilemap, parameters are: x, y (center position), tile width and height, tileset image, tilemap data
+local tilemap = fg.Tilemap(240, 180, 64, 64, love.graphics.newImage('tileset.png'), {
+    {1, 1, 1, 1, 1, 1},
+    {1, 1, 0, 0, 1, 1},
+    {1, 1, 0, 0, 1, 1},
+    {1, 1, 1, 1, 1, 1},
+})
 
+-- set the tileset's auto tiling rules
+tilemap:setAutoTileRules({6, 14, 12, 2, 10, 8, 7, 15, 13, 3, 11, 9})
+
+-- auto tile based on auto tiling rules
+tilemap:autoTile()
+
+-- if using the engine create a new area/level for the tilemap, 
+-- add the tilemap to the 'Default' layer so it can be drawn
+-- generate box2d collision solids,
+-- and then activate the area/level so that everything in this area happens
+fg.world:createArea('...', 0, 0)
+fg.world:addToLayer('Default', tilemap)
+fg.world.areas['...']:generateCollisionSolids(tilemap)
+fg.world.areas['...']:activate()
 ~~~
 
 Using the code above the and the below tileset:
@@ -30,9 +51,10 @@ with simple and advanced rule sets, as well as automatic box2d collision solid g
 {% text engine %}. You can also load Tiled maps directly:
 
 ~~~ lua
-
+-- The third argument points to the path of the .lua map exported by Tiled
+local tilemap = fg.Tilemap(0, 0, 'tiled_map.lua')
 ~~~
-<br><br>
+<br>
 
 {% title Methods %}
 
@@ -188,6 +210,78 @@ one from the tile_data table passed to the constructor
 *   the width and height of the tilemap itself
 <br><br>
 
+{% attribute position x number y number %}
+*   the center position of the tilemap
+<br><br>
+
 {% attribute corners x1 number y1 number x2 number y2 number %}
 *   the top left and bottom right corners of the map
-<br> <br>
+<br><br>
+
+{% title Tiled %}
+
+~~~ lua
+-- create a tilemap from a Tiled map
+local tilemap = fg.Tilemap(0, 0, 'tiled_map.lua')
+
+-- if using the engine create a new area/level for the tilemap, 
+-- add the tilemap to the 'Default' layer so it can be drawn
+-- generate box2d collision solids,
+-- create all entities defined in the Tiled map,
+-- and then activate the area/level so that everything in this area happens
+fg.world:createArea('...', 0, 0)
+fg.world:addToLayer('Default', tilemap)
+fg.world.areas['...']:generateCollisionSolids(tilemap)
+fg.world.areas['...']:createEntities(tilemap)
+fg.world.areas['...']:activate()
+~~~
+
+Tiled maps need to be defined with two main things in mind when it comes to the {% text engine %}:
+the collision layer and the map objects. For the collision layer all you need to do in Tiled is
+create a tile layer that has the property {% text collision %} set to true.
+
+{% img center /assets/properties-collision.png %}
+
+This will make it so that for that layer, any tile that is set (not empty) will act as a collision
+tile for the {% call :generateCollisionSolids %} call. You can either set this property on your main
+layer or you can just create another specific collision layer which you'll fill with whatever collision
+tiles you want. 
+
+Another way of creating collision solids is to create an object layer and to add [Solid](/documentation/Solid)
+objects to it. Adding objects from the engine (and from your game) to Tiled is pretty straightforward, since
+all you need to define is the name of the class (in this case Solid), implement that class in your game 
+(the Solid is already implement in the engine) and then add special properties if you want. 
+
+{% img center /assets/objects-solid.png %}
+{% img center /assets/properties-solid.png %}
+
+When {% call :createEntities %} is called, all objects defined in the map's object layer will be automatically
+created, having their {% call .x, .y %} parameters filled in using their position on Tiled's map, and having
+any additional information (width, height, custom properties) being passed via the {% call .settings %} table.
+If a class type is defined in Tiled but isn't registered in the {% text engine %} (see [Class](/documentation/class)) 
+then errors will occur and your entities will not get created.
+
+If you want to use Tiled + {% text fg.Tilemap %} without using the {% text engine %} then you can access 
+the already parsed Tiled map's information through (i.e. {% text tilemap.objects %}):
+
+{% attribute objects objects table %}
+
+*   a table of objects, each following Tiled's Lua exported format
+<br><br>
+
+{% attribute tile_grid tile_grid table %}
+
+*   a 2D array containing the tile layer's data. Each number = id of that tile and for tilemaps
+with multiple tilesets, the id of tiles in the next tilesets carry from the last, meaning the id
+of the first tile in a second tileset, if the first tileset has 100 tiles, will be 101.
+<br><br>
+
+{% attribute solid_grid solid_grid table %}
+
+*   a 2D array containing collision data (1 is collision, 0 is not)
+<br><br>
+
+{% attribute tiled_data tiled_data table %}
+
+*   the raw exported Tiled Lua file, same as {% text tiled_data = require('tiled_map.lua') %}
+<br><br>

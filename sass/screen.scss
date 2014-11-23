@@ -59,6 +59,10 @@ p{
 	}
 }
 
+p.side-nav{
+    line-height: 1.8em;
+}
+
 p.small{
     font-size: 12px; 
     line-height: 1.3;
@@ -77,9 +81,20 @@ ul.require {
 }
 
 ul.nav {
+    list-style-type: none;
     margin-left: 1em;
-    margin-top: -1em;
+    margin-top: -1.1em;
+}
 
+ul.nav2 {
+    list-style-type: none;
+    margin-left: 1em;
+    margin-top: 0.35em;
+}
+
+ul.nav > li {
+    margin-bottom: 0.1em;
+    margin-top: 0.1em;
 }
 
 p.spoiler{
@@ -281,6 +296,7 @@ aside{
     white-space: nowrap;
     top: 65px;
     width: 0px;
+    z-index: 0;
     @media #{$large-up} {
         left: 1em;
     }

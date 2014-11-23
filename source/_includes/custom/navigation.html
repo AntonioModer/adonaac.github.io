@@ -1,8 +1,7 @@
 {% if site.fixed_navigation %}
 <div class="sticky">
 {% endif %}
-  <div data-magellan-expedition="fixed">
-  <nav class="top-bar" data-topbar>
+  <nav class="top-bar" data-topbar role="navigation">
 
     <!--
     <ul class="title-area right">
@@ -88,17 +87,16 @@
 
     </section>
   </nav>
-  </div>
 {% if site.fixed_navigation %}
 </div>
 {% endif %}
 
 {% if page.title == 'Documentation' %}
 <div id="nav" class="fixed right show-for-large-up">
-<p>
+<p class="side-nav">
 
 {% if page.title == 'Documentation' %}
-<strong>Documentation</strong><br>
+<strong><a href="/documentation">Documentation</a><br></strong>
 <a href="/documentation/mg">mg</a><br>
 <a href="/documentation/animation">Animation</a><br>
 <a href="/documentation/background">Background</a><br>
@@ -129,18 +127,18 @@
 <!--
 -->
 
-{% if page.title == 'Tilemap' %}
 <div id="nav" class="fixed right show-for-large-up">
-<p>
-<a href="#Example">Example</a><br>
-<a href="#Description">Description</a><br>
-<a href="#Methods">Methods</a><br>
-<ul class="nav">
-    <li><a href="#new">new</a><br></li>
-    <li><a href="#draw">draw</a><br></li>
-    <li><a href="#autoTile">autoTile</a><br></li>
-</ul>
+<p class="side-nav">
+<strong><a href="/documentation">Documentation</a><br></strong>
+
+{% if page.title == 'Tilemap' %}
+{% sidenav Example Description Methods %}
+{% nav new draw autoTile changeTile removeTile setAutoTileRules setCollisionData %}
+{% sidenav Attributes %}
+{% nav2 [tile_size tile_width, tile_height] [tilemap_size w, h] [position x, y] [corners x1, y1, x2, y2] %}
+{% sidenav Tiled %}
+{% nav2 [objects objects] [tile_grid tile_grid] [solid_grid solid_grid] [tiled_data tiled_data] %}
+{% endif %}
 
 </p>
 </div>
-{% endif %}

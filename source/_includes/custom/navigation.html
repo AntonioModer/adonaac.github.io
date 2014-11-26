@@ -129,15 +129,22 @@
 
 <div id="nav" class="fixed right show-for-large-up">
 <p class="side-nav">
+{% if page.title == 'Tilemap' or page.title == 'Timer' %}
 <strong><a href="/documentation">Documentation</a><br></strong>
+{% endif %}
 
 {% if page.title == 'Tilemap' %}
 {% sidenav Example Description Methods %}
 {% nav new draw autoTile changeTile removeTile setAutoTileRules setCollisionData %}
 {% sidenav Attributes %}
-{% nav2 [tile_size tile_width, tile_height] [tilemap_size w, h] [position x, y] [corners x1, y1, x2, y2] %}
+{% nav2 [area area] [tile_size tile_width, tile_height] [tilemap_size w, h] [position x, y] [corners x1, y1, x2, y2] %}
 {% sidenav Tiled %}
 {% nav2 [objects objects] [tile_grid tile_grid] [solid_grid solid_grid] [tiled_data tiled_data] %}
+{% endif %}
+
+{% if page.title == 'Timer' %}
+{% sidenav Example Description Methods %}
+{% nav new update after cancel clear destroy during every tween %}
 {% endif %}
 
 </p>

@@ -25,14 +25,10 @@ tilemap:setAutoTileRules({6, 14, 12, 2, 10, 8, 7, 15, 13, 3, 11, 9})
 -- auto tile based on auto tiling rules
 tilemap:autoTile()
 
--- if using the engine create a new area/level for the tilemap, 
--- add the tilemap to the 'Default' layer so it can be drawn
--- generate box2d collision solids,
--- and then activate the area/level so that everything in this area happens
-fg.world:createArea('...', 0, 0)
+-- if using the engine add the tilemap to the 'Default' layer so it can be drawn
+-- and generate box2d collision solids
 fg.world:addToLayer('Default', tilemap)
-fg.world.areas['...']:generateCollisionSolids(tilemap)
-fg.world.areas['...']:activate()
+fg.world.areas['Default']:generateCollisionSolids(tilemap)
 ~~~
 
 Using the code above the and the below tileset:
@@ -52,7 +48,7 @@ with simple and advanced rule sets, as well as automatic box2d collision solid g
 
 ~~~ lua
 -- The third argument points to the path of the .lua map exported by Tiled
-local tilemap = fg.Tilemap(0, 0, 'tiled_map.lua')
+local tilemap = fg.Tilemap(0, 0, 'maps/tiled_map')
 ~~~
 <br>
 
@@ -68,6 +64,7 @@ local tilemap = fg.Tilemap(0, 0, 'tiled_map.lua')
 
 Possible settings:
 
+*   {% param area %}: the area/level this tilemap belongs to, defaults to the {% string Default %} area created by the engine
 *   {% param padding %}: horizontal and vertical padding in pixels between each tile
 
 It's also possible to use multiple tilesets for one tilemap. In this case, the number identifiers for the tiles
@@ -200,9 +197,14 @@ one from the tile_data table passed to the constructor
 
 {% title Attributes %}
 
+{% attribute area area Area %}
+
+*   the area/level linked to this tilemap so it can be drawn/updated 
+<br><br>
+
 {% attribute tile_size tile_width number tile_height number %}
 
-*    the width and height of tiles in this tilemap   
+*   the width and height of tiles in this tilemap   
 <br>
 
 {% attribute tilemap_size w number h number %}
@@ -222,18 +224,14 @@ one from the tile_data table passed to the constructor
 
 ~~~ lua
 -- create a tilemap from a Tiled map
-local tilemap = fg.Tilemap(0, 0, 'tiled_map.lua')
+local tilemap = fg.Tilemap(0, 0, 'maps/tiled_map')
 
--- if using the engine create a new area/level for the tilemap, 
--- add the tilemap to the 'Default' layer so it can be drawn
+-- if using the engine add the tilemap to the 'Default' layer so it can be drawn
 -- generate box2d collision solids,
--- create all entities defined in the Tiled map,
--- and then activate the area/level so that everything in this area happens
-fg.world:createArea('...', 0, 0)
+-- and create all entities defined in the Tiled map
 fg.world:addToLayer('Default', tilemap)
-fg.world.areas['...']:generateCollisionSolids(tilemap)
-fg.world.areas['...']:createEntities(tilemap)
-fg.world.areas['...']:activate()
+fg.world.areas['Default']:generateCollisionSolids(tilemap)
+fg.world.areas['Default']:createEntities(tilemap)
 ~~~
 
 Tiled maps need to be defined with two main things in mind when it comes to the {% text engine %}:
@@ -283,5 +281,5 @@ of the first tile in a second tileset, if the first tileset has 100 tiles, will 
 
 {% attribute tiled_data tiled_data table %}
 
-*   the raw exported Tiled Lua file, same as {% text tiled_data = require('tiled_map.lua') %}
+*   the raw exported Tiled Lua file, same as {% text tiled_data = require('maps/tiled_map') %}
 <br><br>

@@ -8,7 +8,7 @@ footer: true
 sidebar: false 
 ---
 
-<h3 id="description" data-magellan-destination="description">Description</h3>
+{% title Description %}
 
 A game state systems module. It's an exact copy of [hump.gamestate](http://vrld.github.io/hump/#hump.gamestate), so refer to that for details on the workings of each method.
 

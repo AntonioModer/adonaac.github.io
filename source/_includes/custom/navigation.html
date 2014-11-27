@@ -42,13 +42,14 @@
             <li><a href="/documentation/input">Input</a></li>
             <li><a href="/documentation/level">Level</a></li>
             <li><a href="/documentation/loader">Loader</a></li>
+            <li><a href="/documentation/moses">Moses</a></li>
             <li><a href="/documentation/objectpool">Object Pool</a></li>
             <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
             <li><a href="/documentation/serialization">Serialization</a></li>
             <li><a href="/documentation/solid">Solid</a></li>
             <li><a href="/documentation/tilemap">Tilemap</a></li>
             <li><a href="/documentation/timer">Timer</a></li>
-            <li><a href="/documentation/utils">Utils</a></li>
+            <li><a href="/documentation/utils">utils</a></li>
             <li><a href="/documentation/vector">Vector</a></li>
             </ul>
             </li>
@@ -106,15 +107,16 @@
 <a href="/documentation/debug">Debug</a><br>
 <a href="/documentation/entity">Entity</a><br>
 <a href="/documentation/gamestate">Gamestate</a><br>
-<a href="/documentation/group">Group</a><br>
 <a href="/documentation/input">Input</a><br>
 <a href="/documentation/loader">Loader</a><br>
+<a href="/documentation/moses">Moses</a><br>
 <a href="/documentation/particles">Particles (Engine)</a><br>
 <a href="/documentation/physicsbody">PhysicsBody (Engine)</a><br>
 <a href="/documentation/solid">Solid (Engine)</a><br>
 <a href="/documentation/text">Text</a><br>
 <a href="/documentation/tilemap">Tilemap</a><br>
 <a href="/documentation/timer">Timer</a><br>
+<a href="/documentation/uitools">UI Tools</a><br>
 <a href="/documentation/utils">Utils</a><br>
 <a href="/documentation/vector">Vector</a><br>
 <a href="/documentation/world">World (Engine)</a><br>
@@ -129,8 +131,16 @@
 
 <div id="nav" class="fixed right show-for-large-up">
 <p class="side-nav">
-{% if page.title == 'Tilemap' or page.title == 'Timer' %}
+{% if page.title == 'Gamestate' or page.title == 'Moses' or page.title == 'Tilemap' or page.title == 'Timer' or page.title == 'UI Tools' or page.title == 'utils' %}
 <strong><a href="/documentation">Documentation</a><br></strong>
+{% endif %}
+
+{% if page.title == 'Gamestate' %}
+{% sidenav Description %}
+{% endif %}
+
+{% if page.title == 'Moses' %}
+{% sidenav Description %}
 {% endif %}
 
 {% if page.title == 'Tilemap' %}
@@ -145,6 +155,15 @@
 {% if page.title == 'Timer' %}
 {% sidenav Example Description Methods %}
 {% nav new update after cancel clear destroy during every tween %}
+{% endif %}
+
+{% if page.title == 'UI Tools' %}
+{% sidenav Description %}
+{% endif %}
+
+{% if page.title == 'utils' %}
+{% sidenav Methods %}
+{% nav graphics.pushRotate graphics.pushRotateScale math.chooseWithProbability math.clamp math.isBetween math.random math.round table.copy table.random angleToDirection4 directionToAngle4 %}
 {% endif %}
 
 </p>

@@ -41,3 +41,10 @@ making game prototyping even faster! It's free, open source and supported on Win
 <br>
 
 ------------------
+
+## Games being made with FuccboiGDX
+
+{% img center /assets/hite.gif %}
+{% img center /assets/fight.gif %}
+{% img center /assets/lights.gif %}
+{% img center /assets/ice.gif %}

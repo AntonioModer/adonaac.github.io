@@ -8,25 +8,26 @@ footer: true
 sidebar: false 
 ---
 
-<h3 id="description" data-magellan-destination="description">Description</h3>
+{% title Description %}
 
-The <code class="text">mg.Class</code> module handles OOP and is a slightly modified version of [Classic](https://github.com/rxi/classic).
+The {% text mg.Class %} module handles OOP and is a slightly modified version of [classic](https://github.com/rxi/classic).
 
-There are two ways of using the class system with Mogamett, one if you're using the <code class="text">engine</code> (meaning you're using <code class="text">mg.world</code>) and another if you're using
-only the <code class="text">framework</code>. Class creation calls for the engine should be <code class="text">mg.class</code>, while for the framework they should be <code class="text">mg.Class</code>. 
+There are two ways of using the class system with FuccboiGDX, one if you're using the {% text engine %} 
+(meaning you're using {% text mg.world %}) and another if you're using only the {% text framework %}. 
+Class creation calls for the engine should be {% text mg.Class %}, while for the framework they should be {% text mg.Object:extend %}. 
 
-*   <code class="text">mg.class</code> adds the class to a list of classes that Mogamett then refers to for things like collision and object creation/removal; 
-*   <code class="text">mg.Class</code> simply creates a class normally like stated in Classic's github page.
+*   {% text mg.Object:extend %} simply creates a class normally like stated in classic's github page.
+*   {% text mg.Class %} adds the class to a list of classes that FuccboiGDX then refers to for things like drawing and object creation/removal; 
 <br><br>
 
-<h3 id="example" data-magellan-destination="example">Example</h3>
+{% title Example %}
 
-There are some small changes from Classic in how to create classes using Mogamett. For framework/normal classes:
+There are some small changes from classic in how to create classes using FuccboiGDX. For framework/normal classes:
 
 ~~~ lua
 -- create a normal class, the string passed to extend is the name of the class
 -- and can be accessed by calling MyClass.class_name
-MyClass = mg.Class:extend('MyClass')
+MyClass = mg.Object:extend('MyClass')
 
 -- constructor
 function MyClass:new()
@@ -39,7 +40,7 @@ And for engine classes:
 ~~~ lua
 -- create a mg.world/physics enabled class, passing the name of the class and the name of the parent
 -- engine classes don't necessarily need to be physics enabled but they must all inherit from Entity
-MyClass = mg.class('MyClass', 'Entity')
+MyClass = mg.Class('MyClass', 'Entity')
 MyClass:implement(mg.PhysicsBody)
 
 -- constructor required

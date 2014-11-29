@@ -44,6 +44,7 @@
             <li><a href="/documentation/loader">Loader</a></li>
             <li><a href="/documentation/objectpool">Object Pool</a></li>
             <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
+            <li><a href="/documentation/render">Render</a></li>
             <li><a href="/documentation/serialization">Serialization</a></li>
             <li><a href="/documentation/solid">Solid</a></li>
             <li><a href="/documentation/tilemap">Tilemap</a></li>
@@ -110,6 +111,8 @@
 <a href="/documentation/loader">Loader</a><br>
 <a href="/documentation/particles">Particles (Engine)</a><br>
 <a href="/documentation/physicsbody">PhysicsBody (Engine)</a><br>
+<a href="/documentation/render">Render (Engine)</a><br>
+<a href="/documentation/serialization">Serialization</a><br>
 <a href="/documentation/solid">Solid (Engine)</a><br>
 <a href="/documentation/text">Text</a><br>
 <a href="/documentation/tilemap">Tilemap</a><br>
@@ -124,13 +127,20 @@
 </div>
 {% endif %}
 
-<!--
--->
-
 <div id="nav" class="fixed right show-for-large-up">
 <p class="side-nav">
-{% if page.title == 'Gamestate' or page.title == 'Input' or page.title == 'PhysicsBody' or page.title == 'Solid' or page.title == 'Text' or page.title == 'Tilemap' or page.title == 'Timer' or page.title == 'UI Tools' or page.title == 'utils' or page.title == 'World' %}
+{% if page.title == 'Class' or page.title == 'Entity' or page.title == 'Gamestate' or page.title == 'Input' or page.title == 'Loader' or page.title == 'PhysicsBody' or page.title == 'Render' or page.title == 'Solid' or page.title == 'Text' or page.title == 'Tilemap' or page.title == 'Timer' or page.title == 'UI Tools' or page.title == 'utils' or page.title == 'Vector' or page.title == 'World' %}
 <strong><a href="/documentation">Documentation</a><br></strong>
+{% endif %}
+
+{% if page.title == 'Class' %}
+{% sidenav Description Example %}
+{% endif %}
+
+{% if page.title == 'Entity' %}
+{% sidenav Description %}
+{% sidenav Attributes %}
+{% nav area dead id position %}
 {% endif %}
 
 {% if page.title == 'Gamestate' %}
@@ -143,11 +153,23 @@
 {% sidenav Constants %}
 {% endif %}
 
+{% if page.title == 'Loader' %}
+{% sidenav Description %}
+{% endif %}
+
 {% if page.title == 'PhysicsBody' %}
 {% sidenav Example Description Methods %}
 {% nav physicsBodyNew physicsBodyUpdate physicsBodyDraw addBody addJoint changeCollisionClass removeBody removeJoint removeShape %}
 {% sidenav Attributes %}
 {% nav2 [bodies bodies] [body body] [fixture fixture] [fixtures fixtures] [joints joints] [sensor sensor] [sensors sensors] [shape shape] [shapes shapes] [shape_name shape_name] [size w h] [r r] [s s] %}
+{% endif %}
+
+{% if page.title == 'Render' %}
+{% sidenav Render Layer %}
+{% sidenav2 [Layer Methods] %}
+{% nav addLayer addShaderToLayer addToLayer sendToShader setShaderClassList setLayerOrder sortLayerRenderOrder sortRenderOrder %} 
+{% sidenav2 [Render Methods] %}
+{% nav3 renderAttach renderDetach %}
 {% endif %}
 
 {% if page.title == 'Solid' %}
@@ -179,6 +201,10 @@
 {% if page.title == 'utils' %}
 {% sidenav mlib Moses utils Methods %}
 {% nav utils.graphics.pushRotate utils.graphics.pushRotateScale utils.math.chooseWithProbability utils.math.clamp utils.math.isBetween utils.math.random utils.math.round utils.table.copy utils.table.random utils.angleToDirection4 utils.directionToAngle4 %}
+{% endif %}
+
+{% if page.title == 'Vector' %}
+{% sidenav Description %}
 {% endif %}
 
 {% if page.title == 'World' %}

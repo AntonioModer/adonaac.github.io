@@ -8,10 +8,11 @@ footer: true
 sidebar: false 
 ---
 
-<h3 id="description" data-magellan-destination="description">Description</h3>
+{% title Description %}
 
-A threaded resource loading module. It's an exact copy of [love-loader](https://github.com/kikito/love-loader), so refer to that for details on the workings of each method. A table named
-<code class="text">mg.Assets</code> exists so that you can load your assets to it, but you can use any table you'd like.
+A threaded resource loading module. It's an exact copy of [love-loader](https://github.com/kikito/love-loader), 
+so refer to that for details on the workings of each method. A table named {% text mg.Assets %} exists so that 
+you can load your assets to it, but you can use any table you'd like.
 
 ~~~ lua
 function Game:new()

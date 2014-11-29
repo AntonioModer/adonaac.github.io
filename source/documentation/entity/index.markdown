@@ -8,49 +8,60 @@ footer: true
 sidebar: false 
 ---
 
-<h3 id="description" data-magellan-destination="description">Description</h3>
+{% title Description %}
 
-The <code class="text">mg.Entity</code> is the base class that all <code class="text">engine</code> classes should inherit from. It has basic attributes that are used by all
-systems in <code class="text">mg.world</code>.
+The {% text mg.Entity %} class is the base class that all {% text engine %} classes should inherit from. 
+It has basic attributes that are used by all systems in {% text mg.world %}. If your class is not going 
+to use {% text mg.world %} in any way (as a rule of thumb it's not a class that needs to be drawn) then
+you don't need to inherit from {% text mg.Entity %}.
+
+~~~ lua
+-- This is an example of a class that needs to inherit from 'Entity'
+Box = mg.Class('Box', 'Entity')
+
+function Box:new(area, x, y, settings)
+    -- initialize Entity parent
+    Box.super.new(self, area, x, y, settings)
+end
+
+function Box:update(dt)
+    -- do box things
+end
+
+function Box:draw()
+    -- draw box
+end
+~~~
+
+~~~ lua
+-- This is an example of a class that doesn't need to inherit from 'Entity'
+LogicalConceptThatDoesntMapToGameRealityAtAll = mg.Object:extend('LogicalConceptThatDoesntMapToGameRealityAtAll')
+
+function LogicalConceptThatDoesntMapToGameRealityAtAll:new()
+    -- initialize your class
+end
+~~~
+<br>
+
+{% title Attributes %}
+
+{% attribute area area Area %}
+
+*   a reference to the area the entity belongs to
 <br><br>
 
-<h3 id="attributes" data-magellan-destination="attributes">Attributes</h3>
+{% attribute dead dead boolean %}
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">x</span><span class="tag">[number]</span>, <span class="annotation">.y</span><span class="tag">[number]</span>
-</pre></td>
-</table></div>
-
-*   the position of the entity, in world coordinates
+*   if the entity is dead or alive, dead entities get automatically removed from the world at the end of the frame
 <br><br>
 
-
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">dead</span><span class="tag">[boolean]</span>
-</pre></td>
-</table></div>
-
-*   if the entity is dead, dead entities get automatically removed from the world at the end of the frame
-<br><br>
-
-
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">id</span><span class="tag">[number]</span>
-</pre></td>
-</table></div>
+{% attribute id id number %}
 
 *   the unique identifier of the entity 
 <br><br>
 
+{% attribute position x number y number %}
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">world</span><span class="tag">[World]</span>
-</pre></td>
-</table></div>
-
-*   a reference to the world the entity is manipulated by 
+*   the position of the entity, in world coordinates
 <br><br>
+

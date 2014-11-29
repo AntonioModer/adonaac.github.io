@@ -41,7 +41,7 @@ The {% text mg.Text %} class handles the creation of text objects.
 It uses markdown-like markup so you can change how each character or group 
 of character behaves. You can also define functions that will act on each 
 character's properties, giving you freedom to do pretty much whatever you 
-want in terms of effects and behaviors..
+want in terms of effects and behaviors.
 
 {% title Character %}
 

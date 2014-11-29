@@ -51,7 +51,7 @@ extensively so hopefully they aren't that much of a problem.
 *   [Solid](solid) - the base collision solid entity
 *   [Tilemap](tilemap) - tilemaps with autotiling, collision solid generation and Tiled support 
 *   [Timer](timer) - timers, tweens and allows timer/tween tagging, an enhanced version of [vrld/hump.timer](http://vrld.github.io/hump/#hump.timer) 
-*   [Utils](utils) - random utility functions
+*   [Utils](utils) - random utility functions, [Yonaba/Moses](https://github.com/Yonaba/Moses), [davisdude/mlib](https://github.com/davisdude/mlib)
 *   [Vector](vector) - 2D vector class, [vrld/hump.vector](http://vrld.github.io/hump/#hump.vector)
 
 **Visual**
@@ -59,7 +59,6 @@ extensively so hopefully they aren't that much of a problem.
 *   [Animation](animation) - creates animated sprites from sprite sheet images, an enhanced version of [bartbes/AnAL](https://love2d.org/wiki/AnAL)
 *   [Background](background) - backgrounds for use with parallaxed layers
 *   [Camera](camera) - very similar to [HaxeFlixel's camera (demo)](http://haxeflixel.com/demos/FlxCamera/) with a few improvements
-*   [Layer](layer) - 
 *   [Particles](particles) -
 *   [Text](text) - programmable text drawing
 *   [UI Tools](uitools) - UI module for building tools, [KennyShields/loveframes](https://github.com/KennyShields/LoveFrames) 

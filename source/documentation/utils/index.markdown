@@ -8,6 +8,24 @@ footer: true
 sidebar: false 
 ---
 
+{% title mlib %}
+
+An utility library with tons of functions that makes operations regarding lines, polygons, circles,
+intersections and math related stuff in general a lot easier than they are with vanilla LÖVE/Lua. It's
+an exact copy of [mlib](http://github.com/davisdude/mlib), so refer to that for a list and an explanation
+of all functions it implements. It can be accesses through {% text mg.mlib %}.
+
+{% title Moses %}
+
+An utility library with tons of functions that makes operations on tables, arrays, lists, collections and objects
+a lot easier than they are with vanilla Lua. It's an exact copy of [Moses](http://github.com/Yonaba/Moses), so refer to this 
+[tutorial](https://github.com/Yonaba/Moses/blob/master/doc/tutorial.md) for a list and an explanation of all functions
+it implements. It can be accessed through {% text mg.moses %}, {% text mg.mo %} or {% text mg.fn %}.
+
+{% title utils %}
+
+The {% text mg.utils %} table holds some random utility functions...
+
 {% title Methods %}
 
 {% methodd graphics.pushRotate x number y number angle number %}

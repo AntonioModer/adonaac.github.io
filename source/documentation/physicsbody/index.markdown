@@ -8,7 +8,7 @@ footer: true
 sidebar: false 
 ---
 
-<h3 id="example" data-magellan-destination="example">Example</h3>
+{% title Example %}
 
 ~~~ lua
 -- physics enabled entity template
@@ -30,234 +30,161 @@ end
 ~~~
 <br>
 
-<h3 id="description" data-magellan-destination="description">Description</h3>
+{% title Description %}
 
 If you don't know what mixins are, check [this](http://notmagi.me/the-power-of-lua-and-mixins/) article I wrote about them.
 
-The <code class="text">PhysicsBody</code> mixin adds physics capabilities to an object. If you're using the <code class="text">engine</code>, then all your physics enabled entities
-should both inherit from <code class="text">Entity</code> and have the <code class="text">PhysicsBody</code> mixin implemented, like in the example above.
+The {% text PhysicsBody %} mixin adds physics capabilities to an object. If you're using the {% text engine %}, 
+then all your physics enabled entities should both inherit from {% text Entity %} and have the {% text PhysicsBody %}
+mixin implemented, like in the example above.
 <br><br>
 
-<h3 id="methods" data-magellan-destination="methods">Methods</h3>
+{% title Methods %}
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">physicsBodyNew</span>(world<span class="tag">[World]</span>, x<span class="tag"><span class="tag">[number]</span></span>, y<span class="tag"><span class="tag">[number]</span></span>, settings<span class="tag">[table]</span><span class="tag">[optional]</span>)
-</pre></td>
-</table></div>
+{% method physicsBodyNew area Area x number y number settings table[any][optional] %}
 
-*   <code>world</code>: a reference to the world the entity is manipulated by
-*   <code>x, y</code>: the initial position of the entity
-*   <code>settings</code>: a table containing physics related settings, all values are optional
+*   {% param area %}: a reference to the area where the entity is contained
+*   {% param x, y %}: the initial position of the entity
+*   {% param settings %}: a table containing physics related settings, all values are optional
 
 Possible settings:
 
-*   <code>body_type</code>: box2d body type: <code class="string">'static'</code>, <code class="string">'dynamic'</code> or <code class="string">'kinematic'</code>, defaults to <code class="string">'dynamic'</code> 
-*   <code>shape</code>: box2d shape name: <code class="string">'rectangle'</code>, <code class="string">'bsgrectangle'</code>, <code class="string">'polygon'</code>, <code class="string">'chain'</code> or <code class="string">'circle'</code>,
-defaults to <code class="string">'rectangle'</code> 
-*   <code>vertices</code>: a table of vertices to define the shape, used if the shape is either <code class="string">'polygon'</code> or <code class="string">'chain'</code>, defaults to <code class="text">nil</code> 
-*   <code>loop</code>: if the <code class="string">'chain'</code> shape should loop, defaults to <code class="text">false</code>
-*   <code>w, h</code>: width and height of the shape, used if the shape is either <code class="string">'rectangle'</code> or <code class="string">'bsgrectangle'</code>, defaults to <code class="number">32, 32</code> 
-*   <code>s</code>: the corner cutting size in a <code class="string">'bsgrectangle'</code>, defaults to <code class="number">4</code> 
-*   <code>r</code>: the radius of a <code class="string">'circle'</code>, defaults to <code class="number">16</code> 
-*   <code>other</code>: if this object should behave, in terms of collision ignoring (the <code class="atrm">.ignores</code> class variable), as another class, defaults to the name of this object's class 
+*   {% param body_type %}: box2d body type: {% string 'static' %}, {% string 'dynamic' %} or {% string 'kinematic' %}, defaults to {% string 'dynamic' %} 
+*   {% param shape %}: box2d shape name: {% string 'rectangle' %}, {% string 'bsgrectangle' %}, {% string 'polygon' %}, {% string 'chain' %} or {% string 'circle' %}, 
+defaults to {% string 'rectangle' %} 
+*   {% param vertices %}: a table of vertices to define the shape, used if the shape is either {% string 'polygon' %} or {% string 'chain' %}, defaults to {% text nil %} 
+*   {% param loop %}: if the {% string 'chain' %} shape should loop, defaults to {% text false %}
+*   {% param w, h %}: width and height of the shape, used if the shape is either {% string 'rectangle' %} or {% string 'bsgrectangle' %}, defaults to {% number 32, 32 %} 
+*   {% param s %}: the corner cutting size in a {% string 'bsgrectangle' %}, defaults to {% number 4 %} 
+*   {% param r %}: the radius of a {% string 'circle' %}, defaults to {% number 16 %} 
+*   {% param collision_class %}: if this object should behave, in terms of collision ignoring (the {% text .ignores %} class variable), as another class, 
+defaults to the name of this object's class 
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">physicsBodyUpdate</span>(dt<span class="tag">[number]</span>)
-</pre></td>
-</table></div>
+{% method physicsBodyUpdate dt number %}
 
-*   <code>dt</code>: delta value passed from the main loop to update the body
+*   {% param dt %}: delta value passed from the main loop to update the body
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">physicsBodyDraw</span>()
-</pre></td>
-</table></div>
+{% method physicsBodyDraw %}
 
-*   draws debug lines for the physics object if <code class="text">mg.debug_draw = true</code>
+*   draws debug lines for the physics object if {% text mg.debug_draw = true %}
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">addBody</span>(world<span class="tag">[World]</span>, x<span class="tag"><span class="tag">[number]</span></span>, y<span class="tag"><span class="tag">[number]</span></span>, settings<span class="tag">[table]</span><span class="tag">[optional]</span>)
-</pre></td>
-</table></div>
+{% method addBody area Area x number y number settings table[any][optional] %}
 
-*   <code>world</code>: a reference to the world the entity is manipulated by
-*   <code>x, y</code>: the initial position of the entity
-*   <code>settings</code>: a table containing physics related settings, all values are optional
-*   adds another body to this entity. Bodies/shapes/fixtures/sensors are stored in those attributes respectively;
-*   the settings table follows the same specifications as in the constructor.
+*   adds another body to this entity. Bodies/shapes/fixtures/sensors are stored in those attributes respectively; i.e. you can access all bodies via {% text self.bodies[name] %}
+*   {% param area %}: a reference to the area where the entity is contained
+*   {% param x, y %}: the initial position of the entity
+*   {% param settings %}: a table containing physics related settings, all values are optional
+
+The settings table follows the same specifications as in the constructor, however there's one additional relevant possible value:
+
+*   {% param name %}: a string that is the name of this body/shape/fixture/sensor, which you can use to access those objects via
+{% text self.bodies[name] %}. If omitted, defaults to {% string 'main' %}.
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">addJoint</span>(type<span class="tag">[string]</span>, ...<span class="tag">[multiple]</span>)
-</pre></td>
-</table></div>
+{% method addJoint name string type string ... multiple %}
 
-*   <code>type</code>: a string specifying which joint type to add: 
-<code class="string">'distance'</code>,
-<code class="string">'friction'</code>,
-<code class="string">'gear'</code>,
-<code class="string">'mouse'</code>,
-<code class="string">'prismatic'</code>,
-<code class="string">'pulley'</code>,
-<code class="string">'revolute'</code>,
-<code class="string">'rope'</code>,
-<code class="string">'weld'</code> or
-<code class="string">'wheel'</code>.
-*   <code>...</code>: multiple arguments that match the arguments required by the box2d joint creation call
+*   {% param name %}: a string that is the name of this joint, which you can use to access it via {% text self.joints[name] %}
+*   {% param type %}: a string specifying which joint type to add: 
+{% string 'distance' %},
+{% string 'friction' %},
+{% string 'gear' %},
+{% string 'mouse' %},
+{% string 'prismatic' %},
+{% string 'pulley' %},
+{% string 'revolute' %},
+{% string 'rope' %},
+{% string 'weld' %} or
+{% string 'wheel' %}.
+*   {% param ... %}: multiple arguments that match the arguments required by the [box2d joint creation call](https://love2d.org/wiki/Joint)
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">changeCollisionClass</span>(n<span class="tag">[number]</span>, collision_class<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% method changeCollisionClass name string collision_class string %}
 
-*   <code>n</code>: the position of the body to be changed 
-*   <code>collision_class</code>: the new collision class 
+*   {% param name %}: the name of the body to be changed 
+*   {% param collision_class %}: the new collision class 
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">removeBody</span>(n<span class="tag">[number]</span>)
-</pre></td>
-</table></div>
+{% method removeBody name string %}
 
-*   <code>n</code>: the position of the body to be removed 
+*   {% param name %}: the name of the body to be removed 
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">removeJoint</span>(n<span class="tag">[number]</span>)
-</pre></td>
-</table></div>
+{% method removeJoint name string %}
 
-*   <code>n</code>: the position of the joint to be removed 
+*   {% param name %}: the name of the joint to be removed 
 <br><br>
 
-<h3 id="attributes" data-magellan-destination="attributes">Attributes</h3>
+{% method removeShape name string %}
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">bodies</span><span class="tag">[table]</span>
-</pre></td>
-</table></div>
+*   {% param name %}: the name of the shape to be removed 
+<br><br>
+
+{% title Attributes %}
+
+{% attribute bodies bodies table[Body] %}
 
 *   a table containing physics bodies
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">body</span><span class="tag">[Body]</span>
-</pre></td>
-</table></div>
+{% attribute body body Body %}
 
-*   the physics [Body](http://www.love2d.org/wiki/Body), alias for <code class="atrm">.bodies[1]</code>
+*   the physics [Body](http://www.love2d.org/wiki/Body), alias for {% text .bodies['main'] %}
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">fixture</span><span class="tag">[Fixture]</span>
-</pre></td>
-</table></div>
+{% attribute fixture fixture Fixture %}
 
-*   the main [Fixture](http://www.love2d.org/wiki/Fixture), alias for <code class="atrm">.fixtures[1]</code>
+*   the main [Fixture](http://www.love2d.org/wiki/Fixture), alias for {% text .fixtures['main'] %}
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">fixtures</span><span class="tag">[table]</span>
-</pre></td>
-</table></div>
+{% attribute fixtures fixtures table[Fixture] %}
 
 *   a table containing fixtures
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">joints</span><span class="tag">[table]</span>
-</pre></td>
-</table></div>
+{% attribute joints joints table[Joint] %}
 
 *   a table containing joints
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">sensor</span><span class="tag">[Fixture]</span>
-</pre></td>
-</table></div>
+{% attribute sensor sensor Fixture %}
 
-*   the secondary [Fixture](http://www.love2d.org/wiki/Fixture), used for generating callbacks when two objects physically ignore each other, alias for <code class="atrm">.sensors[1]</code>
+*   the secondary [Fixture](http://www.love2d.org/wiki/Fixture), used for generating callbacks when two objects physically ignore each other, alias for {% text .sensors['main'] %}
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">sensors</span><span class="tag">[table]</span>
-</pre></td>
-</table></div>
+{% attribute sensors sensors table[Fixture] %}
 
 *   a table containing sensors
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">shape</span><span class="tag">[Shape]</span>
-</pre></td>
-</table></div>
+{% attribute shape shape Shape %}
 
-*   the physics [Shape](http://www.love2d.org/wiki/Shape), alias for <code class="atrm">.shapes[1]</code>
+*   the physics [Shape](http://www.love2d.org/wiki/Shape), alias for {% text .shapes['main'] %}
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">shapes</span><span class="tag">[table]</span>
-</pre></td>
-</table></div>
+{% attribute shapes shapes table[Shape] %}
 
 *   a table containing shapes
 <br><br>
 
+{% attribute shape_name shape_name string %}
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">shape_name</span><span class="tag">[string]</span>
-</pre></td>
-</table></div>
-
-*   the name of this object's shape, possible values are <code class="string">'rectangle'</code>, <code class="string">'bsgrectangle'</code>, <code class="string">'polygon'</code>, <code class="string">'chain'</code> and <code class="string">'circle'</code>
+*   the name of this object's shape, possible values are {% string 'rectangle' %}, {% string 'bsgrectangle' %}, {% string 'polygon' %}, {% string 'chain' %} and {% string 'circle' %}
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">w</span><span class="tag"><span class="tag">[number]</span></span>, .<span class="annotation">h</span><span class="tag"><span class="tag">[number]</span></span>
-</pre></td>
-</table></div>
+{% attribute size w number h number %}
 
-*   width and height, set if <code class="atrm">.shape_name</code> is <code class="string">'rectangle'</code>, <code class="string">'bsgrectangle'</code> or <code class="string">'circle'</code>
+*   width and height, set if {% text .shape_name %} is {% string 'rectangle' %}, {% string 'bsgrectangle' %} or {% string 'circle' %}
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">r</span><span class="tag"><span class="tag">[number]</span></span>
-</pre></td>
-</table></div>
+{% attribute r r number %}
 
-*   radius, set if <code class="atrm">.shape_name</code> is <code class="string">'circle'</code>   
+*   radius, set if {% text .shape_name %} is {% string 'circle' %}   
 <br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">s</span><span class="tag"><span class="tag">[number]</span></span>
-</pre></td>
-</table></div>
+{% attribute s s number %}
 
-*   corner cutting size, set if <code class="atrm">.shape_name</code> is <code class="string">'bsgrectangle'</code>  
+*   corner cutting size, set if {% text .shape_name %} is {% string 'bsgrectangle' %}  
 <br><br>

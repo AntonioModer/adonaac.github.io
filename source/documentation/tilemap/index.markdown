@@ -231,7 +231,7 @@ local tilemap = fg.Tilemap(0, 0, 'maps/tiled_map')
 -- and create all entities defined in the Tiled map
 fg.world:addToLayer('Default', tilemap)
 fg.world.areas['Default']:generateCollisionSolids(tilemap)
-fg.world.areas['Default']:createEntities(tilemap)
+fg.world.areas['Default']:createTiledMapEntities(tilemap)
 ~~~
 
 Tiled maps need to be defined with two main things in mind when it comes to the {% text engine %}:
@@ -253,7 +253,7 @@ all you need to define is the name of the class (in this case Solid), implement 
 {% img center /assets/objects-solid.png %}
 {% img center /assets/properties-solid.png %}
 
-When {% call :createEntities %} is called, all objects defined in the map's object layer will be automatically
+When {% call :createTiledMapEntities %} is called, all objects defined in the map's object layer will be automatically
 created, having their {% call .x, .y %} parameters filled in using their position on Tiled's map, and having
 any additional information (width, height, custom properties) being passed via the {% call .settings %} table.
 If a class type is defined in Tiled but isn't registered in the {% text engine %} (see [Class](/documentation/class)) 

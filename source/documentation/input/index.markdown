@@ -8,7 +8,11 @@ footer: true
 sidebar: false 
 ---
 
-<h3 id="example" data-magellan-destination="example">Example</h3>
+<div data-alert class="alert-box info radius">
+    Gamepads may not work correctly until LÖVE 0.9.2 is released.
+</div>
+
+{% title Example %}
 
 ~~~ lua
 -- bind the key 'a' to the action 'move_left' on initialization
@@ -22,15 +26,14 @@ end
 ~~~
 <br>
 
-<h3 id="description" data-magellan-destination="description">Description</h3>
+{% title Description %}
 
-The <code class="text">mg.Input</code> class handles binding keys to actions and then enables checking of actions in the <code class="text">update</code> loop. 
-An instance <code class="text">mg.input</code>
-is automatically created when <code class="text">mg.init()</code> is called, but you can also create your own instances by doing <code class="text">input = mg.Input()</code>. 
-To use this module you must add 
-<code class="text">mg.input:keypressed</code>, <code class="text">mg.input:keyreleased</code>, <code class="text">mg.input:mousepressed</code>, <code class="text">mg.input:mousereleased</code>,
-<code class="text">mg.input:gamepadpressed</code>, <code class="text">mg.input:gamepadreleased</code> and <code class="text">mg.input:gamepadaxis</code>
-to their respective love callbacks.  If you create your own input instances then you also have to do this.
+The {% text mg.Input %} class handles binding keys to actions and then enables checking of actions in the {% text update %} loop. 
+The instance {% text mg.input %} is automatically created when {% text mg.init() %} is called, but you can also create your own 
+instances by doing {% text input = mg.Input %}. If you do this you must add {% text input:keypressed %}, {% text input:keyreleased %}, 
+{% text input:mousepressed %}, {% text input:mousereleased %}, {% text input:gamepadpressed %}, {% text input:gamepadreleased %},
+{% text input:gamepadaxis %} to their respective love callbacks. The {% text main.lua %} file that ships with FuccboiGDX already does this
+for the default {% text mg.input %} instance (via the {% text mg.[whatever] %} calls).
 
 ~~~ lua
 function love.load()
@@ -76,161 +79,84 @@ end
 ~~~
 <br>
 
-<h3 id="methods" data-magellan-destination="methods">Methods</h3>
+{% title Methods %}
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">bind</span>(key<span class="tag">[string]</span>, action<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% method bind key string action string %}
 
-*   <code>key</code>: the key constant, see [Constants](#constants) for a complete list of possible keys 
-*   <code>action</code>: the action bound to this key
+*   {% param key %}: the key constant, see [Constants](#constants) for a complete list of possible keys 
+*   {% param action %}: the action name bound to this key
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">down</span>(action<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% method down action string %}
 
-*   <code>action</code>: the action being checked
-*   <code>boolean</code> returns <code class="text">true</code> if the button bound to this action is down, <code class="text">false</code> otherwise
+*   returns {% text true %} if the button bound to this action is down, {% text false %} otherwise
+*   {% param action %}: the action being checked
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">pressed</span>(action<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% method pressed action string %}
 
-*   <code>action</code>: the action being checked
-*   <code>boolean</code> returns <code class="text">true</code> if the button bound to this action has just been pressed, <code class="text">false</code> otherwise
+*   returns {% text true %} if the button bound to this action has just been pressed, {% text false %} otherwise
+*   {% param action %}: the action being checked
 <br><br>
 
+{% method released action string %}
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">released</span>(action<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
-
-*   <code>action</code>: the action being checked
-*   <code>boolean</code> returns <code class="text">true</code> if the button bound to this action has just been released, <code class="text">false</code> otherwise
+*   returns {% text true %} if the button bound to this action has just been released, {% text false %} otherwise
+*   {% param action %}: the action being checked
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">unbind</span>(key<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% method unbind key string %}
 
-*   unbinds a key and whatever action was bound to it will no longer be activated on key press/down/release
-*   <code>key</code>: the key being unbound 
+*   unbinds a key, and whatever action was bound to it will no longer be activated on key press/down/release
+*   {% param key %}: the key being unbound 
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">unbindAll</span>()
-</pre></td>
-</table></div>
+{% method unbindAll %}
 
 *   unbinds all keys and actions
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">update</span>()
-</pre></td>
-</table></div>
+{% method update %}
 
 *   updates input state
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">keypressed</span>(key<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% method keypressed key string %}
 
-*   function to be added to LÖVE's <code class="text">keypressed</code> callback
+*   function to be added to LÖVE's {% text keypressed %} callback
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">keyreleased</span>(key<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% method keyreleased key string %}
 
-*   function to be added to LÖVE's <code class="text">keyreleased</code> callback
+*   function to be added to LÖVE's {% text keyreleased %} callback
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">mousepressed</span>(button<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% method mousepressed button string %}
 
-*   function to be added to LÖVE's <code class="text">mousepressed</code> callback
+*   function to be added to LÖVE's {% text mousepressed %} callback
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">mousereleased</span>(button<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% method mousereleased button string %}
 
-*   function to be added to LÖVE's <code class="text">mousereleased</code> callback
+*   function to be added to LÖVE's {% text mousereleased %} callback
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">gamepadpressed</span>(joystick<span class="tag">[Joystick]</span>, button<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% method gamepadpressed joystick Joystick button string %}
 
-*   function to be added to LÖVE's <code class="text">gamepadpressed</code> callback
+*   function to be added to LÖVE's {% text gamepadpressed %} callback
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">gamepadreleased</span>(joystick<span class="tag">[Joystick]</span>, button<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% method gamepadreleased joystick Joystick button string %}
 
-*   function to be added to LÖVE's <code class="text">gamepadreleased</code> callback
+*   function to be added to LÖVE's {% text gamepadreleased %} callback
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">gamepadaxis</span>(joystick<span class="tag">[Joystick]</span>, axis<span class="tag">[GamepadAxis]</span>, new_value<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% method gamepadaxis joystick Joystick axis GamepadAxis new_value string %}
 
-*   function to be added to LÖVE's <code class="text">gamepadaxis</code> callback
+*   function to be added to LÖVE's {% text gamepadaxis %} callback
 <br><br>
 
-<h3 id="attributes" data-magellan-destination="attributes">Attributes</h3>
-
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">state</span>
-</pre></td>
-</table></div>
-
-*   the current state of all keys, <code class="text">state[key]</code> is <code class="text">true</code> is the key is down, </code>false otherwise
-<br><br>
-
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">binds</span>
-</pre></td>
-</table></div>
-
-*   the key->action binding table, <code class="text">binds[action] = {key1, key2, ...}</code>
-<br><br>
-
-<h3 id="constants" data-magellan-destination="constants">Constants</h3>
+{% title Constants %}
 
 Keyboard keys remain the same as LÖVE's [key constants](http://www.love2d.org/wiki/KeyConstant). Mouse and gamepad buttons have been changed to the following:
 
@@ -245,7 +171,7 @@ Keyboard keys remain the same as LÖVE's [key constants](http://www.love2d.org/w
 'wheeldown'
 
 -- Gamepad
-'fdown' -- fdown/up/left/right = face buttons: a, b, x, y...
+'fdown' -- fdown/up/left/right = face buttons: a, b...
 'fup'
 'fleft'
 'fright'
@@ -256,8 +182,8 @@ Keyboard keys remain the same as LÖVE's [key constants](http://www.love2d.org/w
 'rightstick' -- right stick pressed or not (boolean)
 'l1'
 'r1'
-'l2'
-'r2'
+'l2' -- from 0 to 1
+'r2' -- from 0 to 1
 'dpup' -- dpad buttons
 'dpdown'
 'dpleft'

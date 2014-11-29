@@ -8,8 +8,10 @@ footer: true
 sidebar: false 
 ---
 
-<h3 id="description" data-magellan-destination="description">Description</h3>
+{% title Description %}
 
-A physics solid used by Mogamett to create static collision bodies. It's just a normal <code class="text">mg.Entity</code> class with an already initialized <code class="text">PhysicsBody</code> 
-mixin. You can create your own instances whenever necessary, but usually the [Tilemap](/documentation/tilemap) takes care of it on its own. So far this class only works for the <code class="text">
-engine</code>.
+A physics solid used by Mogamett to create static collision bodies. It's just a normal {% text mg.Entity %}
+class with an already initialized {% text PhysicsBody %} mixin. You can create your own instances whenever 
+necessary, but usually the [Tilemap](/documentation/tilemap) (if you're using it) takes care of it via the
+{% call :generateCollisionSolids %} call. This class works only for the {% text engine %}, meaning in conjunction
+with the use of the {% text fg.world %} instance.

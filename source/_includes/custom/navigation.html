@@ -129,8 +129,15 @@
 
 <div id="nav" class="fixed right show-for-large-up">
 <p class="side-nav">
-{% if page.title == 'Class' or page.title == 'Entity' or page.title == 'Gamestate' or page.title == 'Input' or page.title == 'Loader' or page.title == 'PhysicsBody' or page.title == 'Render' or page.title == 'Solid' or page.title == 'Text' or page.title == 'Tilemap' or page.title == 'Timer' or page.title == 'UI Tools' or page.title == 'utils' or page.title == 'Vector' or page.title == 'World' %}
+{% if page.title == 'Camera' or page.title == 'Class' or page.title == 'Entity' or page.title == 'Gamestate' or page.title == 'Input' or page.title == 'Loader' or page.title == 'PhysicsBody' or page.title == 'Render' or page.title == 'Solid' or page.title == 'Text' or page.title == 'Tilemap' or page.title == 'Timer' or page.title == 'UI Tools' or page.title == 'utils' or page.title == 'Vector' or page.title == 'World' %}
 <strong><a href="/documentation">Documentation</a><br></strong>
+{% endif %}
+
+{% if page.title == 'Camera' %}
+{% sidenav Example Description Methods %}
+{% nav new update draw attach detach follow getPosition getMousePosition getCameraCoords getWorldCoords removeBounds setBounds setDeadzone shake move moveTo rotate rotateTo %}
+{% sidenav Attributes %}
+{% nav2 [debug_draw debug_draw] [follow_lead follow_lead] [follow_lerp follow_lerp] [follow_style follow_style] [max_shake_intensity max_shake_intensity] [target target] %}
 {% endif %}
 
 {% if page.title == 'Class' %}

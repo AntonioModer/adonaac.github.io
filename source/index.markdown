@@ -13,38 +13,30 @@ sidebar: false
 making game prototyping even faster! It's free, open source and supported on Windows, Linux and OSX.
 
 <div class="row">
-    <div class="small-4 columns text-center">
-        <h3><a href="/downloads/mogamett.zip">Download</a></h3>
+    <div class="small-3 columns text-center">
+        <a href="/downloads/mogamett.zip" class="button expand">Download</a>
     </div>
 
-    <div class="small-4 columns text-center">
-        <h3><a href="/documentation">Documentation</a></h3>
+    <div class="small-3 columns text-center">
+        <a href="/tutorials" class="button expand">Tutorials</a>
     </div>
 
-    <div class="small-4 columns text-center">
-        <h3><a href="/support">Support</a></h3>
+    <div class="small-3 columns text-center">
+        <a href="/documentation" class="button expand">Docs</a>
+    </div>
+
+    <div class="small-3 columns text-center">
+        <a href="/support" class="button expand">Support</a>
     </div>
 </div>
 
 ------------------
 
-## Getting Started
-
-1. Download and install the [latest version of LÖVE](http://nightly.projecthawkthorne.com/)
-2. Download [FuccboiGDX](/downloads/mogamett.zip)
-3. Create a new folder for your project and place the FuccboiGDX as well as the main.lua file inside it
-4. [Run the project using LÖVE](http://www.love2d.org/wiki/Getting_Started)
-5. You should see a 480x360 black screen. If that happens then it's working properly!
-6. If you're new to Lua and LÖVE, the [tutorials](/tutorials) page should help you get started
-7. Otherwise, the [documentation](/documentation) page has in-depth explanations about each module and you can go from there
-
-<br>
-
-------------------
-
 <h2 style="text-align: center">Games being made with FuccboiGDX</h2>
 
-{% img center /assets/hite.gif %}
-{% img center /assets/fight.gif %}
-{% img center /assets/lights.gif %}
-{% img center /assets/ice.gif %}
+<ul class="example-orbit" data-orbit data-options="navigation_arrows: false; pause_on_hover:false; bullets: false; slide_number: false"> 
+    <li><img src="/assets/fight.gif"/></li> 
+    <li><img src="/assets/hitee.gif"/></li> 
+    <li><img src="/assets/ice.gif"/></li> 
+    <li><img src="/assets/attack.gif"/></li> 
+</ul>

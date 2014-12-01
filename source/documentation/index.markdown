@@ -35,17 +35,15 @@ extensively so hopefully they aren't that much of a problem.
 
 **Logic**
 
-*   [Area](area) -
+*   [Area](area) - an area/level/map where objects reside in and can be loaded/saved to/from 
 *   [Class](class) - object orientation library, [rxi/classic](https://github.com/rxi/classic)
 *   [Collision](collision) - internal module used for handling box2d collisions, read to understand how collisions are handled 
 *   [Debug](debug) - browser-based debug console for LÖVE, [rxi/lovebird](https://github.com/rxi/lovebird)
 *   [Entity](entity) - base class for all engine game objects 
 *   [Gamestate](gamestate) - game state system, [vrld/hump.gamestate](http://vrld.github.io/hump/#hump.gamestate)
 *   [Input](input) - binds keys to actions, allows for pressed/released checks outside of LÖVE's callbacks and supports gamepads
-*   [Level](level) - 
 *   [Loader](loader) - threaded resource loader, [kikito/love-loader](https://github.com/kikito/love-loader)
-*   [Moses](moses) - functional programming utility functions, [Yonaba/Moses](https://github.com/Yonaba/Moses)
-*   [ObjectPool](pool) - 
+*   [ObjectPool](pool) - object pooling for higher performance on objects that are killed/created often
 *   [PhysicsBody](physicsbody) - mixin used for adding physics capabilities to an object 
 *   [Serialization](serialization) -
 *   [Solid](solid) - the base collision solid entity

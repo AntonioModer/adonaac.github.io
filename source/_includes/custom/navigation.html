@@ -34,6 +34,7 @@
             </li>
             <li class="has-dropdown"><a href="#">Logic</a>
             <ul class="dropdown">
+            <li><a href="/documentation/area">Area</a></li>
             <li><a href="/documentation/class">Class</a></li>
             <li><a href="/documentation/collision">Collision</a></li>
             <li><a href="/documentation/debug">Debug</a></li>
@@ -42,7 +43,7 @@
             <li><a href="/documentation/input">Input</a></li>
             <li><a href="/documentation/level">Level</a></li>
             <li><a href="/documentation/loader">Loader</a></li>
-            <li><a href="/documentation/objectpool">Object Pool</a></li>
+            <li><a href="/documentation/objectpool">ObjectPool</a></li>
             <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
             <li><a href="/documentation/render">Render</a></li>
             <li><a href="/documentation/serialization">Serialization</a></li>
@@ -58,7 +59,6 @@
             <li><a href="/documentation/animation">Animation</a></li>
             <li><a href="/documentation/background">Background</a></li>
             <li><a href="/documentation/camera">Camera</a></li>
-            <li><a href="/documentation/layer">Layer</a></li>
             <li><a href="/documentation/particles">Particles</a></li>
             <li><a href="/documentation/text">Text</a></li>
             <li><a href="/documentation/uitools">UI Tools</a></li>
@@ -100,16 +100,18 @@
 <strong><a href="/documentation">Documentation</a><br></strong>
 <a href="/documentation/mg">mg</a><br>
 <a href="/documentation/animation">Animation</a><br>
+<a href="/documentation/area">Area (Engine)</a><br>
 <a href="/documentation/background">Background</a><br>
 <a href="/documentation/camera">Camera</a><br>
 <a href="/documentation/class">Class</a><br>
 <a href="/documentation/collision">Collision (Engine)</a><br>
 <a href="/documentation/debug">Debug</a><br>
-<a href="/documentation/entity">Entity</a><br>
+<a href="/documentation/entity">Entity (Engine)</a><br>
 <a href="/documentation/gamestate">Gamestate</a><br>
 <a href="/documentation/input">Input</a><br>
 <a href="/documentation/loader">Loader</a><br>
-<a href="/documentation/particles">Particles (Engine)</a><br>
+<a href="/documentation/objectpool">ObjectPool (Engine)</a><br>
+<a href="/documentation/particles">Particles</a><br>
 <a href="/documentation/physicsbody">PhysicsBody (Engine)</a><br>
 <a href="/documentation/render">Render (Engine)</a><br>
 <a href="/documentation/serialization">Serialization</a><br>
@@ -129,7 +131,7 @@
 
 <div id="nav" class="fixed right show-for-large-up">
 <p class="side-nav">
-{% if page.title == 'Animation' or page.title == 'Camera' or page.title == 'Class' or page.title == 'Entity' or page.title == 'Gamestate' or page.title == 'Input' or page.title == 'Loader' or page.title == 'PhysicsBody' or page.title == 'Render' or page.title == 'Solid' or page.title == 'Text' or page.title == 'Tilemap' or page.title == 'Timer' or page.title == 'UI Tools' or page.title == 'utils' or page.title == 'Vector' or page.title == 'World' %}
+{% if page.title == 'Area' or page.title == 'Animation' or page.title == 'Camera' or page.title == 'Class' or page.title == 'Entity' or page.title == 'Gamestate' or page.title == 'Input' or page.title == 'Loader' or page.title == 'ObjectPool' or page.title == 'PhysicsBody' or page.title == 'Render' or page.title == 'Solid' or page.title == 'Text' or page.title == 'Tilemap' or page.title == 'Timer' or page.title == 'UI Tools' or page.title == 'utils' or page.title == 'Vector' or page.title == 'World' %}
 <strong><a href="/documentation">Documentation</a><br></strong>
 {% endif %}
 
@@ -138,6 +140,17 @@
 {% nav new update draw addFrame getHeight getWidth play reset seek setDelay setMode setSpeed stop %}
 {% sidenav Attributes %}
 {% nav3 current_frame frame_height frame_width size %}
+{% endif %}
+
+{% if page.title == 'Area' %}
+{% sidenav Example Description Methods %}
+{% sidenav2 [Creation Methods] %}
+{% nav createEntity createTiledMapEntities generateCollisionSolids %}
+{% sidenav2 [HitFrameStop Methods] %}
+{% nav3 hitFrameStopAdd %}
+{% sidenav2 [Query Methods] %}
+{% nav3 applyAreaCircle applyAreaLine applyAreaRectangle queryAreaCircle queryAreaLine queryAreaRectangle %}
+{% sidenav Attributes %}
 {% endif %}
 
 {% if page.title == 'Camera' %}
@@ -168,6 +181,10 @@
 {% endif %}
 
 {% if page.title == 'Loader' %}
+{% sidenav Description %}
+{% endif %}
+
+{% if page.title == 'ObjectPool' %}
 {% sidenav Description %}
 {% endif %}
 
@@ -222,12 +239,8 @@
 {% endif %}
 
 {% if page.title == 'World' %}
-{% sidenav2 [Creation Methods] %}
-{% nav createEntity createTiledMapEntities generateCollisionSolids %}
-{% sidenav2 [Query Methods] %}
-{% nav3 applyAreaCircle applyAreaLine applyAreaRectangle queryAreaCircle queryAreaLine queryAreaRectangle %}
 {% sidenav Attributes %}
-{% nav3 box2d_world camera %}
+{% nav3 areas box2d_world camera layers layers_order mg %}
 {% endif %}
 
 </p>

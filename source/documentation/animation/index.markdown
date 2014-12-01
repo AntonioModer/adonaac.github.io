@@ -8,7 +8,7 @@ footer: true
 sidebar: false 
 ---
 
-<h3 id="example" data-magellan-destination="example">Example</h3>
+{% title Example %}
 
 {% img center /assets/girlrun.png spritesheet.png %}
 
@@ -27,175 +27,120 @@ animation:draw(x, y)
 
 {% img center /assets/girlrun.gif %}
 
-<h3 id="description" data-magellan-destination="description">Description</h3>
+{% title Description %}
 
-The <code class="text">mg.Animation</code> class handles the creation of animated sprites from sprite sheets. You have control over what to do with the animation itself,
-since it's returned and you just hold it in a variable. The draw operation, like LÖVE's, also takes rotation, scaling and shearing parameters after <code class="text">x, y</code>.
+The {% text mg.Animation %} class handles the creation of animated sprites from sprite sheets. 
+You have control over what to do with the animation itself, since it's returned and you just hold it in a variable. 
+The draw operation, like LÖVE's, also takes rotation, scaling and shearing parameters after {% text x, y %}. The module
+also supports reading sprite sheets from texture atlases on top of isolated spritesheets.
 <br><br>
 
-<h3 id="methods" data-magellan-destination="methods">Methods</h3>
+{% title Methods %}
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">new</span>(image</span><span class="tag">[Image]</span>, width<span class="tag">[number]</span>, height<span class="tag">[number]</span>, delay<span class="tag">[number]</span>, frames<span class="tag">[number][optional]</span>)
-</pre></td>
-</table></div>
+{% method new image Image width number height number delay number frames number[optional] %}
 
-*   <code>image</code>: the sprite sheet containing the full animation
-*   <code>width</code>: the width of each frame 
-*   <code>height</code>: the height of each frame 
-*   <code>delay</code>: the delay between each frame in seconds
-*   <code>frames</code>: the number of frames to use for this animation, omitting this parameter or passing <code class="number">0</code> tells the library to automatically handle it
+*   {% param image %}: the sprite sheet containing the full animation
+*   {% param width, height %}: the width and height of each frame 
+*   {% param delay %}: the delay between each frame in seconds
+*   {% param frames %}: the number of frames to use for this animation, omitting this parameter or passing {% number 0 %} tells the library to automatically handle it
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">update</span>(dt<span class="tag">[number]</span>)
-</pre></td>
-</table></div>
+{% method new image Image x number y number width number height number delay number frames number %}
 
-*   <code>dt</code>: delta value passed from the main loop to update the animation
+*   {% param image %}: the texture atlas containing the full animation and 
+*   {% param x, y %}: the top-left position of the first animation frame
+*   {% param width, height %}: the width and height of each frame
+*   {% param delay %}: the delay between each frame in seconds
+*   {% param frames %}: the number of frames to use for this animation, can't be omitted or {% number 0 %} when using a texture atlas
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">draw</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>)
-</pre></td>
-</table></div>
+{% method update dt number %}
 
-*   <code>x, y</code>: position to draw the animation, with optional values as seen in <a href="http://www.love2d.org/wiki/love.graphics.draw">love.graphics.draw</a>
+*   {% param dt %}: delta value passed from the main loop to update the animation
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">addFrame</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, width<span class="tag">[number]</span>, height<span class="tag">[number]</span>, delay<span class="tag">[number]</span>)
-</pre></td>
-</table></div>
+{% method draw x number y number %}
 
-*   <code>x, y</code>: left top coordinate of the frame on the original sprite sheet
-*   <code>width</code>: the width of the frame 
-*   <code>height</code>: the height of the frame 
-*   <code>delay</code>: the delay before the next frame is shown
+*   {% param x, y %}: position to draw the animation, with optional values as seen in [love.graphics.draw](http://www.love2d.org/wiki/love.graphics.draw)
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">getHeight</span>()
-</pre></td>
-</table></div>
+{% method addFrame x number y number width number height number delay number %}
 
-* <code> number</code> returns the height of the current frame
+*   {% param x, y %}: left top coordinate of the frame on the original sprite sheet
+*   {% param width, height %}: the width and height of each frame
+*   {% param delay %}: the delay between each frame in seconds
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">getWidth</span>()
-</pre></td>
-</table></div>
+{% method getHeight %}
 
-* <code> number</code> returns the width of the current frame
+*   returns the height of the current frame
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">play</span>()
-</pre></td>
-</table></div>
+{% method getWidth %}
+
+*   returns the width of the current frame
+<br><br>
+
+{% method play %}
+
 *   starts the animation if it was stopped
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">reset</span>()
-</pre></td>
-</table></div>
+{% method reset %}
+
 *   goes back to the first frame
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">seek</span>(frame<span class="tag">[number]</span>)
-</pre></td>
-</table></div>
-*   <code>frame</code>: the frame position to seek, minimum is <code class="number">1</code> and maximum is <code class="atrm">.size</code>
+{% method seek frame number %}
+
+*   {% param frame %}: the frame position to seek, minimum is {% number 1 %} and maximum is {% text .size %}
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">setDelay</span>(frame<span class="tag">[number]</span>, delay<span class="tag">[number]</span>)
-</pre></td>
-</table></div>
-*   <code>frame</code>: the frame position to set the delay
-*   <code>delay</code>: the new delay
+{% method setDelay frame number delay number %}
+
+*   {% param frame %}: the frame position to set the delay
+*   {% param delay %}: the new delay
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">setMode</span>(mode<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% method setMode mode string %}
 
-*   <code>mode</code>: the animation play mode
+*   {% param mode %}: the animation play mode
 
 Possible modes:
 
-*   <code>'loop'</code>: loops the animation after it's over
-*   <code>'once'</code>: plays the animation only once
-*   <code>'bounce'</code>: play it once, play it in reverse, play it again (looping)
+*   {% param 'loop' %}: loops the animation after it's over
+*   {% param 'once' %}: plays the animation only once
+*   {% param 'bounce' %}: play it once, play it in reverse, play it again (looping)
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">setSpeed</span>(speed<span class="tag">[number]</span>)
-</pre></td>
-</table></div>
+{% method setSpeed speed number %}
 
-*   <code>speed</code>: the speed to play the animation at, <code class="number">1</code> is normal, <code class="number">2</code> is double...
+*   {% param speed %}: the speed to play the animation at, {% number 1 %} is normal, {% number 2 %} is twice as fast...
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-:<span class="annotation">stop</span>()
-</pre></td>
-</table></div>
+{% method stop %}
 
 *   stops the animation
 <br><br>
 
-<h3 id="attributes" data-magellan-destination="attributes">Attributes</h3>
+{% title Attributes %}
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">current_frame</span><span class="tag">[number]</span>
-</pre></td>
-</table></div>
+{% attribute current_frame current_frame number %}
 
-*   the frame currently being displayed, minimum is <code class="number">1</code> and maximum is <code class="atrm">.size</code>
+*   the frame currently being displayed, minimum is {% number 1 %} and maximum is {% text .size %}
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">frame_height</span><span class="tag">[number]</span>
-</pre></td>
-</table></div>
+{% attribute frame_height frame_height number %}
 
-*   the height of the animation, can also be accessed through <code class="atrm">:getHeight()</code>
+*   the height of the animation, can also be accessed through {% call :getHeight %}
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">frame_width</span><span class="tag">[number]</span>
-</pre></td>
-</table></div>
+{% attribute frame_width frame_width number %}
 
 *   the width of the animation, can also be accessed through <code class="atrm">:getWidth()</code>
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">size</span><span class="tag">[number]</span>
-</pre></td>
-</table></div>
+{% attribute size size number %}
 
 *   the number of frames the animation has
 <br><br>

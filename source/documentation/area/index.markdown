@@ -10,7 +10,42 @@ sidebar: false
 
 {% title Example %}
 
+~~~ lua
+-- Create a new area
+mg.world:createArea('Level_1', 0, 0)
+
+-- Create a bunch of objects to it
+mg.world.areas['Level_1']:createEntity('Player', 200, 100)
+mg.world.areas['Level_1']:createEntity('Solid', 200, 200, {w = 200, h = 50})
+mg.world.areas['Level_1']:createEntity('Solid', 200, -100, {w = 200, h = 50})
+
+-- Activate the area so that objects are created/drawn/updated
+mg.world.areas['Level_1']:activate()
+~~~ 
+
 {% title Description %}
+
+The {% text mg.Area %} module handles the creation/deletion/updating of engine object, 
+querying the world for objects in a certain area/position/condition,
+saving/loading all objects in the area for when you have to transition from one are to another (changing levels),
+as well as a bunch of other smaller utilities (like hitFrameStops). Area instances are created in the 
+{% text mg.world %} instance and can be manipulated by doing {% text mg.world.areas['area_name']:method %}.
+Areas are the main way of getting information about the level you're currently in as well as organizing your entities
+in separate logical bundles that can also be manipulated; think of it as literally a zone/level/area/map in a game
+where the loading screen usually appears (although for 2D games the loading screen is probably unnecessary most of the time
+since you can just load everything and have it in memory from when the game is launched).
+
+{% title Area Methods %}
+
+{% method activate %}
+
+*   activates the area, enabling drawing and updating of its entities
+<br><br>
+
+{% method deactivate %}
+
+*   deactivates the area, disabling drawing and updating of its entities
+<br><br>
 
 {% title Creation Methods %}
 
@@ -35,7 +70,7 @@ mg.world:createEntity('Player', 400, 300, {v = 300, hp = 50, damage = 10})
 {% method generateCollisionSolids tilemap Tilemap %}
 
 *   generates collision [Solids](/documentation/solid) based on the tilemap's collision data
-*   {% param tilemap %}: the tilemap to use as reference for collision solid generation 
+*   {% param tilemap %}: the tilemap to use as reference for entity generation 
 <br><br>
 
 {% title HitFrameStop Methods %}
@@ -126,3 +161,23 @@ for _, entity in ipairs(entities) do entity:dealDamage(math.random(5, 10)) end
 <br><br>
 
 {% title Attributes %}
+
+{% attribute active active boolean %}
+
+*	if the area is active (and drawing/updating) or not	
+<br><br>
+
+{% attribute mg mg table %}
+
+*   a reference to the variable that holds the entire engine/framework
+<br><br>
+
+{% attribute position x number y number %}
+
+*   the top-left position of the area; all entities created will be offset by this position	
+<br><br>
+
+{% attribute world world World %}
+
+*	a reference to the {% text mg.world %} instance that holds this area
+<br><br>

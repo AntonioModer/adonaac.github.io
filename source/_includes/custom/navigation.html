@@ -143,14 +143,17 @@
 {% endif %}
 
 {% if page.title == 'Area' %}
-{% sidenav Example Description Methods %}
+{% sidenav Example Description %}
+{% sidenav2 [Area Methods] %}
+{% nav activate deactivate %}
 {% sidenav2 [Creation Methods] %}
-{% nav createEntity createTiledMapEntities generateCollisionSolids %}
+{% nav3 createEntity createTiledMapEntities generateCollisionSolids %}
 {% sidenav2 [HitFrameStop Methods] %}
 {% nav3 hitFrameStopAdd %}
 {% sidenav2 [Query Methods] %}
 {% nav3 applyAreaCircle applyAreaLine applyAreaRectangle queryAreaCircle queryAreaLine queryAreaRectangle %}
 {% sidenav Attributes %}
+{% nav2 [active active] [mg mg] [position x y] [world world] %}
 {% endif %}
 
 {% if page.title == 'Camera' %}

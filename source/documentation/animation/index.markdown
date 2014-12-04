@@ -15,7 +15,7 @@ sidebar: false
 ~~~ lua
 -- the above image is spritesheet.png, each of its frames is 64x64
 -- create the animation, parameters are: image, width, height, delay
-animation = mg.Animation(love.graphics.newImage('spritesheet.png'), 64, 64, 0.1)
+animation = fg.Animation(love.graphics.newImage('spritesheet.png'), 64, 64, 0.1)
 
 -- update the animation
 animation:update(dt)
@@ -29,7 +29,7 @@ animation:draw(x, y)
 
 {% title Description %}
 
-The {% text mg.Animation %} class handles the creation of animated sprites from sprite sheets. 
+The {% text fg.Animation %} class handles the creation of animated sprites from sprite sheets. 
 You have control over what to do with the animation itself, since it's returned and you just hold it in a variable. 
 The draw operation, like LÖVE's, also takes rotation, scaling and shearing parameters after {% text x, y %}. The module
 also supports reading sprite sheets from texture atlases on top of isolated spritesheets.
@@ -137,7 +137,7 @@ Possible modes:
 
 {% attribute frame_width frame_width number %}
 
-*   the width of the animation, can also be accessed through <code class="atrm">:getWidth()</code>
+*   the width of the animation, can also be accessed through {% call :getWidth() %}
 <br><br>
 
 {% attribute size size number %}

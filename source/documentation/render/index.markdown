@@ -10,7 +10,7 @@ sidebar: false
 
 {% title Render %}
 
-The {% text render %} module takes care of drawing everything in the {% text engine %}. It's attached to the {% text mg.world %}
+The {% text render %} module takes care of drawing everything in the {% text engine %}. It's attached to the {% text fg.world %}
 instance and so all its functions should be called from there. It provides access to a [camera](/documentation/camera), as well as
 layers to which you can add objects and then sort their draw order, add layer/screen-wide shaders, etc, etc.
 
@@ -20,11 +20,11 @@ Layers are useful for separating objects into groups and then sorting those obje
 in your game. The {% text render %} module has a list of layers and offers a few functions to interface with them.
 The funcionality for now is limited to drawing orders (object draw order inside a layer and draw order of layers in relation
 to one another) and shaders (apply a layer/screen-wide shader to a certain layer). Each class/object needs to have 
-its layer defined, otherwise the {% string 'Default' %} one is picked. If defined, FuccboiGDX automatically adds new objects to the appropriate layer.
+its layer defined, otherwise the {% string 'Default' %} one is picked. If defined, fuccboiGDX automatically adds new objects to the appropriate layer.
 A layer can be set as a class variable or as an object attribute, the latter having preference if both are defined.
 
 ~~~ lua
-MyClass = mg.class('MyClass', 'Entity')
+MyClass = fg.class('MyClass', 'Entity')
 
 MyClass.layer = 'Front'
 
@@ -63,8 +63,8 @@ by this layer (to which all its objects get drawn to) will then be affected by t
 *   {% param shader_fragment_path %}: the path to the fragment shader
 
 ~~~ lua
-mg.world:addLayer('Blood_Floor')
-mg.world:addShaderToLayer('Blood_Floor', 'Outline', 'resources/shaders/default.vert', 'resources/shaders/outline.frag')
+fg.world:addLayer('Blood_Floor')
+fg.world:addShaderToLayer('Blood_Floor', 'Outline', 'resources/shaders/default.vert', 'resources/shaders/outline.frag')
 ~~~
 <br>
 
@@ -85,7 +85,7 @@ mg.world:addShaderToLayer('Blood_Floor', 'Outline', 'resources/shaders/default.v
 
 ~~~ lua
 -- in some update function
-mg.world:sendToShader('Blood_Floor', 'Outline', 'brightness', 0.4)
+fg.world:sendToShader('Blood_Floor', 'Outline', 'brightness', 0.4)
 ~~~
 <br>
 
@@ -103,7 +103,7 @@ mg.world:sendToShader('Blood_Floor', 'Outline', 'brightness', 0.4)
 *   {% param layers_order %}: the layer order table, first layers are drawn first, last are drawn last
 
 ~~~ lua
-mg.world:setLayerOrder({'Back', 'Middle', 'Default', 'Front', 'Effects'})
+fg.world:setLayerOrder({'Back', 'Middle', 'Default', 'Front', 'Effects'})
 ~~~
 <br>
 
@@ -122,7 +122,7 @@ mg.world:setLayerOrder({'Back', 'Middle', 'Default', 'Front', 'Effects'})
 ~~~ lua
 -- sorts all objects according to their .y attribute, useful for games in a Zelda-ish topdown angle
 -- in some update function
-mg.world:sortRenderOrder(function(a, b) return a.y < b.y end)
+fg.world:sortRenderOrder(function(a, b) return a.y < b.y end)
 ~~~
 <br>
 
@@ -130,7 +130,7 @@ mg.world:sortRenderOrder(function(a, b) return a.y < b.y end)
 
 {% method renderAttach %}
 
-*   attaches {% text mg.world.camera %}, applying all its transformations until {% call :renderDetach() %} is called 
+*   attaches {% text fg.world.camera %}, applying all its transformations until {% call :renderDetach() %} is called 
 <br><br>
 
 {% method renderDetach %}

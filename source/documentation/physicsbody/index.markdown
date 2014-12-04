@@ -12,8 +12,8 @@ sidebar: false
 
 ~~~ lua
 -- physics enabled entity template
-MyClass = mg.class('MyClass', 'Entity')
-MyClass:implement(mg.PhysicsBody)
+MyClass = fg.class('MyClass', 'Entity')
+MyClass:implement(fg.PhysicsBody)
 
 function MyClass:new(world, x, y, settings)
     MyClass.super.new(self, world, x, y, settings)
@@ -68,7 +68,7 @@ defaults to the name of this object's class
 
 {% method physicsBodyDraw %}
 
-*   draws debug lines for the physics object if {% text mg.debug_draw = true %}
+*   draws debug lines for the physics object if {% text fg.debug_draw = true %}
 <br><br>
 
 {% method addBody area Area x number y number settings table[any][optional] %}

@@ -12,24 +12,27 @@ sidebar: false
 
 ~~~ lua
 -- Create a new area
-mg.world:createArea('Level_1', 0, 0)
+fg.world:createArea('Level_1', 0, 0)
 
 -- Create a bunch of objects to it
-mg.world.areas['Level_1']:createEntity('Player', 200, 100)
-mg.world.areas['Level_1']:createEntity('Solid', 200, 200, {w = 200, h = 50})
-mg.world.areas['Level_1']:createEntity('Solid', 200, -100, {w = 200, h = 50})
+fg.world.areas['Level_1']:createEntity('Player', 200, 100)
+fg.world.areas['Level_1']:createEntity('Solid', 200, 200, {w = 200, h = 50})
+fg.world.areas['Level_1']:createEntity('Solid', 200, -100, {w = 200, h = 50})
 
 -- Activate the area so that objects are created/drawn/updated
-mg.world.areas['Level_1']:activate()
+fg.world.areas['Level_1']:activate()
 ~~~ 
 
 {% title Description %}
 
-The {% text mg.Area %} module handles the creation/deletion/updating of engine object, 
+The {% text fg.Area %} module handles the creation/deletion/updating of engine object, 
 querying the world for objects in a certain area/position/condition,
 saving/loading all objects in the area for when you have to transition from one are to another (changing levels),
 as well as a bunch of other smaller utilities (like hitFrameStops). Area instances are created in the 
-{% text mg.world %} instance and can be manipulated by doing {% text mg.world.areas['area_name']:method %}.
+{% text fg.world %} instance and can be manipulated by doing {% text fg.world.areas['area_name']:method %}. Omitting
+{% text .areas['area_name'] %} and doing {% text fg.world:method %} is an alias for {% text fg.world.areas['Default']:method %},
+which uses the {% string 'Default' %} area.
+
 Areas are the main way of getting information about the level you're currently in as well as organizing your entities
 in separate logical bundles that can also be manipulated; think of it as literally a zone/level/area/map in a game
 where the loading screen usually appears (although for 2D games the loading screen is probably unnecessary most of the time
@@ -51,14 +54,14 @@ since you can just load everything and have it in memory from when the game is l
 
 {% method createEntity entity_type string x number y number settings table[any][optional] %}
 
-*   {% param entity_type %}: the type of the entity to be created, available types are all classes created with the {% text mg.class %} call 
+*   {% param entity_type %}: the type of the entity to be created, available types are all classes created with the {% text fg.Class %} call 
 *   {% param x, y %}: the initial position to spawn the entity at
 *   {% param settings %}: the table with additional settings, the entity is added attributes defined by this table
 <br>
 
 ~~~ lua
 -- creates a Player and defines its .v, .hp and .damage attributes
-mg.world:createEntity('Player', 400, 300, {v = 300, hp = 50, damage = 10})
+fg.world:createEntity('Player', 400, 300, {v = 300, hp = 50, damage = 10})
 ~~~
 
 {% method createTiledMapEntities tilemap Tilemap %}
@@ -85,13 +88,13 @@ mg.world:createEntity('Player', 400, 300, {v = 300, hp = 50, damage = 10})
 ~~~ lua
 -- Stops all instances of objects from the classes Player, Enemy and Particles
 -- from being updated for 10 frames, printing 1 after it's all done
-mg.world:hitFrameStopAdd(10, {'Player', 'Enemy', 'Particles'}, function() print(1) end)
+fg.world:hitFrameStopAdd(10, {'Player', 'Enemy', 'Particles'}, function() print(1) end)
 
 -- Stops all instances of all classes except for the Particles class from being updated for 20 frames
-mg.world:hitFrameStopAdd(20, {'All', except = {'Particles'}})
+fg.world:hitFrameStopAdd(20, {'All', except = {'Particles'}})
 
 -- Stops all instances of all classes from being update for 30 frames, printing 2 after it's all done
-mg.world:hitFrameStopAdd(30, function() print(2) end)
+fg.world:hitFrameStopAdd(30, function() print(2) end)
 ~~~
 <br>
 
@@ -101,7 +104,7 @@ mg.world:hitFrameStopAdd(30, function() print(2) end)
 
 ~~~ lua
 -- deals damage to all Enemy1, Enemy2, Enemy3 type of enemies inside a 32x32 rectangle around world coordinate 400, 300
-mg.world:applyAreaRectangle(400, 300, 32, 32, {'Enemy1', 'Enemy2', 'Enemy3'}, function(enemy)
+fg.world:applyAreaRectangle(400, 300, 32, 32, {'Enemy1', 'Enemy2', 'Enemy3'}, function(enemy)
     enemy:dealDamage(math.random(5, 10))
 end)
 ~~~
@@ -121,6 +124,13 @@ end)
 *   {% param action %}: the action to be applied, must receive a single argument: the current entity being acted upon
 <br><br>
 
+{% method applyAreaPolygon polygon_points table[number] object_types table[string] action function %}
+
+*   {% param polygon_points %}: the {% text x1, y1, x2, y2, ..., xn, yn %} points of the polygon
+*   {% param object_types %}: the class names of the entities that should be acted upon
+*   {% param action %}: the action to be applied, must receive a single argument: the current entity being acted upon
+<br><br>
+
 {% method applyAreaRectangle x number y number width number height number object_types table[string] action function %}
 
 *   {% param x, y %}: the center of the rectangle being checked for entities
@@ -133,7 +143,7 @@ end)
 
 ~~~ lua
 -- deals damage to all Enemy1, Enemy2, Enemy3 type of enemies inside a 32x32 rectangle around world coordinate 400, 300
-entities = mg.world:queryAreaRectangle(400, 300, 32, 32, {'Enemy1', 'Enemy2', 'Enemy3'})
+entities = fg.world:queryAreaRectangle(400, 300, 32, 32, {'Enemy1', 'Enemy2', 'Enemy3'})
 for _, entity in ipairs(entities) do entity:dealDamage(math.random(5, 10)) end
 ~~~
 
@@ -152,6 +162,12 @@ for _, entity in ipairs(entities) do entity:dealDamage(math.random(5, 10)) end
 *   {% param object_types %}: the class names of the entities that should be acted upon
 <br><br>
 
+{% method queryAreaPolygon polygon_points table[number] object_types table[string] %}
+
+*   returns a table containing the entities inside the area defined by this polygon
+*   {% param polygon_points %}: the {% text x1, y1, x2, y2, ..., xn, yn %} points of the polygon
+*   {% param object_types %}: the class names of the entities that should be acted upon
+
 {% method queryAreaRectangle x number y number width number height number object_types table[string] %}
 
 *   returns a table containing the entities inside this area
@@ -167,7 +183,7 @@ for _, entity in ipairs(entities) do entity:dealDamage(math.random(5, 10)) end
 *	if the area is active (and drawing/updating) or not	
 <br><br>
 
-{% attribute mg mg table %}
+{% attribute fg fg table %}
 
 *   a reference to the variable that holds the entire engine/framework
 <br><br>
@@ -179,5 +195,5 @@ for _, entity in ipairs(entities) do entity:dealDamage(math.random(5, 10)) end
 
 {% attribute world world World %}
 
-*	a reference to the {% text mg.world %} instance that holds this area
+*	a reference to the {% text fg.world %} instance that holds this area
 <br><br>

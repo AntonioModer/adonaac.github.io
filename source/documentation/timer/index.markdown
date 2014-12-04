@@ -27,10 +27,10 @@ timer:tween(2, self, {x = 500, y = 500}, 'in-out-cubic')
 
 {% title Description %}
 
-The {% text mg.Timer %} module handles timers and tweens. It's an enhanced version of 
+The {% text fg.Timer %} module handles timers and tweens. It's an enhanced version of 
 [hump.timer](http://vrld.github.io/hump/#hump.timer), with a few function name changes and with that 
 added ability of timer/tween tagging. A global {% text Timer %} is initialized automatically and can 
-be used from {% text mg.timer %}, but you may also create your own new instances by doing {% text timer = mg.Timer() %}.
+be used from {% text fg.timer %}, but you may also create your own new instances by doing {% text timer = fg.Timer() %}.
 Having your own instances is useful if some of your entities rely on tagging, since tags block 
 timer/tween creation when a tag already exists, so using the global {% text Timer %} for it is not going to work.
 

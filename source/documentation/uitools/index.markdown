@@ -15,11 +15,11 @@ An UI module appropriate for building tools (not that useful for your game's UI 
 
 ~~~ lua
 function love.load()
-    mg.init()
+    fg.init()
 
     -- loveframes' Getting Started example
-    local parent_frame = mg.loveframes.Create('frame')
-    local button = mg.loveframes.Create('button', parent_frame)
+    local parent_frame = fg.loveframes.Create('frame')
+    local button = fg.loveframes.Create('button', parent_frame)
     button:SetPos(5, 35)
 end
 ~~~

@@ -12,7 +12,7 @@ sidebar: false
 
 ~~~ lua
 -- initialize the camera, passing a settings table with optional parameters or setting them directly
-camera = mg.Camera({lerp = 3, follow_style = 'lockon', target = followed_entity})
+camera = fg.Camera({lerp = 3, follow_style = 'lockon', target = followed_entity})
 camera.debug_draw = true
 
 -- update the camera
@@ -27,11 +27,11 @@ camera:detach()
 
 {% title Description %}
 
-The {% text mg.Camera %} module handles basic things that a camera should handle, like translations, 
+The {% text fg.Camera %} module handles basic things that a camera should handle, like translations, 
 rotations and scaling, but also adds a bunch of high level features such as target tracking, lerp 
 (delay between camera position and target position), lead (how much in front of the target the camera should be), 
-deadzones and camera shakes.  An instance {% text mg.world.camera %} is automatically created on initialization, 
-but you can also create your own instances doing {% text camera = mg.Camera() %}.
+deadzones and camera shakes.  An instance {% text fg.world.camera %} is automatically created on initialization, 
+but you can also create your own instances doing {% text camera = fg.Camera() %}.
 
 This module is based on [hump.camera](http://vrld.github.io/hump/#hump.camera) and has been modified for additional 
 functionality and consistency. Also, check [HaxeFlixel's camera demo](http://haxeflixel.com/demos/FlxCamera/) for an 

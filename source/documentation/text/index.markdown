@@ -23,7 +23,7 @@ TextConfig = {
 }
 
 -- create the text
-text = mg.Text('[BLUE BLUE RED RED RED](wavy; increasingRed)', TextConfig)
+text = fg.Text('[BLUE BLUE RED RED RED](wavy; increasingRed)', TextConfig)
 
 -- update the text
 text:update(dt)
@@ -37,7 +37,7 @@ text:draw(x, y)
 
 {% title Description %}
 
-The {% text mg.Text %} class handles the creation of text objects. 
+The {% text fg.Text %} class handles the creation of text objects. 
 It uses markdown-like markup so you can change how each character or group 
 of character behaves. You can also define functions that will act on each 
 character's properties, giving you freedom to do pretty much whatever you 
@@ -82,7 +82,7 @@ TextConfig = {
     end,
 }
 
-text = mg.Text('[Yellow yellow text!](color: 244, 244, 0)', TextConfig)
+text = fg.Text('[Yellow yellow text!](color: 244, 244, 0)', TextConfig)
 ~~~ 
 
 And finally, the text settings table (in all these examples, {% text TextConfig %}) has a few special attributes that can be defined:

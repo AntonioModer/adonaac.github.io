@@ -10,14 +10,14 @@ sidebar: false
 
 {% title Description %}
 
-The {% text mg.Entity %} class is the base class that all {% text engine %} classes should inherit from. 
-It has basic attributes that are used by all systems in {% text mg.world %}. If your class is not going 
-to use {% text mg.world %} in any way (as a rule of thumb it's not a class that needs to be drawn) then
-you don't need to inherit from {% text mg.Entity %}.
+The {% text fg.Entity %} class is the base class that all {% text engine %} classes should inherit from. 
+It has basic attributes that are used by all systems in {% text fg.world %}. If your class is not going 
+to use {% text fg.world %} in any way (as a rule of thumb it's not a class that needs to be drawn) then
+you don't need to inherit from {% text fg.Entity %}.
 
 ~~~ lua
 -- This is an example of a class that needs to inherit from 'Entity'
-Box = mg.Class('Box', 'Entity')
+Box = fg.Class('Box', 'Entity')
 
 function Box:new(area, x, y, settings)
     -- initialize Entity parent
@@ -35,7 +35,7 @@ end
 
 ~~~ lua
 -- This is an example of a class that doesn't need to inherit from 'Entity'
-LogicalConceptThatDoesntMapToGameRealityAtAll = mg.Object:extend('LogicalConceptThatDoesntMapToGameRealityAtAll')
+LogicalConceptThatDoesntMapToGameRealityAtAll = fg.Object:extend('LogicalConceptThatDoesntMapToGameRealityAtAll')
 
 function LogicalConceptThatDoesntMapToGameRealityAtAll:new()
     -- initialize your class

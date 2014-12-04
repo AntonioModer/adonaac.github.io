@@ -16,10 +16,10 @@ sidebar: false
 
 ~~~ lua
 -- bind the key 'a' to the action 'move_left' on initialization
-mg.input:bind('a', 'move_left')
+fg.input:bind('a', 'move_left')
 
 -- check if the action 'move_left' is being pressed on update
-if mg.input:down('move_left') then
+if fg.input:down('move_left') then
     local vx, vy = self.body:getLinearVelocity()
     self.body:setLinearVelocity(-200, vy)
 end
@@ -28,52 +28,51 @@ end
 
 {% title Description %}
 
-The {% text mg.Input %} class handles binding keys to actions and then enables checking of actions in the {% text update %} loop. 
-The instance {% text mg.input %} is automatically created when {% text mg.init() %} is called, but you can also create your own 
-instances by doing {% text input = mg.Input %}. If you do this you must add {% text input:keypressed %}, {% text input:keyreleased %}, 
+The {% text fg.Input %} class handles binding keys to actions and then enables checking of actions in the {% text update %} loop. 
+The instance {% text fg.input %} is automatically created when {% text fg.init() %} is called, but you can also create your own 
+instances by doing {% text input = fg.Input %}. If you do this you must add {% text input:keypressed %}, {% text input:keyreleased %}, 
 {% text input:mousepressed %}, {% text input:mousereleased %}, {% text input:gamepadpressed %}, {% text input:gamepadreleased %},
-{% text input:gamepadaxis %} to their respective love callbacks. The {% text main.lua %} file that ships with FuccboiGDX already does this
-for the default {% text mg.input %} instance (via the {% text mg.[whatever] %} calls).
+{% text input:gamepadaxis %} to their respective love callbacks. The {% text main.lua %} file that ships with fuccboiGDX already does this
+for the default {% text fg.input %} instance (via the {% text fg.[whatever] %} calls).
 
 ~~~ lua
 function love.load()
-    mg = require 'mogamett'
-    mg.init()
-    input = mg.Input()
+    fg.init()
+    input = fg.Input()
 end
 
 function love.keypressed(key)
-    mg.keypressed(key)
+    fg.keypressed(key)
     input:keypressed(key)
 end
 
 function love.keyreleased(key)
-    mg.keyreleased(key)
+    fg.keyreleased(key)
     input:keyreleased(key)
 end
 
 function love.mousepressed(x, y, button)
-    mg.mousepressed(button)
+    fg.mousepressed(button)
     input:mousepressed(button)
 end
 
 function love.mousereleased(x, y, button)
-    mg.mousereleased(button)
+    fg.mousereleased(button)
     input:mousereleased(button)
 end
 
 function love.gamepadpressed(joystick, button)
-    mg.gamepadpressed(joystick, button)
+    fg.gamepadpressed(joystick, button)
     input:gamepadpressed(joystick, button)
 end
 
 function love.gamepadreleased(joystick, button)
-    mg.gamepadreleased(joystick, button)
+    fg.gamepadreleased(joystick, button)
     input:gamepadreleased(joystick, button)
 end
 
 function love.gamepadaxis(joystick, axis, new_value)
-    mg.gamepadaxis(joystick, axis, new_value)
+    fg.gamepadaxis(joystick, axis, new_value)
     input:gamepadaxis(joystick, axis, new_value)
 end
 ~~~

@@ -10,9 +10,9 @@ sidebar: false
 
 {% title Description %}
 
-The {% text mg.World %} module is the heart of the {% text engine %}. The instance {% text mg.world %} is 
+The {% text fg.World %} module is the heart of the {% text engine %}. The instance {% text fg.world %} is 
 automatically created on initialization, and you may not create additional instances or things will not work. 
-The {% text mg.world %} instance houses the [render](/documentation/render) module, the [collision/physics](/documentation/collision) module 
+The {% text fg.world %} instance houses the [render](/documentation/render) module, the [collision/physics](/documentation/collision) module 
 and a list of [areas](/documentation/area) that have the functionality of holding objects, updating them, removing dead ones, creating new ones,
 querying for objects... and so on. Areas act as independent levels of sorts that you can switch between, while the world instance 
 holds those areas and updates them appropriately, as well as handles communication between the render/collision/physics modules and each area.
@@ -34,6 +34,11 @@ holds those areas and updates them appropriately, as well as handles communicati
 *   the camera instance [render module]
 <br><br>
 
+{% attribute fg fg table %}
+
+*   a reference to the variable that holds the entire engine/framework
+<br><br>
+
 {% attribute layers layers table[Layer] %}
 
 *   a list of layers [render module]
@@ -43,7 +48,3 @@ holds those areas and updates them appropriately, as well as handles communicati
 
 *   a list of strings specifying layer draw order [render module]
 <br><br>
-
-{% attribute mg mg table %}
-
-*   a reference to the variable that holds the entire engine/framework

@@ -14,14 +14,14 @@ An [object pooling](http://gameprogrammingpatterns.com/object-pool.html) module 
 [ImpactJS'](http://impactjs.com/documentation/entity-pooling) entity pooling system. Both those links
 do a good job of explaining why pooling is necessary and how it works.
 
-FuccboiGDX's pooling system needs two things so that it can work: on an {% text engine %} class (one
+fuccboiGDX's pooling system needs two things so that it can work: on an {% text engine %} class (one
 that inherits from Entity) a {% text .pool_enabled %} class attribute with the size of the pool to be
 created for that class; and a {% call :reset %} function that is called every time the object created 
 needs to be reused. This call will usually do the same things as the constructor does, and it receives
 as arguments the {% text x, y %} values for its position as well as the {% text settings %} table.
 
 ~~~ lua
-MyClass = mg.Class('MyClass', 'Entity')
+MyClass = fg.Class('MyClass', 'Entity')
 
 MyClass.pool_enabled = 100
 ...
@@ -38,7 +38,7 @@ pool to be reused, but there are ways of specifying different overflow behaviors
 class variable.
 
 ~~~ lua
-MyClass = mg.Class('MyClass', 'Entity')
+MyClass = fg.Class('MyClass', 'Entity')
 
 MyClass.pool_enabled = 100
 MyClass.pool_overflow_rule = 'distance'

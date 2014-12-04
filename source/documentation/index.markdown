@@ -8,7 +8,7 @@ footer: true
 sidebar: false 
 ---
 
-**FuccboiGDX** is composed of two parts: the <code class="text">framework</code> and the <code class="text">engine</code>.
+**FuccboiGDX** is composed of two parts: the {% text framework %} and the {% text engine %}engine.
 
 The {% text framework %} contains some [user created LÖVE libraries](http://www.love2d.org/wiki/Category:Libraries) 
 that are useful for game development. All libraries chosen are [simple](http://www.infoq.com/presentations/Simple-Made-Easy), 
@@ -58,6 +58,7 @@ extensively so hopefully they aren't that much of a problem.
 *   [Background](background) - backgrounds for use with parallaxed layers
 *   [Camera](camera) - very similar to [HaxeFlixel's camera (demo)](http://haxeflixel.com/demos/FlxCamera/) with a few improvements
 *   [Particles](particles) -
+*   [Spritebatch](spritebatch) - batch draw calls from a single image for more performant draw code
 *   [Text](text) - programmable text drawing
 *   [UI Tools](uitools) - UI module for building tools, [KennyShields/loveframes](https://github.com/KennyShields/LoveFrames) 
 

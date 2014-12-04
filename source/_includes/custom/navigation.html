@@ -15,12 +15,12 @@
 
     <section class="top-bar-section">
       <ul class="main-navigation right">
-          <li><a href="https://github.com/adonaac/mogamett">github</a></li>
+          <li><a href="https://github.com/adonaac/fuccboiGDX">github</a></li>
           <li><a href="https://twitter.com/adnzzzzZ">twitter</i></a></li>
       </ul>
 
       <ul class="main-navigation left">
-          <li><a href="/">FuccboiGDX</a></li>
+          <li><a href="/">fuccboiGDX</a></li>
 
           <li class="has-dropdown">
           <a href="/documentation">Documentation</a>
@@ -60,6 +60,7 @@
             <li><a href="/documentation/background">Background</a></li>
             <li><a href="/documentation/camera">Camera</a></li>
             <li><a href="/documentation/particles">Particles</a></li>
+            <li><a href="/documentation/spritebatch">Spritebatch</a></li>
             <li><a href="/documentation/text">Text</a></li>
             <li><a href="/documentation/uitools">UI Tools</a></li>
             </ul>
@@ -98,7 +99,7 @@
 
 {% if page.title == 'Documentation' %}
 <strong><a href="/documentation">Documentation</a><br></strong>
-<a href="/documentation/mg">mg</a><br>
+<a href="/documentation/fg">fg</a><br>
 <a href="/documentation/animation">Animation</a><br>
 <a href="/documentation/area">Area (Engine)</a><br>
 <a href="/documentation/background">Background</a><br>
@@ -116,6 +117,7 @@
 <a href="/documentation/render">Render (Engine)</a><br>
 <a href="/documentation/serialization">Serialization</a><br>
 <a href="/documentation/solid">Solid (Engine)</a><br>
+<a href="/documentation/spritebatch">Spritebatch</a><br>
 <a href="/documentation/text">Text</a><br>
 <a href="/documentation/tilemap">Tilemap</a><br>
 <a href="/documentation/timer">Timer</a><br>
@@ -131,7 +133,7 @@
 
 <div id="nav" class="fixed right show-for-large-up">
 <p class="side-nav">
-{% if page.title == 'Area' or page.title == 'Animation' or page.title == 'Camera' or page.title == 'Class' or page.title == 'Entity' or page.title == 'Gamestate' or page.title == 'Input' or page.title == 'Loader' or page.title == 'ObjectPool' or page.title == 'PhysicsBody' or page.title == 'Render' or page.title == 'Solid' or page.title == 'Text' or page.title == 'Tilemap' or page.title == 'Timer' or page.title == 'UI Tools' or page.title == 'utils' or page.title == 'Vector' or page.title == 'World' %}
+{% if page.title == 'Area' or page.title == 'Animation' or page.title == 'Background' or page.title == 'Camera' or page.title == 'Class' or page.title == 'Collision' or page.title == 'Debug' or page.title == 'Entity' or page.title == 'Gamestate' or page.title == 'Input' or page.title == 'Loader' or page.title == 'ObjectPool' or page.title == 'PhysicsBody' or page.title == 'Render' or page.title == 'Solid' or page.title == 'Spritebatch' or page.title == 'Text' or page.title == 'Tilemap' or page.title == 'Timer' or page.title == 'UI Tools' or page.title == 'utils' or page.title == 'Vector' or page.title == 'World' %}
 <strong><a href="/documentation">Documentation</a><br></strong>
 {% endif %}
 
@@ -153,7 +155,14 @@
 {% sidenav2 [Query Methods] %}
 {% nav3 applyAreaCircle applyAreaLine applyAreaRectangle queryAreaCircle queryAreaLine queryAreaRectangle %}
 {% sidenav Attributes %}
-{% nav2 [active active] [mg mg] [position x y] [world world] %}
+{% nav2 [active active] [fg fg] [position x y] [world world] %}
+{% endif %}
+
+{% if page.title == 'Background' %}
+{% sidenav Example Description Methods %}
+{% nav new update draw %}
+{% sidenav Attributes %}
+{% nav2 [position x y] [size w h] %}
 {% endif %}
 
 {% if page.title == 'Camera' %}
@@ -165,6 +174,14 @@
 
 {% if page.title == 'Class' %}
 {% sidenav Description Example %}
+{% endif %}
+
+{% if page.title == 'Collision' %}
+{% sidenav2 [Description] [Physics Entities] [Collision Classes] %}
+{% endif %}
+
+{% if page.title == 'Debug' %}
+{% sidenav Description %}
 {% endif %}
 
 {% if page.title == 'Entity' %}
@@ -210,6 +227,13 @@
 {% sidenav Description %}
 {% endif %}
 
+{% if page.title == 'Spritebatch' %}
+{% sidenav Example Description Methods %}
+{% nav new update draw %}
+{% sidenav Attributes %}
+{% nav2 [image image] [size size] [position x y] [usage_hint usage_hint] %}
+{% endif %}
+
 {% if page.title == 'Text' %}
 {% sidenav Example Description Character Text %}
 {% endif %}
@@ -243,7 +267,7 @@
 
 {% if page.title == 'World' %}
 {% sidenav Attributes %}
-{% nav3 areas box2d_world camera layers layers_order mg %}
+{% nav3 areas box2d_world camera fg layers layers_order %}
 {% endif %}
 
 </p>

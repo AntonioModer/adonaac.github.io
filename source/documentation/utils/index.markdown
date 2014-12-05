@@ -13,7 +13,7 @@ sidebar: false
 An utility library with tons of functions that makes operations regarding lines, polygons, circles,
 intersections and math related stuff in general a lot easier than they are with vanilla LÖVE/Lua. It's
 an exact copy of [mlib](http://github.com/davisdude/mlib), so refer to that for a list and an explanation
-of all functions it implements. It can be accesses through {% text fg.mlib %}.
+of all functions it implements. It can be accessed through {% text fg.mlib %}.
 
 {% title Moses %}
 

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Documentation
+title: documentation
 subtitle:
 comments: true
 sharing: false
@@ -8,7 +8,7 @@ footer: true
 sidebar: false 
 ---
 
-**FuccboiGDX** is composed of two parts: the {% text framework %} and the {% text engine %}engine.
+**fuccboiGDX** is composed of two parts: the {% text framework %} and the {% text engine %}.
 
 The {% text framework %} contains some [user created LÖVE libraries](http://www.love2d.org/wiki/Category:Libraries) 
 that are useful for game development. All libraries chosen are [simple](http://www.infoq.com/presentations/Simple-Made-Easy), 
@@ -25,7 +25,7 @@ and usually you only have to pay more attention when the {% text engine %} is me
 things are tied together in sometimes initially unintuitive or unexpected ways. I've taken care of documenting those parts
 extensively so hopefully they aren't that much of a problem.
 
-{% title Module Reference %}
+{% title Modules %}
 
 **Main**
 
@@ -47,7 +47,6 @@ extensively so hopefully they aren't that much of a problem.
 *   [PhysicsBody](physicsbody) - mixin used for adding physics capabilities to an object 
 *   [Serialization](serialization) -
 *   [Solid](solid) - the base collision solid entity
-*   [Tilemap](tilemap) - tilemaps with autotiling, collision solid generation and Tiled support 
 *   [Timer](timer) - timers, tweens and allows timer/tween tagging, an enhanced version of [vrld/hump.timer](http://vrld.github.io/hump/#hump.timer) 
 *   [Utils](utils) - random utility functions, [Yonaba/Moses](https://github.com/Yonaba/Moses), [davisdude/mlib](https://github.com/davisdude/mlib)
 *   [Vector](vector) - 2D vector class, [vrld/hump.vector](http://vrld.github.io/hump/#hump.vector)
@@ -57,13 +56,14 @@ extensively so hopefully they aren't that much of a problem.
 *   [Animation](animation) - creates animated sprites from sprite sheet images, an enhanced version of [bartbes/AnAL](https://love2d.org/wiki/AnAL)
 *   [Background](background) - backgrounds for use with parallaxed layers
 *   [Camera](camera) - very similar to [HaxeFlixel's camera (demo)](http://haxeflixel.com/demos/FlxCamera/) with a few improvements
-*   [Particles](particles) -
+*   [Particles (Engine)](particles) - a simple particle systems module, also has an editor for editing particle systems
 *   [Spritebatch](spritebatch) - batch draw calls from a single image for more performant draw code
 *   [Text](text) - programmable text drawing
+*   [Tilemap](tilemap) - tilemaps with autotiling, collision solid generation and Tiled support 
 *   [UI Tools](uitools) - UI module for building tools, [KennyShields/loveframes](https://github.com/KennyShields/LoveFrames) 
 
 **Sound**
 
-*   [Sound]() - 
+*   [Sound](sound) - sound management system, [(Ensayia & Taehl)/TEsound](https://love2d.org/wiki/TEsound)
 <br>
 <br>

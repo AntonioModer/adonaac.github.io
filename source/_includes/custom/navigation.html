@@ -23,7 +23,7 @@
           <li><a href="/">fuccboiGDX</a></li>
 
           <li class="has-dropdown">
-          <a href="/documentation">Documentation</a>
+          <a href="/documentation">documentation</a>
           <ul class="dropdown">
             <li class="has-dropdown"><a href="#">Main</a>
             <ul class="dropdown">
@@ -36,19 +36,20 @@
             <ul class="dropdown">
             <li><a href="/documentation/area">Area</a></li>
             <li><a href="/documentation/class">Class</a></li>
-            <li><a href="/documentation/collision">Collision</a></li>
             <li><a href="/documentation/debug">Debug</a></li>
             <li><a href="/documentation/entity">Entity</a></li>
             <li><a href="/documentation/gamestate">Gamestate</a></li>
             <li><a href="/documentation/input">Input</a></li>
-            <li><a href="/documentation/level">Level</a></li>
             <li><a href="/documentation/loader">Loader</a></li>
             <li><a href="/documentation/objectpool">ObjectPool</a></li>
-            <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
-            <li><a href="/documentation/render">Render</a></li>
+                <li class="has-dropdown"><a href="#">Physics</a>
+                <ul class="dropdown">
+                    <li><a href="/documentation/collision">Collision</a></li>
+                    <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
+                    <li><a href="/documentation/solid">Solid</a></li>
+                </ul>
+                </li>
             <li><a href="/documentation/serialization">Serialization</a></li>
-            <li><a href="/documentation/solid">Solid</a></li>
-            <li><a href="/documentation/tilemap">Tilemap</a></li>
             <li><a href="/documentation/timer">Timer</a></li>
             <li><a href="/documentation/utils">utils</a></li>
             <li><a href="/documentation/vector">Vector</a></li>
@@ -62,7 +63,13 @@
             <li><a href="/documentation/particles">Particles</a></li>
             <li><a href="/documentation/spritebatch">Spritebatch</a></li>
             <li><a href="/documentation/text">Text</a></li>
+            <li><a href="/documentation/tilemap">Tilemap</a></li>
             <li><a href="/documentation/uitools">UI Tools</a></li>
+            </ul>
+
+            <li class="has-dropdown"><a href="#">Sound</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/sound">Sound</a></li>
             </ul>
             </li>
           </ul>
@@ -93,12 +100,12 @@
 </div>
 {% endif %}
 
-{% if page.title == 'Documentation' %}
+{% if page.title == 'documentation' %}
 <div id="nav" class="fixed right show-for-large-up">
 <p class="side-nav">
 
-{% if page.title == 'Documentation' %}
-<strong><a href="/documentation">Documentation</a><br></strong>
+{% if page.title == 'documentation' %}
+<strong><a href="/documentation">documentation</a><br></strong>
 <a href="/documentation/fg">fg</a><br>
 <a href="/documentation/animation">Animation</a><br>
 <a href="/documentation/area">Area (Engine)</a><br>
@@ -117,6 +124,7 @@
 <a href="/documentation/render">Render (Engine)</a><br>
 <a href="/documentation/serialization">Serialization</a><br>
 <a href="/documentation/solid">Solid (Engine)</a><br>
+<a href="/documentation/sound">Sound</a><br>
 <a href="/documentation/spritebatch">Spritebatch</a><br>
 <a href="/documentation/text">Text</a><br>
 <a href="/documentation/tilemap">Tilemap</a><br>
@@ -133,8 +141,8 @@
 
 <div id="nav" class="fixed right show-for-large-up">
 <p class="side-nav">
-{% if page.title == 'Area' or page.title == 'Animation' or page.title == 'Background' or page.title == 'Camera' or page.title == 'Class' or page.title == 'Collision' or page.title == 'Debug' or page.title == 'Entity' or page.title == 'Gamestate' or page.title == 'Input' or page.title == 'Loader' or page.title == 'ObjectPool' or page.title == 'PhysicsBody' or page.title == 'Render' or page.title == 'Solid' or page.title == 'Spritebatch' or page.title == 'Text' or page.title == 'Tilemap' or page.title == 'Timer' or page.title == 'UI Tools' or page.title == 'utils' or page.title == 'Vector' or page.title == 'World' %}
-<strong><a href="/documentation">Documentation</a><br></strong>
+{% if page.title == 'Area' or page.title == 'Animation' or page.title == 'Background' or page.title == 'Camera' or page.title == 'Class' or page.title == 'Collision' or page.title == 'Debug' or page.title == 'Entity' or page.title == 'Gamestate' or page.title == 'Input' or page.title == 'Loader' or page.title == 'ObjectPool' or page.title == 'Particles' or page.title == 'PhysicsBody' or page.title == 'Render' or page.title == 'Solid' or page.title == 'Sound' or page.title == 'Spritebatch' or page.title == 'Text' or page.title == 'Tilemap' or page.title == 'Timer' or page.title == 'UI Tools' or page.title == 'utils' or page.title == 'Vector' or page.title == 'World' %}
+<strong><a href="/documentation">documentation</a><br></strong>
 {% endif %}
 
 {% if page.title == 'Animation' %}
@@ -208,6 +216,11 @@
 {% sidenav Description %}
 {% endif %}
 
+{% if page.title == 'Particles' %}
+{% sidenav Example Description Methods %}
+{% nav spawnParticles %}
+{% endif %}
+
 {% if page.title == 'PhysicsBody' %}
 {% sidenav Example Description Methods %}
 {% nav physicsBodyNew physicsBodyUpdate physicsBodyDraw addBody addJoint changeCollisionClass removeBody removeJoint removeShape %}
@@ -224,6 +237,10 @@
 {% endif %}
 
 {% if page.title == 'Solid' %}
+{% sidenav Description %}
+{% endif %}
+
+{% if page.title == 'Sound' %}
 {% sidenav Description %}
 {% endif %}
 

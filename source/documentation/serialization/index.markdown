@@ -8,3 +8,4 @@ footer: true
 sidebar: false 
 ---
 
+{% title Example %}

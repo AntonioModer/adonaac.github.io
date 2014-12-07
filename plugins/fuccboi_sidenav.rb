@@ -9,7 +9,7 @@ module Jekyll
         def render(context)
             output = ''
             @elements.each do |t|
-                output += '<a href="#' + t + '">' + t + '</a><br>'
+                output += '<li data-magellan-arrival="' + t + '"><a href="#' + t + '">' + t + '</a></li>'
             end
             return output
         end

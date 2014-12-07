@@ -11,7 +11,7 @@ sidebar: false
 **fuccboiGDX** is composed of two parts: the {% text framework %} and the {% text engine %}.
 
 The {% text framework %} contains some [user created LÖVE libraries](http://www.love2d.org/wiki/Category:Libraries) 
-that are useful for game development. All libraries chosen are [simple](http://www.infoq.com/presentations/Simple-Made-Easy), 
+that are useful for game development. Most libraries chosen are [simple](http://www.infoq.com/presentations/Simple-Made-Easy), 
 self-contained and composable so that they can be used independently of each other with few problems. This is in a similar 
 fashion to how LÖVE's own modules work.
 
@@ -35,7 +35,7 @@ extensively so hopefully they aren't that much of a problem.
 
 **Logic**
 
-*   [Area](area) - an area/level/map where objects reside in and can be loaded/saved to/from 
+*   [Area](area) - an area/level/map where objects reside in
 *   [Class](class) - object orientation library, [rxi/classic](https://github.com/rxi/classic)
 *   [Collision](collision) - internal module used for handling box2d collisions, read to understand how collisions are handled 
 *   [Debug](debug) - browser-based debug console for LÖVE, [rxi/lovebird](https://github.com/rxi/lovebird)
@@ -45,7 +45,7 @@ extensively so hopefully they aren't that much of a problem.
 *   [Loader](loader) - threaded resource loader, [kikito/love-loader](https://github.com/kikito/love-loader)
 *   [ObjectPool](pool) - object pooling for higher performance on objects that are killed/created often
 *   [PhysicsBody](physicsbody) - mixin used for adding physics capabilities to an object 
-*   [Serialization](serialization) -
+*   [Serial](serial) - serialization for areas, objects and tables, uses [gvx/Ser](https://github.com/gvx/Ser) internally
 *   [Solid](solid) - the base collision solid entity
 *   [Timer](timer) - timers, tweens and allows timer/tween tagging, an enhanced version of [vrld/hump.timer](http://vrld.github.io/hump/#hump.timer) 
 *   [Utils](utils) - random utility functions, [Yonaba/Moses](https://github.com/Yonaba/Moses), [davisdude/mlib](https://github.com/davisdude/mlib)
@@ -55,7 +55,7 @@ extensively so hopefully they aren't that much of a problem.
 
 *   [Animation](animation) - creates animated sprites from sprite sheet images, an enhanced version of [bartbes/AnAL](https://love2d.org/wiki/AnAL)
 *   [Background](background) - backgrounds for use with parallaxed layers
-*   [Camera](camera) - very similar to [HaxeFlixel's camera (demo)](http://haxeflixel.com/demos/FlxCamera/) with a few improvements
+*   [Camera](camera) - similar to [HaxeFlixel's camera](http://haxeflixel.com/demos/FlxCamera/) with a few improvements, an enhanced version of [vrld/hump.camera](http://vlrd.github.io/hump/#hump.camera)
 *   [Particles (Engine)](particles) - a simple particle systems module, also has an editor for editing particle systems
 *   [Spritebatch](spritebatch) - batch draw calls from a single image for more performant draw code
 *   [Text](text) - programmable text drawing
@@ -65,5 +65,4 @@ extensively so hopefully they aren't that much of a problem.
 **Sound**
 
 *   [Sound](sound) - sound management system, [(Ensayia & Taehl)/TEsound](https://love2d.org/wiki/TEsound)
-<br>
-<br>
+<br><br>

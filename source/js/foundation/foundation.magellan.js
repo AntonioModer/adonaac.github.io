@@ -48,7 +48,7 @@
 
           $('html, body').stop().animate({
             'scrollTop': scroll_top
-          }, 700, 'swing', function () {
+          }, 0, 'swing', function () {
             if(history.pushState) {
               history.pushState(null, null, '#'+hash);
             }

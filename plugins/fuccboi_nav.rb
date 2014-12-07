@@ -7,11 +7,11 @@ module Jekyll
         end
 
         def render(context)
-            output = "<ul class='nav'>"
+            output = ""
             @elements.each do |t|
-                output += "<li><a href='##{t}'>#{t}</a></li>"
+                output += "<li data-magellan-arrival='#{t}' class='nav'><a href='##{t}'>#{t}</a></li>"
             end
-            output += "</ul>"
+            return output
         end
     end
 end

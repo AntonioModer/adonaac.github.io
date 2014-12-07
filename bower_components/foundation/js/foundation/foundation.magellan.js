@@ -8,10 +8,10 @@
 
     settings : {
       active_class: 'active',
-      threshold: 50, // pixels from the top of the expedition for it to become fixes
+      threshold: 0, // pixels from the top of the expedition for it to become fixes
       destination_threshold: 20, // pixels from the top of destination for it to be considered active
       throttle_delay: 0, // calculation throttling to increase framerate
-      fixed_top: 50 // top distance in pixels assigend to the fixed element on scroll
+      fixed_top: 0 // top distance in pixels assigend to the fixed element on scroll
     },
 
     init : function (scope, method, options) {
@@ -48,7 +48,7 @@
 
           $('html, body').stop().animate({
             'scrollTop': scroll_top
-          }, 700, 'swing', function () {
+          }, 0, 'swing', function () {
             if(history.pushState) {
               history.pushState(null, null, '#'+hash);
             }

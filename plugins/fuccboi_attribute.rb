@@ -9,7 +9,7 @@ module Jekyll
         end
 
         def render(context)
-            method = "<div id='#{@id}' data-magellan-desitnation='#{@id}'></div><div><table class='CodeRay'><td class='code'><pre>"
+            method = "<div id='#{@id}' data-magellan-destination='#{@id}'></div><div><table class='CodeRay'><td class='code'><pre>"
             for i in (0..(@elements.length-1)).step(2) do
                 method += ".<span class='annotation'>#{@elements[i]}</span><span class='tag'>[#{@elements[i+1]}]</span>, "
             end

@@ -49,7 +49,7 @@
                     <li><a href="/documentation/solid">Solid</a></li>
                 </ul>
                 </li>
-            <li><a href="/documentation/serialization">Serialization</a></li>
+            <li><a href="/documentation/serial">Serial</a></li>
             <li><a href="/documentation/timer">Timer</a></li>
             <li><a href="/documentation/utils">utils</a></li>
             <li><a href="/documentation/vector">Vector</a></li>
@@ -122,7 +122,7 @@
 <a href="/documentation/particles">Particles</a><br>
 <a href="/documentation/physicsbody">PhysicsBody (Engine)</a><br>
 <a href="/documentation/render">Render (Engine)</a><br>
-<a href="/documentation/serialization">Serialization</a><br>
+<a href="/documentation/serial">Serial</a><br>
 <a href="/documentation/solid">Solid (Engine)</a><br>
 <a href="/documentation/sound">Sound</a><br>
 <a href="/documentation/spritebatch">Spritebatch</a><br>
@@ -139,10 +139,11 @@
 </div>
 {% endif %}
 
+<div data-magellan-expedition>
 <div id="nav" class="fixed right show-for-large-up">
-<p class="side-nav">
-{% if page.title == 'Area' or page.title == 'Animation' or page.title == 'Background' or page.title == 'Camera' or page.title == 'Class' or page.title == 'Collision' or page.title == 'Debug' or page.title == 'Entity' or page.title == 'Gamestate' or page.title == 'Input' or page.title == 'Loader' or page.title == 'ObjectPool' or page.title == 'Particles' or page.title == 'PhysicsBody' or page.title == 'Render' or page.title == 'Solid' or page.title == 'Sound' or page.title == 'Spritebatch' or page.title == 'Text' or page.title == 'Tilemap' or page.title == 'Timer' or page.title == 'UI Tools' or page.title == 'utils' or page.title == 'Vector' or page.title == 'World' %}
-<strong><a href="/documentation">documentation</a><br></strong>
+<ul class="side-nav">
+{% if page.title == 'Area' or page.title == 'Animation' or page.title == 'Background' or page.title == 'Camera' or page.title == 'Class' or page.title == 'Collision' or page.title == 'Debug' or page.title == 'Entity' or page.title == 'Gamestate' or page.title == 'Input' or page.title == 'Loader' or page.title == 'ObjectPool' or page.title == 'Particles' or page.title == 'PhysicsBody' or page.title == 'Render' or page.title == 'Serial' or page.title == 'Solid' or page.title == 'Sound' or page.title == 'Spritebatch' or page.title == 'Text' or page.title == 'Tilemap' or page.title == 'Timer' or page.title == 'UI Tools' or page.title == 'utils' or page.title == 'Vector' or page.title == 'World' %}
+<strong><a href="/documentation">documentation</a><br><br></strong>
 {% endif %}
 
 {% if page.title == 'Animation' %}
@@ -236,6 +237,12 @@
 {% nav3 renderAttach renderDetach %}
 {% endif %}
 
+{% if page.title == 'Serial' %}
+{% sidenav Example Description Methods %}
+{% nav loadArea loadObject saveArea saveObject %}
+{% sidenav2 [Saving and Loading] %}
+{% endif %}
+
 {% if page.title == 'Solid' %}
 {% sidenav Description %}
 {% endif %}
@@ -275,7 +282,7 @@
 
 {% if page.title == 'utils' %}
 {% sidenav mlib Moses utils Methods %}
-{% nav utils.graphics.pushRotate utils.graphics.pushRotateScale utils.math.chooseWithProbability utils.math.clamp utils.math.isBetween utils.math.random utils.math.round utils.table.copy utils.table.random utils.angleToDirection4 utils.directionToAngle4 %}
+{% nav graphics.pushRotate graphics.pushRotateScale math.chooseWithProbability math.clamp math.isBetween math.random math.round table.copy table.random angleToDirection4 directionToAngle4 %}
 {% endif %}
 
 {% if page.title == 'Vector' %}
@@ -283,9 +290,10 @@
 {% endif %}
 
 {% if page.title == 'World' %}
-{% sidenav Attributes %}
+{% sidenav Description Attributes %}
 {% nav3 areas box2d_world camera fg layers layers_order %}
 {% endif %}
 
-</p>
+</ul>
+</div>
 </div>

@@ -142,7 +142,7 @@
 <div data-magellan-expedition>
 <div id="nav" class="fixed right show-for-large-up">
 <ul class="side-nav">
-{% if page.title == 'Area' or page.title == 'Animation' or page.title == 'Background' or page.title == 'Camera' or page.title == 'Class' or page.title == 'Collision' or page.title == 'Debug' or page.title == 'Entity' or page.title == 'Gamestate' or page.title == 'Input' or page.title == 'Loader' or page.title == 'ObjectPool' or page.title == 'Particles' or page.title == 'PhysicsBody' or page.title == 'Render' or page.title == 'Serial' or page.title == 'Solid' or page.title == 'Sound' or page.title == 'Spritebatch' or page.title == 'Text' or page.title == 'Tilemap' or page.title == 'Timer' or page.title == 'UI Tools' or page.title == 'utils' or page.title == 'Vector' or page.title == 'World' %}
+{% if page.title == 'Area' or page.title == 'Animation' or page.title == 'Background' or page.title == 'Camera' or page.title == 'Class' or page.title == 'Collision' or page.title == 'Debug' or page.title == 'Entity' or page.title == 'fg' or page.title == 'Gamestate' or page.title == 'Input' or page.title == 'Loader' or page.title == 'ObjectPool' or page.title == 'Particles' or page.title == 'PhysicsBody' or page.title == 'Render' or page.title == 'Serial' or page.title == 'Solid' or page.title == 'Sound' or page.title == 'Spritebatch' or page.title == 'Text' or page.title == 'Tilemap' or page.title == 'Timer' or page.title == 'UI Tools' or page.title == 'utils' or page.title == 'Vector' or page.title == 'World' %}
 <strong><a href="/documentation">documentation</a><br><br></strong>
 {% endif %}
 
@@ -197,6 +197,13 @@
 {% sidenav Description %}
 {% sidenav Attributes %}
 {% nav area dead id position %}
+{% endif %}
+
+{% if page.title == 'fg' %}
+{% sidenav Description %}
+{% sidenav2 [Modules and Instances] %}
+{% sidenav Methods %}
+{% sidenav Attributes %}
 {% endif %}
 
 {% if page.title == 'Gamestate' %}

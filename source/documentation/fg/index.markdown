@@ -8,222 +8,163 @@ footer: true
 sidebar: false 
 ---
 
-<h3 id="description" data-magellan-destination="description">Description</h3>
+{% title Description %}
 
-The <code class="text">mg</code> module holds Mogamett itself! 
+The {% text fg %} module holds fuccboiGDX itself! 
 <br><br>
 
-<h3 id="modules_and_instances" data-magellan-destination="modules_and_instances">Modules and Instances</h3>
+{% title Modules and Instances %}
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">Animation</span>
-</pre></td>
-</table></div>
+{% attribute Animation Animation table %}
 
 *   the [Animation](/documentation/animation) module 
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">Assets</span>
-</pre></td>
-</table></div>
+{% attribute Background Background table %}
 
-*   a table to be used with [Loader](/documentation/loader) to hold resources 
+*   the [Background](/documentation/background) module
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">Camera</span>
-</pre></td>
-</table></div>
+{% attribute Camera Camera table %}
 
 *   the [Camera](/documentation/camera) module
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">Class</span>
-</pre></td>
-</table></div>
+{% attribute Class Class table %}
 
 *   the [Class](/documentation/class) module
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">Collision</span>
-</pre></td>
-</table></div>
+{% attribute Collision Collision table %}
 
 *   the [Collision](/documentation/collision) module 
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">Gamestate</span>
-</pre></td>
-</table></div>
+{% attribute Entity Entity table %}
+
+*   the [Entity](/documentation/entity) module
+<br><br>
+
+{% attribute fn fn table %}
+
+*   alias for the [moses](/documentation/utils) module 
+<br><br>
+
+{% attribute Gamestate Gamestate table %}
 
 *   the [Gamestate](/documentation/gamestate) module 
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">Group</span>
-</pre></td>
-</table></div>
+{% attribute Input Input table input table %}
 
-*   the [Group](/documentation/group) module 
+*   the [Input](/documentation/input) module and the {% text input %} instance 
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">Input</span>, .<span class="annotation">input</span>
-</pre></td>
-</table></div>
-
-*   the [Input](/documentation/input) module and the <code class="text">input</code> instance 
-<br><br>
-
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">Loader</span>
-</pre></td>
-</table></div>
+{% attribute Loader Loader table %}
 
 *   the [Loader](/documentation/loader) module 
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">lovebird</span>
-</pre></td>
-</table></div>
+{% attribute lovebird lovebird table %}
 
 *   the [Debug](/documentation/debug) module 
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">Text</span>
-</pre></td>
-</table></div>
+{% attribute loveframes loveframes table %}
+
+*   the [UI Tools](/documentation/uitools) module
+<br><br>
+
+{% attribute mlib mlib table %}
+
+*   the [mlib](/documentation/utils) module
+<br><br>
+
+{% attribute mo mo table %}
+
+*   alias for the [moses](/documentation/utils) module 
+<br><br>
+
+{% attribute moses moses table %}
+
+*   the [moses](/documentation/utils) module
+<br><br>
+
+{% attribute Object Object table %}
+
+*   the [Class](/documentation/class) module
+<br><br>
+
+{% attribute PhysicsBody PhysicsBody table %}
+
+*   the [PhysicsBody](/documentation/physicsbody) mixin
+<br><br>
+
+{% attribute Solid Solid table %}
+
+*   the [Solid](/documentation/solid) entity
+<br><br>
+
+{% attribute Sound Sound table %}
+
+*   the [sound](/documentation/sound) module
+<br><br>
+
+{% attribute Spritebatch Spritebatch table %}
+
+*   the [Spritebatch](/documentation/spritebatch) module
+<br><br>
+
+{% attribute Text Text table %}
 
 *   the [Text](/documentation/text) module
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">Tilemap</span>
-</pre></td>
-</table></div>
+{% attribute Tilemap Tilemap table %}
 
 *   the [Tilemap](/documentation/tilemap) module
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">Timer</span>, .<span class="annotation">timer</span>
-</pre></td>
-</table></div>
+{% attribute Timer Timer table timer table %}
 
-*   the [Timer](/documentation/timer) module and the <code class="text">timer</code> instance 
+*   the [Timer](/documentation/timer) module and the {% text timer %} instance 
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">utils</span>
-</pre></td>
-</table></div>
+{% attribute utils utils table %}
 
-*   the [Utils](/documentation/utils) module  
-<br>
-
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">Vector</span>
-</pre></td>
-</table></div>
-
-*   the [Vector](/documentation/vector) module 
+*   the [utils](/documentation/utils) module
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">World</span>, .<span class="annotation">world</span>
-</pre></td>
-</table></div>
+{% attribute Vector Vector table %}
 
-*   the [World](/documentation/world) module and the <code class="text">world</code> instance 
+*   the [Vector](/documentation/vector) module
 <br><br>
 
-<h3 id="entities_and_mixins" data-magellan-destination="entities_and_mixins">Entities and Mixins</h3>
+{% attribute World World table world table %}
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">Entity</span>
-</pre></td>
-</table></div>
-
-*   the base game object [Entity](/documentation/entity) 
+*   the [World](/documentation/world) module and the {% text world %} instance 
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">PhysicsBody</span>
-</pre></td>
-</table></div>
+{% title Methods %}
 
-*   the [PhysicsBody](/documentation/physicsbody) mixin, adds physics capabilities to entities 
+{% methoddd init %}
+
+*   initializes the framework
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">Solid</span>
-</pre></td>
-</table></div>
+{% methoddd update dt number %}
 
-*   the base collision [Solid](/documentation/solid) 
+*   {% param dt %}: delta value passed from the main loop
 <br><br>
 
-<h3 id="methods" data-magellan-destination="methods">Methods</h3>
+{% methoddd draw %}
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">init</span>
-</pre></td>
-</table></div>
-
-*   initializes the framework, <code class="text">mg.world</code> classes should be required before this is called
+*   draws the {% text engine %} 
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">update</span>(dt<span class="tag">[number]</span>)
-</pre></td>
-</table></div>
+{% methoddd run %}
 
-*   <code>dt</code>: delta value passed from the main loop to update the camera
-<br><br>
-
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">draw</span>()
-</pre></td>
-</table></div>
-
-*   draws <code class="text">mg.world</code> 
-<br><br>
-
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">run</span>()
-</pre></td>
-</table></div>
-
-*   Mogamett's main loop, override <code class="text">love.run</code> with it like this: 
+*   fuccboiGDX's main loop, override {% text love.run %} with it like this: 
 
 ~~~ lua
 function love.run()
@@ -233,117 +174,114 @@ function love.run()
     if love.event then love.event.pump() end
     if love.load then love.load(arg) end
     if love.timer then love.timer.step() end
-    mg.run()
+    fg.run()
 end
 ~~~
 <br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">class</span>
-</pre></td>
-</table></div>
+{% methoddd Class %}
 
-*   creates a class using <code class="atrm">.Class</code> and also adds it to an internal list of classes
+*   creates an engine class
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">getUID</span>()
-</pre></td>
-</table></div>
+{% methoddd getUID %}
 
-*   <code>number</code> returns a new unique identifier 
+*   {% param number %} returns a new unique identifier 
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">keypressed</span>(key<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% methoddd keypressed key string %}
 
-*   alias for <code class="text">mg.input:keypressed(key)</code> 
+*   alias for {% text fg.input:keypressed(key) %} 
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">keyreleased</span>(key<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% methoddd keyreleased key string %}
 
-*   alias for <code class="text">mg.input:keyreleased(key)</code> 
+*   alias for {% text fg.input:keyreleased(key) %}
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">mousepressed</span>(button<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% methoddd mousepressed button string %}
 
-*   alias for <code class="text">mg.input:mousepressed(button)</code> 
+*   alias for {% text fg.input:mousepressed(button) %}
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">mousereleased</span>(button<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% methoddd mousereleased button string %}
 
-*   alias for <code class="text">mg.input:mousereleased(button)</code> 
+*   alias for {% text fg.input:mousereleased(button) %}
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">gamepadpressed</span>(joystick<span class="tag">[Joystick]</span>, button<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% methoddd gamepadpressed joystick Joystick button string %}
 
-*   alias for <code class="text">mg.input:gamepadpressed(joystick, button)</code> 
+*   alias for {% text fg.input:gamepadpressed(joystick, button) %}
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">gamepadreleased</span>(joystick<span class="tag">[Joystick]</span>, button<span class="tag">[string]</span>)
-</pre></td>
-</table></div>
+{% methoddd gamepadreleased joystick Joystick button string %}
 
-*   alias for <code class="text">mg.input:gamepadreleased(joystick, button)</code> 
+*   alias for {% text fg.input:gamepadreleased(joystick, button) %}
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">gamepadaxis</span>(joystick<span class="tag">[Joystick]</span>, axis<span class="tag">[GamepadAxis]</span>, newvalue<span class="tag">[number]</span>)
-</pre></td>
-</table></div>
+{% methoddd gamepadaxis joystick Joystick axis GamepadAxis new_value number %}
 
-*   alias for <code class="text">mg.input:gamepadaxis(joystick, axis, newvalue)</code> 
+*   alias for {% text fg.input:gamepadaxis(joystick, axis, new_value) %}
 <br><br>
 
-<h3 id="attributes" data-magellan-destination="attributes">Attributes</h3>
+{% methoddd textinput text string %}
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">debug_draw</span><span class="tag">[boolean]</span>
-</pre></td>
-</table></div>
+*   alias for {% text fg.loveframes.textinput(text) %}
+<br><br>
+
+{% methoddd resize w number h number %}
+
+*   resizes the screen to the new {% text w, h %} values
+<br><br>
+
+{% methoddd setScreenSize w number h number %}
+
+*   changes the screen size to the new {% text w, h %} values
+<br><br>
+
+{% title Attributes %}
+
+{% attribute Assets Assets table %}
+
+*   a table to be used with [Loader](/documentation/loader) to hold resources 
+<br><br>
+
+{% attribute classes classes table %}
+
+*   a table that holds all classes created with the {% text fg.Class %} call
+<br><br>
+
+{% attribute debug_draw debug_draw boolean %}
 
 *   if debug drawing is enabled or not 
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">lovebird_enabled</span><span class="tag">[boolean]</span>
-</pre></td>
-</table></div>
+{% attribute lovebird_enabled lovebird_enabled boolean %}
 
 *   if lovebird is enabled or not 
 <br><br>
 
-<div><table class="CodeRay">
-<td class="code"><pre>
-.<span class="annotation">game_width</span><span class="tag">[number]</span>, .<span class="annotation">game_height</span><span class="tag">[number]</span>
-</pre></td>
-</table></div>
+{% attribute min_size min_width number min_height number %}
 
-*   initial size of the screen's width and height 
+*   the minimum width and height the screen can be resized to
+<br><br>
+
+{% attribute screen_scale screen_scale number %}
+
+*   the amount of scaling (zoom) added to the screen
+<br><br>
+
+{% attribute screen_size screen_width number screen_height %}
+
+*   the screen width and height
+<br><br>
+
+{% attribute Shaders Shaders table %}
+
+*   a table to hold shaders
+<br><br>
+
+{% attribute Spritebatches Spritebatches table %}
+
+*   a table to hold spritebatches
 <br><br>

@@ -9,8 +9,8 @@ body_id: "main_page"
 sidebar: false 
 ---
 
-**fuccboiGDX** is a 2D game making code-centric engine/framework built on top of [LÖVE](http://love2d.org) that provides additional higher level functionalities, 
-making game prototyping even faster! It's free, open source and supported on Windows, Linux and OSX.
+**fuccboiGDX** is a 2D game making code-centric engine/framework that provides additional higher level functionalities on top of [LÖVE](http://love2d.org), 
+making game creation easier, faster, and buzzword! It's free, open source and supported on Windows, Linux and OSX.
 
 <div class="row">
     <div class="small-4 columns text-center">
@@ -26,10 +26,7 @@ making game prototyping even faster! It's free, open source and supported on Win
     </div>
 </div>
 
-------------------
-
-------------------
-
+<!--
 <h2 style="text-align: center">Games being made with fuccboiGDX</h2>
 <br>
 
@@ -39,3 +36,4 @@ making game prototyping even faster! It's free, open source and supported on Win
     <li><img src="/assets/ice.gif"/></li> 
     <li><img src="/assets/attack.gif"/></li> 
 </ul>
+-->

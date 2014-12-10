@@ -182,13 +182,24 @@ camera:shake(5, 0.5, {direction = 'vertical'})
 
 {% method rotate angle number %}
 
-*   moves the camera by some angle, equivalent to {% text camera.rotation = camera.rotation + angle %}
+*   rotates the camera by some angle, equivalent to {% text camera.rotation = camera.rotation + angle %}
 *   {% param angle %}: the amount to rotate the camera by
 <br><br>
 
 {% method rotateTo angle number %}
 
 *   {% param angle %}: the new camera angle 
+<br><br>
+
+{% method zoom scale number %}
+
+*   zooms the camera by some angle, equivalent to {% text camera.scale = camera.scale + scale %} 
+*   {% param scale %}: the amount to scale the camera by
+<br><br>
+
+{% method zoomTo scale number %}
+
+*   {% param scale %}: the new camera scale
 <br><br>
 
 {% title Attributes %}

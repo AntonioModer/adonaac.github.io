@@ -49,7 +49,7 @@ so you can have multiple backgrounds on different layers, moving at different sp
 {% attribute position x number y number %}
 
 *   the center position of the background   
-<br><br>
+<br>
 
 {% attribute size w number h number %}
 

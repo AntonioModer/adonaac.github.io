@@ -156,11 +156,11 @@
 {% sidenav2 [Area Methods] %}
 {% nav activate deactivate %}
 {% sidenav2 [Creation Methods] %}
-{% nav3 createEntity createTiledMapEntities generateCollisionSolids %}
+{% nav3 createEntity createEntityImmediate createTiledMapEntities generateCollisionSolids %}
 {% sidenav2 [HitFrameStop Methods] %}
 {% nav3 hitFrameStopAdd %}
 {% sidenav2 [Query Methods] %}
-{% nav3 applyAreaCircle applyAreaLine applyAreaRectangle queryAreaCircle queryAreaLine queryAreaRectangle %}
+{% nav3 applyAreaCircle applyAreaLine applyAreaPolygon applyAreaRectangle queryAreaCircle queryAreaLine queryAreaPolygon queryAreaRectangle queryClosestAreaCircle getEntitiesBy %}
 {% sidenav Attributes %}
 {% nav2 [active active] [fg fg] [position x y] [world world] %}
 {% endif %}
@@ -244,7 +244,7 @@
 
 {% if page.title == 'Serial' %}
 {% sidenav Example Description Methods %}
-{% nav loadArea loadObject saveArea saveObject %}
+{% nav loadArea loadObject saveArea saveObject serialize %}
 {% sidenav2 [Saving and Loading] %}
 {% endif %}
 

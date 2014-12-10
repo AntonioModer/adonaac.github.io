@@ -45,9 +45,9 @@ MyClass:implement(fg.PhysicsBody)
 
 -- constructor required
 -- world, x, y, settings required
-function MyClass:new(world, x, y, settings)
-    MyClass.super.new(self, world, x, y, settings)
-    self:physicsBodyNew(world, x, y, settings)
+function MyClass:new(area, x, y, settings)
+    MyClass.super.new(self, area, x, y, settings)
+    self:physicsBodyNew(area, x, y, settings)
 end
 
 -- update required
@@ -60,4 +60,3 @@ function MyClass:draw()
     self:physicsBodyDraw()
 end
 ~~~
-

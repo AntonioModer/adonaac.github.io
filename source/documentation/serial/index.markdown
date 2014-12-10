@@ -12,17 +12,17 @@ sidebar: false
 
 ~~~ lua
 -- saves a level
-fg.Serial.saveArea('save_filename', fg.world.areas['Level_1'])
+fg.Serial:saveArea('save_filename', fg.world.areas['Level_1'])
 
 -- loads a level
-fg.Serial.loadArea('save_filename', fg.world.areas['Level_1'])
+fg.Serial:loadArea('save_filename', fg.world.areas['Level_1'])
 
 -- saves an object if it implements a save function
-fg.Serial.saveObject('save_filename', entity)
+fg.Serial:saveObject('save_filename', entity)
 
 -- loads an object
-data = fg.Serial.loadObject('save_filename')
-fg.Serial.loadObject('save_filename', fg.world.areas['Level_1'])
+data = fg.Serial:loadObject('save_filename')
+fg.Serial:loadObject('save_filename', fg.world.areas['Level_1'])
 
 -- simple table serialization
 local a = {1, '2', function() print(3) end}
@@ -39,10 +39,10 @@ so you don't need to specify paths when saving your data.
 
 {% title Methods %}
 
-{% method loadArea filename string area Area %}
+{% method loadArea filename string area Area[optional] %}
 
 *   {% param filename %}: the name of the file that contains the saved data
-*   {% param area %}: a reference to the area that the saved objects should be loaded to
+*   {% param area %}: a reference to the area that the saved objects should be loaded to, if omitted will return the loaded data as a table (not as the rebuilt area)
 <br><br>
 
 {% method loadObject filename string area Area[optional] %}
@@ -59,13 +59,20 @@ so you don't need to specify paths when saving your data.
 
 ~~~ lua
 -- don't save instances of class Player and Particles
-fg.Serial.saveArea('save_filename', fg.world.areas['Level_1'], {'Player', 'Particles'})
+fg.Serial:saveArea('save_filename', fg.world.areas['Level_1'], {'Player', 'Particles'})
 ~~~
 
 {% method saveObject filename string object table %}
 
 *   {% param filename %}: the name of the file to save data to
 *   {% param object %}: the object to get the data from, must implement a {% call :save %} method 
+<br><br>
+
+{% method serialize filename string table table %}
+
+*   [ser's](https://github.com/gvx/Ser) main serialization function
+*   {% param filename %}: the name of the file to save data to
+*   {% param table %}: the table to get the save data from 
 <br><br>
 
 {% title Saving and Loading %}

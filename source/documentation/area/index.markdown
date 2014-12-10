@@ -54,6 +54,9 @@ since you can just load everything and have it in memory from when the game is l
 
 {% method createEntity entity_type string x number y number settings table[any][optional] %}
 
+*   creates an entity **at the end of the current frame**, if you need to rely on this entity's creation to do stuff on this frame then
+use {% text createEntityImmediate %}; physics enabled classes should be created at the end of the frame (with this call) otherwise bugs are generated if
+an object is trying to be created while the box2d world is updating
 *   {% param entity_type %}: the type of the entity to be created, available types are all classes created with the {% text fg.Class %} call 
 *   {% param x, y %}: the initial position to spawn the entity at
 *   {% param settings %}: the table with additional settings, the entity is added attributes defined by this table
@@ -62,6 +65,21 @@ since you can just load everything and have it in memory from when the game is l
 ~~~ lua
 -- creates a Player and defines its .v, .hp and .damage attributes
 fg.world:createEntity('Player', 400, 300, {v = 300, hp = 50, damage = 10})
+~~~
+
+{% method createEntityImmediate type string x number y number settings table[any][optional] %}
+
+*   returns the created entity, use this when you need an entity to be created **RIGHT NOW!!!** instead of at the end of the frame
+*   {% param entity_type %}: the type of the entity to be created, available types are all classes created with the {% text fg.Class %} call 
+*   {% param x, y %}: the initial position to spawn the entity at
+*   {% param settings %}: the table with additional settings, the entity is added attributes defined by this table; for this call specifically, if the
+attribute {% text no_layer %} is set to true, then this entity won't be added to any rendering layers, this can be useful when creating object hierarchies and
+so letting the parent object draw the child object manually instead of letting the rendering module do it automatically
+<br>
+
+~~~ lua
+-- creates a Player and defines its .v, .hp and .damage attributes
+player = fg.world:createEntityImmediate('Player', 400, 300, {v = 300, hp = 50, damage = 10})
 ~~~
 
 {% method createTiledMapEntities tilemap Tilemap %}
@@ -173,6 +191,22 @@ for _, entity in ipairs(entities) do entity:dealDamage(math.random(5, 10)) end
 *   returns a table containing the entities inside this area
 *   {% param x, y %}: the center of the rectangle being checked for entities
 *   {% param width, height %}: the size of the rectangle being checked for entities
+*   {% param object_types %}: the class names of the entities that should be acted upon
+<br><br>
+
+{% method queryClosestAreaCircle ids table[number] x number y number radius number object_types table[string] %}
+
+*   returns the closest entity to position {% text x, y %} inside {% text radius %} 
+*   {% param x, y %}: the center of the circle being checked for entities
+*   {% param radius %}: the radius of the circle being checked for entities
+*   {% param object_types %}: the class names of the entities that should be acted upon
+<br><br>
+
+{% method getEntitiesBy key string value any object_types table[string] %}
+
+*   returns a table of entities where {% text entity.key == value %}
+*   {% param key %}: the key (as a string) to look for
+*   {% param value %}: the value to look for
 *   {% param object_types %}: the class names of the entities that should be acted upon
 <br><br>
 

@@ -34,16 +34,18 @@ This tutorial will teach you about some of the basic features of the Mogamett Fr
 You should have the framework [downloaded](/downloads/mogamett.zip) and [setup](/snippets#main_template) properly.
 <br><br>
 
-<h3 id="ball" data-magellan-destination="ball">Ball</h3>
+{% title Ball %}
 
-The first we're gonna do is create the main ball. Since we're using the framework (which means that we're using each module on their own,
-without being tied to the <code class="text">engine</code> through <code class="text">mg.world</code>), we'll use the [Class](/documentation/class) module to do it:
+The first we're gonna do is create the main ball. Since we're using the framework 
+(which means that we're using each module on their own, without being tied to the 
+{% text engine %} through {% text fg.world %}), we'll use the 
+[Class](/documentation/class) module to do it:
 
 ~~~ lua
 -- in Ball.lua
-Ball = mg.Class('Ball')
+local Ball = fg.Object:extend('Ball')
 
-function Ball:init()
+function Ball:new()
 
 end
 
@@ -54,39 +56,49 @@ end
 function Ball:draw()
 
 end
+
+return Ball
 ~~~
 
-A ball needs a few attributes, like <code class="atrm">.x, .y</code> position, radius, velocity, angle it's moving towards... We'll add that to the Ball's class constructor,
-but do it in a manner that enables further attribute addition whenever desired without having to change the constructor:
+A ball needs a few attributes like position, radius, velocity and the angle it's moving 
+towards... We'll add that to the Ball's class constructor, but do it in a manner that 
+enables further attribute addition whenever desired without having to change the 
+constructor that much:
 
 ~~~ lua
 function Ball:init(x, y, settings)
-    settings = settings or {}
-    self.x = x
-    self.y = y
+    local settings = settings or {}
+    self.x, self.y = x, y
     self.r = settings.r or 30
     self.v = settings.v or mg.Vector(400, 400)
     self.angle = settings.angle or 0
 end
 ~~~
 
-By passing a named table named <code class="text">settings</code>, we can take its values when they are defined or fall back to default ones when they aren't (that's what the 
-<code class="text">or</code> does). So on object creation we can do:
+By passing a named table named {% text settings %}, we can take its values when they 
+are defined or fall back to default ones when they aren't (that's what the {% text or %}
+does). So on object creation we can do:
 
 ~~~ lua
-function love.load()
-    mg = require 'mogamett/mogamett'
-    mg.init()
+Ball = require 'Ball'
 
-    require 'Ball'
-
-    ball = Ball(400, 300, {angle = math.pi/4})
+function Game:new()
+    ball = Ball(fg.screen_width/2, fg.screen_height/2, {angle = math.pi/4})
 end
+...
 ~~~
 
-And this creates a ball with <code class="text">angle = math.pi/4</code>, <code class="text">v = mg.Vector(400, 400)</code> and <code class="text">r = 30</code>. This construct is 
-the same as the one used by <code class="text">engine</code> entities, and it's a pretty flexible and useful way of organizing object construction. In any case, now we want to update and
-draw the ball so that it moves like it would on a Pong game:
+And this creates a ball with {% text angle = math.pi/4 %}, 
+{% text v = mg.Vector(100, 100) %} and {% text r = 15 %}. This construct is 
+the same as the one used by {% text engine %} entities, and it's a pretty flexible 
+and useful way of organizing object construction. 
+
+Another thing to note here is that we're returning the Ball class and storing it in
+a global variable of the same name. This is just a useful thing to note, since it lets
+you change how classes behave dynamically (if you ever need that for whatever reason).
+
+In any case, now we want to update and draw the ball so that it moves like it would 
+on a Pong game:
 
 ~~~ lua
 -- in Ball.lua
@@ -99,20 +111,20 @@ function Ball:draw()
     love.graphics.rectangle('fill', self.x - self.r/2, self.y - self.r/2, self.r, self.r)
 end
 
--- in main.lua
-function love.update(dt)
-    mg.update(dt)
+-- in Game.lua
+function Game:update(dt)
     ball:update(dt)
 end
 
-function love.draw()
-    mg.draw()
+function Game:draw()
     ball:draw()
 end
 ~~~
 
-The ball update function does basic movement based on the ball's angle, and the draw function draws the rectangle (yes, it should be a circle, but let's be **~~RADICAL~~** and do a rectangle instead). 
-The ball moves to one direction but quickly moves out of the screen's boundaries. For that not to happen we can do the following:
+The ball update function does basic movement based on the ball's angle, and the draw 
+function draws the rectangle (yes, it should be a circle, but let's be **~~RADICAL~~** 
+and do a rectangle instead). The ball moves to one direction but quickly moves out 
+of the screen's boundaries. For that not to happen we can do the following:
 
 ~~~ lua
 function Ball:update(dt)
@@ -120,72 +132,76 @@ function Ball:update(dt)
     if self.x < 0 + self.r/2 then
         self.angle = math.pi - self.angle
     end
-    if self.x > 800 - self.r/2 then
+    if self.x > fg.screen_width - self.r/2 then
         self.angle = math.pi - self.angle
     end
     if self.y < 0 + self.r/2 then
         self.angle = -self.angle
     end
-    if self.y > 600 - self.r/2 then
+    if self.y > fg.screen_height - self.r/2 then
         self.angle = -self.angle
     end
 end
 ~~~
 
-This will make it so that the ball bounces off of the screen's edges like it's expected to do. Not adding the <code class="text">+-self.r/2</code> to the checks makes it so that the ball 
-goes a bit off screen before bouncing back, because the <code class="atrm">.x, .y</code> position is the center of the sprite and not one of its edges.
+This will make it so that the ball bounces off of the screen's edges like it's expected 
+to do. Not adding the {% text +-self.r/2 %} to the checks makes it so that the ball 
+goes a bit off screen before bouncing back, because the position is the center of the 
+sprite and not one of its edges.
 <br><br>
 
-<h3 id="paddles" data-magellan-destination="paddles">Paddles</h3>
+{% title Paddles %}
 
-To add the paddles we create a Paddle class in a similar fashion to the way we did the Ball:
+To add the paddles we create a Paddle class in a similar fashion to the way we did the 
+Ball:
 
 ~~~ lua
 Paddle = mg.Class('Paddle')
 
 function Paddle:init(x, y, settings)
-    settings = settings or {}
-    self.x = x
-    self.y = y
+    local settings = settings or {}
+    self.x, self.y = x, y
     self.w = settings.w or 30
     self.h = settings.h or 100
 end
 
 function Paddle:update(dt)
-    local mx, my = love.mouse.getPosition()
-    self.y = my
+    _, self.y = love.mouse.getPosition()
 end
 
 function Paddle:draw()
-    love.graphics.rectangle('fill', self.x - self.w/2, self.y - self.h/2, w, h)
+    love.graphics.rectangle('fill', self.x - self.w/2, self.y - self.h/2, self.w, self.h)
 end
 ~~~
 
-This makes it so that the paddle follows the mouse position on the y axis. To create both paddles you can do:
+This makes it so that the paddle follows the mouse position on the y axis. To create 
+both paddles you can do:
 
 ~~~ lua
-function love.load()
+...
+Paddle = require 'Paddle'
+
+function Game:new()
     ...
-    
-    require 'Paddle'
-    paddle1 = Paddle(50, 30)
-    paddle2 = Paddle(750, 300)
+    paddle1 = Paddle(15, 50)
+    paddle2 = Paddle(fg.screen_width - 15, 50)
 end
 
-function love.update(dt)
+function Game:update(dt)
     ...
     paddle1:update(dt)
     paddle2:update(dt)
 end
 
-function love.draw()
+function Game:draw()
     ...
     paddle1:draw()
     paddle2:draw()
 end
 ~~~
 
-This should create two paddles, one on the left and another on the right of the screen. They should both follow the mouse's y position.
+This should create two paddles, one on the left and another on the right of the screen. 
+They should both follow the mouse's y position.
 
 <dl class="accordion" data-accordion>
 <dd>

@@ -8,35 +8,36 @@ footer: true
 sidebar: false 
 ---
 
-<dl class="accordion" data-accordion>
-<dd>
-<a href="#panel30">Requirements</a>
-<div id="panel30" class="content">
+{% accopen [requirements] [Knowledge Requirements] %}
 <ul class="require">
-<li>Basic Programming Concepts</li>
+<li>Essential Programming Concepts (variables, conditionals, etc...) </li>
 <li><a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">Lua</a></li>
 <li>LÖVE</li>
-<li>Basic Game Programming</li>
+<li>Essential Game Programming (Pong, Tetris, ...)</li>
 <li>Object Oriented Programming</li>
 </ul>
-</div>
-</dd>
-</dl>
+{% accclose %}
 
-*   [How to read requirements](/requirements)
-*   [How to do exercises](/exercise)
+This tutorial will teach you about some of the basic features of the framework 
+through building an enhanced version of Pong. You should have fuccboiGDX 
+[downloaded](/downloads/fuccboi.zip) and [set up](/tutorials#Getting_Started) 
+properly.
 <br><br>
 
-This tutorial will teach you about some of the basic features of the Mogamett Framework through building an enhanced version of Pong.
+{% title Screen Size %}
 
-{% img center /assets/curvemaster.gif %}
+Before anything else what we're gonna do first is change the screen size so that it's bigger.
+To do this we can start in the {% text Game.lua %} object's constructor and add the {% text fg.setScreenSize %} call:
 
-You should have the framework [downloaded](/downloads/mogamett.zip) and [setup](/snippets#main_template) properly.
-<br><br>
+~~~ lua
+function Game:new()
+    fg.setScreenSize(800, 600)
+end
+~~~
 
 {% title Ball %}
 
-The first we're gonna do is create the main ball. Since we're using the framework 
+After that is done we're gonna create the main ball. Since we're using the framework 
 (which means that we're using each module on their own, without being tied to the 
 {% text engine %} through {% text fg.world %}), we'll use the 
 [Class](/documentation/class) module to do it:
@@ -89,13 +90,14 @@ end
 ~~~
 
 And this creates a ball with {% text angle = math.pi/4 %}, 
-{% text v = mg.Vector(100, 100) %} and {% text r = 15 %}. This construct is 
+{% text v = mg.Vector(400, 400) %} and {% text r = 30 %}. This construct is 
 the same as the one used by {% text engine %} entities, and it's a pretty flexible 
 and useful way of organizing object construction. 
 
 Another thing to note here is that we're returning the Ball class and storing it in
-a global variable of the same name. This is just a useful thing to note, since it lets
-you change how classes behave dynamically (if you ever need that for whatever reason).
+a global variable of the same name. This is just a useful thing to note, since having
+a class stored in a variable lets you change how classes behave dynamically (if you 
+ever need that for whatever reason).
 
 In any case, now we want to update and draw the ball so that it moves like it would 
 on a Pong game:
@@ -166,7 +168,7 @@ function Paddle:init(x, y, settings)
 end
 
 function Paddle:update(dt)
-    _, self.y = love.mouse.getPosition()
+    self.y = love.mouse.getY()
 end
 
 function Paddle:draw()
@@ -183,8 +185,8 @@ Paddle = require 'Paddle'
 
 function Game:new()
     ...
-    paddle1 = Paddle(15, 50)
-    paddle2 = Paddle(fg.screen_width - 15, 50)
+    paddle1 = Paddle(30, 50)
+    paddle2 = Paddle(fg.screen_width - 30, 50)
 end
 
 function Game:update(dt)
@@ -200,57 +202,37 @@ function Game:draw()
 end
 ~~~
 
-This should create two paddles, one on the left and another on the right of the screen. 
-They should both follow the mouse's y position.
+This should create two paddles, one on the left and another on the right of the screen, 
+and they should both follow the mouse's y position.
 
-<dl class="accordion" data-accordion>
-<dd>
-<a href="#panel1">Exercises</a>
-<div id="panel1" class="content">
-<ol>
-    <li> Like the ball previously could, the paddles can go offscreen if you move the mouse close to the borders of the screen. Prevent this from happening!
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel5">Answer</a>
-        <div id="panel5" class="content answer">
-        Check the paddle's y position against the screen's top and bottom borders and force that position in case it's past it, taking into account the paddle's height:<br><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-</pre></td>
-  <td class="code"><pre><span class="keyword">function</span> Paddle:<span class="function">update</span>(dt)
+{% capture exercises_paddle_answer_1 %}
+~~~ lua
+function Paddle:update(dt)
     ...
-    <span class="keyword">if</span> self.y &lt; <span class="integer">0</span> + self.h/<span class="integer">2</span> <span class="keyword">then</span>
-        self.y = <span class="integer">0</span> + self.h/<span class="integer">2</span>
-    <span class="keyword">end</span>
-    <span class="keyword">if</span> self.y &gt; <span class="integer">600</span> - self.h/<span class="integer">2</span> <span class="keyword">then</span>
-        self.y = <span class="integer">600</span> - self.h/<span class="integer">2</span>
-    <span class="keyword">end</span>
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
-        </div>
-        </dd>
-        </dl>
-    </li>
-</ol>
-</div>
-</dd>
-</dl>
+    if self.y < 0 + self.h/2 then
+        self.y = 0 + self.h/2
+    end
+    if self.y > fg.screen_height - self.h/2 then
+        self.y = fg.screen_height - self.h/2
+    end
+end
+~~~
+{% endcapture %}
+
+{% accopen [exercises_paddle_1] [Exercises] %}
+    1. Like the ball previously could, the paddles can go offscreen if you move the mouse close to its borders. Prevent this from happening!
+    {% aaccopen [exercises_paddle_answer_1] [Answer] %}
+        Check the paddle's y position against the screen's top and bottom borders and force that position in case it's past it, taking into account the paddle's height:<br><br>
+        {{ exercises_paddle_answer_1 | markdownify }}
+    {% accclose %}
+{% accclose %}
 <br>
 
-<h3 id="collision" data-magellan-destination="collision">Ball-Paddle Collision</h3>
+{% title Ball-Paddle Collision %}
 
-The ball doesn't collide with the paddles yet... But in a similar manner to how we did it for the borders of the screen we can do it for the paddles. Check the ball's position 
-against the position of each paddle and change its angle accordingly:
+The ball doesn't collide with the paddles yet, but in a similar manner to how 
+we did it for the borders of the screen we can do it for the paddles. Check 
+the ball's position against the position of each paddle and change its angle accordingly:
 
 ~~~ lua
 function Ball:update(dt)
@@ -262,278 +244,213 @@ function Ball:update(dt)
 end
 ~~~
 
-The check first sees if the ball's x position is to the left of the right edge of the left paddle (!), and then on top of that checks if the ball's y position is inside the left paddle's
+The check first sees if the ball's x position is to the left of the right edge of the left paddle (!), 
+and then on top of that checks if the ball's y position is inside the left paddle's
 top and bottom edges. If all of those conditions are met then the ball is bounced back.
 
-<dl class="accordion" data-accordion>
-<dd>
-<a href="#panel2">Exercises</a>
-<div id="panel2" class="content">
-<ol>
-    <li> Perform that check for the right paddle as well.
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel3">Answer</a>
-        <div id="panel3" class="content answer"><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-</pre></td>
-  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
-    ...
-    <span class="keyword">if</span> (self.x + self.r/<span class="integer">2</span> &gt;= paddle2.x - paddle2.w/<span class="integer">2</span>) <span class="keyword">and</span> 
-       (self.y &gt;= paddle2.y - paddle2.h/<span class="integer">2</span>) <span class="keyword">and</span> (self.y &lt;= paddle2.y + paddle2.h/<span class="integer">2</span>) <span class="keyword">then</span>
-        self.angle = math.pi - self.angle
-    <span class="keyword">end</span>
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
+{% capture exercises_paddle_answer_21 %}
+~~~ lua
+if (self.x + self.r/2 >= paddle2.x - paddle1.w/2) and
+   (self.y >= paddle2.y - paddle2.h/2) and (self.y <= paddle2.y + paddle2.h/2) then
+    self.angle = math.pi - self.angle
+end
+~~~
+{% endcapture %}
 
-        </div>
-        </dd>
-        </dl>
-    </li>
+{% capture exercises_paddle_answer_22 %}
+~~~ lua
+function Ball:new(...)
+    ...
+    self.just_hit_paddle = false
+    ...
+end
+
+function Ball:update(dt)
+    ...
+    if not self.just_hit_paddle then
+        if (self.x - self.r/2 <= paddle1.x + paddle1.w/2) and
+           (self.y >= paddle1.y - paddle1.h/2) and 
+           (self.y <= paddle1.y + paddle1.h/2) then
+            self.angle = math.pi - self.angle
+            self.just_hit_paddle = true
+            fg.timer:after(0.2, function() self.just_hit_paddle = false end)
+        end
+
+        if (self.x + self.r/2 >= paddle2.x - paddle1.w/2) and
+           (self.y >= paddle2.y - paddle2.h/2) and 
+           (self.y <= paddle2.y + paddle2.h/2) then
+            self.angle = math.pi - self.angle
+            self.just_hit_paddle = true
+            fg.timer:after(0.2, function() self.just_hit_paddle = false end)
+        end
+    end
+end
+~~~
+{% endcapture %}
+
+{% accopen [exercises_paddle_2] [Exercises] %}
+    1. Perform that check for the right paddle as well.
+    {% aaccopen [exercises_paddle_answer_21] [Answer] %}
+        {{ exercises_paddle_answer_21 | markdownify }}
+    {% accclose %}
     <br>
 
-    <li> Sometimes if the ball hits a paddle in one of its top or bottom edges it will behave strangely. The reason this happens is because it keeps changing angle repeatedly, since sometimes
-    the collision check is satisfied multiple times. How would you go about avoiding this? (<strong>hint</strong>: create a <code class="atrm">.just_hit_paddle</code> boolean and use the
-    <a href="/documentation/timer">Timer</a> module)
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel29">Answer</a>
-        <div id="panel29" class="content answer">
+    2. Sometimes if the ball hits a paddle on one of its top or bottom edges it will behave strangely. The reason this happens is because it keeps changing angle repeatedly, 
+    since sommetimes the collision check is satisfied multiple times in a short time frame. How would you go about fixing this? (<strong>hint</strong>: create a {% text .just_hit_paddle %}
+    boolean and use the <a href="/documentation/timer">Timer</a> module)
+    {% aaccopen [exercises_paddle_answer_22] [Answer] %}
         The way to solve this is by completely ignoring the collision checks if the ball has just hit a paddle. When a collision actually happens, set .just_hit_paddle to true and then after
         some time, in this case 0.2 seconds, set it to false again. This prevents collisions between ball and paddle to happening too close to each other:<br><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-<a href="#n11" name="n11">11</a>
-<a href="#n12" name="n12">12</a>
-<a href="#n13" name="n13">13</a>
-<a href="#n14" name="n14">14</a>
-<a href="#n15" name="n15">15</a>
-<a href="#n16" name="n16">16</a>
-<a href="#n17" name="n17">17</a>
-<a href="#n18" name="n18">18</a>
-<a href="#n19" name="n19">19</a>
-<strong><a href="#n20" name="n20">20</a></strong>
-<a href="#n21" name="n21">21</a>
-<a href="#n22" name="n22">22</a>
-<a href="#n23" name="n23">23</a>
-<a href="#n24" name="n24">24</a>
-<a href="#n25" name="n25">25</a>
-<a href="#n26" name="n26">26</a>
-</pre></td>
-  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">init</span>(...)
-    ...
-    self.just_hit_paddle = <span class="predefined-constant">false</span>
-    ...
-<span class="keyword">end</span>
-
-<span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
-    ...
-    <span class="keyword">if</span> <span class="keyword">not</span> self.just_hit_paddle <span class="keyword">then</span>
-        <span class="keyword">if</span> (self.x - self.r/<span class="integer">2</span> &lt;= paddle1.x + paddle1.w/<span class="integer">2</span>) <span class="keyword">and</span> 
-           (self.y &gt;= paddle1.y - paddle1.h/<span class="integer">2</span>) <span class="keyword">and</span> 
-           (self.y &lt;= paddle1.y + paddle1.h/<span class="integer">2</span>) <span class="keyword">then</span>
-            ...
-            self.just_hit_paddle = <span class="predefined-constant">true</span>
-            mg.timer:after(<span class="float">0.2</span>, <span class="keyword">function</span>() self.just_hit_paddle = <span class="predefined-constant">false</span> <span class="keyword">end</span>)
-        <span class="keyword">end</span>
-        <span class="keyword">if</span> (self.x + self.r/<span class="integer">2</span> &gt;= paddle2.x - paddle2.w/<span class="integer">2</span>) <span class="keyword">and</span> 
-           (self.y &gt;= paddle2.y - paddle2.h/<span class="integer">2</span>) <span class="keyword">and</span> 
-           (self.y &lt;= paddle2.y + paddle2.h/<span class="integer">2</span>) <span class="keyword">then</span>
-            ...
-            self.just_hit_paddle = <span class="predefined-constant">true</span>
-            mg.timer:after(<span class="float">0.2</span>, <span class="keyword">function</span>() self.just_hit_paddle = <span class="predefined-constant">false</span> <span class="keyword">end</span>)
-        <span class="keyword">end</span>
-    <span class="keyword">end</span>
-    ...
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
-
-        </div>
-        </dd>
-        </dl>
-    </li>
-</ol>
-</div>
-</dd>
-</dl>
+        {{ exercises_paddle_answer_22 | markdownify }}
+    {% accclose %}
+{% accclose %}
 <br>
 
-<h3 id="game_loop" data-magellan-destination="game_loop">Game Loop</h3>
+{% title Game Loop %}
 
 Now what the want to do is make it so that every time the ball reaches one of the sides of the screen, it is removed from the game and new ball is spawned.
 A way of doing this is signaling that the current ball is dead and then when that happens spawn a new one. To do this though, we need some place to hold multiple balls
 (doing this we additionally gain the ability to spawn multiple balls on the screen whenever we want):
 
 ~~~ lua
-function love.load()
+function Game:new()
     ...
     balls = {}
-    table.insert(balls, Ball(400, 300))
-    ...
+    table.insert(balls, Ball(fg.screen_width/2, fg.screen_height/2, {angle = math.pi/4}))
 end
 
-function love.update(dt)
+function Game:update(dt)
     ...
     for i = #balls, 1, -1 do
         balls[i]:update(dt)
-        if balls[i].dead then table.remove(balls, i) end
+        if balls[i].dead then 
+            table.remove(balls, i) 
+        end
     end
 end
 ~~~
 
-In the update function here we're traversing the balls list, updating each ball and removing the balls that have the attribute <code class="atrm">.dead</code> set to true.
+In the update function here we're traversing the balls list, updating each ball and removing the balls that have the {% text .dead %} attribute set to true.
 We'll only set that attribute to true when a ball reaches one of the edges of the screen, like so:
 
 ~~~ lua
+function Ball:new(...)
+    ...
+    self.dead = false
+    ...
+end
+
 function Ball:update(dt)
     ...
     if self.x < 0 + self.r/2 then
+        self.angle = math.pi - self.angle
         self.dead = true
     end
-    if self.x > 800 - self.r/2 then
+    if self.x > fg.screen_width - self.r/2 then
+        self.angle = math.pi - self.angle
         self.dead = true
     end
     ...
     if self.dead then
-        table.insert(balls, Ball(400, 300))
+        table.insert(balls, Ball(fg.screen_width/2, fg.screen_height/2))
     end
 end
 ~~~
 
-On top of setting the <code class="atrm">.dead</code> attribute to true, we then add a new ball to the center of the screen when it dies, so that the game continues. Even though the update
-function is run each frame, the condition inside the <code class="text">if self.dead</code> check will only be run once, because this ball will be removed from the balls list and not updated
-anymore after it's been set to die.
+On top of setting the {% text .dead %} attribute to true, we then add a new ball to the center of the screen when it dies, so that the game continues. 
+Even though the update function is run each frame, the condition inside the {% text if self.dead %} check will only be run once, because this ball will 
+be removed from the balls list and not updated anymore after it's been set to die.
 
-<dl class="accordion" data-accordion>
-<dd>
-<a href="#panel4">Exercises</a>
-<div id="panel4" class="content">
-<ol>
-    <li> Create a scoring system for the game. Create a level variable that keeps track of the current level. Later when we add AI this variable will control how hard the AI will be.
-    Every time the left player scores, add one to the level, every time the right player scores, subtract one.
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel6">Answer</a>
-        <div id="panel6" class="content answer">
-        Create a level variable. Increase it if the ball has died on right side of the screen (left player point), decrease otherwise (right player point):<br><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-<a href="#n11" name="n11">11</a>
-<a href="#n12" name="n12">12</a>
-<a href="#n13" name="n13">13</a>
-<a href="#n14" name="n14">14</a>
-<a href="#n15" name="n15">15</a>
-<a href="#n16" name="n16">16</a>
-</pre></td>
-  <td class="code"><pre><span class="comment">-- in main.lua</span>
-<span class="keyword">function</span> love.<span class="function">load</span>()
+{% capture exercises_game_loop_1 %}
+~~~ lua
+function Game:draw()
     ...
-    level = <span class="integer">1</span>
-    ...
-<span class="keyword">end</span>
+    for _, ball in ipairs(balls) do 
+        ball:draw()
+    end
+end
+~~~
+{% endcapture %}
 
-<span class="comment">-- in Ball.lua</span>
-<span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+{% capture exercises_game_loop_2 %}
+~~~ lua
+-- in Game.lua
+function Game:new()
     ...
-    <span class="keyword">if</span> self.dead <span class="keyword">then</span>
-        <span class="keyword">if</span> self.x &gt; <span class="integer">400</span> <span class="keyword">then</span> level = level + <span class="integer">1</span> <span class="keyword">end</span>
-        <span class="keyword">if</span> self.x &lt; <span class="integer">400</span> <span class="keyword">then</span> level = level - <span class="integer">1</span> <span class="keyword">end</span>
-        table.insert(balls, Ball(<span class="integer">400</span>, <span class="integer">300</span>))
-    <span class="keyword">end</span>
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
+    level = 1
+    ...
+end
 
-        </div>
-        </dd>
-        </dl>
-    </li>
+-- in Ball.lua
+function Ball:update(dt)
+    ...
+    if self.dead then
+        if self.x > fg.screen_width/2 then 
+            level = level + 1 
+        end
+        if self.x < fg.screen_width/2 then
+            level = level - 1
+        end
+        table.insert(balls, Ball(fg.screen_width/2, fg.screen_height/2))
+    end
+end
+~~~
+{% endcapture %}
+
+{% capture exercises_game_loop_3 %}
+~~~ lua
+function Ball:update(dt)
+    ...
+    if self.dead then
+        ...
+        table.insert(balls, Ball(fg.screen_width/2, fg.screen_height/2, 
+                    {angle = fg.utils.math.random(0, 2*math.pi)}))
+    end
+end
+~~~
+{% endcapture %}
+
+{% accopen [exercises_game_loop] [Exercises] %}
+    1. Draw the ball after the previous changes.
+    {% aaccopen [exercises_game_loop_1] [Answer] %}
+        {{ exercises_game_loop_1 | markdownify }}
+    {% accclose %}
     <br>
 
-    <li> How would you make it so that every new ball is spawned at a random angle?
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel7">Answer</a>
-        <div id="panel7" class="content answer">
-        Specify the new ball's angle. In this case, use the mg.utils.math.random function to pick an angle between 0 and 360 degrees. Another possible way is doing it directly
-        on the ball's constructor, self.angle = mg.utils.math.random(0, 2*math.pi).<br><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-</pre></td>
-  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
-    ...
-    <span class="keyword">if</span> self.dead <span class="keyword">then</span>
-        ...
-        table.insert(balls, Ball(<span class="integer">400</span>, <span class="integer">300</span>, <span class="map"><span class="delimiter">
-                    {</span><span class="key">angle</span> = mg.utils.math.random(<span class="integer">0</span>, <span class="integer">2</span>*math.pi)<span class="delimiter">}</span></span>))
-    <span class="keyword">end</span>
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
+    2. Create a scoring system for the game by creating a level variable that keeps track of the current level. 
+    Every time the left player scores, add one to the level, every time the right player scores, subtract one.
+    Later when we add AI this variable will control how hard it will be.
+    {% aaccopen [exercises_game_loop_2] [Answer] %}
+        Create a level variable. Increase it if the ball has died on right side of the screen (left player point), decrease otherwise (right player point):<br><br>
+        {{ exercises_game_loop_2 | markdownify }}
+    {% accclose %}
+    <br>
 
-        </div>
-        </dd>
-        </dl>
-    </li>
-</ol>
-</div>
-</dd>
-</dl>
+    3. How would you make it so that every new ball is spawned at a random angle?
+    {% aaccopen [exercises_game_loop_3] [Answer] %}
+        Specify the new ball's angle. In this case, use the mg.utils.math.random function to pick an angle between 0 and 360 degrees. Another possible way is doing it directly
+        on the ball's constructor, self.angle = fg.utils.math.random(0, 2*math.pi).<br><br>
+        {{ exercises_game_loop_3 | markdownify }}
+    {% accclose %}
+{% accclose %}
 <br>
 
-<h3 id="curve" data-magellan-destination="curve">Curve</h3>
+{% title Curve %}
 
 Next we're gonna add the ability for paddles to add some curve to the ball based on how fast the player moves it. Hitting the ball while moving the paddle up really fast should 
 add some spinning down, while hitting it while moving the paddle down should add some spinning up. Before we can actually do that addition though, we need to figure out how fast the paddle is moving:
 
 ~~~ lua
-function Paddle:init(...)
+function Paddle:new(...)
     ...
     self.last_y = 0
 end
 
 function Paddle:update(dt)
-    self.last_y = self.y
     ...
     self.v = self.last_y - self.y
     ...
+    self.last_y = self.y
 end
 ~~~
 
@@ -541,7 +458,7 @@ What these two lines do is simply take the current position of the paddle and su
 We can now use that velocity as a base for how much spinning we're gonna add to the ball. The way spinning will be added is by changing the ball's angle slightly:
 
 ~~~ lua
-function Ball:init(...)
+function Ball:new(...)
     ...
     self.angle_speed = 0
 end
@@ -552,79 +469,57 @@ function Ball:update(dt)
     ...
     if (self.x - self.r/2 <= paddle1.x + paddle1.w/2) and 
        (self.y >= paddle1.y - paddle1.h/2) and (self.y <= paddle1.y + paddle1.h/2) then
-        self.angle = math.pi - self.angle
+        ...
         self.angle_speed = paddle1.v/96
     end
 end
 ~~~
 
-Whenever the ball hits the paddle its angle speed gets changed to <code class="text">paddle.v/96</code>. This value was reached by trial and error until it felt nice, you may find
+Whenever the ball hits the paddle its angle speed gets changed to {% text paddle.v/96 %}. This value was reached by trial and error until it felt nice, you may find
 your own angle speed calculations that involve the paddle's velocity somehow. You can go as complex as you want with mathematical functions here, with the end goal of it feeling nice
 to play.
 
-<dl class="accordion" data-accordion>
-<dd>
-<a href="#panel8">Exercises</a>
-<div id="panel8" class="content">
-<ol>
-    <li> Make it so that the other paddle can curve the ball as well.
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel9">Answer</a>
-        <div id="panel9" class="content answer"><br>
- <div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-</pre></td>
-  <td class="code"><pre><span class="keyword">if</span> (self.x + self.r/<span class="integer">2</span> &gt;= paddle2.x - paddle2.w/<span class="integer">2</span>) <span class="keyword">and</span> 
-   (self.y &gt;= paddle2.y - paddle2.h/<span class="integer">2</span>) <span class="keyword">and</span> (self.y &lt;= paddle2.y + paddle2.h/<span class="integer">2</span>) <span class="keyword">then</span>
+{% capture exercises_curve_answer_1 %}
+~~~ lua
+function Paddle:update(dt)
     ...
-    self.angle_speed = paddle2.v/<span class="integer">96</span>
-    ...
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
+    if (self.x + self.r/2 >= paddle2.x - paddle1.w/2) and
+       (self.y >= paddle2.y - paddle2.h/2) and 
+       (self.y <= paddle2.y + paddle2.h/2) then
+        ...
+        self.angle_speed = -paddle2.v/96
+        ...
+    end
+~~~
+{% endcapture %}
 
-        </div>
-        </dd>
-        </dl>
-    </li>
+{% accopen [exercises_curve] [Exercises] %}
+    1. Make it so that the other paddle can curve the ball as well.
+    {% aaccopen [exercises_curve_answer_1] [Answer] %}
+        {{ exercises_curve_answer_1 | markdownify }}
+    {% accclose %}
     <br>
 
-    <li> What happens when the value dividing <code class="text">paddle.v</code> increases? And when it decreases?
+    2. What happens when the value dividing <code class="text">paddle.v</code> increases? And when it decreases?
     What is a decent interval for the angle speed value such that it doesn't spin too fast nor too slow?
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel10">Answer</a>
-        <div id="panel10" class="content answer">
-            When the value dividing paddle.v increases, the angle speed value decreases, meaning that the added spin from the paddle has a lower effect on the ball's trajectory.
-            When the value decreases, the angle speed increases, meaning that the added spin has a higher effect. A decent interval is a number that ranges from -2 to 2. 
-            Translating this to degrees, it's about 120 degrees per second to whichever side. You could make any function based on the paddle's velocity (like paddle.v*paddle.v, or
-            sin(paddle.v), or sqrt(paddle.v) + log(paddle.v/2), ... feel free to get creative!), but you'd have to scale this function back to this range if you want it to behave
-            in an acceptable manner. This range was discovered by trial and error, so your findings on what the range should be may vary depending on what type of gameplay you're looking for.
-        </div>
-        </dd>
-        </dl>
-    </li>
-</ol>
-</div>
-</dd>
-</dl>
+    {% aaccopen [exercises_curve_answer_2] [Answer] %}
+        When the value dividing paddle.v increases, the angle speed value decreases, meaning that the added spin from the paddle has a lower effect on the ball's trajectory.
+        When the value decreases, the angle speed increases, meaning that the added spin has a higher effect. A decent interval is a number that ranges from -2 to 2. 
+        Translating this to degrees, it's about 120 degrees per second to whichever side. You could make any function based on the paddle's velocity (like paddle.v*paddle.v, or
+        sin(paddle.v), or sqrt(paddle.v) + log(paddle.v/2), ... feel free to get creative!), but you'd have to scale this function back to this range if you want it to behave
+        in an acceptable manner. This range was discovered by trial and error, so your findings on what the range should be may vary depending on what type of gameplay you're looking for.
+    {% accclose %}
+{% accclose %}
 <br>
 
-<h3 id="ai" data-magellan-destination="ai">AI</h3>
+{% title AI %}
 
-And now for the last thing to make before we have completely functional Pong game, the AI. We're gonna do something very simple for the AI: make it follow the ball's y position. At first doing this 
-is ezpz:
+And now for the last thing to make before we have completely functional Pong game, the AI. 
+We're gonna do something very simple for the AI: make it follow the ball's y position. At first doing this is ezpz:
 
 ~~~ lua
 -- in Paddle.lua
-function Paddle:init(...)
+function Paddle:new(...)
     ...
     self.ai = settings.ai
     ...
@@ -635,28 +530,26 @@ function Paddle:update(dt)
     if self.ai then
         self.y = balls[1].y
     else
-        local mx, my = love.mouse.getPosition()
-        self.y = my
+        self.y = love.mouse.getY()
     end
     ...
 end
 
--- in main.lua
-function love.load()
+-- in Game.lua
+function Game:new()
     ...
-    paddle1 = Paddle(50, 300)
-    paddle2 = Paddle(750, 300)
+    paddle1 = Paddle(30, 50)
+    paddle2 = Paddle(fg.screen_width - 30, 50, {ai = true})
 end
 ~~~
 
-But if you play this, the AI is pretty much invincible. We need to add some way for it to not follow the ball so closely all the time. To do that we're gonna add some maximum velocity to the
-AI controlled paddle:
+But if you play this, the AI is pretty much invincible. We need to add some way for it to not follow the ball so closely all the time. 
+To do that we're gonna add some maximum velocity to the AI controlled paddle:
 
 ~~~ lua
-function Paddle:init(...)
+function Paddle:new(...)
     ...
-    self.v = 0
-    self.max_v = 400
+    self.max_v = 400 
     ...
 end
 
@@ -670,219 +563,139 @@ function Paddle:update(dt)
             self.y = self.y - math.min(dy, self.max_v)*dt
         end
     else
-        local mx, my = love.mouse.getPosition()
-        self.y = my
-    end
     ...
 end
 ~~~
 
 Here we check the difference between the paddle's current y position and ball's y position. Then based on this difference we add a certain velocity (which is this difference, but could
 be some other value calculated using this difference as a parameter) to the paddle's y position, but always limitting it by the paddle's maximum velocity. In this way, we get a nice
-smooth motion towards the ball that is as slow/fast as we want it to be (but not higher than <code class="text">max_v</code>), based on the velocity calculated.
+smooth motion towards the ball that is as slow/fast as we want it to be (but not higher than {% text max_v %}, based on the velocity calculated.
 
-<dl class="accordion" data-accordion>
-<dd>
-<a href="#panel11">Exercises</a>
-<div id="panel11" class="content">
-<ol>
-    <li> How would you make it so that the AI's difficulty scales with the current level? (<strong>hint</strong>: change its max velocity as well as the rate at which its velocity is changed
+{% capture exercises_ai_answer_1 %}
+~~~ lua
+-- in Paddle.lua
+function Paddle:update(dt)
+    if self.ai then
+        self.max_v = 175*level
+        local dy = self.y - balls[1].y
+        if dy < 0 then
+            self.y = self.y - math.max((level+1.2)*dy, -self.max_v)*dt
+        else
+            self.y = self.y - math.min((level+1.2)*dy, self.max_v)*dt
+        end
+        ...
+    else
+    ...
+end
+
+-- in Ball.lua
+function Ball:update(dt)
+    ...
+    if not self.just_hit_paddle then
+        if (self.x - self.r/2 <= paddle1.x + paddle1.w/2) and
+           (self.y >= paddle1.y - paddle1.h/2) and 
+           (self.y <= paddle1.y + paddle1.h/2) then
+            ...
+            self.v.x = self.v.x*(1.07 + 0.01*level)
+            ...
+        end
+        ...
+    end
+    ...
+end
+~~~
+{% endcapture %}
+
+{% capture exercises_ai_answer_2 %}
+~~~ lua
+-- in Paddle.lua
+function Paddle:new(...)
+    ...
+    self.idle = false
+    self.idle_position = 0
+    fg.timer:every(0.6, function()
+        self.idle_position = fg.screen_height/2 + 
+                             math.random(-fg.screen_height/4, fg.screen_height/4)
+    end)
+end
+
+function Paddle:update(dt)
+    if self.ai then
+        ...
+        if self.idle then 
+            dy = self.y - self.idle_position 
+        end
+        ...
+    end
+    ...
+end
+
+-- in Ball.lua
+function Ball:update(dt)
+    if not self.just_hit_paddle then
+        if (self.x - self.r/2 <= paddle1.x + paddle1.w/2) and
+           (self.y >= paddle1.y - paddle1.h/2) and 
+           (self.y <= paddle1.y + paddle1.h/2) then
+            ...
+            paddle2.idle = false
+            ...
+        end
+
+        if (self.x + self.r/2 >= paddle2.x - paddle1.w/2) and
+           (self.y >= paddle2.y - paddle2.h/2) and 
+           (self.y <= paddle2.y + paddle2.h/2) then
+            ...
+            paddle2.idle = true
+            ...
+        end
+    end
+    ...
+    if self.dead then
+        ...
+        paddle2.idle = false
+        table.insert(balls, Ball(fg.screen_width/2, fg.screen_height/2, 
+                    {angle = fg.utils.math.random(0, 2*math.pi)}))
+    end
+end
+~~~
+{% endcapture %}
+
+{% accopen [exercises_ai] [Exercises] %}
+    1. How would you make it so that the AI's difficulty scales with the current level? (<strong>hint</strong>: change its max velocity as well as the rate at which its velocity is changed
     to catch up with the ball's position)
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel12">Answer</a>
-        <div id="panel12" class="content answer">
-            Initially bind the paddle's max velocity to the level according to some formula. Then do the same for the dy variable. Optionally, make it so that with each ball hit on either paddle,
-            the ball's velocity is increased based on the current level, making each round harder the longer it goes on for.<br><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-<a href="#n11" name="n11">11</a>
-<a href="#n12" name="n12">12</a>
-<a href="#n13" name="n13">13</a>
-<a href="#n14" name="n14">14</a>
-<a href="#n15" name="n15">15</a>
-<a href="#n16" name="n16">16</a>
-<a href="#n17" name="n17">17</a>
-<a href="#n18" name="n18">18</a>
-<a href="#n19" name="n19">19</a>
-<strong><a href="#n20" name="n20">20</a></strong>
-<a href="#n21" name="n21">21</a>
-<a href="#n22" name="n22">22</a>
-<a href="#n23" name="n23">23</a>
-<a href="#n24" name="n24">24</a>
-<a href="#n25" name="n25">25</a>
-<a href="#n26" name="n26">26</a>
-</pre></td>
-  <td class="code"><pre><span class="comment">-- in Paddle.lua</span>
-<span class="keyword">function</span> Paddle:<span class="function">update</span>(dt)
-    ...
-    self.max = <span class="integer">175</span>*level
-    ...
-    <span class="keyword">if</span> self.ai <span class="keyword">then</span>
-        <span class="keyword">local</span> <span class="local-variable">dy</span> = self.y - balls[<span class="integer">1</span>].y
-        <span class="keyword">if</span> dy &lt; <span class="integer">0</span> <span class="keyword">then</span>
-            self.y = self.y - math.max((level+<span class="float">1.2</span>)*dy, -self.max_v)*dt
-        <span class="keyword">else</span>
-            self.y = self.y - math.min((level*<span class="float">1.2</span>)*dy, self.max_v)*dt
-        <span class="keyword">end</span>
-    ...
-<span class="keyword">end</span>
-
-<span class="comment">-- in Ball.lua</span>
-<span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
-    ...
-    <span class="keyword">if</span> (self.x - self.r/<span class="integer">2</span> &lt;= paddle1.x + paddle1.w/<span class="integer">2</span>) <span class="keyword">and</span> 
-       (self.y &gt;= paddle1.y - paddle1.h/<span class="integer">2</span>) <span class="keyword">and</span> (self.y &lt;= paddle1.y + paddle1.h/<span class="integer">2</span>) <span class="keyword">then</span>
-        ...
-        self.v.x = (<span class="float">1.07</span> + <span class="float">0.01</span>*level)*self.v.x 
-        ...
-    <span class="keyword">end</span>
-    ...
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
-
-        </div>
-        </dd>
-        </dl>
-    </li>
+    {% aaccopen [exercises_ai_answer_1] [Answer] %}
+        Initially bind the paddle's max velocity to the level according to some formula. Then do the same for the dy variable. Optionally, make it so that with each ball hit on either paddle,
+        the ball's velocity is increased based on the current level, making each round harder the longer it goes on for.<br><br>
+        {{ exercises_ai_answer_1 | markdownify }}
+    {% accclose %}
     <br>
 
-    <li> Make the AI paddle behave in a more human-like manner by adding some randomicity to it. Whenever the ball is going towards the player and not back to the AI paddle, make it so that it
+    2. Make the AI paddle behave in a more human-like manner by adding some randomicity to it. Whenever the ball is going towards the player and not back to the AI paddle, make it so that it
     moves about randomly following whatever pattern you think a normal human would when he's waiting for the ball to come back to his side.
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel13">Answer</a>
-        <div id="panel13" class="content answer">
-            Whenever the ball is moving away from the AI paddle, move it towards a variable named .idle_position. Add a timer that picks a new idle position around the y center of the game
-            every few seconds. This will make it so that the AI paddle moves randomly around the center of the screen whenever it's waiting for the ball to bounce back, and then when it does
-            bounce back it changes to the normal following behavior.<br><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-<a href="#n11" name="n11">11</a>
-<a href="#n12" name="n12">12</a>
-<a href="#n13" name="n13">13</a>
-<a href="#n14" name="n14">14</a>
-<a href="#n15" name="n15">15</a>
-<a href="#n16" name="n16">16</a>
-<a href="#n17" name="n17">17</a>
-<a href="#n18" name="n18">18</a>
-<a href="#n19" name="n19">19</a>
-<strong><a href="#n20" name="n20">20</a></strong>
-<a href="#n21" name="n21">21</a>
-<a href="#n22" name="n22">22</a>
-<a href="#n23" name="n23">23</a>
-<a href="#n24" name="n24">24</a>
-<a href="#n25" name="n25">25</a>
-<a href="#n26" name="n26">26</a>
-<a href="#n27" name="n27">27</a>
-<a href="#n28" name="n28">28</a>
-<a href="#n29" name="n29">29</a>
-<strong><a href="#n30" name="n30">30</a></strong>
-<a href="#n31" name="n31">31</a>
-<a href="#n32" name="n32">32</a>
-<a href="#n33" name="n33">33</a>
-<a href="#n34" name="n34">34</a>
-<a href="#n35" name="n35">35</a>
-<a href="#n36" name="n36">36</a>
-<a href="#n37" name="n37">37</a>
-<a href="#n38" name="n38">38</a>
-<a href="#n39" name="n39">39</a>
-<strong><a href="#n40" name="n40">40</a></strong>
-<a href="#n41" name="n41">41</a>
-<a href="#n42" name="n42">42</a>
-<a href="#n43" name="n43">43</a>
-</pre></td>
-  <td class="code"><pre><span class="comment">-- in Paddle.lua</span>
-<span class="keyword">function</span> Paddle:<span class="function">init</span>(...)
-    ...
-    self.idle_p = <span class="integer">0</span>
-    mg.timer:every(<span class="map"><span class="delimiter">{</span><span class="float">0.3</span>, <span class="float">0.6</span><span class="delimiter">}</span></span>, <span class="keyword">function</span>()
-        self.idle_p = <span class="integer">300</span> + math.random(<span class="integer">-150</span>, <span class="integer">150</span>)
-    <span class="keyword">end</span>)
-    ...
-<span class="keyword">end</span>
-
-<span class="keyword">function</span> Paddle:<span class="function">update</span>(dt)
-    ...
-    <span class="keyword">if</span> self.ai <span class="keyword">then</span>
-        <span class="keyword">local</span> <span class="local-variable">dy</span> = self.y - balls[<span class="integer">1</span>].y
-        <span class="keyword">if</span> self.idle <span class="keyword">then</span> dy = self.y - self.idle_p <span class="keyword">end</span>
-        <span class="keyword">if</span> dy &lt; <span class="integer">0</span> <span class="keyword">then</span>
-        ...
-    ...
-<span class="keyword">end</span>
-
-<span class="comment">-- in Ball.lua</span>
-<span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
-    ...
-    <span class="keyword">if</span> (self.x - self.r/<span class="integer">2</span> &lt;= paddle1.x + paddle1.w/<span class="integer">2</span>) <span class="keyword">and</span> 
-       (self.y &gt;= paddle1.y - paddle1.h/<span class="integer">2</span>) <span class="keyword">and</span> (self.y &lt;= paddle1.y + paddle1.h/<span class="integer">2</span>) <span class="keyword">then</span>
-        ...
-        paddle2.idle = <span class="predefined-constant">false</span>
-        ...
-    <span class="keyword">end</span>
-    <span class="keyword">if</span> (self.x + self.r/<span class="integer">2</span> &gt;= paddle2.x - paddle2.w/<span class="integer">2</span>) <span class="keyword">and</span> 
-       (self.y &gt;= paddle2.y - paddle2.h/<span class="integer">2</span>) <span class="keyword">and</span> (self.y &lt;= paddle2.y + paddle2.h/<span class="integer">2</span>) <span class="keyword">then</span>
-        ...
-        paddle2.idle = <span class="predefined-constant">true</span>
-        ...
-    <span class="keyword">end</span>
-    ...
-    <span class="keyword">if</span> self.dead <span class="keyword">then</span>
-        <span class="keyword">if</span> self.x &gt; <span class="integer">400</span> <span class="keyword">then</span> level = level + <span class="integer">1</span> <span class="keyword">end</span>
-        <span class="keyword">if</span> self.x &lt; <span class="integer">400</span> <span class="keyword">then</span> level = level - <span class="integer">1</span> <span class="keyword">end</span>
-        paddle2.idle = <span class="predefined-constant">false</span>
-        table.insert(balls, Ball(<span class="integer">400</span>, <span class="integer">300</span>))
-    <span class="keyword">end</span>
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
-
-        </div>
-        </dd>
-        </dl>
-    </li>
-</ol>
-</div>
-</dd>
-</dl>
+    {% aaccopen [exercises_ai_answer_2] [Answer] %}
+        Whenever the ball is moving away from the AI paddle, move it towards a variable named .idle_position. Add a timer that picks a new idle position around the y center of the game
+        every few seconds. This will make it so that the AI paddle moves randomly around the center of the screen whenever it's waiting for the ball to bounce back, and then when it does
+        bounce back it changes to the normal following behavior.<br><br>
+        {{ exercises_ai_answer_2 | markdownify }}
+    {% accclose %}
+{% accclose %}
 <br>
 
-<h3 id="polish" data-magellan-destination="polish">Polish</h3>
+{% title Polish %}
 
-You should have a completely functional Pong game by now. But it's kinda boring to look at... It certainly doesn't look as interesting as the gif up there. How to make it 
-better? Well, we can do a LOT of things to make it better. Some of them are described in this video: 
+You should have a completely functional Pong game by now. But it's kinda boring to look at... 
+We can do a lot of stuff to make it look more interesting, some of them are described in this video: 
 
 {% youtube Fy0aCDmgnxg %}
 <br>
 
-while a lot of them aren't. But the fact is is that making a game feel nice to play and look at is highly about experimentation, trial and error. I'll outline some of the things you can do,
-but you're the one who should go a step further and do even more!
+while a lot of them aren't. But the fact is that making a game feel nice to play and look at is highly about experimentation, trial and error. 
+I'll outline some of the things you can do, but you're the one who should go a step further and do even more if you want to.
 
-<h5>Ball Rotation</h5>
+{% title Ball Rotation %}
 
-The first thing we can add is ball rotation. Since the ball actually curves, it makes sense that it would spin around itself too. To do this, we code the following:
+The first thing we can add is ball rotation. Since the ball actually curves, 
+it makes sense that it would spin around itself too. To do this, we code the following:
 
 ~~~ lua
 function Ball:init(...)
@@ -906,167 +719,136 @@ function Ball:update(dt)
 end
 ~~~
 
-Every frame we add to the ball's rotation its rotation speed, and when the ball hits a paddle we make sure to take into account that paddle's velocity as well. To draw the rotated
-rectangle:
+Every frame we add to the ball's rotation its rotation speed, and when the ball hits a paddle we make 
+sure to take into account that paddle's velocity as well. To draw the rotated rectangle:
 
 ~~~ lua
 function Ball:draw()
-    mg.utils.graphics.pushRotate(self.x, self.y, self.rotation)
+    fg.utils.graphics.pushRotate(self.x, self.y, self.rotation)
     love.graphics.rectangle('fill', self.x - self.r/2, self.y - self.r/2, self.r, self.r)
     love.graphics.pop()
 end
 ~~~
 
-The <code class="atrm">mg.utils.graphics.pushRotate</code> call rotates whatever is drawn between it and <code class="atrm">love.graphics.pop()</code> by 
-<code class="text">self.rotation</code> angles around point <code class="text">self.x, self.y</code>.
+The {% text fg.utils.graphics.pushRotate %} call rotates whatever is drawn between it and {% text love.graphics.pop() %} by 
+{% text self.rotation %} angles around point {% text self.x, self.y %}.
 
-<dl class="accordion" data-accordion>
-<dd>
-<a href="#panel18">Exercises</a>
-<div id="panel18" class="content">
-<ol>
-    <li> Make it so that the other paddle also adds rotation to the ball.
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel14">Answer</a>
-        <div id="panel14" class="content answer"><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-<a href="#n11" name="n11">11</a>
-<a href="#n12" name="n12">12</a>
-</pre></td>
-  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+{% capture exercises_rotation_answer_1 %}
+~~~ lua
+function Ball:update(dt)
     ...
-    self.rotation = self.rotation + self.rotation_speed*dt
-    ...
-    <span class="keyword">if</span> (self.x + self.r/<span class="integer">2</span> &gt;= paddle2.x - paddle1.w/<span class="integer">2</span>) <span class="keyword">and</span> 
-       (self.y &gt;= paddle2.y - paddle2.h/<span class="integer">2</span>) <span class="keyword">and</span> (self.y &lt;= paddle2.y + paddle2.h/<span class="integer">2</span>) <span class="keyword">then</span>
+    if not self.just_hit_paddle then
         ...
-        self.rotation_speed = paddle2.v/<span class="integer">4</span>
-        ...
-    <span class="keyword">end</span>
+        if (self.x + self.r/2 >= paddle2.x - paddle1.w/2) and
+           (self.y >= paddle2.y - paddle2.h/2) and 
+           (self.y <= paddle2.y + paddle2.h/2) then
+            ...
+            self.rotation_speed = paddle2.v/4
+            ...
+        end
+    end
     ...
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
+~~~
+{% endcapture %}
 
-        </div>
-        </dd>
-        </dl>
-    </li>
+{% capture exercises_rotation_answer_2 %}
+~~~ lua
+function Ball:update(dt)
+    ...
+    if self.y < 0 + self.r/2 then
+        self.angle = -self.angle
+        self.rotation_speed = self.rotation_speed/2
+    end
+    if self.y > fg.screen_height - self.r/2 then
+        self.angle = -self.angle
+        self.rotation_speed = self.rotation_speed/2
+    end
+    ...
+end
+~~~
+{% endcapture %}
+
+{% accopen [exercises_rotation] [Exercises] %}
+    1. Make it so that the other paddle also adds rotation to the ball.
+    {% aaccopen [exercises_rotation_answer_1] [Answer] %}
+        {{ exercises_rotation_answer_1 | markdownify }}
+    {% accclose %}
     <br>
 
-    <li> Make the ball's rotation be cut in half whenever it hits the top or bottom edge of the screen.
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel15">Answer</a>
-        <div id="panel15" class="content answer"><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-<a href="#n11" name="n11">11</a>
-<a href="#n12" name="n12">12</a>
-</pre></td>
-  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
-    ...
-    <span class="keyword">if</span> self.y &lt; <span class="integer">0</span> + self.r/<span class="integer">2</span> <span class="keyword">then</span>
-        self.angle = -self.angle
-        self.rotation_speed = self.rotation_speed/<span class="integer">2</span>
-    <span class="keyword">end</span>
-    <span class="keyword">if</span> self.y &gt; <span class="integer">600</span> - self.r/<span class="integer">2</span> <span class="keyword">then</span>
-        self.angle = -self.angle
-        self.rotation_speed = self.rotation_speed/<span class="integer">2</span>
-    <span class="keyword">end</span>
-    ...
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
-
-        </div>
-        </dd>
-        </dl>
-    </li>
-</ol>
-</div>
-</dd>
-</dl>
+    2. Make the ball's rotation be cut in half whenever it hits the top or bottom edge of the screen.
+    {% aaccopen [exercises_rotation_answer_2] [Answer] %}
+        {{ exercises_rotation_answer_2 | markdownify }}
+    {% accclose %}
+{% accclose %}
 <br>
 
-<h5>Ball Trails</h5>
+{% title Ball Trails %}
 
 To make the ball look even better we can add trails. We'll do that by repeatedly spawning rectangles that quickly fade away at the ball's current position. 
 
 ~~~ lua
 -- in BallTrail.lua
-BallTrail = mg.Class('BallTrail')
+local BallTrail = fg.Object:extend('BallTrail')
 
 function BallTrail:init(x, y, r, rotation)
     self.x = x
     self.y = y
-    self.r = r + mg.utils.math.random(-4, 4)
-    self.rotation = mg.utils.math.random(0, 2*math.pi)
+    self.r = r + fg.utils.math.random(-4, 4)
+    self.rotation = fg.utils.math.random(0, 2*math.pi)
     self.alpha = 0
     self.dead = false
 
-    mg.timer:tween(0.02, self, {alpha = 255}, 'in-out-cubic')
-    mg.timer:after(0.02, function()
-        mg.timer:tween(0.4, self, {alpha = 0}, 'in-out-cubic')
-        mg.timer:after(0.4, function() self.dead = true end)
+    fg.timer:tween(0.02, self, {alpha = 255}, 'in-out-cubic')
+    fg.timer:after(0.02, function()
+        fg.timer:tween(0.4, self, {alpha = 0}, 'in-out-cubic')
+        fg.timer:after(0.4, function() self.dead = true end)
     end)
+end
+
+function BallTrail:update(dt)
+
 end
 
 function BallTrail:draw()
     love.graphics.setColor(255, 255, 255, self.alpha)
-    mg.utils.graphics.pushRotate(self.x, self.y, self.rotation)
+    fg.utils.graphics.pushRotate(self.x, self.y, self.rotation)
     love.graphics.rectangle('fill', self.x - self.r/2, self.y - self.r/2, self.r, self.r)
     love.graphics.pop()
     love.graphics.setColor(255, 255, 255, 255)
 end
+
+return BallTrail
 ~~~
 
-There are a few interesting things to notice here. One is the use of the [Timer](/documentation/timer) module. First we tween this trail's alpha to full color for <code class="number">0.02</code>
-seconds; then after those <code class="number">0.02</code> seconds we tween that same alpha to <code class="number">0</code> over <code class="number">0.4</code> seconds, giving the trail effect
-if we're spawning multiple of those near each other. After that same amount of time we also set the entity to die, doing the same as we did for the balls' death: removing dead entities
+There are a few interesting things to notice here. One is the use of the [Timer](/documentation/timer) module. 
+First we tween this trail's alpha to full color over {% number 0.02 %} seconds; then after those {% number 0.02 %} seconds we tween 
+that same alpha to {% number 0 %} over {% number 0.4 %} seconds, giving the trail effect if we're spawning multiple of those near each other. 
+After that same amount of time we also set the entity to die, doing the same as we did for the balls' death: removing dead entities
 from the list that holds them.
 
 ~~~ lua
-function love.load()
+function Game:new()
     ...
     ball_trails = {}
     ...
 end
 
-function love.update(dt)
+function Game:update(dt)
     ...
     for i = #ball_trails, 1, -1 do
         ball_trails[i]:update(dt)
-        if ball_trails[i].dead then table.remove(ball_trails, i) end
+        if ball_trails[i].dead then 
+            table.remove(ball_trails, i) 
+        end
     end
     ...
 end
 
 function love.draw()
     ...
-    for _, ball_trail in ipairs(ball_trails) do ball_trail:draw() end
+    for _, ball_trail in ipairs(ball_trails) do 
+        ball_trail:draw() 
+    end
     ...
 end
 ~~~
@@ -1074,148 +856,98 @@ end
 After doing this we can finally actually spawn the trails:
 
 ~~~ lua
-function Ball:init(...)
+function Ball:new(...)
     ...
-    mg.timer:every({0.02, 0.04}, function()
+    fg.timer:every({0.02, 0.04}, function()
         table.insert(ball_trails, BallTrail(self.x, self.y, self.r, self.rotation))
     end)
 end
 ~~~
 
-This create a new timer that will spawn a trail every <code class="number">0.02-0.04</code> seconds, or nearly every <code class="number">2-4</code> frames. Playing around with this number
-will give you different trail effects. Playing around with how long a ball trail object takes to fade away will also make the trail look different. Scaling the trail down as it fades away
-makes it look even more different... All this means is that there are tons of ways of getting different trail effects, and that the one outlined here is only a very particular one.
+This creates a new timer that will spawn a trail every {% number 0.02-0.04 %} seconds, or nearly every {% number 2-4 %} frames. Playing around with this number
+will give you different trail effects. Playing around with how long a ball trail object takes to fade away will also make the trail look different. 
+Scaling the trail down as it fades away makes it look even more different... All this means is that there are tons of ways of getting different trail effects, 
+and that the one outlined here is only a very particular one.
 
-<dl class="accordion" data-accordion>
-<dd>
-<a href="#panel20">Exercises</a>
-<div id="panel20" class="content">
-<ol>
-    <li> Add trails to the paddles as well.
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel21">Answer</a>
-        <div id="panel21" class="content answer">
-            Paddle trails are extremely similar to the ball trails, since we're using pretty much the same fading functionality. The difference being a rectangle and that you
-            may wanna change the tween times so it doesn't look as confusing:<br><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-<a href="#n11" name="n11">11</a>
-<a href="#n12" name="n12">12</a>
-<a href="#n13" name="n13">13</a>
-<a href="#n14" name="n14">14</a>
-<a href="#n15" name="n15">15</a>
-<a href="#n16" name="n16">16</a>
-<a href="#n17" name="n17">17</a>
-<a href="#n18" name="n18">18</a>
-<a href="#n19" name="n19">19</a>
-<strong><a href="#n20" name="n20">20</a></strong>
-<a href="#n21" name="n21">21</a>
-<a href="#n22" name="n22">22</a>
-<a href="#n23" name="n23">23</a>
-<a href="#n24" name="n24">24</a>
-<a href="#n25" name="n25">25</a>
-<a href="#n26" name="n26">26</a>
-</pre></td>
-  <td class="code"><pre>PaddleTrail = mg.Class(<span class="string"><span class="delimiter">'</span><span class="string">PaddleTrail</span><span class="delimiter">'</span></span>)
+{% capture exercises_trail_answer_1 %}
+~~~ lua
+local PaddleTrail = fg.Object:extend('PaddleTrail')
 
-<span class="keyword">function</span> PaddleTrail:<span class="function">init</span>(x, y, w, h)
-    self.x = x
-    self.y = y
-    self.w = w + mg.utils.math.random(<span class="integer">-2</span>, <span class="integer">2</span>)
-    self.h = h + mg.utils.math.random(<span class="integer">-2</span>, <span class="integer">2</span>)
-    self.alpha = <span class="integer">0</span>
-    self.dead = <span class="predefined-constant">false</span>
+function PaddleTrail:new(x, y, w, h)
+    self.x, self.y = x, y
+    self.w = w + fg.utils.math.random(-4, 4)
+    self.h = h + fg.utils.math.random(-4, 4)
+    self.alpha = 0
+    self.dead = false
 
-    mg.timer:tween(<span class="float">0.02</span>, self, <span class="map"><span class="delimiter">{</span><span class="key">alpha</span> = <span class="integer">255</span><span class="delimiter">}</span></span>, <span class="string"><span class="delimiter">'</span><span class="string">in-out-cubic</span><span class="delimiter">'</span></span>)
-    mg.timer:after(<span class="float">0.02</span>, <span class="keyword">function</span>()
-        mg.timer:tween(<span class="float">0.2</span>, self, <span class="map"><span class="delimiter">{</span><span class="key">alpha</span> = <span class="integer">0</span><span class="delimiter">}</span></span>, <span class="string"><span class="delimiter">'</span><span class="string">in-out-cubic</span><span class="delimiter">'</span></span>)
-        mg.timer:after(<span class="float">0.2</span>, <span class="keyword">function</span>() self.dead = <span class="predefined-constant">true</span> <span class="keyword">end</span>)
-    <span class="keyword">end</span>)
-<span class="keyword">end</span>
+    fg.timer:tween(0.02, self, {alpha = 255}, 'in-out-cubic')
+    fg.timer:after(0.02, function()
+        fg.timer:tween(0.2, self, {alpha = 0}, 'in-out-cubic')
+        fg.timer:after(0.2, function() self.dead = true end)
+    end)
+end
 
-<span class="keyword">function</span> PaddleTrail:<span class="function">update</span>(dt)
+function PaddleTrail:update(dt)
 
-<span class="keyword">end</span>
+end
 
-<span class="keyword">function</span> PaddleTrail:<span class="function">draw</span>()
-    love.graphics.setColor(<span class="integer">255</span>, <span class="integer">255</span>, <span class="integer">255</span>, self.alpha)
-    love.graphics.rectangle(<span class="string"><span class="delimiter">'</span><span class="string">fill</span><span class="delimiter">'</span></span>, self.x - self.w/<span class="integer">2</span>, self.y - self.h/<span class="integer">2</span>, self.w, self.h)
-    love.graphics.setColor(<span class="integer">255</span>, <span class="integer">255</span>, <span class="integer">255</span>, <span class="integer">255</span>)
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
+function PaddleTrail:draw()
+    love.graphics.setColor(255, 255, 255, self.alpha)
+    love.graphics.rectangle('fill', self.x - self.w/2, self.y - self.h/2, self.w, self.h)
+    love.graphics.setColor(255, 255, 255, 255)
+end
 
-        </div>
-        </dd>
-        </dl>
-    </li>
-    <br>
+return PaddleTrail
+~~~
+{% endcapture %}
 
-    <li> Make it so that the trail spawning interval for the ball is tied to its angle speed. (<strong>hint</strong>: drop the use of timers and calculate the time needed on your own on the update
-    function, since you can't get variable times using the Timer module)
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel22">Answer</a>
-        <div id="panel22" class="content answer">
-            Here we calculate the time needed based on some formula (you may come up with anojther) that uses the angle speed as a parameter. The adding of dt and then zeroing the trail_t variable
-            is the basic timing construct that the Timer module also does internally for its calculations. The point here is that the Timer module is not as flexible to accept arbitrary intervals
-            that change based on whatever, so you have to do it yourself:<br><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-<a href="#n11" name="n11">11</a>
-<a href="#n12" name="n12">12</a>
-<a href="#n13" name="n13">13</a>
-<a href="#n14" name="n14">14</a>
-<a href="#n15" name="n15">15</a>
-</pre></td>
-  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">init</span>(...)
+{% capture exercises_trail_answer_2 %}
+~~~ lua
+function Ball:new(...)
     ...
-    self.trail_t = <span class="integer">0</span>
+    self.trail_t = 0
     ...
-<span class="keyword">end</span>
+end
 
-<span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+function Ball:update(dt)
     ...
     self.trail_t = self.trail_t + dt
-    <span class="keyword">if</span> self.trail_t &gt; (<span class="float">0.03</span> - math.abs(<span class="float">0.0125</span>*self.angle_speed)) <span class="keyword">then</span>
-        self.trail_t = <span class="integer">0</span>
-        table.insert(ball_trails, BallTrail(self.x, self.y, self.r, self.rotation))
-    <span class="keyword">end</span>
+    if self.trail_t > (0.03 - math.abs(0.0125*self.angle_speed)) then
+        self.trail_t = 0
+        table.insert(ball_trails, BallTrail(self.x, self.y, self.r))
+    end
     ...
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
+end
+~~~
+{% endcapture %}
 
+{% capture exercises_trail_answer_3 %}
 
-        </div>
-        </dd>
-        </dl>
-    </li>
-</ol>
-</div>
-</dd>
-</dl>
+{% endcapture %}
+
+{% accopen [exercises_trail] [Exercises] %}
+
+    1. Add trails to the paddles as well.
+    {% aaccopen [exercises_trail_answer_1] [Answer] %}
+        Paddle trails are extremely similar to the ball trails, since we're using pretty much the same fading functionality. The difference being a rectangle and that you
+        may wanna change the tween times so it doesn't look as confusing:<br><br>
+        {{ exercises_trail_answer_1 | markdownify }}
+    {% accclose %}
+
+    2. Make it so that the trail spawning interval for the ball is tied to its angle speed. (<strong>hint</strong>: drop the use of timers and calculate the time needed on your own on the update
+    function, since you can't get variable times using the Timer module)
+    {% aaccopen [exercises_trail_answer_2] [Answer] %}
+        Here we calculate the time needed based on some formula (you may come up with another) that uses the angle speed as a parameter. The adding of dt and then zeroing the trail_t variable
+        is the basic timing construct that the Timer module also does internally for its calculations. The point here is that the Timer module is not as flexible to accept arbitrary intervals
+        that change based on whatever, so you have to do it yourself:<br><br>
+        {{ exercises_trail_answer_2 | markdownify }}
+    {% accclose %}
+
+    3. Whenever a ball dies its trails still keep getting spawned even after it has been gone. Find a way of fixing this.
+    {% aaccopen [exercises_trail_answer_3] [Answer] %}
+        {{ exercises_trail_answer_3 | markdownify }}
+    {% accclose %}
+{% accclose %}
 <br>
 
 <h5>Ball Size</h5>

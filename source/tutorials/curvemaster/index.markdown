@@ -18,6 +18,8 @@ sidebar: false
 </ul>
 {% accclose %}
 
+{% img center /assets/curvemaster.gif %}
+
 This tutorial will teach you about some of the basic features of the framework 
 through building an enhanced version of Pong. You should have fuccboiGDX 
 [downloaded](/downloads/fuccboi.zip) and [set up](/tutorials#Getting_Started) 
@@ -922,17 +924,31 @@ end
 {% endcapture %}
 
 {% capture exercises_trail_answer_3 %}
+function Ball:new(...)
+    ...
+    self.trail_timer = fg.timer:every({0.02, 0.04}, function()
+        table.insert(ball_trails, BallTrail(self.x, self.y, self.r))
+    end)
+end
 
+function Ball:update(dt)
+    ...
+    if self.dead then
+        ...
+        fg.timer:cancel(self.trail_timer)
+        ...
+    end
+end
 {% endcapture %}
 
 {% accopen [exercises_trail] [Exercises] %}
-
     1. Add trails to the paddles as well.
     {% aaccopen [exercises_trail_answer_1] [Answer] %}
         Paddle trails are extremely similar to the ball trails, since we're using pretty much the same fading functionality. The difference being a rectangle and that you
         may wanna change the tween times so it doesn't look as confusing:<br><br>
         {{ exercises_trail_answer_1 | markdownify }}
     {% accclose %}
+    <br>
 
     2. Make it so that the trail spawning interval for the ball is tied to its angle speed. (<strong>hint</strong>: drop the use of timers and calculate the time needed on your own on the update
     function, since you can't get variable times using the Timer module)
@@ -942,15 +958,19 @@ end
         that change based on whatever, so you have to do it yourself:<br><br>
         {{ exercises_trail_answer_2 | markdownify }}
     {% accclose %}
+    <br>
 
     3. Whenever a ball dies its trails still keep getting spawned even after it has been gone. Find a way of fixing this.
     {% aaccopen [exercises_trail_answer_3] [Answer] %}
+        The trails stay alive because we're using fuccboiGDX's global timer and we're not telling that timer to die whenever the ball dies. To fix this,
+        we save the id returned by fg.timer (every timer call returns an id so that we can use it like we're gonna do now) and then cancel it when the
+        ball dies.
         {{ exercises_trail_answer_3 | markdownify }}
     {% accclose %}
 {% accclose %}
 <br>
 
-<h5>Ball Size</h5>
+{% title Ball Size %}
 
 Another thing we can do is change the ball's size based on its velocity, as well as add some pulsing to its size so that it looks a bit more alive. The first one:
 
@@ -973,108 +993,84 @@ the radius. This makes it so that when the ball is turning a lot it looks smalle
 The second thing we can do, making the ball pulsate:
 
 ~~~ lua
-function Ball:init(...)
+function Ball:new(...)
     ...
     self.r_pulse = 0
-    mg.timer:every({0.02, 0.04}, function()
-        mg.timer:tween(0.02, self, {r_pulse = mg.utils.math.random(-2, 2)}, 'in-elastic')
+    fg.timer:every({0.02, 0.04}, function()
+        fg.timer:tween(0.02, self, {r_pulse = fg.utils.math.random(-4, 4)}, 'in-elastic')
     end)
 end
 
 function Ball:draw()
-    mg.utils.graphics.pushRotate(self.x, self.y, self.rotation)
+    fg.utils.graphics.pushRotate(self.x, self.y, self.rotation)
     local r = self.r + self.r_pulse
     love.graphics.rectangle('fill', self.x - r/2, self.y - r/2, r, r)
     love.graphics.pop()
 end
 ~~~
 
-Here we create a timer that tweens an additional radius to be added to the original radius between <code class="number">-2</code> and <code class="number">2</code>. Doing this every
-<code class="number">0.02-0.04</code> seconds, it gives a nice twitchy/pulsating effect to the ball. You could also make the intensity of this twitching be higher if the ball's velocity
+Here we create a timer that tweens an additional radius to be added to the original radius between {% number -4 %} and {% number 4 %}. Doing this every
+{% number 0.02-0.04 %} seconds, it gives a nice twitchy/pulsating effect to the ball. You could also make the intensity of this twitching be higher if the ball's velocity
 is fast... Or make it higher/lower when it touches a border or a paddle. The possibilities are endless!
 
-<dl class="accordion" data-accordion>
-<dd>
-<a href="#panel24">Exercises</a>
-<div id="panel24" class="content">
-<ol>
-    <li> Do the same for paddles and make them pulsate like the ball does.
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel25">Answer</a>
-        <div id="panel25" class="content answer"><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-<a href="#n11" name="n11">11</a>
-<a href="#n12" name="n12">12</a>
-<a href="#n13" name="n13">13</a>
-<a href="#n14" name="n14">14</a>
-<a href="#n15" name="n15">15</a>
-</pre></td>
-  <td class="code"><pre><span class="keyword">function</span> Paddle:<span class="function">init</span>(...)
+{% capture exercises_size_answer_1 %}
+~~~ lua
+function Paddle:new(...)
     ...
-    self.w_pulse = <span class="integer">0</span>
-    self.h_pulse = <span class="integer">0</span>
-    mg.timer:every(<span class="map"><span class="delimiter">{</span><span class="float">0.02</span>, <span class="float">0.04</span><span class="delimiter">}</span></span>, <span class="keyword">function</span>()
-        mg.timer:tween(<span class="float">0.02</span>, self, <span class="map"><span class="delimiter">{</span><span class="key">w_pulse</span> = mg.utils.math.random(<span class="integer">-4</span>, <span class="integer">4</span>)<span class="delimiter">}</span></span>, <span class="string"><span class="delimiter">'</span><span class="string">in-elastic</span><span class="delimiter">'</span></span>)
-        mg.timer:tween(<span class="float">0.02</span>, self, <span class="map"><span class="delimiter">{</span><span class="key">h_pulse</span> = mg.utils.math.random(<span class="integer">-4</span>, <span class="integer">4</span>)<span class="delimiter">}</span></span>, <span class="string"><span class="delimiter">'</span><span class="string">in-elastic</span><span class="delimiter">'</span></span>)
-    <span class="keyword">end</span>)
+    self.w_pulse = 0
+    self.h_pulse = 0
+    fg.timer:every({0.02, 0.04}, function()
+        fg.timer:tween(0.02, self, {w_pulse = fg.utils.math.random(-4, 4)}, 'in-elastic')
+        fg.timer:tween(0.02, self, {h_pulse = fg.utils.math.random(-4, 4)}, 'in-elastic')
+    end)
     ...
-<span class="keyword">end</span>
+end
 
-<span class="keyword">function</span> Paddle:<span class="function">draw</span>()
-    <span class="keyword">local</span> <span class="local-variable">w</span>, <span class="local-variable">h</span> = self.w + self.w_pulse, self.h + self.h_pulse
-    love.graphics.rectangle(<span class="string"><span class="delimiter">'</span><span class="string">fill</span><span class="delimiter">'</span></span>, self.x - w/<span class="integer">2</span>, self.y - h/<span class="integer">2</span>, w, h)
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
+function Paddle:draw()
+    local w, h = self.w + self.w_pulse, self.h + self.h_pulse
+    love.graphics.rectangle('fill', self.x - w/2, self.y - h/2, w, h)
+end
+~~~
+{% endcapture %}
 
-        </div>
-        </dd>
-        </dl>
-    </li>
-</ol>
-</div>
-</dd>
-</dl>
+{% accopen [exercises_size] [Exercises] %}
+    1. Do the same for paddles and make them pulsate like the ball does.
+    {% aaccopen [exercises_size_answer_1] [Answer] %}
+        {{ exercises_size_answer_1 | markdownify }}
+    {% accclose %}
+{% accclose %}
 <br>
 
-<h5>Challenges</h5>
+{% title Challenges %}
 
 There are things you can do to polish the game even more, but instead of just giving you the working code on how to do them, I'll pose them as challenges that you need to figure out
-for yourself. As stated in the [How to do exercises](/exercises) page, building up the necessary skills so you can search and do things on your own is important for game development, and that
+for yourself. Building up the necessary skills so you can search and do things on your own is important for game development, and that
 building up can only happen when you're actually doing things without too much hand-holding.
 
-1. Adding particles effects is possible by using the [Particles](/documentation/particles) module. Set it up according to the description on that page, create a particle system using the editor
-(make it point to one particular direction with a spread of ~90 degrees or so instead of projecting particles everywhere), and spawn this particle system whenever the ball hits the screen edges
-or a paddle, using the <code class="atrm">mg.world:spawnParticles</code> call. You will probably need to set the <code class="text">rotation</code> attribute in each spawned system to match
-the direction of what the ball hit.
+1. Use either [love.graphics.print](https://www.love2d.org/wiki/love.graphics.print) or the [Text](/documentation/text) module to write the current level somewhere on the screen.
+
+2. Adding particles effects is possible by using the [Particles](/documentation/particles) module or by creating particle objects and spawning them as you wish. 
+If you go for the former, set it up according to the description on that page, create a particle system using the editor, 
+and spawn this particle system whenever the ball hits the screen edges or a paddle. Remember that you're not using the engine and so you don't need to use
+{% text fg.world:spawnParticles %}, only {% text fg.getPS %} and then handling the particle system on your own.
 
 2. Adding camera shake whenever the ball hits something can be done by using the [Camera](/documentation/camera) module. Create a new camera instance, set it to follow the center of the screen
-so that when you shake it it doesn't keep going offscreen, set attach/detach around everything in the <code class="text">love.draw</code> function so that your shakes are applied to everything in the 
-screen, and then use the <code class="text">:shake</code> call to make the screen shake.
+so that when you shake it it doesn't keep going offscreen, set attach/detach around everything in the {% text Game:draw %} function so that your shakes are applied to everything in the 
+screen, and then use the {% call :shake %} call to make the screen shake.
 
-3. Shader effects can be achieved by using [love.graphics.newShader](http://www.love2d.org/wiki/love.graphics.newShader). Mogamett comes with a few default shaders located in 
-<code class="text">mogamett/resources/shaders</code>. Play around with them and see what kinds of effects you can create. The effect on the gif up there was achieved through the use
-of 3 shaders.
+3. Shader effects can be achieved by using [love.graphics.newShader](http://www.love2d.org/wiki/love.graphics.newShader). fuccboiGDX comes with a few default shaders located in 
+{% text fuccboi/resources/shaders %}. Play around with them and see what kinds of effects you can create. The effect on the gif up there was achieved through the use
+of 3 shaders in succession. Also, remember to use [canvases](https://www.love2d.org/wiki/Canvas) to apply screen wide shaders (all example shaders that come with fuccboiGDX are screen wide).
+And to apply multiple shaders you'll need multiple canvases.
 <br><br>
 
-<h3 id="the_end" data-magellan-destination="the_end">The End</h3>
+{% title The End %}
 
 And that's it! If you finished all exercises and challenges you should have something that looks pretty similar to this:
 
 {% img center /assets/curvemaster.gif %}
 
-Hopefully you did even more and your version of it looks a lot better! In any case, you should also have a pretty good idea on how to read Mogamett's documentation
-and you should be able to start using it for your own games. Good luck!
+Hopefully you did even more and your version of it looks a lot better! In any case, you should also have a pretty good idea on how to read fuccboiGDX's documentation
+and you should be able to start using it for your own games. You can find the full source code for the complete game (with the challenges finished) 
+[here](https://github.com/adonaac/fuccboiGDX-tutorials/tree/master/advanced/CurveMaster).
 <br><br>

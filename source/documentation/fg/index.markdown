@@ -184,6 +184,11 @@ end
 *   creates an engine class
 <br><br>
 
+{% methoddd getPS name string %}
+
+*   returns the built particle system from file {% text fuccboi/resources/particles/sperm/name.lua %}
+<br><br>
+
 {% methoddd getUID %}
 
 *   {% param number %} returns a new unique identifier 

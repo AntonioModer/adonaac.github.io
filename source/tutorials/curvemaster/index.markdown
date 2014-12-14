@@ -69,7 +69,7 @@ enables further attribute addition whenever desired without having to change the
 constructor that much:
 
 ~~~ lua
-function Ball:init(x, y, settings)
+function Ball:new(x, y, settings)
     local settings = settings or {}
     self.x, self.y = x, y
     self.r = settings.r or 30
@@ -162,7 +162,7 @@ Ball:
 ~~~ lua
 Paddle = mg.Class('Paddle')
 
-function Paddle:init(x, y, settings)
+function Paddle:new(x, y, settings)
     local settings = settings or {}
     self.x, self.y = x, y
     self.w = settings.w or 30
@@ -700,7 +700,7 @@ The first thing we can add is ball rotation. Since the ball actually curves,
 it makes sense that it would spin around itself too. To do this, we code the following:
 
 ~~~ lua
-function Ball:init(...)
+function Ball:new(...)
     ...
     self.rotation = 0
     self.rotation_speed = math.pi
@@ -792,7 +792,7 @@ To make the ball look even better we can add trails. We'll do that by repeatedly
 -- in BallTrail.lua
 local BallTrail = fg.Object:extend('BallTrail')
 
-function BallTrail:init(x, y, r, rotation)
+function BallTrail:new(x, y, r, rotation)
     self.x = x
     self.y = y
     self.r = r + fg.utils.math.random(-4, 4)
@@ -924,6 +924,7 @@ end
 {% endcapture %}
 
 {% capture exercises_trail_answer_3 %}
+~~~ lua
 function Ball:new(...)
     ...
     self.trail_timer = fg.timer:every({0.02, 0.04}, function()
@@ -939,6 +940,7 @@ function Ball:update(dt)
         ...
     end
 end
+~~~
 {% endcapture %}
 
 {% accopen [exercises_trail] [Exercises] %}

@@ -15,9 +15,9 @@ sidebar: false
 MyClass = fg.class('MyClass', 'Entity')
 MyClass:implement(fg.PhysicsBody)
 
-function MyClass:new(world, x, y, settings)
-    MyClass.super.new(self, world, x, y, settings)
-    self:physicsBodyNew(world, x, y, settings)
+function MyClass:new(area, x, y, settings)
+    MyClass.super.new(self, area, x, y, settings)
+    self:physicsBodyNew(area, x, y, settings)
 end
 
 function MyClass:update(dt)

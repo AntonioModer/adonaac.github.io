@@ -8,45 +8,35 @@ footer: true
 sidebar: false 
 ---
 
-<dl class="accordion" data-accordion>
-<dd>
-<a href="#panel30">Requirements</a>
-<div id="panel30" class="content">
+{% accopen [requirements] [Knowledge Requirements] %}
 <ul class="require">
-<li>Basic Programming Concepts</li>
+<li>Essential Programming Concepts (variables, conditionals, etc...) </li>
 <li><a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">Lua</a></li>
 <li>LÖVE</li>
-<li>Basic Game Programming</li>
+<li>Essential Game Programming (Pong, Tetris, ...)</li>
 <li>Object Oriented Programming</li>
 </ul>
-</div>
-</dd>
-</dl>
-
-*   [How to read requirements](/requirements)
-*   [How to do exercises](/exercise)
-<br><br>
-
-This tutorial will teach you about some of the basic features of the Mogamett Engine through building a 2D platformer.
+{% accclose %}
 
 {% img center /assets/2dplatformer.gif %}
 
-You should have the engine [downloaded](/downloads/mogamett.zip) and [setup](/snippets#main_template) properly.
+This tutorial will teach you about some of the basic features of the engine through building a 2D platformer.
+You should have fuccboiGDX [downloaded](/downloads/fuccboi.zip) and [set up](/tutorials#Getting_Started) properly.
 <br><br>
 
-<h3 id="player_creation" data-magellan-destination="player_creation">Player Creation</h3>
+{% title Player Creation %}
 
 The first thing we're gonna do is create a basic Player class. Since we want to use the engine and get box2d physics out of the box,
-we want it to be a physics entity. Using the [physics entity template](/snippets#physics_template), we get something like this:
+we want it to be a physics entity. Using the [physics entity template](/examples#Physics_Template), we get something like this:
 
 ~~~ lua
 -- in Player.lua
-Player = mg.class('Player', mg.Entity)
-Player:include(mg.PhysicsBody)
+local Player = fg.Class('Player', 'Entity')
+Player:implement(fg.PhysicsBody)
 
-function Player:init(world, x, y, settings)
-    mg.Entity.init(self, world, x, y, settings)
-    self:physicsBodyInit(world, x, y, settings)
+function Player:new(area, x, y, settings)
+    Player.super.new(self, area, x, y, settings)
+    self:physicsBodyNew(area, x, y, settings)
 end
 
 function Player:update(dt)
@@ -56,31 +46,34 @@ end
 function Player:draw()
     self:physicsBodyDraw()
 end
+
+return Player
 ~~~
 
-To understand everything that's going on with that code: [Class](/documentation/class), [Collision](/documentation/collision), [Entity](/documentation/entity) and 
-[PhysicsBody](/documentation/physicsbody). 
+To understand everything that's going on with that code: [Class](/documentation/class), [Collision](/documentation/collision), 
+[Entity](/documentation/entity) and [PhysicsBody](/documentation/physicsbody). 
 
 With that in mind, to spawn a player we do this:
 
 ~~~ lua
--- in main.lua
-function love.load()
-    mg = require ...
+-- in Game.lua
+Player = require 'Player'
 
-    require 'Player'
-
-    mg.init()
-    mg.world:createEntity('Player', 400, 300)
+function Game:new()
+    fg.world:createEntity('Player', fg.screen_width/2, fg.screen_height/2)
 end
 ~~~
 
-Exactly what's happening here is that every class you create with the <code class="text">mg.class</code> call can be spawned by the <code class="text">mg.world:createEntity</code> call, 
-since that class gets automatically added to the engine (see more about this [here](/documentation/world#creation_methods)). If you run all the above you should see a blue square on the 
-center of the screen. These are the player's physics body's debug drawing lines. You can turn off debug drawing by doing <code class="text">mg.debug_draw = false</code>.
+Exactly what's happening here is that every class you create with the {% text mg.Class %} call can be spawned by the {% text fg.world:createEntity %} call, 
+since that class gets automatically added to the engine (see more about this [here](/documentation/world#Creation_Methods)). If you run all the above you should see a blue square on the 
+center of the screen. These are the player's physics body's debug drawing lines. You can turn off debug drawing by doing {% text fg.debug_draw = false %}.
+
+Another thing to note here is that {% text fg.world:createEntity %} is an alias for {% text fg.world.areas['Default']:createEntity %}, since the engine works
+through areas/levels. It just happens that the {% string 'Default' %} one is created automatically and has aliases created for each one of its methods for simplicity. 
+You can learn more about areas [here](/documentation/area).
 <br><br>
 
-<h3 id="animations_and_movement" data-magellan-destination="animations_and_movement">Animations and Movement</h3>
+{% title Animations and Movement %}
 
 Squares aren't that interesting, though, so adding some visuals to the player would be nice. To do this we're gonna use the following sprite:
 
@@ -90,11 +83,11 @@ Using the [Animation](/documentation/animation) module we can quickly create an 
 also be used for just loading single images:
 
 ~~~ lua
-function Player:init(world, x, y, settings)
-    mg.Entity.init(self, world, x, y, settings)
-    self:physicsBodyInit(world, x, y, settings)
+function Player:new(area, x, y, settings)
+    Player.super.new(self, area, x, y, settings)
+    self:physicsBodyNew(area, x, y, settings)
 
-    self.idle = mg.Animation(love.graphics.newImage('idle.png'), 32, 32, 0)
+    self.idle = fg.Animation(love.graphics.newImage('idle.png'), 32, 32, 0)
 end
 
 function Player:update(dt)
@@ -103,86 +96,79 @@ function Player:update(dt)
 end
 
 function Player:draw()
-    self.idle:draw(self.x - self.idle.frame_width/2, self.y - self.idle.frame_height/2)
+    self:physicsBodyDraw()
+    self.idle:draw(self.x, self.y, 0, 1, 1, self.idle.frame_width/2, self.idle.frame_height/2)
 end
 ~~~
 
-LÖVE's draw function works by specifying the top left position of the image, so when we draw our animation we have to make sure to offset it by its width and height, since
-positions are always the center of an object (at least if you're using the <code class="text">engine</code>). If you run the above you should see the player sprite on top of
-blue square. 
+LÖVE's draw function works by specifying the top left position of the image, so when we draw our animation we have to make sure 
+to offset it by its width and height (the last 2 parameters), since positions are always the center of an object. If you run the 
+above you should see the player sprite on top of the blue square. 
 
-<dl class="accordion" data-accordion>
-<dd>
-<a href="#panel1">Exercises</a>
-<div id="panel1" class="content">
-<ol>
-    <li> The physics body of the player doesn't really match his sprite's width and height. How would you go about changing it so it does? (<strong>hint</strong>: 
-         <a href="/documentation/physicsbody#methods">PhysicsBody constructor's settings</a>)
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel2">Answer</a>
-        <div id="panel2" class="content answer">
-            Something like:
-            <br><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-</pre></td>
-  <td class="code"><pre><span class="comment">-- in main.lua</span>
-mg.world:createEntity(<span class="string"><span class="delimiter">'</span><span class="string">Player</span><span class="delimiter">'</span></span>, <span class="integer">400</span>, <span class="integer">300</span>, <span class="map"><span class="delimiter">{</span><span class="key">w</span> = <span class="integer">16</span>, <span class="key">h</span> = <span class="integer">28</span><span class="delimiter">}</span></span>)
+{% capture exercises_size_answer_1 %}
+~~~ lua
+-- in Game.lua
+function Game:new()
+    fg.world:createEntity('Player', fg.screen_width/2, fg.screen_height/2, {w = 16, h = 28})
+end
 
-<span class="comment">-- in Player.lua</span>
-<span class="keyword">function</span> Player:<span class="function">draw</span>()
-    self.idle:draw(self.x - self.idle.frame_width/<span class="integer">2</span>, 
-                   self.y - self.idle.frame_height/<span class="integer">2</span> - <span class="integer">2</span>)
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
-        </div>
-        </dd>
-        </dl>
-        <br>
-    </li>
+-- in Player.lua
+function Player:draw()
+    self:physicsBodyDraw()
+    self.idle:draw(self.x, self.y, 0, 1, 1, 
+                   self.idle.frame_width/2, self.idle.frame_height/2 + 2)
+end
+~~~
+{% endcapture %}
 
-    <li> What's another way of accessing an animation's width and height? (<strong>hint</strong>: 
-         <a href="/documentation/animation#methods">Animation methods</a>)
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel3">Answer</a>
-        <div id="panel3" class="content answer">
-        For an animation, :getWidth/Height are the same as .frame_width/height:
-        <br><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-</pre></td>
-  <td class="code"><pre>self.idle:draw(self.x - self.idle:getWidth()/<span class="integer">2</span>, self.y - self.idle:getHeight()/<span class="integer">2</span>)
-</pre></td>
-</tr></table>
-</div>
-        </div>
-        </dd>
-        </dl>
-    </li>
-</ol>
-</div>
-</dd>
-</dl>
+{% capture exercises_size_answer_2 %}
+~~~ lua
+function Player:draw()
+    ...
+    self.idle:draw(self.x, self.y, 0, 1, 1, 
+                   self.idle:getWidth()/2, self.idle:getHeight()/2)
+end
+~~~
+{% endcapture %}
+
+{% accopen [exercises_size] [Exercises] %}
+    1. The physics body of the player doesn't really match his sprite's width and height. How would you go about changing it so it does? (<strong>hint</strong>: 
+    <a href="/documentation/physicsbody#methods">PhysicsBody constructor's settings</a>)
+    {% aaccopen [exercises_size_answer_1] [Answer] %}
+        {{ exercises_size_answer_1 | markdownify }}
+    {% accclose %}
+    <br>
+
+    2. What's another way of accessing an animation's width and height? (<strong>hint</strong>: 
+    <a href="/documentation/animation#methods">Animation methods</a>)
+    {% aaccopen [exercises_size_answer_2] [Answer] %}
+        For an animation, :getWidth/Height are the same as .frame_width/height:<br><br>
+        {{ exercises_size_answer_2 | markdownify }}
+    {% accclose %}
+{% accclose %}
 <br>
 
-Now that we have an image attached to our player body, we can try making it move. We're going to do this by using the [Input](/documentation/input) module. In a platformer, 
-we mainly move left and right, so first let's bind those keys to actions:
+Now that we have an image attached to our player body, we can try making it move. We're going to do this by using the [Input](/documentation/input) module. 
+In a platformer, we mainly move left and right, so first let's bind those keys to actions:
 
 ~~~ lua
-function Player:init(...)
+function Player:new(...)
     ...
-    mg.input:bind('a', 'move_left')
-    mg.input:bind('d', 'move_right')
+    fg.input:bind('a', 'move_left')
+    fg.input:bind('d', 'move_right')
+    ...
+end
+~~~
+
+If you want to use a gamepad then you can do it by using {% string 'dpleft' %} and {% string 'dpright' %} on top of {% string 'a' %} and {% string 'd' %}:
+
+~~~ lua
+function Player:new(...)
+    ...
+    fg.input:bind('a', 'move_left')
+    fg.input:bind('d', 'move_right')
+    fg.input:bind('dpleft', 'move_left')
+    fg.input:bind('dpright', 'move_right')
     ...
 end
 ~~~
@@ -192,53 +178,53 @@ And then we can check if that action is being pressed:
 ~~~ lua
 function Player:update(dt)
     ...
-    if mg.input:down('move_left') then
+    if fg.input:down('move_left') then
 
     end
-    if mg.input:down('move_right') then
+    if fg.input:down('move_right') then
 
     end
     ...
 end
 ~~~
 
-To actually make the character move we just insert the movement code into each one of those <code class="text">ifs</code>. Since we're using box2d, making an object move has to
-be done through its [Body](http://www.love2d.org/wiki/Body). A very misinformed argument that a lot of people make when talking about physics engines is that they seem to make games feel sluggish, slow
-and with a lack of control. That is only true if you only move your bodies by applying forces to them. We're not going to do that! Instead, we'll set its velocity directly, using the 
-<code class="atrm">:setLinearVelocity</code> call. In this way, you can do velocity and acceleration calculations yourself, and then only apply the final velocity to the body. 
-This gives you as much control as you need over how an object moves. See more on this [here](http://www.iforce2d.net/b2dtut/constant-speed).
+To actually make the character move we just insert the movement code into each one of those {% text ifs %}. Since we're using box2d, making an object move has to
+be done through its [Body](http://www.love2d.org/wiki/Body). A very misinformed argument that a lot of people make when talking about physics engines is that they seem to make 
+games feel sluggish, slow and with a lack of control. That is only true if you only move your bodies by applying forces to them. We're not going to do that! Instead, we'll set 
+its velocity directly, using the {% call :setLinearVelocity %} call. In this way, you can do velocity and acceleration calculations yourself, and then only apply 
+the final velocity to the body. This gives you as much control as you need over how an object moves. See more on this [here](http://www.iforce2d.net/b2dtut/constant-speed).
 
 ~~~ lua
 function Player:update(dt)
     ...
-    if mg.input:down('move_left') then
+    if fg.input:down('move_left') then
         local vx, vy = self.body:getLinearVelocity()
         self.body:setLinearVelocity(-150, vy)
     end
-    if mg.input:down('move_right') then
+    if fg.input:down('move_right') then
         local vx, vy = self.body:getLinearVelocity()
         self.body:setLinearVelocity(150, vy)
     end
     ...
 end
-~~~~
+~~~
 
 Because we only want to set the x component, we first need to get the body's current velocity to use it on the component we don't want changed (in this case the y component). In any case,
-if you run the above you'll notice that the player never stops moving to one side or the other. This is because you're setting the body's linear velocity to <code class="number">150</code> or
-<code class="number">-150</code> and never decreasing it. To fix that, we add damping:
+if you run the above you'll notice that the player never stops moving to one side or the other. This is because you're setting the body's linear velocity to {% number 150 %} or
+{% number -150 %} and never decreasing it. To fix that, we add damping:
 
 ~~~ lua
 function Player:update(dt)
     ...
-    if mg.input:down('move_left') then
+    if fg.input:down('move_left') then
         local vx, vy = self.body:getLinearVelocity()
         self.body:setLinearVelocity(-150, vy)
     end
-    if mg.input:down('move_right') then
+    if fg.input:down('move_right') then
         local vx, vy = self.body:getLinearVelocity()
         self.body:setLinearVelocity(150, vy)
     end
-    if not mg.input:down('move_left') and not mg.input:down('move_right') then
+    if not fg.input:down('move_left') and not fg.input:down('move_right') then
         local vx, vy = self.body:getLinearVelocity()
         self.body:setLinearVelocity(0.8*vx, vy)
     end
@@ -246,8 +232,8 @@ function Player:update(dt)
 end
 ~~~
 
-What we're doing here is simply multiplying the player's x velocity by <code class="number">0.8</code> every frame if he's not moving left nor right. This gives it a nice stopping motion that isn't
-too abrupt nor too slow. Different values will have different effects, for instance, <code class="number">0.95</code> will feel very slow, while <code class="number">0.5</code> will feel very abrupt.
+What we're doing here is simply multiplying the player's x velocity by {% number 0.8 %} every frame if he's not moving left nor right. This gives it a nice stopping motion that isn't
+too abrupt nor too slow. Different values will have different effects, for instance, {% number 0.95 %} will feel very slow, while {% number 0.5 %} will feel very abrupt.
 
 Now that we have proper movement we could add a running animation:
 
@@ -256,24 +242,24 @@ Now that we have proper movement we could add a running animation:
 And to load this animation:
 
 ~~~ lua
-function Player:init(...)
+function Player:new(...)
     ...
-    self.idle = mg.Animation(love.graphics.newImage('idle.png'), 32, 32, 0)
-    self.run = mg.Animation(love.graphics.newImage('run.png'), 32, 32, 0.1)
+    self.idle = fg.Animation(love.graphics.newImage('idle.png'), 32, 32, 0)
+    self.run = fg.Animation(love.graphics.newImage('run.png'), 32, 32, 0.1)
 end
 ~~~
 
-The <code class="number">0.1</code> value is the amount of time passed between each frame change. For the velocity we have now (<code class="number">150</code>), this value feels pretty nice.
+The {% number 0.1 %} value is the amount of time passed between each frame change. For the velocity we have now ({% number 150 %}), this value feels pretty nice.
 
 If you run the game, you'll notice nothing has changed, though. That's because you're neither updating the animation nor drawing it. But we have multiple animations now, how do we know when to 
 update/draw each one? A way is adding a variable that will hold the current animation state, and change that state based on some criteria. Something like this:
 
 ~~~ lua
-function Player:init(world, x, y, settings)
+function Player:new(...)
     ...
     self.animation_state = 'idle'
-    self.idle = mg.Animation(love.graphics.newImage('idle.png'), 32, 32, 0)
-    self.run = mg.Animation(love.graphics.newImage('run.png'), 32, 32, 0.1)
+    self.idle = fg.Animation(love.graphics.newImage('idle.png'), 32, 32, 0)
+    self.run = fg.Animation(love.graphics.newImage('run.png'), 32, 32, 0.1)
 end
 
 function Player:update(dt)
@@ -286,132 +272,123 @@ end
 
 function Player:draw()
     ...
-    self[self.animation_state]:draw(self.x - self[self.animation_state].frame_width/2, 
-                                    self.y - self[self.animation_state].frame_height/2 - 2)
+    self[self.animation_state]:draw(self.x, self.y, 0, 1, 1, 
+                                    self[self.animation_state].frame_width/2, 
+                                    self[self.animation_state].frame_height/2 + 2)
 end
 ~~~
 
-<code class="atrm">.animation_state</code> can either be <code class="string">'idle'</code> or <code class="string">'run'</code>, which are the same names as the ones we 
-have for our variables holding the animations. This is why <code class="text">self[self.animation_state]</code> is a valid way of accessing the current animation. We set the
-current animation by simply checking the player's x velocity: if it's lower than <code class="number">25</code> we set it to idle, otherwise the player's running.
+{% text .animation_state %} can either be {% string 'idle' %} or {% string 'run' %}, which are the same names as the ones we 
+have for our variables holding the animations. This is why {% text self[self.animation_state] %} is a valid way of accessing the current animation. We set the
+current animation by simply checking the player's x velocity: if it's lower than {% number 25 %} we set it to idle, otherwise the player is running.
 
-<dl class="accordion" data-accordion>
-<dd>
-<a href="#panel4">Exercises</a>
-<div id="panel4" class="content">
-<ol>
-    <li> So far the player can only look to the right. How would you change the code so that he's also capable of looking to the left? (<strong>hint</strong>: 
-    create a variable named direction that can be either <code class="string">'left'</code> or <code class="string">'right'</code> and use <a href="http://www.love2d.org/wiki/love.graphics.draw">
+{% capture exercises_run_answer_1 %}
+~~~ lua
+function Player:new(...)
+    ...
+    fg.input:bind('leftx', 'move_horizontal')
+end
+
+function Player:update(dt)
+    ...
+    local x = fg.input:down('move_horizontal')
+    if x then
+        if x < 0 then 
+            local vx, vy = self.body:getLinearVelocity()
+            self.body:setLinearVelocity(-150, vy)
+        elseif x > 0 then
+            local vx, vy = self.body:getLinearVelocity()
+            self.body:setLinearVelocity(150, vy)
+        end
+    else
+        local vx, vy = self.body:getLinearVelocity()
+        self.body:setLinearVelocity(48*dt*vx, vy)
+    end
+    ...
+end
+~~~
+{% endcapture %}
+
+{% capture exercises_run_answer_2 %}
+~~~ lua
+function Player:new(...)
+    ...
+    self.direction = 'right'
+    ...
+end
+
+function Player:update(dt)
+    ...
+    if fg.input:down('move_left') then
+        self.direction = 'left'
+        ...
+    end
+    if fg.input:down('move_right') then
+        self.direction = 'right'
+        ...
+    end
+    ...
+end
+
+function Player:draw()
+    ...
+    if self.direction == 'right' then
+        self[self.animation_state]:draw(self.x, self.y, 0, 1, 1, 
+                                        self[self.animation_state].frame_width/2, 
+                                        self[self.animation_state].frame_height/2 + 2)
+    elseif self.direction == 'left' then
+        self[self.animation_state]:draw(self.x, self.y, 0, -1, 1, 
+                                        self[self.animation_state].frame_width/2, 
+                                        self[self.animation_state].frame_height/2 + 2)
+    end
+end
+~~~
+{% endcapture %}
+
+{% accopen [exercises_run] [Exercises] %}
+    1. Make it so that the player can also be moved by using the gamepad's left stick.
+    {% aaccopen [exercises_run_answer_1] [Answer] %}
+        The analog buttons of a gamepad (sticks and L2/R2) return numbers instead of booleans. In the case of the left stick, there's a number going from -1 to 1
+        for the horizontal position of the stick as well as the vertical one. We're only interested in the horizontal position (left, right) so we only care about
+        the 'leftx' button. We bind this and then check to see if its pressed. If it is, we move the player normally, if isn't then we apply damping.<br><br>
+        {{ exercises_run_answer_1 | markdownify }}
+    {% accclose %}
+    <br>
+
+    2. So far the player can only look to the right. How would you change the code so that he's also capable of looking to the left? (<strong>hint</strong>: 
+    create a variable named direction that can be either {% string 'left' %} or {% string 'right' %} and use <a href="http://www.love2d.org/wiki/love.graphics.draw">
     draw's scaling parameter</a> with -1 on the x component to flip the current image)
-
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel5">Answer</a>
-        <div id="panel5" class="content answer">
+    {% aaccopen [exercises_run_answer_2] [Answer] %}
         The most interesting part of this is the flip. Whenever you scale something by -1 it flips around the point that thing is being drawn at, in this case,
         the top left of the sprite. Naturally, the character is mirrored around this point and therefore moves to the left. To fix this, instead of subtracting half the sprite's width, we add it.
         <br><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-<a href="#n11" name="n11">11</a>
-<a href="#n12" name="n12">12</a>
-<a href="#n13" name="n13">13</a>
-<a href="#n14" name="n14">14</a>
-<a href="#n15" name="n15">15</a>
-<a href="#n16" name="n16">16</a>
-<a href="#n17" name="n17">17</a>
-<a href="#n18" name="n18">18</a>
-<a href="#n19" name="n19">19</a>
-<strong><a href="#n20" name="n20">20</a></strong>
-<a href="#n21" name="n21">21</a>
-<a href="#n22" name="n22">22</a>
-<a href="#n23" name="n23">23</a>
-<a href="#n24" name="n24">24</a>
-<a href="#n25" name="n25">25</a>
-<a href="#n26" name="n26">26</a>
-<a href="#n27" name="n27">27</a>
-<a href="#n28" name="n28">28</a>
-<a href="#n29" name="n29">29</a>
-<strong><a href="#n30" name="n30">30</a></strong>
-</pre></td>
-  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">init</span>(...)
-    ...
-    self.direction = <span class="string"><span class="delimiter">'</span><span class="string">right</span><span class="delimiter">'</span></span>
-    ...
-<span class="keyword">end</span>
-
-<span class="keyword">function</span> Player:<span class="function">update</span>(dt)
-    ...
-    <span class="keyword">if</span> mg.input:down(<span class="string"><span class="delimiter">'</span><span class="string">move_left</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
-        self.direction = <span class="string"><span class="delimiter">'</span><span class="string">left</span><span class="delimiter">'</span></span>
-        ...
-    <span class="keyword">end</span>
-    <span class="keyword">if</span> mg.input:down(<span class="string"><span class="delimiter">'</span><span class="string">move_right</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
-        self.direction = <span class="string"><span class="delimiter">'</span><span class="string">right</span><span class="delimiter">'</span></span>
-        ...
-    <span class="keyword">end</span>
-    ...
-<span class="keyword">end</span>
-
-<span class="keyword">function</span> Player:<span class="function">draw</span>()
-    ...
-    <span class="keyword">if</span> self.direction == <span class="string"><span class="delimiter">'</span><span class="string">right</span><span class="delimiter">'</span></span> <span class="keyword">then</span>
-        self[self.animation_state]:draw(
-            self.x - self[self.animation_state].frame_width/<span class="integer">2</span>, 
-            self.y - self[self.animation_state].frame_height/<span class="integer">2</span> - <span class="integer">2</span>)
-    <span class="keyword">else</span>
-        self[self.animation_state]:draw(
-            self.x + self[self.animation_state].frame_width/<span class="integer">2</span>, 
-            self.y - self[self.animation_state].frame_height/<span class="integer">2</span> - <span class="integer">2</span>, 
-            <span class="integer">0</span>, <span class="integer">-1</span>, <span class="integer">1</span>)
-    <span class="keyword">end</span>
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
-            
-        </div>
-        </dd>
-        </dl>
-
-    </li>
-
-</ol>
-</div>
-</dd>
-</dl>
+        {{ exercises_run_answer_2 | markdownify }}
+    {% accclose %}
+{% accclose %}
 <br>
 
-<h3 id="tilemap" data-magellan-destination="tilemap">Tilemap</h3>
+
+{% title Tilemap %}
 
 We have a character that moves left and right, with animations and everything. But in a platformer we also need to be able to jump! But how to jump without gravity?
-You can't. So we should add some gravity to the [physics world](http://www.love2d.org/wiki/World):
+You can't. Well, you can but you'd just go up endlessly until you hit something, and if there's nothing to hit then you'd just die because you'd freeze as you go up in the sky.
+So we should add some gravity to the [physics world](http://www.love2d.org/wiki/World) to prevent this from happening:
 
 ~~~ lua
--- in main.lua
-function love.load()
+function Game:new()
     ...
-    mg.world.world:setGravity(0, 20*32)
+    fg.world.box2d_world:setGravity(0, 20*32)
     ...
 end
 ~~~
 
-The character also looks pretty small on the screen. We can fix that by zooming the camera in:
+The character also looks pretty small on the screen. We can fix that by scaling the screen up and doubling the screen size:
 
 ~~~ lua
--- in main.lua
-function love.load()
+function Game:new()
     ...
-    mg.world.camera:zoomTo(2)
+    fg.screen_scale = 2
+    fg.setScreenSize(960, 720)
     ...
 end
 ~~~
@@ -425,9 +402,9 @@ create a tilemap that is able to collide with world objects pretty easily. The t
 And the code to create the map:
 
 ~~~ lua
-function love.load()
+function Game:new()
     ...
-    tilemap = mg.Tilemap(400, 420, 32, 32, love.graphics.newImage('tiles.png'), {
+    tilemap = fg.Tilemap(400, 420, 32, 32, love.graphics.newImage('tileset-normal.png'), {
         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
         {1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1},
@@ -440,62 +417,43 @@ function love.load()
     }
     tilemap:setAutoTileRules({6, 14, 12, 2, 10, 8, 7, 15, 13, 3, 11, 9})
     tilemap:autoTile()
-    mg.world:generateCollisionSolids(tilemap)
-    mg.world:addToLayer('Default', tilemap)
+    fg.world:generateCollisionSolids(tilemap)
+    fg.world:addToLayer('Default', tilemap)
     ...
 end
 ~~~
 
-If you can get the player to spawn inside the thingy, then you'll see that the player will collide with the map and not fall off the screen anymore.
+If you can get the player to spawn inside the thingy, then you'll see that it will collide with the map and not fall off the screen anymore.
 
-<dl class="accordion" data-accordion>
-<dd>
-<a href="#panel6">Exercises</a>
-<div id="panel6" class="content">
-<ol>
-    <li> Why is the tilemap only using 1s and 0s? What happens if you use other numbers? Which numbers can actually be used? And how does all this relate to the
-    <code class="atrm">:autoTile</code> call and to the <code class="atrm">:setAutoTileRules</code> call? (<strong>hint</strong>: <a href="/documentation/tilemap">Tilemap</a> module)
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel7">Answer</a>
-        <div id="panel7" class="content answer">
-            The tilemap is only using 1s and 0s because the auto tile call will set the tiles automatically based on the auto tile rules. The possible values are however
-            many tiles your tileset has, in this case it's 12. Any value other than 0 will be recognized as an active tile and changed by the :autoTile call. If that call isn't made
-            then the numbers will correspond to whatever tile has that number from the tileset. The numbers from the tileset are read in a top-down, left-right manner. So top left is 1,
-            top right is 6, bottom left is 7 and bottom right is 12.
-        </div>
-        </dd>
-        </dl>
-    </li>
+{% accopen [exercises_tilemap] [Exercises] %}
+    1. Why is the tilemap only using 1s and 0s? What happens if you use other numbers? Which numbers can actually be used? And how does all this relate to the
+    {% call :autoTile %} and to the {% call :setAutoTileRules %} call? (<strong>hint</strong>: <a href="/documentation/tilemap">Tilemap</a> module)
+    {% aaccopen [exercises_tilemap_answer_1] [Answer] %}
+        The tilemap is only using 1s and 0s because the auto tile call will set the tiles automatically based on the auto tile rules. The possible values are however
+        many tiles your tileset has, in this case it's 12. Any value other than 0 will be recognized as an active tile and changed by the :autoTile call. If that call isn't made
+        then the numbers will correspond to whatever tile has that number from the tileset. The numbers from the tileset are read in a top-down, left-right manner. So top left is 1,
+        top right is 6, bottom left is 7 and bottom right is 12.
+    {% accclose %}
     <br>
 
-    <li> What does the <code class="atrm">:generateCollisionSolids</code> method do? (<strong>hint</strong>: <a href="/documentation/world#tilemap_methods">World's tilemap methods</a>)
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel8">Answer</a>
-        <div id="panel8" class="content answer">
-            It automatically generates world collision solids based on the collision data from the tilemap. Collision data is generated by default to match all non 0 tiles, but can
-            be changed using the :setCollisionData method.
-            See <a href="/documentation/tilemap">Tilemap</a> and <a href="/documentation/world#tilemap_methods">World's tilemap methods</a>. 
-        </div>
-        </dd>
-        </dl>
-    </li>
-</ol>
-</div>
-</dd>
-</dl>
+    2. What does the {% call :generateCollisionSolids %} method do? (<strong>hint</strong>: <a href="/documentation/area#Creation_Methods">Area's creation methods</a>)
+    {% aaccopen [exercises_tilemap_answer_2] [Answer] %}
+        It automatically generates world collision solids based on the collision data from the tilemap. Collision data is generated by default to match all non 0 tiles, but can
+        be changed using the :setCollisionData method.
+    {% accclose %}
+{% accclose %}
 <br>
 
-<h3 id="jump" data-magellan-destination="jump">Jump!</h3>
+{% title Jump %}
 
 Now that we have gravity in, we can add the jump. Jumping is actually fairly simple... Since we're using box2d all we have to do is set the y velocity component to a negative value and the body 
 will go up in the air; gravity will pull the body down, so you get a pretty decent jump arc effortlessly:
 
 ~~~ lua
-function Player:init(...)
+function Player:new(...)
     ...
-    mg.input:bind(' ', 'jump')
+    fg.input:bind(' ', 'jump')
+    fg.input:bind('fdown', 'jump')
     ...
 end
 
@@ -521,7 +479,7 @@ is adding a <code class="atrm">.jumping</code> boolean. Whenever the player pres
 If the player is falling (y velocity > 0), then we set the animation to be the falling one instead. This can all be done like this:
 
 ~~~ lua
-function Player:init(...)
+function Player:new(...)
     ...
     self.jumping = false
     self.jump = mg.Animation(love.graphics.newImage('jump.png'), 32, 32, 0)
@@ -556,7 +514,7 @@ Player:include(mg.PhysicsBody)
 
 Player.static.enter = {'Solid'}
 
-function Player:init(...)
+function Player:new(...)
 ...
 ~~~
 
@@ -577,9 +535,9 @@ Another simple problem that happens and has to do with jumping: if you keep pres
 object's friction. It can be easily fixed by doing:
 
 ~~~ lua
-function Player:init(...)
-    mg.Entity.init(self, world, x, y, settings)
-    self:physicsBodyInit(world, x, y, settings)
+function Player:new(...)
+    mg.Entity.new(self, world, x, y, settings)
+    self:physicsBodyNew(world, x, y, settings)
 
     self.fixture:setFriction(0)
     ...
@@ -832,7 +790,7 @@ The camera module has some advanced features that are of use to any game at all.
 inside the World class to follow the player around:
 
 ~~~ lua
-function Player:init(...)
+function Player:new(...)
     ...
     mg.world.camera:follow(self, {lerp = 1, follow_style = 'platformer'})
     ...

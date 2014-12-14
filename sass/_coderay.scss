@@ -29,6 +29,12 @@ background-color: #ECECEC;
 color: #AAA;
 text-align: right;
 }
+
+.CodeRay span.content, {
+display: inline;
+padding: 0px;
+text-align: none;
+}
  
 .CodeRay .line-numbers a {
 color: #AAA;
@@ -113,7 +119,7 @@ ol.CodeRay li { white-space: pre }
 .CodeRay .string .delimiter { color: #99AD6A; }
  
 .CodeRay .shell { color:#D14 }
-.CodeRay .shell .content { }
+.CodeRay .shell .content { color: #99AD6A; }
 .CodeRay .shell .delimiter { color:#D14 }
  
 .CodeRay .symbol { color:#CF6A4C }

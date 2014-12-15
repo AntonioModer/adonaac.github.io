@@ -41,7 +41,7 @@ or who want to get a feel for how coding things with fuccboiGDX works.
 
 **Advanced**
 
-*   [CurveMaster](tutorials/curvemaster) - enhanced Pong clone using the {% text framework %};
-*   [2D Platformer](tutorials/2d-platformer) - simple 2D platformer using box2d physics and the {% text engine %};
-*   [Dweomercraft](tutorials/dweomercraft) - The Binding of Isaac clone using the {% text engine %} and all its features;
+*   [CurveMaster](curvemaster) - enhanced Pong clone using the {% text framework %};
+*   [2D Platformer](2d-platformer) - simple 2D platformer using box2d physics and the {% text engine %};
+*   [Dweomercraft](dweomercraft) - The Binding of Isaac clone using the {% text engine %} and all its features;
 <br><br>

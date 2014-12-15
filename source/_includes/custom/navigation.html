@@ -23,6 +23,19 @@
           <li><a href="/">fuccboiGDX</a></li>
 
           <li class="has-dropdown">
+          <a href="/tutorials">tutorials</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Advanced</a>
+            <ul class="dropdown">
+                <li><a href="/tutorials/curvemaster">CurveMaster</a></li>
+                <li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
+                <li><a href="/tutorials/dweomercraft">Dweomercraft</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <li class="has-dropdown">
           <a href="/documentation">documentation</a>
           <ul class="dropdown">
             <li class="has-dropdown"><a href="#">Main</a>
@@ -137,6 +150,19 @@
 </div>
 {% endif %}
 
+{% if page.title == 'tutorials' %}
+<div id="nav" class="fixed right show-for-large-up">
+<ul class="side-nav">
+{% if page.title == 'tutorials' %}
+<strong><a href="/tutorials">tutorials</a><br><br></strong>
+<li><a href="/tutorials/curvemaster">CurveMaster</a></li>
+<li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
+<li><a href="/tutorials/dweomercraft">Dweomercraft</a></li>
+{% endif %}
+</ul>
+</div>
+{% endif %}
+
 <div data-magellan-expedition>
 <div id="nav" class="fixed right show-for-large-up">
 <ul class="side-nav">
@@ -144,12 +170,16 @@
 <strong><a href="/documentation">documentation</a><br><br></strong>
 {% endif %}
 
-{% if page.title == 'CurveMaster' %}
+{% if page.title == 'CurveMaster' or page.title == '2D Platformer' %}
 <strong><a href="/tutorials">tutorials</a><br><br></strong>
 {% endif %}
 
 {% if page.title == 'CurveMaster' %}
 {% sidenav2 [Screen Size] [Ball] [Paddles] [Ball-Paddle Collision] [Game Loop] [Curve] [AI] [Polish] [Ball Rotation] [Ball Trails] [Ball Size] [Challenges] [The End] %}
+{% endif %}
+
+{% if page.title == '2D Platformer' %}
+{% sidenav2 [Player Creation] [Animations and Movement] [Tilemap] [Jump] [Camera and Background] [The End] %}
 {% endif %}
 
 {% if page.title == 'Animation' %}

@@ -109,7 +109,8 @@ above you should see the player sprite on top of the blue square.
 ~~~ lua
 -- in Game.lua
 function Game:new()
-    fg.world:createEntity('Player', fg.screen_width/2, fg.screen_height/2, {w = 16, h = 28})
+    fg.world:createEntity('Player', fg.screen_width/2, fg.screen_height/2, 
+                         {w = 16, h = 28})
 end
 
 -- in Player.lua
@@ -715,100 +716,34 @@ Now for the last part: backgrounds. So far the back of the screen is completely 
 {% img center /assets/bg-back.png %}
 {% img center /assets/bg-mid.png %}
 
-fuccboiGDX supports the creation of [Background](/documentation/background) objects, which are just images with <code class="atrm">.x, .y</code> attributes. The <code class="text">engine</code>
-also uses the concepts of layers. Each layer has objects added to it, and then you can apply certain operations to each layer. So far you can only set their draw order and parallax value, 
-but in the future things like applying certain shaders to certain layers will be possible. In any case, we wanna create two new layers with different parallax values, one for the back background
+fuccboiGDX supports the creation of [Background](/documentation/background) objects, which are just images with {% text x, y %} attributes. The {% text engine %}
+also uses the concepts of layers. Each layer has objects added to it, and then you can apply certain operations to each layer.
+We wanna create two new layers with different parallax values, one for the back background
 and one for the front one. After that, we wanna add both images in a position that covers most of our tilemap, like this:
 
 ~~~ lua
-function love.load()
+function Game:new()
     ...
-    mg.world:addLayer('BG1', 0.8)
-    mg.world:addToLayer('BG1', mg.Background(320, 300, love.graphics.newImage('bg_back.png')))
-    mg.world:addLayer('BG2', 0.9)
-    mg.world:addToLayer('BG2', mg.Background(320, 320, love.graphics.newImage('bg_mid.png')))
-    mg.world:setLayerOrder({'BG1', 'BG2', 'Default'})
+    fg.world:addLayer('BG1', {parallax_scale = 0.8})
+    fg.world:addToLayer('BG1', fg.Background(380, 260, love.graphics.newImage('bg-back.png')))
+    fg.world:addLayer('BG2', {parallax_scale = 0.9})
+    fg.world:addToLayer('BG2', fg.Background(440, 270, love.graphics.newImage('bg-mid.png')))
+    fg.world:setLayerOrder({'BG1', 'BG2', 'Default'})
     ...
 end
 ~~~
 
-The <code class="number">0.8</code> and <code class="number">0.9</code> values correspond to that layer's parallax scale. Closer to <code class="number">1</code> means closer to the screen,
-closer to <code class="number">0</code> means further away. The <code class="atrm">:setLayerOrder</code> method receives a table of string, each string representing a layer name. It will then
-save that table, so that when the drawing operations are done, it draw the layers according to it. In this case, <code class="string">'BG1'</code> is drawn first (because it's the back background),
-then <code class="string">'BG2'</code>, and then the <code class="string">'Default'</code> layer where everything with an unspecified layer name goes to.
-
-<dl class="accordion" data-accordion>
-<dd>
-<a href="#panel18">Exercises</a>
-<div id="panel18" class="content">
-<ol>
-    <li> Add multiple backgrounds offset perfectly (without one image being drawn on top of another) so that the black universe behind it all can't ever be seen.
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel19">Answer</a>
-        <div id="panel19" class="content answer">
-        The background's width is 640 and height is 308, so other backgrounds have to be offset by those amounts in different directions.<br><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-<a href="#n11" name="n11">11</a>
-<a href="#n12" name="n12">12</a>
-<a href="#n13" name="n13">13</a>
-<a href="#n14" name="n14">14</a>
-<a href="#n15" name="n15">15</a>
-<a href="#n16" name="n16">16</a>
-<a href="#n17" name="n17">17</a>
-<a href="#n18" name="n18">18</a>
-<a href="#n19" name="n19">19</a>
-<strong><a href="#n20" name="n20">20</a></strong>
-</pre></td>
-  <td class="code"><pre><span class="keyword">function</span> love.<span class="function">load</span>()
-    ...
-    bg_back = love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="string">bg_back.png</span><span class="delimiter">'</span></span>)
-    bg_mid = love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="string">bg_mid.png</span><span class="delimiter">'</span></span>)
-    mg.world:addLayer(<span class="string"><span class="delimiter">'</span><span class="string">BG1</span><span class="delimiter">'</span></span>, <span class="float">0.8</span>)
-    mg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="string">BG1</span><span class="delimiter">'</span></span>, mg.Background(<span class="integer">-320</span>, <span class="integer">300</span>, bg_back))
-    mg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="string">BG1</span><span class="delimiter">'</span></span>, mg.Background(<span class="integer">320</span>, <span class="integer">300</span>, bg_back))
-    mg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="string">BG1</span><span class="delimiter">'</span></span>, mg.Background(<span class="integer">960</span>, <span class="integer">300</span>, bg_back))
-    mg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="string">BG1</span><span class="delimiter">'</span></span>, mg.Background(<span class="integer">-320</span>, <span class="integer">608</span>, bg_back))
-    mg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="string">BG1</span><span class="delimiter">'</span></span>, mg.Background(<span class="integer">320</span>, <span class="integer">608</span>, bg_back))
-    mg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="string">BG1</span><span class="delimiter">'</span></span>, mg.Background(<span class="integer">960</span>, <span class="integer">608</span>, bg_back))
-    mg.world:addLayer(<span class="string"><span class="delimiter">'</span><span class="string">BG2</span><span class="delimiter">'</span></span>, <span class="float">0.9</span>)
-    mg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="string">BG2</span><span class="delimiter">'</span></span>, mg.Background(<span class="integer">-320</span>, <span class="integer">320</span>, bg_mid))
-    mg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="string">BG2</span><span class="delimiter">'</span></span>, mg.Background(<span class="integer">320</span>, <span class="integer">320</span>, bg_mid))
-    mg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="string">BG2</span><span class="delimiter">'</span></span>, mg.Background(<span class="integer">960</span>, <span class="integer">320</span>, bg_mid))
-    mg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="string">BG2</span><span class="delimiter">'</span></span>, mg.Background(<span class="integer">-320</span>, <span class="integer">628</span>, bg_mid))
-    mg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="string">BG2</span><span class="delimiter">'</span></span>, mg.Background(<span class="integer">320</span>, <span class="integer">628</span>, bg_mid))
-    mg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="string">BG2</span><span class="delimiter">'</span></span>, mg.Background(<span class="integer">960</span>, <span class="integer">628</span>, bg_mid))
-    mg.world:setLayerOrder(<span class="map"><span class="delimiter">{</span><span class="string"><span class="delimiter">'</span><span class="string">BG1</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="string">BG2</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="string">Default</span><span class="delimiter">'</span></span><span class="delimiter">}</span></span>)
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
-</pre></td>
-</tr></table>
-</div>
-        </div>
-        </dd>
-        </dl>
-    </li>
-</ol>
-</div>
-</dd>
-</dl>
+The {% number 0.8 %} and {% number 0.9 %} values correspond to that layer's parallax scale. Closer to {% number 1 %} means closer to the screen,
+closer to {% number 0 %} means further away. The {% call :setLayerOrder %} method receives a table of strings, each string representing a layer name. It will then
+save that table, so that when the drawing operations are done, it draws all layers according to the order specified. In this case, {% string 'BG1' %} is drawn first (because it's the back background),
+then {% string 'BG2' %}, and then the {% string 'Default' %} layer where everything with an unspecified layer name goes to.
 <br>
 
-<h3 id="the_end" data-magellan-destination="the_end">The End</h3>
+{% title The End %}
 
 And that's it! We've covered quite a bit of functionality that fuccboiGDX provides. If you finished all the exercises you should also have a good idea on how to read fuccboiGDX's documentation
 and how to figure out things for yourself. And you should also have a small game that plays something like this:
 
 {% img center /assets/2dplatformer.gif %}
+
+You can find the full source code the complete game [here](https://github.com/adonaac/fuccboiGDX-tutorials/tree/master/advanced/2DPlatformer).

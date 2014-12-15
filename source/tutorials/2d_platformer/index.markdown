@@ -245,11 +245,11 @@ And to load this animation:
 function Player:new(...)
     ...
     self.idle = fg.Animation(love.graphics.newImage('idle.png'), 32, 32, 0)
-    self.run = fg.Animation(love.graphics.newImage('run.png'), 32, 32, 0.1)
+    self.run = fg.Animation(love.graphics.newImage('run.png'), 32, 32, 0.18)
 end
 ~~~
 
-The {% number 0.1 %} value is the amount of time passed between each frame change. For the velocity we have now ({% number 150 %}), this value feels pretty nice.
+The {% number 0.18 %} value is the amount of time passed between each frame change. For the velocity we have now ({% number 150 %}), this value feels pretty nice.
 
 If you run the game, you'll notice nothing has changed, though. That's because you're neither updating the animation nor drawing it. But we have multiple animations now, how do we know when to 
 update/draw each one? A way is adding a variable that will hold the current animation state, and change that state based on some criteria. Something like this:
@@ -259,7 +259,7 @@ function Player:new(...)
     ...
     self.animation_state = 'idle'
     self.idle = fg.Animation(love.graphics.newImage('idle.png'), 32, 32, 0)
-    self.run = fg.Animation(love.graphics.newImage('run.png'), 32, 32, 0.1)
+    self.run = fg.Animation(love.graphics.newImage('run.png'), 32, 32, 0.18)
 end
 
 function Player:update(dt)
@@ -459,7 +459,7 @@ end
 
 function Player:update(dt)
     ...
-    if mg.input:pressed('jump') then
+    if fg.input:pressed('jump') then
         local vx, vy = self.body:getLinearVelocity()
         self.body:setLinearVelocity(vx, -250)
     end
@@ -475,21 +475,21 @@ We can also add jumping and falling animations to the player. We're gonna use th
 {% img center /assets/fall.png %}
 
 On top of just adding the animations, we need to figure out a way to make sure that the right animations play when the player is jumping. One way of doing this
-is adding a <code class="atrm">.jumping</code> boolean. Whenever the player presses the jump button we set this to true, and then set the animation based on if this is true or not.
+is adding a {% text .jumping %} boolean. Whenever the player presses the jump button we set this to true, and then set the animation based on if this is true or not.
 If the player is falling (y velocity > 0), then we set the animation to be the falling one instead. This can all be done like this:
 
 ~~~ lua
 function Player:new(...)
     ...
     self.jumping = false
-    self.jump = mg.Animation(love.graphics.newImage('jump.png'), 32, 32, 0)
-    self.fall = mg.Animation(love.graphics.newImage('fall.png'), 32, 32, 0)
+    self.jump = fg.Animation(love.graphics.newImage('jump.png'), 32, 32, 0)
+    self.fall = fg.Animation(love.graphics.newImage('fall.png'), 32, 32, 0)
     ...
 end
 
 function Player:update(dt)
     ...
-    if mg.input:pressed('jump') then
+    if fg.input:pressed('jump') then
         ...
         self.jumping = true
         ...
@@ -504,15 +504,15 @@ function Player:update(dt)
 end
 ~~~
 
-Running this, you'll notice one problem: after the player jumps he never changes to another animation. This happens because <code class="atrm">self.jumping</code> is set to true but never
-set to false again. We want to set it to false when the player hits the ground. To do that, we'll use Mogamett's [Collision](/documentation/collision) system. First, set the player to
+Running this, you'll notice one problem: after the player jumps he never changes to another animation. This happens because {% text self.jumping %} is set to true but never
+set to false again. We want to set it to false when the player hits the ground. To do that, we'll use fuccboiGDX's [Collision](/documentation/collision) system. First, set the player to
 generate a collision callback whenever he enters collision with a [Solid](/documentation/solid):
 
 ~~~ lua
-Player = mg.class('Player', mg.Entity)
-Player:include(mg.PhysicsBody)
+Player = fg.Class('Player', 'Entity')
+Player:implement(fg.PhysicsBody)
 
-Player.static.enter = {'Solid'}
+Player.enter = {'Solid'}
 
 function Player:new(...)
 ...
@@ -521,8 +521,8 @@ function Player:new(...)
 Then, we define the collision callback function and set the jumping boolean to false whenever the collided object is a Solid:
 
 ~~~ lua
-function Player:onCollisionEnter(object, contact)
-    if object.class.name == 'Solid' then
+function Player:onCollisionEnter(other, contact)
+    if other.tag == 'Solid' then
         self.jumping = false
     end
 end
@@ -536,8 +536,8 @@ object's friction. It can be easily fixed by doing:
 
 ~~~ lua
 function Player:new(...)
-    mg.Entity.new(self, world, x, y, settings)
-    self:physicsBodyNew(world, x, y, settings)
+    Player.super.new(self, area, x, y, settings)
+    self:physicsBodyNew(area, x, y, settings)
 
     self.fixture:setFriction(0)
     ...
@@ -547,287 +547,167 @@ end
 Objects with 0 friction will always slide and not get stuck on each other. I really recommend reading [box2d's manual](http://www.box2d.org/manual.html) 
 as well as most tutorials [here](http://www.iforce2d.net/b2dtut/) to learn how box2d behaves better.
 
-<dl class="accordion" data-accordion>
-<dd>
-<a href="#panel9">Exercises</a>
-<div id="panel9" class="content">
-<ol>
-    <li> If you press space multiple times, the player will jump multiple times. How would you go about limitting the number of jumps the player can perform? 
-    (<strong>hint</strong>: create a <code class="atrm">.max_jumps</code> variable and a <code class="atrm">.jumps_left</code> variable)
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel10">Answer</a>
-        <div id="panel10" class="content answer">
-            The .max_jumps variable has the maximum number of jumps the player can perform. Set it to 1. The .jumps_left variable initially has the maximum number of jumps, which is also 1.
-            When the player jumps, decrease the .jumps_left variable, and before each jump add a check to see if the number of jumps left is higher than 1.
-            When the player reaches the ground, set the .jumps_left variable to .max_jumps, since the player needs to be able to jump again.
-            <br><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-<a href="#n11" name="n11">11</a>
-<a href="#n12" name="n12">12</a>
-<a href="#n13" name="n13">13</a>
-<a href="#n14" name="n14">14</a>
-<a href="#n15" name="n15">15</a>
-<a href="#n16" name="n16">16</a>
-<a href="#n17" name="n17">17</a>
-<a href="#n18" name="n18">18</a>
-<a href="#n19" name="n19">19</a>
-<strong><a href="#n20" name="n20">20</a></strong>
-<a href="#n21" name="n21">21</a>
-<a href="#n22" name="n22">22</a>
-<a href="#n23" name="n23">23</a>
-<a href="#n24" name="n24">24</a>
-<a href="#n25" name="n25">25</a>
-<a href="#n26" name="n26">26</a>
-</pre></td>
-  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">init</span>(...)
+{% capture exercises_jump_answer_1 %}
+~~~ lua
+function Player:new(...)
     ...
-    self.max_jumps = <span class="integer">1</span>
+    self.max_jumps = 1
     self.jumps_left = self.max_jumps
     ...
-<span class="keyword">end</span>
+end
 
-<span class="keyword">function</span> Player:<span class="function">update</span>(dt)
+function Player:update(dt)
     ...
-    <span class="keyword">if</span> mg.input:pressed(<span class="string"><span class="delimiter">'</span><span class="string">jump</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
-        <span class="keyword">if</span> self.jumps_left &gt; <span class="integer">0</span> <span class="keyword">then</span>
-            <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
-            self.body:setLinearVelocity(vx, <span class="integer">-250</span>)
-            self.jumping = <span class="predefined-constant">true</span>
-            self.jumps_left = self.jumps_left - <span class="integer">1</span>
-        <span class="keyword">end</span>
-    <span class="keyword">end</span>
+    if fg.input:pressed('jump') then
+        if self.jumps_left > 0 then
+            self.jumping = true
+            local vx, vy = self.body:getLinearVelocity()
+            self.body:setLinearVelocity(vx, -250)
+            self.jumps_left = self.jumps_left - 1
+        end
+    end
     ...
-<span class="keyword">end</span>
+end
 
-<span class="keyword">function</span> Player:<span class="function">onCollisionEnter</span>(object, contact)
-    <span class="keyword">if</span> object.class.name == <span class="string"><span class="delimiter">'</span><span class="string">Solid</span><span class="delimiter">'</span></span> <span class="keyword">then</span>
-        self.jumping = <span class="predefined-constant">false</span>
+function Player:onCollisionEnter(other, contact)
+    if other.tag == 'Solid' then
+        self.jumping = false
         self.jumps_left = self.max_jumps
-    <span class="keyword">end</span>
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
-            With this setup you can easily create double or triple jumps. Simply set the .max_jumps variable to 2 or 3. :-)
-        </div>
-        </dd>
-        </dl>
-    </li>
-    <br>
+    end
+end
+~~~
+{% endcapture %}
 
-    <li> You'll notice that jumping and hitting a Solid (like the sides of the map) before you start falling changes your animation. This happens because the jumping boolean
-    is set to false whenever you hit any Solid, its position not being accounted for. How would you fix this so that the animation only gets reset when you hit solids below you?
-
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel11">Answer</a>
-        <div id="panel11" class="content answer">
-
-        Check the player's bottom position with the solid's top position, if it's less, then the player is above the ground.
-        <br><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-</pre></td>
-  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">onCollisionEnter</span>(object, contact)
-    <span class="keyword">if</span> object.class.name == <span class="string"><span class="delimiter">'</span><span class="string">Solid</span><span class="delimiter">'</span></span> <span class="keyword">then</span>
-        <span class="keyword">local</span> <span class="local-variable">solid_top</span> = object.y - object.h/<span class="integer">2</span>
-        <span class="keyword">local</span> <span class="local-variable">player_bottom</span> = self.y + self.h/<span class="integer">2</span> - <span class="integer">4</span>
-        <span class="keyword">if</span> solid_top &gt; player_bottom <span class="keyword">then</span>
-            self.jumping = <span class="predefined-constant">false</span>
+{% capture exercises_jump_answer_2 %}
+~~~ lua
+function Player:onCollisionEnter(other, contact)
+    if other.tag == 'Solid' then
+        local solid_top = other.object.y - other.object.h/2
+        local player_bottom = self.y + self.h/2 - 4
+        if solid_top > player_bottom then
+            self.jumping = false
             self.jumps_left = self.max_jumps
-        <span class="keyword">end</span>
-    <span class="keyword">end</span>
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
-        </div>
-        </dd>
-        </dl>
-    </li>
+        end
+    end
+end
+~~~
+{% endcapture %}
+
+{% capture exercises_jump_answer_3 %}
+~~~ lua
+function Player:update(dt)
+    ...
+    if fg.input:released('jump') then
+        local vx, vy = self.body:getLinearVelocity()
+        if vy < 0 then self.body:setLinearVelocity(vx, 0) end
+    end
+    ...
+end
+~~~
+{% endcapture %}
+
+{% capture exercises_jump_answer_4 %}
+~~~ lua
+function Player:update(dt)
+    ...
+    if fg.input:pressed('jump') then
+        if self.jumps_left > 0 then
+            self.jumping = true
+            local vx, vy = self.body:getLinearVelocity()
+            self.body:setLinearVelocity(vx, -250)
+            self.jumps_left = self.jumps_left - 1
+            self.jump_press_time = love.timer.getTime()
+        end
+    end
+    if fg.input:released('jump') then
+        local stopJump = function()
+            self.jump_press_time = 0
+            local vx, vy = self.body:getLinearVelocity()
+            if vy < 0 then self.body:setLinearVelocity(vx, 0) end
+        end
+        local dt = love.timer.getTime() - self.jump_press_time
+        if dt >= 0.125 then stopJump()
+        else fg.timer:after(0.125 - dt, function() stopJump() end) end
+    end
+    ...
+end
+~~~
+{% endcapture %}
+
+{% accopen [exercises_jump] [Exercises] %}
+    1. If you press space multiple times, the player will jump multiple times. How would you go about limitting the number of jumps the player can perform? 
+    (<strong>hint</strong>: create a {% text .max_jumps %} variable and a {% text .jumps_left %} variable)
+    {% aaccopen [exercises_jump_answer_1] [Answer] %}
+        The .max_jumps variable has the maximum number of jumps the player can perform. Set it to 1. The .jumps_left variable initially has the maximum number of jumps, which is also 1.
+        When the player jumps, decrease the .jumps_left variable, and before each jump add a check to see if the number of jumps left is higher than 1.
+        When the player reaches the ground, set the .jumps_left variable to .max_jumps, since the player needs to be able to jump again. <br><br>
+        {{ exercises_jump_answer_1 | markdownify }}
+    {% accclose %}
     <br>
 
-    <li> Right now when the player jumps he never stops midair. Something that lots of platformers do is let the player control the jump height a bit. 
-    How would you do this? (<strong>hint</strong>: use mg.input:released)
-
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel12">Answer</a>
-        <div id="panel12" class="content answer">
-            When the player releases the jump key and he is still moving up, set its y velocity component to 0: 
-            <br><br>
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-</pre></td>
-  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">update</span>(dt)
-    ...
-    <span class="keyword">if</span> mg.input:released(<span class="string"><span class="delimiter">'</span><span class="string">jump</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
-        <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
-        <span class="keyword">if</span> vy &lt; <span class="integer">0</span> <span class="keyword">then</span> self.body:setLinearVelocity(vx, <span class="integer">0</span>) <span class="keyword">end</span>
-    <span class="keyword">end</span>
-    ...
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
-        </div>
-        </dd>
-        </dl>
-    </li>
+    2. You'll notice that jumping and hitting a Solid (like the sides of the map) before you start falling changes your animation. This happens because the jumping boolean
+    is set to false whenever you hit any Solid, its position not being accounted for. How would you fix this so that the animation only gets reset when you hit solids below you?
+    {% aaccopen [exercises_jump_answer_2] [Answer] %}
+        Check the player's bottom position with the solid's top position, if it's less, then the player is above the ground. <br><br>
+        {{ exercises_jump_answer_2 | markdownify }}
+    {% accclose %}
     <br>
 
-    <li> Having all this done, there's another problem: tapping the space key makes the player only jump slightly. Another thing that lots of platformers do
-    is set a minimum jump height. How would you even do that? (<strong>hint</strong>: use the <a href="/documentation/timer">Timer</a> module)
+    3. Right now when the player jumps he never stops midair. Something that lots of platformers do is let the player control the jump height a bit. 
+    How would you do this? (<strong>hint</strong>: use {% text fg.input:released %})
+    {% aaccopen [exercises_jump_answer_3] [Answer] %}
+        When the player releases the jump key and he is still moving up, set its y velocity component to 0: <br><br>
+        {{ exercises_jump_answer_3 | markdownify }}
+    {% accclose %}
+    <br>
 
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel13">Answer</a>
-        <div id="panel13" class="content answer">
-
+    4. Having all this done, there's another problem: tapping the space key makes the player only jump slightly. Another thing that lots of platformers do
+    is set a minimum jump height. How would you even do that?!? (<strong>hint</strong>: use the <a href="/documentation/timer">Timer</a> module)
+    {% aaccopen [exercises_jump_answer_4] [Answer] %}
         This one is a bit more complicated, that's why it's the last exercise! There are certainly multiple ways of solving this problem, but this was the one I found.
         To add a minimum jump height we have to keep track of how long has it been since the player pressed the jump button and then only after a certain amount of time,
         let the player release the jump button. Of course, the player can actually release it before our time, but we have to make sure the actual physics body doesn't know this.
         To do this we add a .jump_press_time variable: when the jump key is pressed, this variable holds the time it was pressed. Then, when the jump key is released we take the
         difference between the current time and the time jump was pressed. If it's more than some threshold value, we stop jumping. This should be obvious: if the player is above
         our desired minimum height and he releases the jump key, he should stop jumping normally. The tricky condition comes if the player is below our minimum jump height (= the difference
-        is less than our threshold): we have to make sure that the jump is only stopped after enough time has passed... This is done is line 21.
-        <br><br>
-
-
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-<a href="#n11" name="n11">11</a>
-<a href="#n12" name="n12">12</a>
-<a href="#n13" name="n13">13</a>
-<a href="#n14" name="n14">14</a>
-<a href="#n15" name="n15">15</a>
-<a href="#n16" name="n16">16</a>
-<a href="#n17" name="n17">17</a>
-<a href="#n18" name="n18">18</a>
-<a href="#n19" name="n19">19</a>
-<strong><a href="#n20" name="n20">20</a></strong>
-<a href="#n21" name="n21">21</a>
-<a href="#n22" name="n22">22</a>
-<a href="#n23" name="n23">23</a>
-</pre></td>
-  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">update</span>(dt)
-    ...
-    <span class="keyword">if</span> mg.input:pressed(<span class="string"><span class="delimiter">'</span><span class="string">jump</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
-        <span class="keyword">if</span> self.jumps_left &gt; <span class="integer">0</span> <span class="keyword">then</span>
-            <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
-            self.body:setLinearVelocity(vx, <span class="integer">-250</span>)
-            self.jumping = <span class="predefined-constant">true</span>
-            self.jumps_left = self.jumps_left - <span class="integer">1</span>
-            self.jump_press_time = love.timer.getTime()
-        <span class="keyword">end</span>
-    <span class="keyword">end</span>
-    ...
-    <span class="keyword">if</span> mg.input:released(<span class="string"><span class="delimiter">'</span><span class="string">jump</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
-        <span class="keyword">local</span> <span class="local-variable">stopJump</span> = <span class="keyword">function</span>()
-            self.jump_press_time = <span class="integer">0</span>
-            <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
-            <span class="keyword">if</span> vy &lt; <span class="integer">0</span> <span class="keyword">then</span> self.body:setLinearVelocity(vx, <span class="integer">0</span>) <span class="keyword">end</span>
-        <span class="keyword">end</span>
-        <span class="keyword">local</span> <span class="local-variable">dt</span> = love.timer.getTime() - self.jump_press_time
-        <span class="keyword">if</span> dt &gt;= <span class="float">0.125</span> <span class="keyword">then</span> stopJump()
-        <span class="keyword">else</span> mg.timer:after(<span class="float">0.125</span> - dt, <span class="keyword">function</span>() stopJump() <span class="keyword">end</span>) <span class="keyword">end</span>
-    <span class="keyword">end</span>
-<span class="keyword">end</span>
-</pre></td>
-</tr></table>
-</div>
-             
-        </div>
-        </dd>
-        </dl>
-
-    </li>
-</ol>
-</div>
-</dd>
-</dl>
+        is less than our threshold): we have to make sure that the jump is only stopped after enough time has passed... This is done is line 20. <br><br>
+        {{ exercises_jump_answer_4 | markdownify }}
+    {% accclose %}
+{% accclose %}
 <br>
 
-<h3 id="camera_and_background" data-magellan-destination="camera_and_background">Camera and Background</h3>
+{% title Camera and Background %}
 
 So far as the player moves in space, nothing else moves with him. We can fix that by using the [Camera](/documentation/camera) module.
-The camera module has some advanced features that are of use to any game at all. Since we're using the <code class="text">engine</code>, we'll use instantiated camera
+The camera module has some advanced features that are of use to any game at all. Since we're using the {% text engine %}, we'll use instantiated camera
 inside the World class to follow the player around:
 
 ~~~ lua
 function Player:new(...)
     ...
-    mg.world.camera:follow(self, {lerp = 1, follow_style = 'platformer'})
+    fg.world.camera:follow(self, {lerp = 1, follow_style = 'platformer'})
     ...
 end
 ~~~
 
-You can add <code class="text">mg.world.camera.debug_draw = true</code> to see the camera's debug drawing information. You should see some information about the follow style, lerp and lead values
+You can add {% text fg.world.camera.debug_draw = true %} to see the camera's debug drawing information. You should see some information about the follow style, lerp and lead values
 as well as the camera's deadzone. For a platformer it's a thin but tall window around the player, meaning that if the player jumps the camera doesn't follow him directly as not to bother whoever
 is watching the screen too much. Play around with different lerp and lead values, as well as tracking styles to see what they all do. More information about all of this can be found in the 
 [Camera module page](/documentation/camera).
 
-<dl class="accordion" data-accordion>
-<dd>
-<a href="#panel14">Exercises</a>
-<div id="panel14" class="content">
-<ol>
-    <li> Using Mogamett's camera module, what are the basic concepts behind the implementation of most of the features presented in this video? (<strong>hint</strong>: 
-    <a href="/documentation/camera#attributes">Camera's attributes</a>)<br><br>
+{% accopen [exercises_camera] [Exercises] %}
+    1. Using fuccboiGDX's camera module, what are the basic concepts behind the implementation of most of the features presented in this video? (<strong>hint</strong>: 
+    <a href="/documentation/camera#Attributes">Camera's attributes</a>)<br><br>
 <div class="embed-video-container center"><iframe width="480" height="360" src="http://www.youtube.com/embed/aAKwZt3aXQM " frameborder="0" allowfullscreen=""></iframe></div>
 <br>
-        <dl class="accordion" data-accordion>
-        <dd>
-        <a href="#panel15">Answer</a>
-        <div id="panel15" class="content answer">
+    {% aaccopen [exercises_camera_answer_1] [Answer] %}
         Using tha Camera's .target attribute. To make the camera move/focus towards certain objects, calculate the middle point between the target objects (usually player + something else)
         and then set the .target attribute to that point every frame. That attribute usually takes an entire object, but it really only uses the .x and .y attributes, so you can simply pass
         a named table as well, like this: {x = (player.x + desired_target.x)/2, y = (player.y + desired_target.y)/2}. We can achieve the "leading" behavior for the rocket part near the end
         by playing with the .follow_lead attribute, which places the camera in front of the target based on its velocity. For a smooth camera movement we can play with the lerp value.
         For the player not leaving a certain area of the screen we can use custom deadzones.
-        </div>
-        </dd>
-        </dl>
-    </li>
-</ol>
-</div>
-</dd>
-</dl>
+    {% accclose %}
+{% accclose %}
 <br>
 
 Now for the last part: backgrounds. So far the back of the screen is completely black, let's fix that by using these images:
@@ -835,7 +715,7 @@ Now for the last part: backgrounds. So far the back of the screen is completely 
 {% img center /assets/bg-back.png %}
 {% img center /assets/bg-mid.png %}
 
-Mogamett supports the creation of [Background](/documentation/background) objects, which are just images with <code class="atrm">.x, .y</code> attributes. The <code class="text">engine</code>
+fuccboiGDX supports the creation of [Background](/documentation/background) objects, which are just images with <code class="atrm">.x, .y</code> attributes. The <code class="text">engine</code>
 also uses the concepts of layers. Each layer has objects added to it, and then you can apply certain operations to each layer. So far you can only set their draw order and parallax value, 
 but in the future things like applying certain shaders to certain layers will be possible. In any case, we wanna create two new layers with different parallax values, one for the back background
 and one for the front one. After that, we wanna add both images in a position that covers most of our tilemap, like this:
@@ -928,7 +808,7 @@ then <code class="string">'BG2'</code>, and then the <code class="string">'Defau
 
 <h3 id="the_end" data-magellan-destination="the_end">The End</h3>
 
-And that's it! We've covered quite a bit of functionality that Mogamett provides. If you finished all the exercises you should also have a good idea on how to read Mogamett's documentation
+And that's it! We've covered quite a bit of functionality that fuccboiGDX provides. If you finished all the exercises you should also have a good idea on how to read fuccboiGDX's documentation
 and how to figure out things for yourself. And you should also have a small game that plays something like this:
 
 {% img center /assets/2dplatformer.gif %}

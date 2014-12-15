@@ -209,19 +209,19 @@ camera:shake(5, 0.5, {direction = 'vertical'})
 *   debug drawing, shows the current follow style, lead and lerp, as well as the deadzone and current target 
 <br><br>
 
-{% attribute follow_lead follow_lead number %}
+{% attribute follow_style follow_style string %}
+
+*   the camera follow_style, only set with the {% call :follow %} call, otherwise the deadzone doesn't get reset 
+<br><br>
+
+{% attribute lead lead number %}
 
 *   how much the camera should be ahead of the moving target 
 <br><br>
 
-{% attribute follow_lerp follow_lerp number %}
+{% attribute lerp lerp number %}
 
 *   how much the camera should lag behind the moving target 
-<br><br>
-
-{% attribute follow_style follow_style string %}
-
-*   the camera follow_style, only set with the {% call :follow %} call, otherwise the deadzone doesn't get reset 
 <br><br>
 
 {% attribute max_shake_intensity max_shake_intensity number %}

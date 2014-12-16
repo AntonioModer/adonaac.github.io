@@ -10,7 +10,6 @@ sidebar: false
 
 {% title Getting Started %}
 
-
 1.  Download and install [LÖVE 0.9.1](http://love2d.org)
 2.  Download [fuccboiGDX](downloads/fuccboi.zip)
 3.  Create a new folder for your project and copy the contents of the fuccboi.zip file to it
@@ -43,5 +42,24 @@ or who want to get a feel for how coding things with fuccboiGDX works.
 
 *   [CurveMaster](curvemaster) - enhanced Pong clone using the {% text framework %};
 *   [2D Platformer](2d-platformer) - simple 2D platformer using box2d physics and the {% text engine %};
-*   [Dweomercraft](dweomercraft) - The Binding of Isaac clone using the {% text engine %} and all its features;
+<!--*   [Dweomercraft](dweomercraft) - The Binding of Isaac clone using the {% text engine %} and all its features;-->
+
+**Examples**
+
+*   [Animation](examples#Animation)
+*   [Area](examples#Area)
+*   [Camera](examples#Camera)
+*   [Collision](examples#Collision)
+*   [Gamestate](examples#Gamestate)
+*   [Input](examples#Input)
+*   [Layers](examples#Layers)
+*   [Loading](examples#Loading)
+*   [Objects](examples#Objects)
+*   [Particles](examples#Particles)
+*   [Random](examples#Random)
+*   [Serialization](examples#Serialization)
+*   [Shaders](examples#Shaders)
+*   [Sound](examples#Sound)
+*   [Text](examples#Text)
+*   [Timing](examples#Timing)
 <br><br>

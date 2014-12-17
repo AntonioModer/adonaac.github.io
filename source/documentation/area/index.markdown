@@ -197,17 +197,30 @@ for _, entity in ipairs(entities) do entity:dealDamage(math.random(5, 10)) end
 {% method queryClosestAreaCircle ids table[number] x number y number radius number object_types table[string] %}
 
 *   returns the closest entity to position {% text x, y %} inside {% text radius %} 
+*   {% param ids %}: a table of numbers (object ids) saying which objects to ignore, usually {% text {self.id} %}, meaning that it shouldn't
+consider the object that called it when doing the proximity calculations
 *   {% param x, y %}: the center of the circle being checked for entities
 *   {% param radius %}: the radius of the circle being checked for entities
 *   {% param object_types %}: the class names of the entities that should be acted upon
 <br><br>
 
-{% method getEntitiesBy key string value any object_types table[string] %}
+{% method getEntitiesBy key string value any object_types table[string][optional] %}
 
 *   returns a table of entities where {% text entity.key == value %}
 *   {% param key %}: the key (as a string) to look for
 *   {% param value %}: the value to look for
-*   {% param object_types %}: the class names of the entities that should be acted upon
+*   {% param object_types %}: the class names of the entities that should be acted upon, if omitted defaults to all classes
+<br><br>
+
+{% method getEntitiesWhere condition function object_types table[string][optional] %}
+
+*   returns a table of entities where condition is satisfied
+*   {% param condition %}: the condition to be satisfied
+*   {% param object_types %}: the class names of the entities that should be acted upon, if omitted defaults to all classes
+
+~~~ lua
+entities = fg.world:getEntitiesWhere(function(object) if object.hp < 5 then return true end end)
+~~~
 <br><br>
 
 {% title Attributes %}

@@ -9,9 +9,9 @@
     settings : {
       active_class: 'active',
       threshold: 0, // pixels from the top of the expedition for it to become fixes
-      destination_threshold: 20, // pixels from the top of destination for it to be considered active
+      destination_threshold: 0, // pixels from the top of destination for it to be considered active
       throttle_delay: 0, // calculation throttling to increase framerate
-      fixed_top: 100 // top distance in pixels assigend to the fixed element on scroll
+      fixed_top: 0// top distance in pixels assigend to the fixed element on scroll
     },
 
     init : function (scope, method, options) {

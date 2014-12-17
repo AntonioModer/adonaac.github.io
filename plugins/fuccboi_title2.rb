@@ -7,7 +7,7 @@ module Jekyll
         end
 
         def render(context)
-            %(<h5 id="#{@title.tr(" ", "_")}" data-magellan-destination="#{@title.tr(" ", "_")}">#{@title}</h5>)
+            %(<h5 id="#{@title.tr(" ", "_")}">#{@title}</h5>)
         end
     end
 end

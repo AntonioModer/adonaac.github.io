@@ -14,7 +14,7 @@ making game creation easier, faster, and buzzword! It's free, open source and su
 
 <div class="row">
     <div class="small-4 columns text-center">
-        <a href="/downloads/fuccboi.zip" class="button expand">download</a>
+        <a href="https://github.com/adonaac/fuccboiGDX/archive/master.zip" class="button expand">download</a>
     </div>
 
     <div class="small-4 columns text-center">

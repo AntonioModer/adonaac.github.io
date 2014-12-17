@@ -12,7 +12,7 @@ sidebar: false
 
 ~~~ lua
 -- physics enabled entity template
-MyClass = fg.class('MyClass', 'Entity')
+MyClass = fg.Class('MyClass', 'Entity')
 MyClass:implement(fg.PhysicsBody)
 
 function MyClass:new(area, x, y, settings)

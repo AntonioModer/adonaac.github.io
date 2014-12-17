@@ -29,7 +29,28 @@
             <ul class="dropdown">
                 <li><a href="/tutorials/curvemaster">CurveMaster</a></li>
                 <li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
-                <!--<li><a href="/tutorials/dweomercraft">Dweomercraft</a></li>-->
+            </ul>
+            </li>
+
+            <li class="has-dropdown"><a href="#">Examples</a>
+            <ul class="dropdown">
+                <li><a href="/examples#Animation">Animation</a></li>
+                <li><a href="/examples#Area">Area</a></li>
+                <li><a href="/examples#Camera">Camera</a></li>
+                <li><a href="/examples#Collision">Collision</a></li>
+                <li><a href="/examples#Gamestate">Gamestate</a></li>
+                <li><a href="/examples#Input">Input</a></li>
+                <li><a href="/examples#Layers">Layers</a></li>
+                <li><a href="/examples#Loading">Loading</a></li>
+                <li><a href="/examples#Objects">Objects</a></li>
+                <li><a href="/examples#Particles">Particles</a></li>
+                <li><a href="/examples#Random">Random</a></li>
+                <li><a href="/examples#Serialization">Serialization</a></li>
+                <li><a href="/examples#Shaders">Shaders</a></li>
+                <li><a href="/examples#Sound">Sound</a></li>
+                <li><a href="/examples#Text">Text</a></li>
+                <li><a href="/examples#Tilemap">Tilemap</a></li>
+                <li><a href="/examples#Timing">Timing</a></li>
             </ul>
             </li>
           </ul>
@@ -157,7 +178,23 @@
 <strong><a href="/tutorials">tutorials</a><br><br></strong>
 <li><a href="/tutorials/curvemaster">CurveMaster</a></li>
 <li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
-<li><a href="/tutorials/dweomercraft">Dweomercraft</a></li>
+<li><a href="/examples#Animation">Animation</a></li>
+<li><a href="/examples#Area">Area</a></li>
+<li><a href="/examples#Camera">Camera</a></li>
+<li><a href="/examples#Collision">Collision</a></li>
+<li><a href="/examples#Gamestate">Gamestate</a></li>
+<li><a href="/examples#Input">Input</a></li>
+<li><a href="/examples#Layers">Layers</a></li>
+<li><a href="/examples#Loading">Loading</a></li>
+<li><a href="/examples#Objects">Objects</a></li>
+<li><a href="/examples#Particles">Particles</a></li>
+<li><a href="/examples#Random">Random</a></li>
+<li><a href="/examples#Serialization">Serialization</a></li>
+<li><a href="/examples#Shaders">Shaders</a></li>
+<li><a href="/examples#Sound">Sound</a></li>
+<li><a href="/examples#Text">Text</a></li>
+<li><a href="/examples#Tilemap">Tilemap</a></li>
+<li><a href="/examples#Timing">Timing</a></li>
 {% endif %}
 </ul>
 </div>
@@ -170,7 +207,7 @@
 <strong><a href="/documentation">documentation</a><br><br></strong>
 {% endif %}
 
-{% if page.title == 'CurveMaster' or page.title == '2D Platformer' %}
+{% if page.title == 'CurveMaster' or page.title == '2D Platformer' or page.title == 'Examples' %}
 <strong><a href="/tutorials">tutorials</a><br><br></strong>
 {% endif %}
 
@@ -180,6 +217,10 @@
 
 {% if page.title == '2D Platformer' %}
 {% sidenav2 [Player Creation] [Animations and Movement] [Tilemap] [Jump] [Camera and Background] [The End] %}
+{% endif %}
+
+{% if page.title == 'Examples' %}
+{% sidenav Animation Area Camera Collision Gamestate Input Layers Loading Objects Particles Random Serialization Shaders Sound Text Tilemap Timing %}
 {% endif %}
 
 {% if page.title == 'Animation' %}
@@ -198,7 +239,7 @@
 {% sidenav2 [HitFrameStop Methods] %}
 {% nav3 hitFrameStopAdd %}
 {% sidenav2 [Query Methods] %}
-{% nav3 applyAreaCircle applyAreaLine applyAreaPolygon applyAreaRectangle queryAreaCircle queryAreaLine queryAreaPolygon queryAreaRectangle queryClosestAreaCircle getEntitiesBy %}
+{% nav3 applyAreaCircle applyAreaLine applyAreaPolygon applyAreaRectangle queryAreaCircle queryAreaLine queryAreaPolygon queryAreaRectangle queryClosestAreaCircle getEntitiesBy getEntitiesWhere %}
 {% sidenav Attributes %}
 {% nav2 [active active] [fg fg] [position x y] [world world] %}
 {% endif %}

@@ -11,10 +11,10 @@ sidebar: false
 {% title Getting Started %}
 
 1.  Download and install [LÖVE 0.9.1](http://love2d.org)
-2.  Download [fuccboiGDX](downloads/fuccboi.zip)
+2.  Download [fuccboiGDX](https://github.com/adonaac/fuccboiGDX/archive/master.zip)
 3.  Create a new folder for your project and copy the contents of the fuccboi.zip file to it
 4.  [Run](https://www.love2d.org/wiki/Getting_Started) the project folder
-5.  You should see a black 480x360 screen. If this happens then you're set for starting a new project!
+5.  You should see a black 480x360 screen. If this happens then you can start coding on the Game.lua file.
 <br><br>
 
 {% title Tutorials %}
@@ -42,7 +42,6 @@ or who want to get a feel for how coding things with fuccboiGDX works.
 
 *   [CurveMaster](curvemaster) - enhanced Pong clone using the {% text framework %};
 *   [2D Platformer](2d-platformer) - simple 2D platformer using box2d physics and the {% text engine %};
-<!--*   [Dweomercraft](dweomercraft) - The Binding of Isaac clone using the {% text engine %} and all its features;-->
 
 **Examples**
 
@@ -61,5 +60,6 @@ or who want to get a feel for how coding things with fuccboiGDX works.
 *   [Shaders](examples#Shaders)
 *   [Sound](examples#Sound)
 *   [Text](examples#Text)
+*   [Tilemap](examples#Text)
 *   [Timing](examples#Timing)
 <br><br>

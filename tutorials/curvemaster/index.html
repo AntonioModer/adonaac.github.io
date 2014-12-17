@@ -1,0 +1,2225 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <script src="/js/vendor/modernizr.js"></script>
+  <meta charset="utf-8">
+  <title>CurveMaster - fuccboiGDX</title>
+  <meta name="author" content="adnzzzzZ">
+
+  
+  <meta name="description" content="<!-- CurveMaster --> Knowledge Requirements Essential Programming Concepts (variables, conditionals, etc&#8230;) Lua
+LÖVE
+Essential Game Programming &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fuccboi.moe/tutorials/curvemaster">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
+
+  <script src="/js/vendor/jquery.js"></script>
+  <script src="/js/vendor/fastclick.js"></script>
+
+  <script src="/js/foundation.min.js"></script>
+  <script src="/js/foundation/foundation.magellan.js"></script>
+  <script src="/js/foundation/foundation.topbar.js"></script>
+  <script src="/js/foundation/foundation.accordion.js"></script>
+  <script src="/js/foundation/foundation.orbit.js"></script>
+  <script src="/js/foundation/foundation.dropdown.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <script>
+
+  $(document).ready(function(){
+    $(document).foundation();
+  });
+
+  </script>
+
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-51118504-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar" >
+  <header role="banner" class="top-header"><!--<hgroup>
+  <h1 class="text-center">
+  	<a href="/">fuccboiGDX</a>
+  </h1>
+  
+</hgroup>-->
+
+<!--<ul class="example-orbit-content" data-orbit>
+  <li data-orbit-slide="headline-1">
+    <div>
+      <h2>Headline 1</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <div>
+      <h2>Headline 2</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div>
+      <h2>Headline 3</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+</ul>-->
+
+</header>
+  <nav role="navigation"><ul class="subscription hide" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+
+
+
+<div class="sticky">
+
+  <nav class="top-bar" data-topbar role="navigation">
+
+    <!--
+    <ul class="title-area right">
+        <li class="name">
+          <h1><a href="/">fuccboiGDX <i class="fa fa-heart"></i></i></i></a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    -->
+
+
+    <section class="top-bar-section">
+      <ul class="main-navigation right show-for-medium-up">
+          <li><a href="https://github.com/adonaac/fuccboiGDX">github</a></li>
+          <li><a href="https://twitter.com/adnzzzzZ">twitter</i></a></li>
+      </ul>
+
+      <ul class="main-navigation left">
+          <li><a href="/">fuccboiGDX</a></li>
+
+          <li class="has-dropdown">
+          <a href="/tutorials">tutorials</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Advanced</a>
+            <ul class="dropdown">
+                <li><a href="/tutorials/curvemaster">CurveMaster</a></li>
+                <li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
+            </ul>
+            </li>
+
+            <li class="has-dropdown"><a href="#">Examples</a>
+            <ul class="dropdown">
+                <li><a href="/examples#Animation">Animation</a></li>
+                <li><a href="/examples#Area">Area</a></li>
+                <li><a href="/examples#Camera">Camera</a></li>
+                <li><a href="/examples#Collision">Collision</a></li>
+                <li><a href="/examples#Gamestate">Gamestate</a></li>
+                <li><a href="/examples#Input">Input</a></li>
+                <li><a href="/examples#Layers">Layers</a></li>
+                <li><a href="/examples#Loading">Loading</a></li>
+                <li><a href="/examples#Objects">Objects</a></li>
+                <li><a href="/examples#Particles">Particles</a></li>
+                <li><a href="/examples#Random">Random</a></li>
+                <li><a href="/examples#Serialization">Serialization</a></li>
+                <li><a href="/examples#Shaders">Shaders</a></li>
+                <li><a href="/examples#Sound">Sound</a></li>
+                <li><a href="/examples#Text">Text</a></li>
+                <li><a href="/examples#Tilemap">Tilemap</a></li>
+                <li><a href="/examples#Timing">Timing</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <li class="has-dropdown">
+          <a href="/documentation">documentation</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Main</a>
+            <ul class="dropdown">
+                <li><a href="/documentation/fg">fg</a></li>
+                <li><a href="/documentation/render">Render</a></li>
+                <li><a href="/documentation/world">World</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Logic</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/area">Area</a></li>
+            <li><a href="/documentation/class">Class</a></li>
+            <li><a href="/documentation/debug">Debug</a></li>
+            <li><a href="/documentation/entity">Entity</a></li>
+            <li><a href="/documentation/gamestate">Gamestate</a></li>
+            <li><a href="/documentation/input">Input</a></li>
+            <li><a href="/documentation/loader">Loader</a></li>
+            <li><a href="/documentation/objectpool">ObjectPool</a></li>
+                <li class="has-dropdown"><a href="#">Physics</a>
+                <ul class="dropdown">
+                    <li><a href="/documentation/collision">Collision</a></li>
+                    <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
+                    <li><a href="/documentation/solid">Solid</a></li>
+                </ul>
+                </li>
+            <li><a href="/documentation/serial">Serial</a></li>
+            <li><a href="/documentation/timer">Timer</a></li>
+            <li><a href="/documentation/utils">utils</a></li>
+            <li><a href="/documentation/vector">Vector</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Visual</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/animation">Animation</a></li>
+            <li><a href="/documentation/background">Background</a></li>
+            <li><a href="/documentation/camera">Camera</a></li>
+            <li><a href="/documentation/particles">Particles</a></li>
+            <li><a href="/documentation/spritebatch">Spritebatch</a></li>
+            <li><a href="/documentation/text">Text</a></li>
+            <li><a href="/documentation/tilemap">Tilemap</a></li>
+            <li><a href="/documentation/uitools">UI Tools</a></li>
+            </ul>
+
+            <li class="has-dropdown"><a href="#">Sound</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/sound">Sound</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <!--
+          <li class="has-dropdown">
+            <a href="/no-sidebar">No Sidebar Page</a>
+
+            <ul class="dropdown">
+              <li><a href="/no-sidebar/left-sidebar">Left Sidebar Page</a></li>
+              <li><a href="/no-sidebar/right-sidebar">Right Sidebar Page</a></li>
+              <li><a href="/no-sidebar/example-formatting">Example Formatting</a></li>
+            </ul>
+
+          </li>
+
+          <li><a href="/blog">Blog</a></li>
+
+          <li><a href="/blog/archives">Archives</a></li>
+          -->
+
+      </ul>
+
+    </section>
+  </nav>
+
+</div>
+
+
+
+
+
+
+<div data-magellan-expedition>
+<div id="nav" class="fixed right show-for-large-up">
+<ul class="side-nav">
+
+
+
+<strong><a href="/tutorials">tutorials</a><br><br></strong>
+
+
+
+<li data-magellan-arrival="Screen_Size"><a href="#Screen_Size">Screen Size</a></li><li data-magellan-arrival="Ball"><a href="#Ball">Ball</a></li><li data-magellan-arrival="Paddles"><a href="#Paddles">Paddles</a></li><li data-magellan-arrival="Ball-Paddle_Collision"><a href="#Ball-Paddle_Collision">Ball-Paddle Collision</a></li><li data-magellan-arrival="Game_Loop"><a href="#Game_Loop">Game Loop</a></li><li data-magellan-arrival="Curve"><a href="#Curve">Curve</a></li><li data-magellan-arrival="AI"><a href="#AI">AI</a></li><li data-magellan-arrival="Polish"><a href="#Polish">Polish</a></li><li data-magellan-arrival="Ball_Rotation"><a href="#Ball_Rotation">Ball Rotation</a></li><li data-magellan-arrival="Ball_Trails"><a href="#Ball_Trails">Ball Trails</a></li><li data-magellan-arrival="Ball_Size"><a href="#Ball_Size">Ball Size</a></li><li data-magellan-arrival="Challenges"><a href="#Challenges">Challenges</a></li><li data-magellan-arrival="The_End"><a href="#The_End">The End</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</div>
+</div>
+
+</nav>
+  <div id="main">
+    <div id="content" class="row">
+      
+<div class="small-12 medium-12 large-10 large-centered columns">
+
+  <article role="article">
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">CurveMaster</h1>
+      
+      
+    </header>
+    -->
+    <dl class="accordion" data-accordion=""><dd><a href="#requirements">Knowledge Requirements</a><div id="requirements" class="content">
+<ul class="require">
+<li>Essential Programming Concepts (variables, conditionals, etc&#8230;) </li>
+<li><a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">Lua</a></li>
+<li>LÖVE</li>
+<li>Essential Game Programming (Pong, Tetris, &#8230;)</li>
+<li>Object Oriented Programming</li>
+</ul>
+</div></dd></dl>
+
+<p><img class="center" src="/assets/curvemaster.gif" /></p>
+
+<p>This tutorial will teach you about some of the basic features of the framework 
+through building an enhanced version of Pong. You should have fuccboiGDX 
+<a href="/downloads/fuccboi.zip">downloaded</a> and <a href="/tutorials#Getting_Started">set up</a> 
+properly.
+<br /><br /></p>
+
+<h3 id="Screen_Size" data-magellan-destination="Screen_Size">Screen Size</h3>
+
+<p>Before anything else what we’re gonna do first is change the screen size so that it’s bigger.
+To do this we can start in the <code class="text">Game.lua</code> object’s constructor and add the <code class="text">fg.setScreenSize</code> call:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Game:<span class="function">new</span>()
+    fg.setScreenSize(<span class="integer">800</span>, <span class="integer">600</span>)
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<h3 id="Ball" data-magellan-destination="Ball">Ball</h3>
+
+<p>After that is done we’re gonna create the main ball. Since we’re using the framework 
+(which means that we’re using each module on their own, without being tied to the 
+<code class="text">engine</code> through <code class="text">fg.world</code>), we’ll use the 
+<a href="/documentation/class">Class</a> module to do it:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- in Ball.lua</span>
+<span class="keyword">local</span> <span class="local-variable">Ball</span> = fg.Object:extend(<span class="string"><span class="delimiter">'</span><span class="content">Ball</span><span class="delimiter">'</span></span>)
+
+<span class="keyword">function</span> Ball:<span class="function">new</span>()
+
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Ball:<span class="function">draw</span>()
+
+<span class="keyword">end</span>
+
+<span class="keyword">return</span> Ball
+</pre></td>
+</tr></table>
+</div>
+
+<p>A ball needs a few attributes like position, radius, velocity and the angle it’s moving 
+towards… We’ll add that to the Ball’s class constructor, but do it in a manner that 
+enables further attribute addition whenever desired without having to change the 
+constructor that much:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">new</span>(x, y, settings)
+    <span class="keyword">local</span> <span class="local-variable">settings</span> = settings <span class="keyword">or</span> <span class="map"><span class="delimiter">{</span><span class="delimiter">}</span></span>
+    self.x, self.y = x, y
+    self.r = settings.r <span class="keyword">or</span> <span class="integer">30</span>
+    self.v = settings.v <span class="keyword">or</span> mg.Vector(<span class="integer">400</span>, <span class="integer">400</span>)
+    self.angle = settings.angle <span class="keyword">or</span> <span class="integer">0</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>By passing a named table named <code class="text">settings</code>, we can take its values when they 
+are defined or fall back to default ones when they aren’t (that’s what the <code class="text">or</code>
+does). So on object creation we can do:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+</pre></td>
+  <td class="code"><pre>Ball = require <span class="string"><span class="delimiter">'</span><span class="content">Ball</span><span class="delimiter">'</span></span>
+
+<span class="keyword">function</span> Game:<span class="function">new</span>()
+    ball = Ball(fg.screen_width/<span class="integer">2</span>, fg.screen_height/<span class="integer">2</span>, <span class="map"><span class="delimiter">{</span><span class="key">angle</span> = math.pi/<span class="integer">4</span><span class="delimiter">}</span></span>)
+<span class="keyword">end</span>
+...
+</pre></td>
+</tr></table>
+</div>
+
+<p>And this creates a ball with <code class="text">angle = math.pi/4</code>, 
+<code class="text">v = mg.Vector(400, 400)</code> and <code class="text">r = 30</code>. This construct is 
+the same as the one used by <code class="text">engine</code> entities, and it’s a pretty flexible 
+and useful way of organizing object construction. </p>
+
+<p>Another thing to note here is that we’re returning the Ball class and storing it in
+a global variable of the same name. This is just a useful thing to note, since having
+a class stored in a variable lets you change how classes behave dynamically (if you 
+ever need that for whatever reason).</p>
+
+<p>In any case, now we want to update and draw the ball so that it moves like it would 
+on a Pong game:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- in Ball.lua</span>
+<span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+    self.x = self.x + self.v.x*math.cos(self.angle)*dt
+    self.y = self.y + self.v.y*math.sin(self.angle)*dt
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Ball:<span class="function">draw</span>()
+    love.graphics.rectangle(<span class="string"><span class="delimiter">'</span><span class="content">fill</span><span class="delimiter">'</span></span>, self.x - self.r/<span class="integer">2</span>, self.y - self.r/<span class="integer">2</span>, self.r, self.r)
+<span class="keyword">end</span>
+
+<span class="comment">-- in Game.lua</span>
+<span class="keyword">function</span> Game:<span class="function">update</span>(dt)
+    ball:update(dt)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Game:<span class="function">draw</span>()
+    ball:draw()
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>The ball update function does basic movement based on the ball’s angle, and the draw 
+function draws the rectangle (yes, it should be a circle, but let’s be <strong>~~RADICAL~~</strong> 
+and do a rectangle instead). The ball moves to one direction but quickly moves out 
+of the screen’s boundaries. For that not to happen we can do the following:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> self.x &lt; <span class="integer">0</span> + self.r/<span class="integer">2</span> <span class="keyword">then</span>
+        self.angle = math.pi - self.angle
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> self.x &gt; fg.screen_width - self.r/<span class="integer">2</span> <span class="keyword">then</span>
+        self.angle = math.pi - self.angle
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> self.y &lt; <span class="integer">0</span> + self.r/<span class="integer">2</span> <span class="keyword">then</span>
+        self.angle = -self.angle
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> self.y &gt; fg.screen_height - self.r/<span class="integer">2</span> <span class="keyword">then</span>
+        self.angle = -self.angle
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>This will make it so that the ball bounces off of the screen’s edges like it’s expected 
+to do. Not adding the <code class="text">+-self.r/2</code> to the checks makes it so that the ball 
+goes a bit off screen before bouncing back, because the position is the center of the 
+sprite and not one of its edges.
+<br /><br /></p>
+
+<h3 id="Paddles" data-magellan-destination="Paddles">Paddles</h3>
+
+<p>To add the paddles we create a Paddle class in a similar fashion to the way we did the 
+Ball:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+</pre></td>
+  <td class="code"><pre>Paddle = mg.Class(<span class="string"><span class="delimiter">'</span><span class="content">Paddle</span><span class="delimiter">'</span></span>)
+
+<span class="keyword">function</span> Paddle:<span class="function">new</span>(x, y, settings)
+    <span class="keyword">local</span> <span class="local-variable">settings</span> = settings <span class="keyword">or</span> <span class="map"><span class="delimiter">{</span><span class="delimiter">}</span></span>
+    self.x, self.y = x, y
+    self.w = settings.w <span class="keyword">or</span> <span class="integer">30</span>
+    self.h = settings.h <span class="keyword">or</span> <span class="integer">100</span>
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Paddle:<span class="function">update</span>(dt)
+    self.y = love.mouse.getY()
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Paddle:<span class="function">draw</span>()
+    love.graphics.rectangle(<span class="string"><span class="delimiter">'</span><span class="content">fill</span><span class="delimiter">'</span></span>, self.x - self.w/<span class="integer">2</span>, self.y - self.h/<span class="integer">2</span>, self.w, self.h)
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>This makes it so that the paddle follows the mouse position on the y axis. To create 
+both paddles you can do:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+</pre></td>
+  <td class="code"><pre>...
+Paddle = require <span class="string"><span class="delimiter">'</span><span class="content">Paddle</span><span class="delimiter">'</span></span>
+
+<span class="keyword">function</span> Game:<span class="function">new</span>()
+    ...
+    paddle1 = Paddle(<span class="integer">30</span>, <span class="integer">50</span>)
+    paddle2 = Paddle(fg.screen_width - <span class="integer">30</span>, <span class="integer">50</span>)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Game:<span class="function">update</span>(dt)
+    ...
+    paddle1:update(dt)
+    paddle2:update(dt)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Game:<span class="function">draw</span>()
+    ...
+    paddle1:draw()
+    paddle2:draw()
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>This should create two paddles, one on the left and another on the right of the screen, 
+and they should both follow the mouse’s y position.</p>
+
+<dl class="accordion" data-accordion=""><dd><a href="#exercises_paddle_1">Exercises</a><div id="exercises_paddle_1" class="content">
+    1. Like the ball previously could, the paddles can go offscreen if you move the mouse close to its borders. Prevent this from happening!
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_paddle_answer_1">Answer</a><div id="exercises_paddle_answer_1" class="content answer">
+        Check the paddle&#8217;s y position against the screen&#8217;s top and bottom borders and force that position in case it&#8217;s past it, taking into account the paddle&#8217;s height:<br /><br />
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Paddle:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> self.y &lt; <span class="integer">0</span> + self.h/<span class="integer">2</span> <span class="keyword">then</span>
+        self.y = <span class="integer">0</span> + self.h/<span class="integer">2</span>
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> self.y &gt; fg.screen_height - self.h/<span class="integer">2</span> <span class="keyword">then</span>
+        self.y = fg.screen_height - self.h/<span class="integer">2</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+</div></dd></dl>
+<p><br /></p>
+
+<h3 id="Ball-Paddle_Collision" data-magellan-destination="Ball-Paddle_Collision">Ball-Paddle Collision</h3>
+
+<p>The ball doesn’t collide with the paddles yet, but in a similar manner to how 
+we did it for the borders of the screen we can do it for the paddles. Check 
+the ball’s position against the position of each paddle and change its angle accordingly:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> (self.x - self.r/<span class="integer">2</span> &lt;= paddle1.x + paddle1.w/<span class="integer">2</span>) <span class="keyword">and</span> 
+       (self.y &gt;= paddle1.y - paddle1.h/<span class="integer">2</span>) <span class="keyword">and</span> (self.y &lt;= paddle1.y + paddle1.h/<span class="integer">2</span>) <span class="keyword">then</span>
+        self.angle = math.pi - self.angle
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>The check first sees if the ball’s x position is to the left of the right edge of the left paddle (!), 
+and then on top of that checks if the ball’s y position is inside the left paddle’s
+top and bottom edges. If all of those conditions are met then the ball is bounced back.</p>
+
+<dl class="accordion" data-accordion=""><dd><a href="#exercises_paddle_2">Exercises</a><div id="exercises_paddle_2" class="content">
+    1. Perform that check for the right paddle as well.
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_paddle_answer_21">Answer</a><div id="exercises_paddle_answer_21" class="content answer">
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">if</span> (self.x + self.r/<span class="integer">2</span> &gt;= paddle2.x - paddle1.w/<span class="integer">2</span>) <span class="keyword">and</span>
+   (self.y &gt;= paddle2.y - paddle2.h/<span class="integer">2</span>) <span class="keyword">and</span> (self.y &lt;= paddle2.y + paddle2.h/<span class="integer">2</span>) <span class="keyword">then</span>
+    self.angle = math.pi - self.angle
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+    <br />
+
+    2. Sometimes if the ball hits a paddle on one of its top or bottom edges it will behave strangely. The reason this happens is because it keeps changing angle repeatedly, 
+    since sommetimes the collision check is satisfied multiple times in a short time frame. How would you go about fixing this? (<strong>hint</strong>: create a <code class="text">.just_hit_paddle</code>
+    boolean and use the <a href="/documentation/timer">Timer</a> module)
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_paddle_answer_22">Answer</a><div id="exercises_paddle_answer_22" class="content answer">
+        The way to solve this is by completely ignoring the collision checks if the ball has just hit a paddle. When a collision actually happens, set .just_hit_paddle to true and then after
+        some time, in this case 0.2 seconds, set it to false again. This prevents collisions between ball and paddle to happening too close to each other:<br /><br />
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+<a href="#n24" name="n24">24</a>
+<a href="#n25" name="n25">25</a>
+<a href="#n26" name="n26">26</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">new</span>(...)
+    ...
+    self.just_hit_paddle = <span class="predefined-constant">false</span>
+    ...
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> <span class="keyword">not</span> self.just_hit_paddle <span class="keyword">then</span>
+        <span class="keyword">if</span> (self.x - self.r/<span class="integer">2</span> &lt;= paddle1.x + paddle1.w/<span class="integer">2</span>) <span class="keyword">and</span>
+           (self.y &gt;= paddle1.y - paddle1.h/<span class="integer">2</span>) <span class="keyword">and</span> 
+           (self.y &lt;= paddle1.y + paddle1.h/<span class="integer">2</span>) <span class="keyword">then</span>
+            self.angle = math.pi - self.angle
+            self.just_hit_paddle = <span class="predefined-constant">true</span>
+            fg.timer:after(<span class="float">0.2</span>, <span class="keyword">function</span>() self.just_hit_paddle = <span class="predefined-constant">false</span> <span class="keyword">end</span>)
+        <span class="keyword">end</span>
+
+        <span class="keyword">if</span> (self.x + self.r/<span class="integer">2</span> &gt;= paddle2.x - paddle1.w/<span class="integer">2</span>) <span class="keyword">and</span>
+           (self.y &gt;= paddle2.y - paddle2.h/<span class="integer">2</span>) <span class="keyword">and</span> 
+           (self.y &lt;= paddle2.y + paddle2.h/<span class="integer">2</span>) <span class="keyword">then</span>
+            self.angle = math.pi - self.angle
+            self.just_hit_paddle = <span class="predefined-constant">true</span>
+            fg.timer:after(<span class="float">0.2</span>, <span class="keyword">function</span>() self.just_hit_paddle = <span class="predefined-constant">false</span> <span class="keyword">end</span>)
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+</div></dd></dl>
+<p><br /></p>
+
+<h3 id="Game_Loop" data-magellan-destination="Game_Loop">Game Loop</h3>
+
+<p>Now what the want to do is make it so that every time the ball reaches one of the sides of the screen, it is removed from the game and new ball is spawned.
+A way of doing this is signaling that the current ball is dead and then when that happens spawn a new one. To do this though, we need some place to hold multiple balls
+(doing this we additionally gain the ability to spawn multiple balls on the screen whenever we want):</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Game:<span class="function">new</span>()
+    ...
+    balls = <span class="map"><span class="delimiter">{</span><span class="delimiter">}</span></span>
+    table.insert(balls, Ball(fg.screen_width/<span class="integer">2</span>, fg.screen_height/<span class="integer">2</span>, <span class="map"><span class="delimiter">{</span><span class="key">angle</span> = math.pi/<span class="integer">4</span><span class="delimiter">}</span></span>))
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Game:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">for</span> i = #balls, <span class="integer">1</span>, <span class="integer">-1</span> <span class="keyword">do</span>
+        balls[i]:update(dt)
+        <span class="keyword">if</span> balls[i].dead <span class="keyword">then</span> 
+            table.remove(balls, i) 
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>In the update function here we’re traversing the balls list, updating each ball and removing the balls that have the <code class="text">.dead</code> attribute set to true.
+We’ll only set that attribute to true when a ball reaches one of the edges of the screen, like so:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">new</span>(...)
+    ...
+    self.dead = <span class="predefined-constant">false</span>
+    ...
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> self.x &lt; <span class="integer">0</span> + self.r/<span class="integer">2</span> <span class="keyword">then</span>
+        self.angle = math.pi - self.angle
+        self.dead = <span class="predefined-constant">true</span>
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> self.x &gt; fg.screen_width - self.r/<span class="integer">2</span> <span class="keyword">then</span>
+        self.angle = math.pi - self.angle
+        self.dead = <span class="predefined-constant">true</span>
+    <span class="keyword">end</span>
+    ...
+    <span class="keyword">if</span> self.dead <span class="keyword">then</span>
+        table.insert(balls, Ball(fg.screen_width/<span class="integer">2</span>, fg.screen_height/<span class="integer">2</span>))
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>On top of setting the <code class="text">.dead</code> attribute to true, we then add a new ball to the center of the screen when it dies, so that the game continues. 
+Even though the update function is run each frame, the condition inside the <code class="text">if self.dead</code> check will only be run once, because this ball will 
+be removed from the balls list and not updated anymore after it’s been set to die.</p>
+
+<dl class="accordion" data-accordion=""><dd><a href="#exercises_game_loop">Exercises</a><div id="exercises_game_loop" class="content">
+    1. Draw the ball after the previous changes.
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_game_loop_1">Answer</a><div id="exercises_game_loop_1" class="content answer">
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Game:<span class="function">draw</span>()
+    ...
+    <span class="keyword">for</span> _, ball <span class="keyword">in</span> <span class="predefined">ipairs</span>(balls) <span class="keyword">do</span> 
+        ball:draw()
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+    <br />
+
+    2. Create a scoring system for the game by creating a level variable that keeps track of the current level. 
+    Every time the left player scores, add one to the level, every time the right player scores, subtract one.
+    Later when we add AI this variable will control how hard it will be.
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_game_loop_2">Answer</a><div id="exercises_game_loop_2" class="content answer">
+        Create a level variable. Increase it if the ball has died on right side of the screen (left player point), decrease otherwise (right player point):<br /><br />
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- in Game.lua</span>
+<span class="keyword">function</span> Game:<span class="function">new</span>()
+    ...
+    level = <span class="integer">1</span>
+    ...
+<span class="keyword">end</span>
+
+<span class="comment">-- in Ball.lua</span>
+<span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> self.dead <span class="keyword">then</span>
+        <span class="keyword">if</span> self.x &gt; fg.screen_width/<span class="integer">2</span> <span class="keyword">then</span> 
+            level = level + <span class="integer">1</span> 
+        <span class="keyword">end</span>
+        <span class="keyword">if</span> self.x &lt; fg.screen_width/<span class="integer">2</span> <span class="keyword">then</span>
+            level = level - <span class="integer">1</span>
+        <span class="keyword">end</span>
+        table.insert(balls, Ball(fg.screen_width/<span class="integer">2</span>, fg.screen_height/<span class="integer">2</span>))
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+    <br />
+
+    3. How would you make it so that every new ball is spawned at a random angle?
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_game_loop_3">Answer</a><div id="exercises_game_loop_3" class="content answer">
+        Specify the new ball&#8217;s angle. In this case, use the mg.utils.math.random function to pick an angle between 0 and 360 degrees. Another possible way is doing it directly
+        on the ball&#8217;s constructor, self.angle = fg.utils.math.random(0, 2*math.pi).<br /><br />
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> self.dead <span class="keyword">then</span>
+        ...
+        table.insert(balls, Ball(fg.screen_width/<span class="integer">2</span>, fg.screen_height/<span class="integer">2</span>, 
+                    <span class="map"><span class="delimiter">{</span><span class="key">angle</span> = fg.utils.math.random(<span class="integer">0</span>, <span class="integer">2</span>*math.pi)<span class="delimiter">}</span></span>))
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+</div></dd></dl>
+<p><br /></p>
+
+<h3 id="Curve" data-magellan-destination="Curve">Curve</h3>
+
+<p>Next we’re gonna add the ability for paddles to add some curve to the ball based on how fast the player moves it. Hitting the ball while moving the paddle up really fast should 
+add some spinning down, while hitting it while moving the paddle down should add some spinning up. Before we can actually do that addition though, we need to figure out how fast the paddle is moving:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Paddle:<span class="function">new</span>(...)
+    ...
+    self.last_y = <span class="integer">0</span>
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Paddle:<span class="function">update</span>(dt)
+    ...
+    self.v = self.last_y - self.y
+    ...
+    self.last_y = self.y
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>What these two lines do is simply take the current position of the paddle and subtract with its last position. The faster the player is moving the mouse, the higher this difference will be.
+We can now use that velocity as a base for how much spinning we’re gonna add to the ball. The way spinning will be added is by changing the ball’s angle slightly:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">new</span>(...)
+    ...
+    self.angle_speed = <span class="integer">0</span>
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+    ...
+    self.angle = self.angle + self.angle_speed*dt
+    ...
+    <span class="keyword">if</span> (self.x - self.r/<span class="integer">2</span> &lt;= paddle1.x + paddle1.w/<span class="integer">2</span>) <span class="keyword">and</span> 
+       (self.y &gt;= paddle1.y - paddle1.h/<span class="integer">2</span>) <span class="keyword">and</span> (self.y &lt;= paddle1.y + paddle1.h/<span class="integer">2</span>) <span class="keyword">then</span>
+        ...
+        self.angle_speed = paddle1.v/<span class="integer">96</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>Whenever the ball hits the paddle its angle speed gets changed to <code class="text">paddle.v/96</code>. This value was reached by trial and error until it felt nice, you may find
+your own angle speed calculations that involve the paddle’s velocity somehow. You can go as complex as you want with mathematical functions here, with the end goal of it feeling nice
+to play.</p>
+
+<dl class="accordion" data-accordion=""><dd><a href="#exercises_curve">Exercises</a><div id="exercises_curve" class="content">
+    1. Make it so that the other paddle can curve the ball as well.
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_curve_answer_1">Answer</a><div id="exercises_curve_answer_1" class="content answer">
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Paddle:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> (self.x + self.r/<span class="integer">2</span> &gt;= paddle2.x - paddle1.w/<span class="integer">2</span>) <span class="keyword">and</span>
+       (self.y &gt;= paddle2.y - paddle2.h/<span class="integer">2</span>) <span class="keyword">and</span> 
+       (self.y &lt;= paddle2.y + paddle2.h/<span class="integer">2</span>) <span class="keyword">then</span>
+        ...
+        self.angle_speed = -paddle2.v/<span class="integer">96</span>
+        ...
+    <span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+    <br />
+
+    2. What happens when the value dividing <code class="text">paddle.v</code> increases? And when it decreases?
+    What is a decent interval for the angle speed value such that it doesn&#8217;t spin too fast nor too slow?
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_curve_answer_2">Answer</a><div id="exercises_curve_answer_2" class="content answer">
+        When the value dividing paddle.v increases, the angle speed value decreases, meaning that the added spin from the paddle has a lower effect on the ball&#8217;s trajectory.
+        When the value decreases, the angle speed increases, meaning that the added spin has a higher effect. A decent interval is a number that ranges from -2 to 2. 
+        Translating this to degrees, it&#8217;s about 120 degrees per second to whichever side. You could make any function based on the paddle&#8217;s velocity (like paddle.v*paddle.v, or
+        sin(paddle.v), or sqrt(paddle.v) + log(paddle.v/2), &#8230; feel free to get creative!), but you&#8217;d have to scale this function back to this range if you want it to behave
+        in an acceptable manner. This range was discovered by trial and error, so your findings on what the range should be may vary depending on what type of gameplay you&#8217;re looking for.
+    </div></dd></dl>
+</div></dd></dl>
+<p><br /></p>
+
+<h3 id="AI" data-magellan-destination="AI">AI</h3>
+
+<p>And now for the last thing to make before we have completely functional Pong game, the AI. 
+We’re gonna do something very simple for the AI: make it follow the ball’s y position. At first doing this is ezpz:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- in Paddle.lua</span>
+<span class="keyword">function</span> Paddle:<span class="function">new</span>(...)
+    ...
+    self.ai = settings.ai
+    ...
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Paddle:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> self.ai <span class="keyword">then</span>
+        self.y = balls[<span class="integer">1</span>].y
+    <span class="keyword">else</span>
+        self.y = love.mouse.getY()
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+
+<span class="comment">-- in Game.lua</span>
+<span class="keyword">function</span> Game:<span class="function">new</span>()
+    ...
+    paddle1 = Paddle(<span class="integer">30</span>, <span class="integer">50</span>)
+    paddle2 = Paddle(fg.screen_width - <span class="integer">30</span>, <span class="integer">50</span>, <span class="map"><span class="delimiter">{</span><span class="key">ai</span> = <span class="predefined-constant">true</span><span class="delimiter">}</span></span>)
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>But if you play this, the AI is pretty much invincible. We need to add some way for it to not follow the ball so closely all the time. 
+To do that we’re gonna add some maximum velocity to the AI controlled paddle:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Paddle:<span class="function">new</span>(...)
+    ...
+    self.max_v = <span class="integer">400</span> 
+    ...
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Paddle:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> self.ai <span class="keyword">then</span>
+        <span class="keyword">local</span> <span class="local-variable">dy</span> = self.y - balls[<span class="integer">1</span>].y
+        <span class="keyword">if</span> dy &lt; <span class="integer">0</span> <span class="keyword">then</span>
+            self.y = self.y - math.max(dy, -self.max_v)*dt
+        <span class="keyword">else</span>
+            self.y = self.y - math.min(dy, self.max_v)*dt
+        <span class="keyword">end</span>
+    <span class="keyword">else</span>
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>Here we check the difference between the paddle’s current y position and ball’s y position. Then based on this difference we add a certain velocity (which is this difference, but could
+be some other value calculated using this difference as a parameter) to the paddle’s y position, but always limitting it by the paddle’s maximum velocity. In this way, we get a nice
+smooth motion towards the ball that is as slow/fast as we want it to be (but not higher than <code class="text">max_v</code>, based on the velocity calculated.</p>
+
+<dl class="accordion" data-accordion=""><dd><a href="#exercises_ai">Exercises</a><div id="exercises_ai" class="content">
+    1. How would you make it so that the AI&#8217;s difficulty scales with the current level? (<strong>hint</strong>: change its max velocity as well as the rate at which its velocity is changed
+    to catch up with the ball&#8217;s position)
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_ai_answer_1">Answer</a><div id="exercises_ai_answer_1" class="content answer">
+        Initially bind the paddle&#8217;s max velocity to the level according to some formula. Then do the same for the dy variable. Optionally, make it so that with each ball hit on either paddle,
+        the ball&#8217;s velocity is increased based on the current level, making each round harder the longer it goes on for.<br /><br />
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+<a href="#n24" name="n24">24</a>
+<a href="#n25" name="n25">25</a>
+<a href="#n26" name="n26">26</a>
+<a href="#n27" name="n27">27</a>
+<a href="#n28" name="n28">28</a>
+<a href="#n29" name="n29">29</a>
+<strong><a href="#n30" name="n30">30</a></strong>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- in Paddle.lua</span>
+<span class="keyword">function</span> Paddle:<span class="function">update</span>(dt)
+    <span class="keyword">if</span> self.ai <span class="keyword">then</span>
+        self.max_v = <span class="integer">175</span>*level
+        <span class="keyword">local</span> <span class="local-variable">dy</span> = self.y - balls[<span class="integer">1</span>].y
+        <span class="keyword">if</span> dy &lt; <span class="integer">0</span> <span class="keyword">then</span>
+            self.y = self.y - math.max((level+<span class="float">1.2</span>)*dy, -self.max_v)*dt
+        <span class="keyword">else</span>
+            self.y = self.y - math.min((level+<span class="float">1.2</span>)*dy, self.max_v)*dt
+        <span class="keyword">end</span>
+        ...
+    <span class="keyword">else</span>
+    ...
+<span class="keyword">end</span>
+
+<span class="comment">-- in Ball.lua</span>
+<span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> <span class="keyword">not</span> self.just_hit_paddle <span class="keyword">then</span>
+        <span class="keyword">if</span> (self.x - self.r/<span class="integer">2</span> &lt;= paddle1.x + paddle1.w/<span class="integer">2</span>) <span class="keyword">and</span>
+           (self.y &gt;= paddle1.y - paddle1.h/<span class="integer">2</span>) <span class="keyword">and</span> 
+           (self.y &lt;= paddle1.y + paddle1.h/<span class="integer">2</span>) <span class="keyword">then</span>
+            ...
+            self.v.x = self.v.x*(<span class="float">1.07</span> + <span class="float">0.01</span>*level)
+            ...
+        <span class="keyword">end</span>
+        ...
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+    <br />
+
+    2. Make the AI paddle behave in a more human-like manner by adding some randomicity to it. Whenever the ball is going towards the player and not back to the AI paddle, make it so that it
+    moves about randomly following whatever pattern you think a normal human would when he&#8217;s waiting for the ball to come back to his side.
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_ai_answer_2">Answer</a><div id="exercises_ai_answer_2" class="content answer">
+        Whenever the ball is moving away from the AI paddle, move it towards a variable named .idle_position. Add a timer that picks a new idle position around the y center of the game
+        every few seconds. This will make it so that the AI paddle moves randomly around the center of the screen whenever it&#8217;s waiting for the ball to bounce back, and then when it does
+        bounce back it changes to the normal following behavior.<br /><br />
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+<a href="#n24" name="n24">24</a>
+<a href="#n25" name="n25">25</a>
+<a href="#n26" name="n26">26</a>
+<a href="#n27" name="n27">27</a>
+<a href="#n28" name="n28">28</a>
+<a href="#n29" name="n29">29</a>
+<strong><a href="#n30" name="n30">30</a></strong>
+<a href="#n31" name="n31">31</a>
+<a href="#n32" name="n32">32</a>
+<a href="#n33" name="n33">33</a>
+<a href="#n34" name="n34">34</a>
+<a href="#n35" name="n35">35</a>
+<a href="#n36" name="n36">36</a>
+<a href="#n37" name="n37">37</a>
+<a href="#n38" name="n38">38</a>
+<a href="#n39" name="n39">39</a>
+<strong><a href="#n40" name="n40">40</a></strong>
+<a href="#n41" name="n41">41</a>
+<a href="#n42" name="n42">42</a>
+<a href="#n43" name="n43">43</a>
+<a href="#n44" name="n44">44</a>
+<a href="#n45" name="n45">45</a>
+<a href="#n46" name="n46">46</a>
+<a href="#n47" name="n47">47</a>
+<a href="#n48" name="n48">48</a>
+<a href="#n49" name="n49">49</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- in Paddle.lua</span>
+<span class="keyword">function</span> Paddle:<span class="function">new</span>(...)
+    ...
+    self.idle = <span class="predefined-constant">false</span>
+    self.idle_position = <span class="integer">0</span>
+    fg.timer:every(<span class="float">0.6</span>, <span class="keyword">function</span>()
+        self.idle_position = fg.screen_height/<span class="integer">2</span> + 
+                             math.random(-fg.screen_height/<span class="integer">4</span>, fg.screen_height/<span class="integer">4</span>)
+    <span class="keyword">end</span>)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Paddle:<span class="function">update</span>(dt)
+    <span class="keyword">if</span> self.ai <span class="keyword">then</span>
+        ...
+        <span class="keyword">if</span> self.idle <span class="keyword">then</span> 
+            dy = self.y - self.idle_position 
+        <span class="keyword">end</span>
+        ...
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+
+<span class="comment">-- in Ball.lua</span>
+<span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+    <span class="keyword">if</span> <span class="keyword">not</span> self.just_hit_paddle <span class="keyword">then</span>
+        <span class="keyword">if</span> (self.x - self.r/<span class="integer">2</span> &lt;= paddle1.x + paddle1.w/<span class="integer">2</span>) <span class="keyword">and</span>
+           (self.y &gt;= paddle1.y - paddle1.h/<span class="integer">2</span>) <span class="keyword">and</span> 
+           (self.y &lt;= paddle1.y + paddle1.h/<span class="integer">2</span>) <span class="keyword">then</span>
+            ...
+            paddle2.idle = <span class="predefined-constant">false</span>
+            ...
+        <span class="keyword">end</span>
+
+        <span class="keyword">if</span> (self.x + self.r/<span class="integer">2</span> &gt;= paddle2.x - paddle1.w/<span class="integer">2</span>) <span class="keyword">and</span>
+           (self.y &gt;= paddle2.y - paddle2.h/<span class="integer">2</span>) <span class="keyword">and</span> 
+           (self.y &lt;= paddle2.y + paddle2.h/<span class="integer">2</span>) <span class="keyword">then</span>
+            ...
+            paddle2.idle = <span class="predefined-constant">true</span>
+            ...
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    ...
+    <span class="keyword">if</span> self.dead <span class="keyword">then</span>
+        ...
+        paddle2.idle = <span class="predefined-constant">false</span>
+        table.insert(balls, Ball(fg.screen_width/<span class="integer">2</span>, fg.screen_height/<span class="integer">2</span>, 
+                    <span class="map"><span class="delimiter">{</span><span class="key">angle</span> = fg.utils.math.random(<span class="integer">0</span>, <span class="integer">2</span>*math.pi)<span class="delimiter">}</span></span>))
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+</div></dd></dl>
+<p><br /></p>
+
+<h3 id="Polish" data-magellan-destination="Polish">Polish</h3>
+
+<p>You should have a completely functional Pong game by now. But it’s kinda boring to look at… 
+We can do a lot of stuff to make it look more interesting, some of them are described in this video: </p>
+
+<div class="embed-video-container"><iframe width="480" height="360" src="http://www.youtube.com/embed/Fy0aCDmgnxg " frameborder="0" allowfullscreen=""></iframe></div>
+<p><br /></p>
+
+<p>while a lot of them aren’t. But the fact is that making a game feel nice to play and look at is highly about experimentation, trial and error. 
+I’ll outline some of the things you can do, but you’re the one who should go a step further and do even more if you want to.</p>
+
+<h3 id="Ball_Rotation" data-magellan-destination="Ball_Rotation">Ball Rotation</h3>
+
+<p>The first thing we can add is ball rotation. Since the ball actually curves, 
+it makes sense that it would spin around itself too. To do this, we code the following:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">new</span>(...)
+    ...
+    self.rotation = <span class="integer">0</span>
+    self.rotation_speed = math.pi
+    ...
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+    ...
+    self.rotation = self.rotation + self.rotation_speed*dt
+    ...
+    <span class="keyword">if</span> (self.x - self.r/<span class="integer">2</span> &lt;= paddle1.x + paddle1.w/<span class="integer">2</span>) <span class="keyword">and</span> 
+       (self.y &gt;= paddle1.y - paddle1.h/<span class="integer">2</span>) <span class="keyword">and</span> (self.y &lt;= paddle1.y + paddle1.h/<span class="integer">2</span>) <span class="keyword">then</span>
+        ...
+        self.rotation_speed = paddle1.v/<span class="integer">4</span>
+        ...
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>Every frame we add to the ball’s rotation its rotation speed, and when the ball hits a paddle we make 
+sure to take into account that paddle’s velocity as well. To draw the rotated rectangle:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">draw</span>()
+    fg.utils.graphics.pushRotate(self.x, self.y, self.rotation)
+    love.graphics.rectangle(<span class="string"><span class="delimiter">'</span><span class="content">fill</span><span class="delimiter">'</span></span>, self.x - self.r/<span class="integer">2</span>, self.y - self.r/<span class="integer">2</span>, self.r, self.r)
+    love.graphics.pop()
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>The <code class="text">fg.utils.graphics.pushRotate</code> call rotates whatever is drawn between it and <code class="text">love.graphics.pop()</code> by 
+<code class="text">self.rotation</code> angles around point <code class="text">self.x, self.y</code>.</p>
+
+<dl class="accordion" data-accordion=""><dd><a href="#exercises_rotation">Exercises</a><div id="exercises_rotation" class="content">
+    1. Make it so that the other paddle also adds rotation to the ball.
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_rotation_answer_1">Answer</a><div id="exercises_rotation_answer_1" class="content answer">
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> <span class="keyword">not</span> self.just_hit_paddle <span class="keyword">then</span>
+        ...
+        <span class="keyword">if</span> (self.x + self.r/<span class="integer">2</span> &gt;= paddle2.x - paddle1.w/<span class="integer">2</span>) <span class="keyword">and</span>
+           (self.y &gt;= paddle2.y - paddle2.h/<span class="integer">2</span>) <span class="keyword">and</span> 
+           (self.y &lt;= paddle2.y + paddle2.h/<span class="integer">2</span>) <span class="keyword">then</span>
+            ...
+            self.rotation_speed = paddle2.v/<span class="integer">4</span>
+            ...
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    ...
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+    <br />
+
+    2. Make the ball&#8217;s rotation be cut in half whenever it hits the top or bottom edge of the screen.
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_rotation_answer_2">Answer</a><div id="exercises_rotation_answer_2" class="content answer">
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> self.y &lt; <span class="integer">0</span> + self.r/<span class="integer">2</span> <span class="keyword">then</span>
+        self.angle = -self.angle
+        self.rotation_speed = self.rotation_speed/<span class="integer">2</span>
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> self.y &gt; fg.screen_height - self.r/<span class="integer">2</span> <span class="keyword">then</span>
+        self.angle = -self.angle
+        self.rotation_speed = self.rotation_speed/<span class="integer">2</span>
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+</div></dd></dl>
+<p><br /></p>
+
+<h3 id="Ball_Trails" data-magellan-destination="Ball_Trails">Ball Trails</h3>
+
+<p>To make the ball look even better we can add trails. We’ll do that by repeatedly spawning rectangles that quickly fade away at the ball’s current position. </p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+<a href="#n24" name="n24">24</a>
+<a href="#n25" name="n25">25</a>
+<a href="#n26" name="n26">26</a>
+<a href="#n27" name="n27">27</a>
+<a href="#n28" name="n28">28</a>
+<a href="#n29" name="n29">29</a>
+<strong><a href="#n30" name="n30">30</a></strong>
+<a href="#n31" name="n31">31</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- in BallTrail.lua</span>
+<span class="keyword">local</span> <span class="local-variable">BallTrail</span> = fg.Object:extend(<span class="string"><span class="delimiter">'</span><span class="content">BallTrail</span><span class="delimiter">'</span></span>)
+
+<span class="keyword">function</span> BallTrail:<span class="function">new</span>(x, y, r, rotation)
+    self.x = x
+    self.y = y
+    self.r = r + fg.utils.math.random(<span class="integer">-4</span>, <span class="integer">4</span>)
+    self.rotation = fg.utils.math.random(<span class="integer">0</span>, <span class="integer">2</span>*math.pi)
+    self.alpha = <span class="integer">0</span>
+    self.dead = <span class="predefined-constant">false</span>
+
+    fg.timer:tween(<span class="float">0.02</span>, self, <span class="map"><span class="delimiter">{</span><span class="key">alpha</span> = <span class="integer">255</span><span class="delimiter">}</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">in-out-cubic</span><span class="delimiter">'</span></span>)
+    fg.timer:after(<span class="float">0.02</span>, <span class="keyword">function</span>()
+        fg.timer:tween(<span class="float">0.4</span>, self, <span class="map"><span class="delimiter">{</span><span class="key">alpha</span> = <span class="integer">0</span><span class="delimiter">}</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">in-out-cubic</span><span class="delimiter">'</span></span>)
+        fg.timer:after(<span class="float">0.4</span>, <span class="keyword">function</span>() self.dead = <span class="predefined-constant">true</span> <span class="keyword">end</span>)
+    <span class="keyword">end</span>)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> BallTrail:<span class="function">update</span>(dt)
+
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> BallTrail:<span class="function">draw</span>()
+    love.graphics.setColor(<span class="integer">255</span>, <span class="integer">255</span>, <span class="integer">255</span>, self.alpha)
+    fg.utils.graphics.pushRotate(self.x, self.y, self.rotation)
+    love.graphics.rectangle(<span class="string"><span class="delimiter">'</span><span class="content">fill</span><span class="delimiter">'</span></span>, self.x - self.r/<span class="integer">2</span>, self.y - self.r/<span class="integer">2</span>, self.r, self.r)
+    love.graphics.pop()
+    love.graphics.setColor(<span class="integer">255</span>, <span class="integer">255</span>, <span class="integer">255</span>, <span class="integer">255</span>)
+<span class="keyword">end</span>
+
+<span class="keyword">return</span> BallTrail
+</pre></td>
+</tr></table>
+</div>
+
+<p>There are a few interesting things to notice here. One is the use of the <a href="/documentation/timer">Timer</a> module. 
+First we tween this trail’s alpha to full color over <code class="number">0.02</code> seconds; then after those <code class="number">0.02</code> seconds we tween 
+that same alpha to <code class="number">0</code> over <code class="number">0.4</code> seconds, giving the trail effect if we’re spawning multiple of those near each other. 
+After that same amount of time we also set the entity to die, doing the same as we did for the balls’ death: removing dead entities
+from the list that holds them.</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+<a href="#n24" name="n24">24</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Game:<span class="function">new</span>()
+    ...
+    ball_trails = <span class="map"><span class="delimiter">{</span><span class="delimiter">}</span></span>
+    ...
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Game:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">for</span> i = #ball_trails, <span class="integer">1</span>, <span class="integer">-1</span> <span class="keyword">do</span>
+        ball_trails[i]:update(dt)
+        <span class="keyword">if</span> ball_trails[i].dead <span class="keyword">then</span> 
+            table.remove(ball_trails, i) 
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> love.<span class="function">draw</span>()
+    ...
+    <span class="keyword">for</span> _, ball_trail <span class="keyword">in</span> <span class="predefined">ipairs</span>(ball_trails) <span class="keyword">do</span> 
+        ball_trail:draw() 
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>After doing this we can finally actually spawn the trails:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">new</span>(...)
+    ...
+    fg.timer:every(<span class="map"><span class="delimiter">{</span><span class="float">0.02</span>, <span class="float">0.04</span><span class="delimiter">}</span></span>, <span class="keyword">function</span>()
+        table.insert(ball_trails, BallTrail(self.x, self.y, self.r, self.rotation))
+    <span class="keyword">end</span>)
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>This creates a new timer that will spawn a trail every <code class="number">0.02-0.04</code> seconds, or nearly every <code class="number">2-4</code> frames. Playing around with this number
+will give you different trail effects. Playing around with how long a ball trail object takes to fade away will also make the trail look different. 
+Scaling the trail down as it fades away makes it look even more different… All this means is that there are tons of ways of getting different trail effects, 
+and that the one outlined here is only a very particular one.</p>
+
+<dl class="accordion" data-accordion=""><dd><a href="#exercises_trail">Exercises</a><div id="exercises_trail" class="content">
+    1. Add trails to the paddles as well.
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_trail_answer_1">Answer</a><div id="exercises_trail_answer_1" class="content answer">
+        Paddle trails are extremely similar to the ball trails, since we&#8217;re using pretty much the same fading functionality. The difference being a rectangle and that you
+        may wanna change the tween times so it doesn&#8217;t look as confusing:<br /><br />
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+<a href="#n24" name="n24">24</a>
+<a href="#n25" name="n25">25</a>
+<a href="#n26" name="n26">26</a>
+<a href="#n27" name="n27">27</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">local</span> <span class="local-variable">PaddleTrail</span> = fg.Object:extend(<span class="string"><span class="delimiter">'</span><span class="content">PaddleTrail</span><span class="delimiter">'</span></span>)
+
+<span class="keyword">function</span> PaddleTrail:<span class="function">new</span>(x, y, w, h)
+    self.x, self.y = x, y
+    self.w = w + fg.utils.math.random(<span class="integer">-4</span>, <span class="integer">4</span>)
+    self.h = h + fg.utils.math.random(<span class="integer">-4</span>, <span class="integer">4</span>)
+    self.alpha = <span class="integer">0</span>
+    self.dead = <span class="predefined-constant">false</span>
+
+    fg.timer:tween(<span class="float">0.02</span>, self, <span class="map"><span class="delimiter">{</span><span class="key">alpha</span> = <span class="integer">255</span><span class="delimiter">}</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">in-out-cubic</span><span class="delimiter">'</span></span>)
+    fg.timer:after(<span class="float">0.02</span>, <span class="keyword">function</span>()
+        fg.timer:tween(<span class="float">0.2</span>, self, <span class="map"><span class="delimiter">{</span><span class="key">alpha</span> = <span class="integer">0</span><span class="delimiter">}</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">in-out-cubic</span><span class="delimiter">'</span></span>)
+        fg.timer:after(<span class="float">0.2</span>, <span class="keyword">function</span>() self.dead = <span class="predefined-constant">true</span> <span class="keyword">end</span>)
+    <span class="keyword">end</span>)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> PaddleTrail:<span class="function">update</span>(dt)
+
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> PaddleTrail:<span class="function">draw</span>()
+    love.graphics.setColor(<span class="integer">255</span>, <span class="integer">255</span>, <span class="integer">255</span>, self.alpha)
+    love.graphics.rectangle(<span class="string"><span class="delimiter">'</span><span class="content">fill</span><span class="delimiter">'</span></span>, self.x - self.w/<span class="integer">2</span>, self.y - self.h/<span class="integer">2</span>, self.w, self.h)
+    love.graphics.setColor(<span class="integer">255</span>, <span class="integer">255</span>, <span class="integer">255</span>, <span class="integer">255</span>)
+<span class="keyword">end</span>
+
+<span class="keyword">return</span> PaddleTrail
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+    <br />
+
+    2. Make it so that the trail spawning interval for the ball is tied to its angle speed. (<strong>hint</strong>: drop the use of timers and calculate the time needed on your own on the update
+    function, since you can&#8217;t get variable times using the Timer module)
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_trail_answer_2">Answer</a><div id="exercises_trail_answer_2" class="content answer">
+        Here we calculate the time needed based on some formula (you may come up with another) that uses the angle speed as a parameter. The adding of dt and then zeroing the trail_t variable
+        is the basic timing construct that the Timer module also does internally for its calculations. The point here is that the Timer module is not as flexible to accept arbitrary intervals
+        that change based on whatever, so you have to do it yourself:<br /><br />
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">new</span>(...)
+    ...
+    self.trail_t = <span class="integer">0</span>
+    ...
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+    ...
+    self.trail_t = self.trail_t + dt
+    <span class="keyword">if</span> self.trail_t &gt; (<span class="float">0.03</span> - math.abs(<span class="float">0.0125</span>*self.angle_speed)) <span class="keyword">then</span>
+        self.trail_t = <span class="integer">0</span>
+        table.insert(ball_trails, BallTrail(self.x, self.y, self.r))
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+    <br />
+
+    3. Whenever a ball dies its trails still keep getting spawned even after it has been gone. Find a way of fixing this.
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_trail_answer_3">Answer</a><div id="exercises_trail_answer_3" class="content answer">
+        The trails stay alive because we&#8217;re using fuccboiGDX&#8217;s global timer and we&#8217;re not telling that timer to die whenever the ball dies. To fix this,
+        we save the id returned by fg.timer (every timer call returns an id so that we can use it like we&#8217;re gonna do now) and then cancel it when the
+        ball dies.
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">new</span>(...)
+    ...
+    self.trail_timer = fg.timer:every(<span class="map"><span class="delimiter">{</span><span class="float">0.02</span>, <span class="float">0.04</span><span class="delimiter">}</span></span>, <span class="keyword">function</span>()
+        table.insert(ball_trails, BallTrail(self.x, self.y, self.r))
+    <span class="keyword">end</span>)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Ball:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> self.dead <span class="keyword">then</span>
+        ...
+        fg.timer:cancel(self.trail_timer)
+        ...
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+</div></dd></dl>
+<p><br /></p>
+
+<h3 id="Ball_Size" data-magellan-destination="Ball_Size">Ball Size</h3>
+
+<p>Another thing we can do is change the ball’s size based on its velocity, as well as add some pulsing to its size so that it looks a bit more alive. The first one:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Paddle:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> (self.x - self.r/<span class="integer">2</span> &lt;= paddle1.x + paddle1.w/<span class="integer">2</span>) <span class="keyword">and</span> 
+       (self.y &gt;= paddle1.y - paddle1.h/<span class="integer">2</span>) <span class="keyword">and</span> (self.y &lt;= paddle1.y + paddle1.h/<span class="integer">2</span>) <span class="keyword">then</span>
+        mg.timer:cancel(<span class="string"><span class="delimiter">'</span><span class="content">r_speed_add</span><span class="delimiter">'</span></span>)
+        mg.timer:tween(<span class="string"><span class="delimiter">'</span><span class="content">r_speed_add</span><span class="delimiter">'</span></span>, <span class="float">1.5</span>, self, <span class="map"><span class="delimiter">{</span><span class="key">r</span> = <span class="integer">30</span> - math.abs(<span class="float">12.5</span>*self.angle_speed)<span class="delimiter">}</span></span>, 
+                       <span class="string"><span class="delimiter">'</span><span class="content">in-out-cubic</span><span class="delimiter">'</span></span>)
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>What this does is create a tween that acts on the ball’s radius through a formula that uses the angle speed as a parameter. This formula says that the higher the angle speed, the smaller
+the radius. This makes it so that when the ball is turning a lot it looks smaller (and its trail looks smaller too since each trail is created using the current radius).</p>
+
+<p>The second thing we can do, making the ball pulsate:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Ball:<span class="function">new</span>(...)
+    ...
+    self.r_pulse = <span class="integer">0</span>
+    fg.timer:every(<span class="map"><span class="delimiter">{</span><span class="float">0.02</span>, <span class="float">0.04</span><span class="delimiter">}</span></span>, <span class="keyword">function</span>()
+        fg.timer:tween(<span class="float">0.02</span>, self, <span class="map"><span class="delimiter">{</span><span class="key">r_pulse</span> = fg.utils.math.random(<span class="integer">-4</span>, <span class="integer">4</span>)<span class="delimiter">}</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">in-elastic</span><span class="delimiter">'</span></span>)
+    <span class="keyword">end</span>)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Ball:<span class="function">draw</span>()
+    fg.utils.graphics.pushRotate(self.x, self.y, self.rotation)
+    <span class="keyword">local</span> <span class="local-variable">r</span> = self.r + self.r_pulse
+    love.graphics.rectangle(<span class="string"><span class="delimiter">'</span><span class="content">fill</span><span class="delimiter">'</span></span>, self.x - r/<span class="integer">2</span>, self.y - r/<span class="integer">2</span>, r, r)
+    love.graphics.pop()
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>Here we create a timer that tweens an additional radius to be added to the original radius between <code class="number">-4</code> and <code class="number">4</code>. Doing this every
+<code class="number">0.02-0.04</code> seconds, it gives a nice twitchy/pulsating effect to the ball. You could also make the intensity of this twitching be higher if the ball’s velocity
+is fast… Or make it higher/lower when it touches a border or a paddle. The possibilities are endless!</p>
+
+<dl class="accordion" data-accordion=""><dd><a href="#exercises_size">Exercises</a><div id="exercises_size" class="content">
+    1. Do the same for paddles and make them pulsate like the ball does.
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_size_answer_1">Answer</a><div id="exercises_size_answer_1" class="content answer">
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Paddle:<span class="function">new</span>(...)
+    ...
+    self.w_pulse = <span class="integer">0</span>
+    self.h_pulse = <span class="integer">0</span>
+    fg.timer:every(<span class="map"><span class="delimiter">{</span><span class="float">0.02</span>, <span class="float">0.04</span><span class="delimiter">}</span></span>, <span class="keyword">function</span>()
+        fg.timer:tween(<span class="float">0.02</span>, self, <span class="map"><span class="delimiter">{</span><span class="key">w_pulse</span> = fg.utils.math.random(<span class="integer">-4</span>, <span class="integer">4</span>)<span class="delimiter">}</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">in-elastic</span><span class="delimiter">'</span></span>)
+        fg.timer:tween(<span class="float">0.02</span>, self, <span class="map"><span class="delimiter">{</span><span class="key">h_pulse</span> = fg.utils.math.random(<span class="integer">-4</span>, <span class="integer">4</span>)<span class="delimiter">}</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">in-elastic</span><span class="delimiter">'</span></span>)
+    <span class="keyword">end</span>)
+    ...
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Paddle:<span class="function">draw</span>()
+    <span class="keyword">local</span> <span class="local-variable">w</span>, <span class="local-variable">h</span> = self.w + self.w_pulse, self.h + self.h_pulse
+    love.graphics.rectangle(<span class="string"><span class="delimiter">'</span><span class="content">fill</span><span class="delimiter">'</span></span>, self.x - w/<span class="integer">2</span>, self.y - h/<span class="integer">2</span>, w, h)
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+</div></dd></dl>
+<p><br /></p>
+
+<h3 id="Challenges" data-magellan-destination="Challenges">Challenges</h3>
+
+<p>There are things you can do to polish the game even more, but instead of just giving you the working code on how to do them, I’ll pose them as challenges that you need to figure out
+for yourself. Building up the necessary skills so you can search and do things on your own is important for game development, and that
+building up can only happen when you’re actually doing things without too much hand-holding.</p>
+
+<ol>
+  <li>
+    <p>Use either <a href="https://www.love2d.org/wiki/love.graphics.print">love.graphics.print</a> or the <a href="/documentation/text">Text</a> module to write the current level somewhere on the screen.</p>
+  </li>
+  <li>
+    <p>Adding particles effects is possible by using the <a href="/documentation/particles">Particles</a> module or by creating particle objects and spawning them as you wish. 
+If you go for the former, set it up according to the description on that page, create a particle system using the editor, 
+and spawn this particle system whenever the ball hits the screen edges or a paddle. Remember that you’re not using the engine and so you don’t need to use
+<code class="text">fg.world:spawnParticles</code>, only <code class="text">fg.getPS</code> and then handling the particle system on your own.</p>
+  </li>
+  <li>
+    <p>Adding camera shake whenever the ball hits something can be done by using the <a href="/documentation/camera">Camera</a> module. Create a new camera instance, set it to follow the center of the screen
+so that when you shake it it doesn’t keep going offscreen, set attach/detach around everything in the <code class="text">Game:draw</code> function so that your shakes are applied to everything in the 
+screen, and then use the <code class="atrm">:shake</code> call to make the screen shake.</p>
+  </li>
+  <li>
+    <p>Shader effects can be achieved by using <a href="http://www.love2d.org/wiki/love.graphics.newShader">love.graphics.newShader</a>. fuccboiGDX comes with a few default shaders located in 
+<code class="text">fuccboi/resources/shaders</code>. Play around with them and see what kinds of effects you can create. The effect on the gif up there was achieved through the use
+of 3 shaders in succession. Also, remember to use <a href="https://www.love2d.org/wiki/Canvas">canvases</a> to apply screen wide shaders (all example shaders that come with fuccboiGDX are screen wide).
+And to apply multiple shaders you’ll need multiple canvases.
+<br /><br /></p>
+  </li>
+</ol>
+
+<h3 id="The_End" data-magellan-destination="The_End">The End</h3>
+
+<p>And that’s it! If you finished all exercises and challenges you should have something that looks pretty similar to this:</p>
+
+<p><img class="center" src="/assets/curvemaster.gif" /></p>
+
+<p>Hopefully you did even more and your version of it looks a lot better! In any case, you should also have a pretty good idea on how to read fuccboiGDX’s documentation
+and you should be able to start using it for your own games. You can find the full source code for the complete game (with the challenges finished) 
+<a href="https://github.com/adonaac/fuccboiGDX-tutorials/tree/master/advanced/CurveMaster">here</a>.
+<br /><br /></p>
+
+    
+      <footer>
+        
+        
+      </footer>
+    
+  </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+  
+  </div><!--.columns-->
+  
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p class="text-center">
+  <span class="credit">
+  	Made using <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/annejohnson/octofound">Octofound</a><br/>
+  </span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/tutorials/curvemaster/index.html';
+        var disqus_url = 'http://fuccboi.moe/tutorials/curvemaster/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+</body>
+</html>

@@ -6,11 +6,11 @@
 <head>
   <script src="/js/vendor/modernizr.js"></script>
   <meta charset="utf-8">
-  <title>fuccboiGDX</title>
+  <title>tutorials - fuccboiGDX</title>
   <meta name="author" content="adnzzzzZ">
 
   
-  <meta name="description" content="fuccboiGDX is a 2D game making code-centric engine/framework that provides additional higher level functionalities on top of LÖVE, making game &hellip;">
+  <meta name="description" content="<!-- Tutorials --> Getting Started Download and install LÖVE 0.9.1 Download fuccboiGDX Create a new folder for your project and copy the contents of &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fuccboi.moe">
+  <link rel="canonical" href="http://fuccboi.moe/tutorials">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
@@ -63,7 +63,7 @@
 
 </head>
 
-<body  id="main_page"   class="no-sidebar" >
+<body   class="no-sidebar" >
   <header role="banner" class="top-header"><!--<hgroup>
   <h1 class="text-center">
   	<a href="/">fuccboiGDX</a>
@@ -238,6 +238,33 @@
 
 
 
+<div id="nav" class="fixed right show-for-large-up">
+<ul class="side-nav">
+
+<strong><a href="/tutorials">tutorials</a><br><br></strong>
+<li><a href="/tutorials/curvemaster">CurveMaster</a></li>
+<li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
+<li><a href="/examples#Animation">Animation</a></li>
+<li><a href="/examples#Area">Area</a></li>
+<li><a href="/examples#Camera">Camera</a></li>
+<li><a href="/examples#Collision">Collision</a></li>
+<li><a href="/examples#Gamestate">Gamestate</a></li>
+<li><a href="/examples#Input">Input</a></li>
+<li><a href="/examples#Layers">Layers</a></li>
+<li><a href="/examples#Loading">Loading</a></li>
+<li><a href="/examples#Objects">Objects</a></li>
+<li><a href="/examples#Particles">Particles</a></li>
+<li><a href="/examples#Random">Random</a></li>
+<li><a href="/examples#Serialization">Serialization</a></li>
+<li><a href="/examples#Shaders">Shaders</a></li>
+<li><a href="/examples#Sound">Sound</a></li>
+<li><a href="/examples#Text">Text</a></li>
+<li><a href="/examples#Tilemap">Tilemap</a></li>
+<li><a href="/examples#Timing">Timing</a></li>
+
+</ul>
+</div>
+
 
 <div data-magellan-expedition>
 <div id="nav" class="fixed right show-for-large-up">
@@ -314,38 +341,77 @@
   <div id="main">
     <div id="content" class="row">
       
-<div class="small-12 medium-12 large-10 large-centered columns">
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
 
   <article role="article">
-    <!---->
-    <p><strong>fuccboiGDX</strong> is a 2D game making code-centric engine/framework that provides additional higher level functionalities on top of <a href="http://love2d.org">LÖVE</a>, 
-making game creation easier, faster, and buzzword! It’s free, open source and supported on Windows, Linux and OSX.</p>
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Tutorials</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="Getting_Started" data-magellan-destination="Getting_Started">Getting Started</h3>
 
-<div class="row">
-    <div class="small-4 columns text-center">
-        <a href="https://github.com/adonaac/fuccboiGDX/archive/master.zip" class="button expand">download</a>
-    </div>
+<ol>
+  <li>Download and install <a href="http://love2d.org">LÖVE 0.9.1</a></li>
+  <li>Download <a href="https://github.com/adonaac/fuccboiGDX/archive/master.zip">fuccboiGDX</a></li>
+  <li>Create a new folder for your project and copy the contents of the fuccboi.zip file to it</li>
+  <li><a href="https://www.love2d.org/wiki/Getting_Started">Run</a> the project folder</li>
+  <li>You should see a black 480x360 screen. If this happens then you can start coding on the Game.lua file.
+<br /><br /></li>
+</ol>
 
-    <div class="small-4 columns text-center">
-        <a href="/tutorials" class="button expand">tutorials</a>
-    </div>
+<h3 id="Tutorials" data-magellan-destination="Tutorials">Tutorials</h3>
 
-    <div class="small-4 columns text-center">
-        <a href="/documentation" class="button expand">documentation</a>
-    </div>
-</div>
+<p>Tutorials are so far divided in two sections: advanced and examples. </p>
 
 <!--
-<h2 style="text-align: center">Games being made with fuccboiGDX</h2>
-<br>
+The **beginner** section has a bunch of tutorials for people who have never programmed before and want to get started. 
+The topics covered range from the very basics of programming up to right before object orientation is needed. 
 
-<ul class="example-orbit" data-orbit data-options="navigation_arrows: false; pause_on_hover:false; bullets: false; slide_number: false"> 
-    <li><img src="/assets/fight.gif"/></li> 
-    <li><img src="/assets/hitee.gif"/></li> 
-    <li><img src="/assets/ice.gif"/></li> 
-    <li><img src="/assets/attack.gif"/></li> 
+The **intermediate** section is for people who already have some programming experience (and for people who went through the beginner tutorials) 
+but don't necessarily know Lua, LÖVE nor game programming enough. The topics covered range from a bottom up explanation of object oriented programming 
+to making newbie-friendly games such as Pong, Asteroids, Arkanoid, Tetris and so on. 
+-->
+
+<p>The <strong>advanced</strong> section is for people who are already experienced game programmers in other engines/frameworks and 
+who simply want to learn how to use fuccboiGDX. The tutorials there are games that vary on complexity, but all have 
+the main goal of showcasing different uses of the engine as well as recommended best practices. </p>
+
+<p>The <strong>examples</strong> section simply has a lot of short examples on how to do X or Y. It’s supposed to serve as a fast way 
+of checking how to do some action without having to look at the full documentation, for people who are more example driven
+or who want to get a feel for how coding things with fuccboiGDX works.</p>
+
+<p><strong>Advanced</strong></p>
+
+<ul>
+  <li><a href="curvemaster">CurveMaster</a> - enhanced Pong clone using the <code class="text">framework</code>;</li>
+  <li><a href="2d-platformer">2D Platformer</a> - simple 2D platformer using box2d physics and the <code class="text">engine</code>;</li>
 </ul>
-&#8211;>
+
+<p><strong>Examples</strong></p>
+
+<ul>
+  <li><a href="examples#Animation">Animation</a></li>
+  <li><a href="examples#Area">Area</a></li>
+  <li><a href="examples#Camera">Camera</a></li>
+  <li><a href="examples#Collision">Collision</a></li>
+  <li><a href="examples#Gamestate">Gamestate</a></li>
+  <li><a href="examples#Input">Input</a></li>
+  <li><a href="examples#Layers">Layers</a></li>
+  <li><a href="examples#Loading">Loading</a></li>
+  <li><a href="examples#Objects">Objects</a></li>
+  <li><a href="examples#Particles">Particles</a></li>
+  <li><a href="examples#Random">Random</a></li>
+  <li><a href="examples#Serialization">Serialization</a></li>
+  <li><a href="examples#Shaders">Shaders</a></li>
+  <li><a href="examples#Sound">Sound</a></li>
+  <li><a href="examples#Text">Text</a></li>
+  <li><a href="examples#Text">Tilemap</a></li>
+  <li><a href="examples#Timing">Timing</a>
+<br /><br /></li>
+</ul>
 
     
       <footer>
@@ -354,6 +420,12 @@ making game creation easier, faster, and buzzword! It’s free, open source and 
       </footer>
     
   </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
   
   </div><!--.columns-->
   
@@ -459,6 +531,22 @@ making game creation easier, faster, and buzzword! It’s free, open source and 
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/tutorials/index.html';
+        var disqus_url = 'http://fuccboi.moe/tutorials/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

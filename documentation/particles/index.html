@@ -6,11 +6,13 @@
 <head>
   <script src="/js/vendor/modernizr.js"></script>
   <meta charset="utf-8">
-  <title>fuccboiGDX</title>
+  <title>Particles - fuccboiGDX</title>
   <meta name="author" content="adnzzzzZ">
 
   
-  <meta name="description" content="fuccboiGDX is a 2D game making code-centric engine/framework that provides additional higher level functionalities on top of LÖVE, making game &hellip;">
+  <meta name="description" content="<!-- Particles --> Example 1
+2 -- spawn particle system, parameters are: particle system name, x, y position, optional settings
+fg.world: &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fuccboi.moe">
+  <link rel="canonical" href="http://fuccboi.moe/documentation/particles">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
@@ -63,7 +65,7 @@
 
 </head>
 
-<body  id="main_page"   class="no-sidebar" >
+<body   class="no-sidebar" >
   <header role="banner" class="top-header"><!--<hgroup>
   <h1 class="text-center">
   	<a href="/">fuccboiGDX</a>
@@ -243,6 +245,7 @@
 <div id="nav" class="fixed right show-for-large-up">
 <ul class="side-nav">
 
+<strong><a href="/documentation">documentation</a><br><br></strong>
 
 
 
@@ -278,6 +281,10 @@
 
 
 
+
+
+<li data-magellan-arrival="Example"><a href="#Example">Example</a></li><li data-magellan-arrival="Description"><a href="#Description">Description</a></li><li data-magellan-arrival="Methods"><a href="#Methods">Methods</a></li>
+<li data-magellan-arrival='spawnParticles' class='nav'><a href='#spawnParticles'>spawnParticles</a></li>
 
 
 
@@ -314,38 +321,74 @@
   <div id="main">
     <div id="content" class="row">
       
-<div class="small-12 medium-12 large-10 large-centered columns">
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
 
   <article role="article">
-    <!---->
-    <p><strong>fuccboiGDX</strong> is a 2D game making code-centric engine/framework that provides additional higher level functionalities on top of <a href="http://love2d.org">LÖVE</a>, 
-making game creation easier, faster, and buzzword! It’s free, open source and supported on Windows, Linux and OSX.</p>
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Particles</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="Example" data-magellan-destination="Example">Example</h3>
 
-<div class="row">
-    <div class="small-4 columns text-center">
-        <a href="https://github.com/adonaac/fuccboiGDX/archive/master.zip" class="button expand">download</a>
-    </div>
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- spawn particle system, parameters are: particle system name, x, y position, optional settings</span>
+fg.world:spawnParticles(<span class="string"><span class="delimiter">'</span><span class="content">Explosion</span><span class="delimiter">'</span></span>, <span class="integer">400</span>, <span class="integer">400</span>, <span class="map"><span class="delimiter">{</span><span class="key">follow_target</span> = self<span class="delimiter">}</span></span>)
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
 
-    <div class="small-4 columns text-center">
-        <a href="/tutorials" class="button expand">tutorials</a>
-    </div>
+<h3 id="Description" data-magellan-destination="Description">Description</h3>
 
-    <div class="small-4 columns text-center">
-        <a href="/documentation" class="button expand">documentation</a>
-    </div>
+<p>The particle module takes care of spawning particle systems created with the particle editor. The editor is located at <code class="text">fuccboi/resources/particles/sperm</code>.
+Running that folder just like you run a normal LÖVE folder should open a particle editor that lets you edit particle systems as well as save them. To properly save them you must change the
+fifth line of the <code class="text">main.lua</code> file to point to the directory where that file is located. For instance, if your current project is named Project_X, is located on your user’s main
+directory, and the fuccboiGDX library is inside a folder named libraries, then it’d look something like this:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> love.<span class="function">load</span>()
+    <span class="comment">-- YOUR SAVE FOLDER HERE</span>
+    save_folder = <span class="string"><span class="delimiter">&quot;</span><span class="content">C:/Users/Your_Username/Project_X/libraries/fuccboi/resources/particles/sperm/</span><span class="delimiter">&quot;</span></span>
+    ...
+</pre></td>
+</tr></table>
 </div>
 
-<!--
-<h2 style="text-align: center">Games being made with fuccboiGDX</h2>
-<br>
+<p>Failing to change this properly means that particle spawning will not work, because the particle module reads particle systems only from this folder 
+(<code class="text">/resources/particles/sperm</code>). This module only works with the <code class="text">engine</code> for now.
+<br /><br /></p>
 
-<ul class="example-orbit" data-orbit data-options="navigation_arrows: false; pause_on_hover:false; bullets: false; slide_number: false"> 
-    <li><img src="/assets/fight.gif"/></li> 
-    <li><img src="/assets/hitee.gif"/></li> 
-    <li><img src="/assets/ice.gif"/></li> 
-    <li><img src="/assets/attack.gif"/></li> 
+<h3 id="Methods" data-magellan-destination="Methods">Methods</h3>
+
+<div id="spawnParticles" data-magellan-destination="spawnParticles"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">spawnParticles</span>(name<span class="tag">[string]</span>, x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, settings<span class="tag">[table]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>name</code>: the name of the particle system to be spawned, must be a particle system created with the editor (there must be a file named <code class="text">[name].lua</code> in the 
+<code class="text">/resources/particles/sperm</code> folder)</li>
+  <li><code>x, y</code>: the position to spawn the particle system at</li>
+  <li><code>settings</code>: a table containing all particle spawning settings, all values are optional</li>
 </ul>
-&#8211;>
+
+<p>Possible settings:</p>
+
+<ul>
+  <li><code>follow_target</code>: the target that the particle system should follow, the target must inherit from <code class="text">fg.Entity</code> </li>
+  <li><code>rotation</code>: if the particle system should be rotated towards some direction
+<br /><br /></li>
+</ul>
+
 
     
       <footer>
@@ -354,6 +397,12 @@ making game creation easier, faster, and buzzword! It’s free, open source and 
       </footer>
     
   </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
   
   </div><!--.columns-->
   
@@ -459,6 +508,22 @@ making game creation easier, faster, and buzzword! It’s free, open source and 
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/documentation/particles/index.html';
+        var disqus_url = 'http://fuccboi.moe/documentation/particles/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

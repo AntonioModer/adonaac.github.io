@@ -6,11 +6,19 @@
 <head>
   <script src="/js/vendor/modernizr.js"></script>
   <meta charset="utf-8">
-  <title>fuccboiGDX</title>
+  <title>Spritebatch - fuccboiGDX</title>
   <meta name="author" content="adnzzzzZ">
 
   
-  <meta name="description" content="fuccboiGDX is a 2D game making code-centric engine/framework that provides additional higher level functionalities on top of LÖVE, making game &hellip;">
+  <meta name="description" content="<!-- Spritebatch --> Example 1
+2
+3
+4
+5
+6
+7
+8 -- in some initialization part of code
+fg.Spritebatches['Blood'] = fg.Spritebatch(0, 0, love.graphics. &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +26,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fuccboi.moe">
+  <link rel="canonical" href="http://fuccboi.moe/documentation/spritebatch">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
@@ -63,7 +71,7 @@
 
 </head>
 
-<body  id="main_page"   class="no-sidebar" >
+<body   class="no-sidebar" >
   <header role="banner" class="top-header"><!--<hgroup>
   <h1 class="text-center">
   	<a href="/">fuccboiGDX</a>
@@ -243,6 +251,7 @@
 <div id="nav" class="fixed right show-for-large-up">
 <ul class="side-nav">
 
+<strong><a href="/documentation">documentation</a><br><br></strong>
 
 
 
@@ -290,6 +299,12 @@
 
 
 
+
+
+<li data-magellan-arrival="Example"><a href="#Example">Example</a></li><li data-magellan-arrival="Description"><a href="#Description">Description</a></li><li data-magellan-arrival="Methods"><a href="#Methods">Methods</a></li>
+<li data-magellan-arrival='new' class='nav'><a href='#new'>new</a></li><li data-magellan-arrival='update' class='nav'><a href='#update'>update</a></li><li data-magellan-arrival='draw' class='nav'><a href='#draw'>draw</a></li>
+<li data-magellan-arrival="Attributes"><a href="#Attributes">Attributes</a></li>
+<li data-magellan-arrival='image' class='nav'><a href='#image'>image</a></li><li data-magellan-arrival='size' class='nav'><a href='#size'>size</a></li><li data-magellan-arrival='position' class='nav'><a href='#position'>x y</a></li><li data-magellan-arrival='usage_hint' class='nav'><a href='#usage_hint'>usage_hint</a></li>
 
 
 
@@ -314,38 +329,115 @@
   <div id="main">
     <div id="content" class="row">
       
-<div class="small-12 medium-12 large-10 large-centered columns">
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
 
   <article role="article">
-    <!---->
-    <p><strong>fuccboiGDX</strong> is a 2D game making code-centric engine/framework that provides additional higher level functionalities on top of <a href="http://love2d.org">LÖVE</a>, 
-making game creation easier, faster, and buzzword! It’s free, open source and supported on Windows, Linux and OSX.</p>
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Spritebatch</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="Example" data-magellan-destination="Example">Example</h3>
 
-<div class="row">
-    <div class="small-4 columns text-center">
-        <a href="https://github.com/adonaac/fuccboiGDX/archive/master.zip" class="button expand">download</a>
-    </div>
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- in some initialization part of code</span>
+fg.Spritebatches[<span class="string"><span class="delimiter">'</span><span class="content">Blood</span><span class="delimiter">'</span></span>] = fg.Spritebatch(<span class="integer">0</span>, <span class="integer">0</span>, love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">blood.png</span><span class="delimiter">'</span></span>), <span class="integer">5000</span>, <span class="string"><span class="delimiter">'</span><span class="content">stream</span><span class="delimiter">'</span></span>)
 
-    <div class="small-4 columns text-center">
-        <a href="/tutorials" class="button expand">tutorials</a>
-    </div>
+<span class="comment">-- add the spritebatch to a layer so that it can be drawn</span>
+fg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="content">Blood</span><span class="delimiter">'</span></span>, fg.Spritebatches[<span class="string"><span class="delimiter">'</span><span class="content">Blood</span><span class="delimiter">'</span></span>])
 
-    <div class="small-4 columns text-center">
-        <a href="/documentation" class="button expand">documentation</a>
-    </div>
+<span class="comment">-- in the update code of the Blood effect object</span>
+fg.Spritebatches[<span class="string"><span class="delimiter">'</span><span class="content">Blood</span><span class="delimiter">'</span></span>].spritebatch:add(self.blood_quad, self.x, self.y, self.angle, self.sx, self.y, self.w/<span class="integer">2</span>, self.h/<span class="integer">2</span>)
+</pre></td>
+</tr></table>
 </div>
 
-<!--
-<h2 style="text-align: center">Games being made with fuccboiGDX</h2>
-<br>
+<h3 id="Description" data-magellan-destination="Description">Description</h3>
 
-<ul class="example-orbit" data-orbit data-options="navigation_arrows: false; pause_on_hover:false; bullets: false; slide_number: false"> 
-    <li><img src="/assets/fight.gif"/></li> 
-    <li><img src="/assets/hitee.gif"/></li> 
-    <li><img src="/assets/ice.gif"/></li> 
-    <li><img src="/assets/attack.gif"/></li> 
+<p>The <code class="text">fg.Spritebatch</code> module is used for drawing multiple identical copies of a single image with only one 
+<a href="https://www.love2d.org/wiki/love.graphics.draw">love.graphics.draw</a> call, which results in more performant draw code. </p>
+
+<h3 id="Methods" data-magellan-destination="Methods">Methods</h3>
+
+<div id="new" data-magellan-destination="new"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">new</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, image<span class="tag">[Image]</span>, size<span class="tag">[number]</span>, usage_hint<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>x, y</code>: the position to draw this spritebatch at</li>
+  <li><code>image</code>: the image to use for sprites</li>
+  <li><code>number</code>: the max number of sprites</li>
+  <li><code>usage_hint</code>: the <a href="https://www.love2d.org/wiki/SpriteBatchUsage">usage hint</a>
+<br /><br /></li>
 </ul>
-&#8211;>
+
+<div id="update" data-magellan-destination="update"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">update</span>(dt<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>dt</code>: delta value passed from the main loop to update the spritebatch 
+<br /><br /></li>
+</ul>
+
+<div id="draw" data-magellan-destination="draw"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">draw</span>()</pre></td></table></div>
+
+<ul>
+  <li>draws the spritebatch, if using the <code class="text">engine</code>, use <code class="atrm">.world:addToLayer(layer_name, spritebatch)</code>
+<br /><br /></li>
+</ul>
+
+<h3 id="Attributes" data-magellan-destination="Attributes">Attributes</h3>
+
+<div id="image" data-magellan-destination="image"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">image</span><span class="tag">[Image]</span></pre></td></table></div>
+
+<ul>
+  <li>the image to be used for sprites	
+<br /><br /></li>
+</ul>
+
+<div id="size" data-magellan-destination="size"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">size</span><span class="tag">[number]</span></pre></td></table></div>
+
+<ul>
+  <li>the max number of sprites
+<br /><br /></li>
+</ul>
+
+<div id="position" data-magellan-destination="position"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">x</span><span class="tag">[number]</span>, .<span class="annotation">y</span><span class="tag">[number]</span></pre></td></table></div>
+
+<ul>
+  <li>the position to draw the spritebatch at	
+<br /><br /></li>
+</ul>
+
+<div id="spritebatch" data-magellan-destination="spritebatch"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">spritebatch</span><span class="tag">[Spritebatch]</span></pre></td></table></div>
+
+<ul>
+  <li>the <a href="https://www.love2d.org/wiki/SpriteBatch">spritebatch</a>
+<br /><br /></li>
+</ul>
+
+<div id="usage_hint" data-magellan-destination="usage_hint"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">usage_hint</span><span class="tag">[string]</span></pre></td></table></div>
+
+<ul>
+  <li>the <a href="https://www.love2d.org/wiki/SpriteBatchUsage">usage hint</a>
+<br /><br /></li>
+</ul>
 
     
       <footer>
@@ -354,6 +446,12 @@ making game creation easier, faster, and buzzword! It’s free, open source and 
       </footer>
     
   </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
   
   </div><!--.columns-->
   
@@ -459,6 +557,22 @@ making game creation easier, faster, and buzzword! It’s free, open source and 
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/documentation/spritebatch/index.html';
+        var disqus_url = 'http://fuccboi.moe/documentation/spritebatch/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

@@ -1,0 +1,851 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <script src="/js/vendor/modernizr.js"></script>
+  <meta charset="utf-8">
+  <title>Camera - fuccboiGDX</title>
+  <meta name="author" content="adnzzzzZ">
+
+  
+  <meta name="description" content="<!-- Camera --> Example 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11 -- initialize the camera, passing a settings table with optional parameters or setting them directly &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fuccboi.moe/documentation/camera">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
+
+  <script src="/js/vendor/jquery.js"></script>
+  <script src="/js/vendor/fastclick.js"></script>
+
+  <script src="/js/foundation.min.js"></script>
+  <script src="/js/foundation/foundation.magellan.js"></script>
+  <script src="/js/foundation/foundation.topbar.js"></script>
+  <script src="/js/foundation/foundation.accordion.js"></script>
+  <script src="/js/foundation/foundation.orbit.js"></script>
+  <script src="/js/foundation/foundation.dropdown.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <script>
+
+  $(document).ready(function(){
+    $(document).foundation();
+  });
+
+  </script>
+
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-51118504-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar" >
+  <header role="banner" class="top-header"><!--<hgroup>
+  <h1 class="text-center">
+  	<a href="/">fuccboiGDX</a>
+  </h1>
+  
+</hgroup>-->
+
+<!--<ul class="example-orbit-content" data-orbit>
+  <li data-orbit-slide="headline-1">
+    <div>
+      <h2>Headline 1</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <div>
+      <h2>Headline 2</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div>
+      <h2>Headline 3</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+</ul>-->
+
+</header>
+  <nav role="navigation"><ul class="subscription hide" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+
+
+
+<div class="sticky">
+
+  <nav class="top-bar" data-topbar role="navigation">
+
+    <!--
+    <ul class="title-area right">
+        <li class="name">
+          <h1><a href="/">fuccboiGDX <i class="fa fa-heart"></i></i></i></a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    -->
+
+
+    <section class="top-bar-section">
+      <ul class="main-navigation right show-for-medium-up">
+          <li><a href="https://github.com/adonaac/fuccboiGDX">github</a></li>
+          <li><a href="https://twitter.com/adnzzzzZ">twitter</i></a></li>
+      </ul>
+
+      <ul class="main-navigation left">
+          <li><a href="/">fuccboiGDX</a></li>
+
+          <li class="has-dropdown">
+          <a href="/tutorials">tutorials</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Advanced</a>
+            <ul class="dropdown">
+                <li><a href="/tutorials/curvemaster">CurveMaster</a></li>
+                <li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
+            </ul>
+            </li>
+
+            <li class="has-dropdown"><a href="#">Examples</a>
+            <ul class="dropdown">
+                <li><a href="/examples#Animation">Animation</a></li>
+                <li><a href="/examples#Area">Area</a></li>
+                <li><a href="/examples#Camera">Camera</a></li>
+                <li><a href="/examples#Collision">Collision</a></li>
+                <li><a href="/examples#Gamestate">Gamestate</a></li>
+                <li><a href="/examples#Input">Input</a></li>
+                <li><a href="/examples#Layers">Layers</a></li>
+                <li><a href="/examples#Loading">Loading</a></li>
+                <li><a href="/examples#Objects">Objects</a></li>
+                <li><a href="/examples#Particles">Particles</a></li>
+                <li><a href="/examples#Random">Random</a></li>
+                <li><a href="/examples#Serialization">Serialization</a></li>
+                <li><a href="/examples#Shaders">Shaders</a></li>
+                <li><a href="/examples#Sound">Sound</a></li>
+                <li><a href="/examples#Text">Text</a></li>
+                <li><a href="/examples#Tilemap">Tilemap</a></li>
+                <li><a href="/examples#Timing">Timing</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <li class="has-dropdown">
+          <a href="/documentation">documentation</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Main</a>
+            <ul class="dropdown">
+                <li><a href="/documentation/fg">fg</a></li>
+                <li><a href="/documentation/render">Render</a></li>
+                <li><a href="/documentation/world">World</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Logic</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/area">Area</a></li>
+            <li><a href="/documentation/class">Class</a></li>
+            <li><a href="/documentation/debug">Debug</a></li>
+            <li><a href="/documentation/entity">Entity</a></li>
+            <li><a href="/documentation/gamestate">Gamestate</a></li>
+            <li><a href="/documentation/input">Input</a></li>
+            <li><a href="/documentation/loader">Loader</a></li>
+            <li><a href="/documentation/objectpool">ObjectPool</a></li>
+                <li class="has-dropdown"><a href="#">Physics</a>
+                <ul class="dropdown">
+                    <li><a href="/documentation/collision">Collision</a></li>
+                    <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
+                    <li><a href="/documentation/solid">Solid</a></li>
+                </ul>
+                </li>
+            <li><a href="/documentation/serial">Serial</a></li>
+            <li><a href="/documentation/timer">Timer</a></li>
+            <li><a href="/documentation/utils">utils</a></li>
+            <li><a href="/documentation/vector">Vector</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Visual</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/animation">Animation</a></li>
+            <li><a href="/documentation/background">Background</a></li>
+            <li><a href="/documentation/camera">Camera</a></li>
+            <li><a href="/documentation/particles">Particles</a></li>
+            <li><a href="/documentation/spritebatch">Spritebatch</a></li>
+            <li><a href="/documentation/text">Text</a></li>
+            <li><a href="/documentation/tilemap">Tilemap</a></li>
+            <li><a href="/documentation/uitools">UI Tools</a></li>
+            </ul>
+
+            <li class="has-dropdown"><a href="#">Sound</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/sound">Sound</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <!--
+          <li class="has-dropdown">
+            <a href="/no-sidebar">No Sidebar Page</a>
+
+            <ul class="dropdown">
+              <li><a href="/no-sidebar/left-sidebar">Left Sidebar Page</a></li>
+              <li><a href="/no-sidebar/right-sidebar">Right Sidebar Page</a></li>
+              <li><a href="/no-sidebar/example-formatting">Example Formatting</a></li>
+            </ul>
+
+          </li>
+
+          <li><a href="/blog">Blog</a></li>
+
+          <li><a href="/blog/archives">Archives</a></li>
+          -->
+
+      </ul>
+
+    </section>
+  </nav>
+
+</div>
+
+
+
+
+
+
+<div data-magellan-expedition>
+<div id="nav" class="fixed right show-for-large-up">
+<ul class="side-nav">
+
+<strong><a href="/documentation">documentation</a><br><br></strong>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li data-magellan-arrival="Example"><a href="#Example">Example</a></li><li data-magellan-arrival="Description"><a href="#Description">Description</a></li><li data-magellan-arrival="Methods"><a href="#Methods">Methods</a></li>
+<li data-magellan-arrival='new' class='nav'><a href='#new'>new</a></li><li data-magellan-arrival='update' class='nav'><a href='#update'>update</a></li><li data-magellan-arrival='draw' class='nav'><a href='#draw'>draw</a></li><li data-magellan-arrival='attach' class='nav'><a href='#attach'>attach</a></li><li data-magellan-arrival='detach' class='nav'><a href='#detach'>detach</a></li><li data-magellan-arrival='follow' class='nav'><a href='#follow'>follow</a></li><li data-magellan-arrival='getPosition' class='nav'><a href='#getPosition'>getPosition</a></li><li data-magellan-arrival='getMousePosition' class='nav'><a href='#getMousePosition'>getMousePosition</a></li><li data-magellan-arrival='getCameraCoords' class='nav'><a href='#getCameraCoords'>getCameraCoords</a></li><li data-magellan-arrival='getWorldCoords' class='nav'><a href='#getWorldCoords'>getWorldCoords</a></li><li data-magellan-arrival='removeBounds' class='nav'><a href='#removeBounds'>removeBounds</a></li><li data-magellan-arrival='setBounds' class='nav'><a href='#setBounds'>setBounds</a></li><li data-magellan-arrival='setDeadzone' class='nav'><a href='#setDeadzone'>setDeadzone</a></li><li data-magellan-arrival='shake' class='nav'><a href='#shake'>shake</a></li><li data-magellan-arrival='move' class='nav'><a href='#move'>move</a></li><li data-magellan-arrival='moveTo' class='nav'><a href='#moveTo'>moveTo</a></li><li data-magellan-arrival='rotate' class='nav'><a href='#rotate'>rotate</a></li><li data-magellan-arrival='rotateTo' class='nav'><a href='#rotateTo'>rotateTo</a></li><li data-magellan-arrival='zoom' class='nav'><a href='#zoom'>zoom</a></li><li data-magellan-arrival='zoomTo' class='nav'><a href='#zoomTo'>zoomTo</a></li>
+<li data-magellan-arrival="Attributes"><a href="#Attributes">Attributes</a></li>
+<li data-magellan-arrival='debug_draw' class='nav'><a href='#debug_draw'>debug_draw</a></li><li data-magellan-arrival='follow_style' class='nav'><a href='#follow_style'>follow_style</a></li><li data-magellan-arrival='lead' class='nav'><a href='#lead'>lead</a></li><li data-magellan-arrival='lerp' class='nav'><a href='#lerp'>lerp</a></li><li data-magellan-arrival='max_shake_intensity' class='nav'><a href='#max_shake_intensity'>max_shake_intensity</a></li><li data-magellan-arrival='target' class='nav'><a href='#target'>target</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</div>
+</div>
+
+</nav>
+  <div id="main">
+    <div id="content" class="row">
+      
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
+
+  <article role="article">
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Camera</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="Example" data-magellan-destination="Example">Example</h3>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- initialize the camera, passing a settings table with optional parameters or setting them directly</span>
+camera = fg.Camera(<span class="map"><span class="delimiter">{</span><span class="key">lerp</span> = <span class="integer">3</span>, <span class="key">follow_style</span> = <span class="string"><span class="delimiter">'</span><span class="content">lockon</span><span class="delimiter">'</span></span>, <span class="key">target</span> = followed_entity<span class="delimiter">}</span></span>)
+camera.debug_draw = <span class="predefined-constant">true</span>
+
+<span class="comment">-- update the camera</span>
+camera:update(dt)
+
+<span class="comment">-- draw the camera, attach/detach applies/removes camera transforms</span>
+camera:attach()
+entities:draw()
+camera:detach()
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<h3 id="Description" data-magellan-destination="Description">Description</h3>
+
+<p>The <code class="text">fg.Camera</code> module handles basic things that a camera should handle, like translations, 
+rotations and scaling, but also adds a bunch of high level features such as target tracking, lerp 
+(delay between camera position and target position), lead (how much in front of the target the camera should be), 
+deadzones and camera shakes.  An instance <code class="text">fg.world.camera</code> is automatically created on initialization, 
+but you can also create your own instances doing <code class="text">camera = fg.Camera()</code>.</p>
+
+<p>This module is based on <a href="http://vrld.github.io/hump/#hump.camera">hump.camera</a> and has been modified for additional 
+functionality and consistency. Also, check <a href="http://haxeflixel.com/demos/FlxCamera/">HaxeFlixel&#8217;s camera demo</a> for an 
+example on how lerp, lead and targetting modes work. This module copies HaxeFlixel&#8217;s camera pretty closely for those
+features.
+<br /><br /></p>
+
+<h3 id="Methods" data-magellan-destination="Methods">Methods</h3>
+
+<div id="new" data-magellan-destination="new"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">new</span>(settings<span class="tag">[table[optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>settings</code>: a table containing all camera initialization settings, all values are optional </li>
+</ul>
+
+<p>Possible settings:</p>
+
+<ul>
+  <li><code>x, y</code>: the initial position of the camera, defaults to the center of the screen </li>
+  <li><code>bounds</code>: a table in the format <code class="text">left = [number], top = [number], right = [number], down = [number]</code></li>
+  <li><code>follow_style</code>: the follow style: <code class="string">'lockon'</code>, <code class="string">'screen'</code>, <code class="string">'platformer'</code>, 
+<code class="string">'topdown'</code> or <code class="string">'topdown-tight'</code>, defaults to <code class="string">'lockon'</code></li>
+  <li><code>lead</code>: the initial lead value, defaults to <code class="text">{x = 0, y = 0}</code> </li>
+  <li><code>lerp</code>: the initial lerp value, defaults to <code class="number">0</code> </li>
+  <li><code>max_shake_intensity</code>: the maximum amount of camera shake, defaults to <code class="number">15</code> </li>
+  <li><code>rotation</code>: the initial rotation of the camera, defaults to <code class="number">0</code> </li>
+  <li><code>target</code>: the tracked object, defaults to <code class="text">nil</code>; the object must have <code class="text">.x, .y</code> fields.
+<br /><br /></li>
+</ul>
+
+<div id="update" data-magellan-destination="update"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">update</span>(dt<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>dt</code>: delta value passed from the main loop to update the camera
+<br /><br /></li>
+</ul>
+
+<div id="draw" data-magellan-destination="draw"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">draw</span>(func<span class="tag">[function]</span>)</pre></td></table></div>
+
+<ul>
+  <li>automatically wraps a function between <code class="atrm">:attach</code> and <code class="atrm">:detach</code> calls</li>
+  <li><code>func</code>: the function to be drawn</li>
+</ul>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> love.<span class="function">draw</span>()
+    camera:draw(drawWorld)
+    drawUI()
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<div id="attach" data-magellan-destination="attach"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">attach</span>()</pre></td></table></div>
+
+<ul>
+  <li>attaches the camera, applying all its transformations until <code class="atrm">:detach</code> is called 
+<br /><br /></li>
+</ul>
+
+<div id="detach" data-magellan-destination="detach"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">detach</span>()</pre></td></table></div>
+
+<ul>
+  <li>detaches the camera, removing all its transformations</li>
+</ul>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> love.<span class="function">draw</span>()
+    camera:attach()
+    drawWorld()
+    camera:detach()
+    drawUI()
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<div id="follow" data-magellan-destination="follow"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">follow</span>(target<span class="tag">[table]</span>, settings<span class="tag">[table[optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>sets a new target, follow style, lead and lerp values and resets the deadzone according to the follow style</li>
+  <li><code>target</code>: the new target to follow, must have <code class="text">.x, .y</code> fields </li>
+  <li><code>settings</code>: a table containing target following settings, all values are optional </li>
+</ul>
+
+<p>Possible settings:</p>
+
+<ul>
+  <li><code>follow_style</code>: the follow style: <code class="string">'lockon'</code>, <code class="string">'screen'</code>, <code class="string">'platformer'</code>, 
+<code class="string">'topdown'</code> or <code class="string">'topdown-tight'</code>, defaults to the already set follow style</li>
+  <li><code>lead</code>: the new lead value, defaults to the already set lead value </li>
+  <li><code>lerp</code>: the new lerp value, defaults to the already set lerp value 
+<br /><br /></li>
+</ul>
+
+<div id="getPosition" data-magellan-destination="getPosition"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">getPosition</span>()</pre></td></table></div>
+
+<ul>
+  <li>returns the <code class="text">.x, .y</code> camera position 
+<br /><br /></li>
+</ul>
+
+<div id="getMousePosition" data-magellan-destination="getMousePosition"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">getMousePosition</span>()</pre></td></table></div>
+
+<ul>
+  <li>returns the <code class="text">.x, .y</code> mouse position in world coordinates 
+<br /><br /></li>
+</ul>
+
+<div id="getCameraCoords" data-magellan-destination="getCameraCoords"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">getCameraCoords</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>)</pre></td></table></div>
+<div id="getWorldCoords" data-magellan-destination="getWorldCoords"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">getWorldCoords</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>)</pre></td></table></div>
+
+<p>Because a camera has a point it looks at, a rotation and a zoom factor, it defines a coordinate system. A point now has two sets of coordinates: one defines where the point is to be found 
+in the game world, and the other describes the position on the computer screen. The first set of coordinates is called world coordinates, the second one camera coordinates. Sometimes it is 
+needed to convert between the two coordinate systems, for example to get the position of a mouse click in the game world in a strategy game, or to see if an object is visible on the screen.</p>
+
+<ul>
+  <li>returns the converted <code class="text">.x, .y</code> position</li>
+  <li><code>x, y</code>: the position in camera/world coordinates to be converted</li>
+</ul>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+</pre></td>
+  <td class="code"><pre>x, y = camera:getWorldCoords(love.mouse.getPosition())
+selectedUnit:plotPath(x, y)
+
+x, y = camera:getCameraCoords(player.x, player.y)
+love.graphics.line(x, y, love.mouse.getPosition())
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<div id="removeBounds" data-magellan-destination="removeBounds"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">removeBounds</span>()</pre></td></table></div>
+
+<ul>
+  <li>removes the current set bounds
+<br /><br /></li>
+</ul>
+
+<div id="setBounds" data-magellan-destination="setBounds"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">setBounds</span>(left<span class="tag">[number]</span>, top<span class="tag">[number]</span>, right<span class="tag">[number]</span>, down<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>left, top, right, down</code>: the boundaries the camera can&#8217;t get past, in world coordinates
+<br /><br /></li>
+</ul>
+
+<div id="setDeadzone" data-magellan-destination="setDeadzone"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">setDeadzone</span>(left<span class="tag">[number]</span>, top<span class="tag">[number]</span>, right<span class="tag">[number]</span>, down<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li>defines a rectangle around the center of the screen where the target moves without camera tracking</li>
+  <li><code>left, top, right, down</code>: the deadzone positions, in screen coordinates assuming <code class="number">0, 0</code> is the center
+<br /><br /></li>
+</ul>
+
+<div id="shake" data-magellan-destination="shake"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">shake</span>(intensity<span class="tag">[number]</span>, duration<span class="tag">[number]</span>, settings<span class="tag">[table[optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>intensity</code>: the amount of pixels the camera should shake around</li>
+  <li><code>duration</code>: the amount of seconds the camera should shake for</li>
+  <li><code>settings</code>: a table containing camera shake settings, all values are optional</li>
+</ul>
+
+<p>Possible settings:</p>
+
+<ul>
+  <li><code>direction</code>: the direction in which to shake: <code class="string">'vertical'</code>, <code class="string">'horizontal'</code> or <code class="string">'both'</code>, defaults to <code class="string">'both'</code> </li>
+</ul>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>camera:shake(<span class="integer">5</span>, <span class="float">0.5</span>, <span class="map"><span class="delimiter">{</span><span class="key">direction</span> = <span class="string"><span class="delimiter">'</span><span class="content">vertical</span><span class="delimiter">'</span></span><span class="delimiter">}</span></span>)
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<div id="move" data-magellan-destination="move"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">move</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li>moves the camera by some amount, equivalent to <code class="text">camera.x, camera.y = camera.x + x, camera.y + y</code></li>
+  <li><code>x, y</code>: the amount to move the camera by 
+<br /><br /></li>
+</ul>
+
+<div id="moveTo" data-magellan-destination="moveTo"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">moveTo</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>x, y</code>: the new camera position
+<br /><br /></li>
+</ul>
+
+<div id="rotate" data-magellan-destination="rotate"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">rotate</span>(angle<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li>rotates the camera by some angle, equivalent to <code class="text">camera.rotation = camera.rotation + angle</code></li>
+  <li><code>angle</code>: the amount to rotate the camera by
+<br /><br /></li>
+</ul>
+
+<div id="rotateTo" data-magellan-destination="rotateTo"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">rotateTo</span>(angle<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>angle</code>: the new camera angle 
+<br /><br /></li>
+</ul>
+
+<div id="zoom" data-magellan-destination="zoom"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">zoom</span>(scale<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li>zooms the camera by some angle, equivalent to <code class="text">camera.scale = camera.scale + scale</code> </li>
+  <li><code>scale</code>: the amount to scale the camera by
+<br /><br /></li>
+</ul>
+
+<div id="zoomTo" data-magellan-destination="zoomTo"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">zoomTo</span>(scale<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>scale</code>: the new camera scale
+<br /><br /></li>
+</ul>
+
+<h3 id="Attributes" data-magellan-destination="Attributes">Attributes</h3>
+
+<div id="debug_draw" data-magellan-destination="debug_draw"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">debug_draw</span><span class="tag">[boolean]</span></pre></td></table></div>
+
+<ul>
+  <li>debug drawing, shows the current follow style, lead and lerp, as well as the deadzone and current target 
+<br /><br /></li>
+</ul>
+
+<div id="follow_style" data-magellan-destination="follow_style"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">follow_style</span><span class="tag">[string]</span></pre></td></table></div>
+
+<ul>
+  <li>the camera follow_style, only set with the <code class="atrm">:follow</code> call, otherwise the deadzone doesn&#8217;t get reset 
+<br /><br /></li>
+</ul>
+
+<div id="lead" data-magellan-destination="lead"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">lead</span><span class="tag">[number]</span></pre></td></table></div>
+
+<ul>
+  <li>how much the camera should be ahead of the moving target 
+<br /><br /></li>
+</ul>
+
+<div id="lerp" data-magellan-destination="lerp"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">lerp</span><span class="tag">[number]</span></pre></td></table></div>
+
+<ul>
+  <li>how much the camera should lag behind the moving target 
+<br /><br /></li>
+</ul>
+
+<div id="max_shake_intensity" data-magellan-destination="max_shake_intensity"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">max_shake_intensity</span><span class="tag">[number]</span></pre></td></table></div>
+
+<ul>
+  <li>the maximum intensity the camera can shake for 
+<br /><br /></li>
+</ul>
+
+<div id="target" data-magellan-destination="target"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">target</span><span class="tag">[table]</span></pre></td></table></div>
+
+<ul>
+  <li>the target the camera should follow, needs to have <code class="text">.x, .y</code> fields
+<br /><br /></li>
+</ul>
+
+    
+      <footer>
+        
+        
+      </footer>
+    
+  </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+  
+  </div><!--.columns-->
+  
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p class="text-center">
+  <span class="credit">
+  	Made using <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/annejohnson/octofound">Octofound</a><br/>
+  </span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/documentation/camera/index.html';
+        var disqus_url = 'http://fuccboi.moe/documentation/camera/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+</body>
+</html>

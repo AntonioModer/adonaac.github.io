@@ -6,11 +6,31 @@
 <head>
   <script src="/js/vendor/modernizr.js"></script>
   <meta charset="utf-8">
-  <title>fuccboiGDX</title>
+  <title>Text - fuccboiGDX</title>
   <meta name="author" content="adnzzzzZ">
 
   
-  <meta name="description" content="fuccboiGDX is a 2D game making code-centric engine/framework that provides additional higher level functionalities on top of LÖVE, making game &hellip;">
+  <meta name="description" content="<!-- Text --> Example 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20 -- create a table holding text settings
+TextConfig = { font = love.graphics &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +38,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fuccboi.moe">
+  <link rel="canonical" href="http://fuccboi.moe/documentation/text">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
@@ -63,7 +83,7 @@
 
 </head>
 
-<body  id="main_page"   class="no-sidebar" >
+<body   class="no-sidebar" >
   <header role="banner" class="top-header"><!--<hgroup>
   <h1 class="text-center">
   	<a href="/">fuccboiGDX</a>
@@ -243,6 +263,7 @@
 <div id="nav" class="fixed right show-for-large-up">
 <ul class="side-nav">
 
+<strong><a href="/documentation">documentation</a><br><br></strong>
 
 
 
@@ -292,6 +313,9 @@
 
 
 
+
+
+<li data-magellan-arrival="Example"><a href="#Example">Example</a></li><li data-magellan-arrival="Description"><a href="#Description">Description</a></li><li data-magellan-arrival="Character"><a href="#Character">Character</a></li><li data-magellan-arrival="Text"><a href="#Text">Text</a></li>
 
 
 
@@ -314,38 +338,136 @@
   <div id="main">
     <div id="content" class="row">
       
-<div class="small-12 medium-12 large-10 large-centered columns">
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
 
   <article role="article">
-    <!---->
-    <p><strong>fuccboiGDX</strong> is a 2D game making code-centric engine/framework that provides additional higher level functionalities on top of <a href="http://love2d.org">LÖVE</a>, 
-making game creation easier, faster, and buzzword! It’s free, open source and supported on Windows, Linux and OSX.</p>
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Text</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="Example" data-magellan-destination="Example">Example</h3>
 
-<div class="row">
-    <div class="small-4 columns text-center">
-        <a href="https://github.com/adonaac/fuccboiGDX/archive/master.zip" class="button expand">download</a>
-    </div>
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- create a table holding text settings</span>
+TextConfig = <span class="map"><span class="delimiter">{</span>
+    <span class="key">font</span> = love.graphics.newFont(<span class="string"><span class="delimiter">'</span><span class="content">Moon Flower Bold.ttf</span><span class="delimiter">'</span></span>, <span class="integer">72</span>)
+    <span class="key">increasingRed</span> = <span class="keyword">function</span>(dt, c) love.graphics.setColor(c.position*<span class="integer">10</span>, <span class="integer">128</span>, <span class="integer">128</span>) <span class="keyword">end</span>
+    <span class="key">wavyInit</span> = <span class="keyword">function</span>(c) c.<span class="key">t</span> = <span class="integer">0</span> <span class="keyword">end</span>,
+    <span class="key">wavy</span> = <span class="keyword">function</span>(dt, c)
+        c.<span class="key">t</span> = c.t + dt
+        c.<span class="key">y</span> = c.y + <span class="integer">100</span>*math.cos(c.position/<span class="integer">4</span> + <span class="integer">4</span>*c.t)*dt
+    <span class="keyword">end</span>
+<span class="delimiter">}</span></span>
 
-    <div class="small-4 columns text-center">
-        <a href="/tutorials" class="button expand">tutorials</a>
-    </div>
+<span class="comment">-- create the text</span>
+text = fg.Text(<span class="string"><span class="delimiter">'</span><span class="content">[BLUE BLUE RED RED RED](wavy; increasingRed)</span><span class="delimiter">'</span></span>, TextConfig)
 
-    <div class="small-4 columns text-center">
-        <a href="/documentation" class="button expand">documentation</a>
-    </div>
+<span class="comment">-- update the text</span>
+text:update(dt)
+
+<span class="comment">-- draw the text</span>
+text:draw(x, y)
+<span class="comment">-- the below image is the result</span>
+</pre></td>
+</tr></table>
 </div>
 
-<!--
-<h2 style="text-align: center">Games being made with fuccboiGDX</h2>
-<br>
+<p><img class="center" src="/assets/blueblueredred.gif" /></p>
 
-<ul class="example-orbit" data-orbit data-options="navigation_arrows: false; pause_on_hover:false; bullets: false; slide_number: false"> 
-    <li><img src="/assets/fight.gif"/></li> 
-    <li><img src="/assets/hitee.gif"/></li> 
-    <li><img src="/assets/ice.gif"/></li> 
-    <li><img src="/assets/attack.gif"/></li> 
+<h3 id="Description" data-magellan-destination="Description">Description</h3>
+
+<p>The <code class="text">fg.Text</code> class handles the creation of text objects. 
+It uses markdown-like markup so you can change how each character or group 
+of character behaves. You can also define functions that will act on each 
+character&#8217;s properties, giving you freedom to do pretty much whatever you 
+want in terms of effects and behaviors.</p>
+
+<h3 id="Character" data-magellan-destination="Character">Character</h3>
+
+<p>As can be seen on the example, each defined function acts on a character table. 
+This character table has a bunch of predefined attributes:</p>
+
+<ul>
+  <li><code>x, y</code>: the x, y position of the character, usually you wanna change <code class="text">.y</code> only since <code class="text">.x</code> is calculated automatically </li>
+  <li><code>character</code>: the actual character string</li>
+  <li><code>position</code>: the position of the character in relation to the entire text string, starts at <code class="number">1</code> </li>
+  <li><code>text</code>: a reference to the text object </li>
+  <li><code>str_text</code>: the text this character belongs to (a string)</li>
+  <li><code>pivot</code>: the character rotation pivot, <code class="text">.x, .y</code> positions </li>
+  <li><code>line</code>: the line number this character belongs to if the text has more than one line</li>
 </ul>
-&#8211;>
+
+<p>Attributes can be added to each character by defining a function that ends with <code class="text">Init</code>. 
+This function will receive the character table, which you can then change to add whatever other a
+ttributes your main function will need to use. </p>
+
+<p>In the first example above, 
+<code class="text">wavyInit</code> and <code class="text">wavy</code> are defined, but only <code class="text">wavyInit</code> is called on text creation. This is because 
+<code class="text">Init</code> functions get called automatically on text creation, if they exist, and then the normal function (the one
+that receives both a delta and the character table and doesn&#8217;t have <code class="text">Init</code> in its name) gets called on every update 
+call to do their work.</p>
+
+<h3 id="Text" data-magellan-destination="Text">Text</h3>
+
+<p>The text string is from where you&#8217;ll pass information to the text object about what to do where and how! The escape character used is
+<code class="string">@</code>. So, for instance: <code class="string">"Test @[text@]"</code> will draw <code class="string">Test [text]</code>.
+To escape <code class="string">@</code> itself, use two: <code class="string">email@@email.com</code>.</p>
+
+<p>Functions can be passed parameters:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+</pre></td>
+  <td class="code"><pre>TextConfig = <span class="map"><span class="delimiter">{</span>
+    <span class="key">color</span> = <span class="keyword">function</span>(dt, c, ...)
+        <span class="keyword">local</span> <span class="local-variable">colors</span> = <span class="map"><span class="inline-delimiter">{</span>...<span class="inline-delimiter">}</span></span>
+        love.graphics.setColor(colors[<span class="integer">1</span>], colors[<span class="integer">2</span>], colors[<span class="integer">3</span>])
+    <span class="keyword">end</span>,
+<span class="delimiter">}</span></span>
+
+text = fg.Text(<span class="string"><span class="delimiter">'</span><span class="content">[Yellow yellow text!](color: 244, 244, 0)</span><span class="delimiter">'</span></span>, TextConfig)
+</pre></td>
+</tr></table>
+</div>
+
+<p>And finally, the text settings table (in all these examples, <code class="text">TextConfig</code>) has a few special attributes that can be defined:</p>
+
+<ul>
+  <li><code>font</code>: the font to be used for this text </li>
+  <li><code>line_height</code>: the line height used, the actual line height in pixels is the multiplication of this number by the font height </li>
+  <li><code>wrap_width</code>: maximum width in pixels that this text can go, after that it will wrap to the next line</li>
+</ul>
 
     
       <footer>
@@ -354,6 +476,12 @@ making game creation easier, faster, and buzzword! It’s free, open source and 
       </footer>
     
   </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
   
   </div><!--.columns-->
   
@@ -459,6 +587,22 @@ making game creation easier, faster, and buzzword! It’s free, open source and 
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/documentation/text/index.html';
+        var disqus_url = 'http://fuccboi.moe/documentation/text/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

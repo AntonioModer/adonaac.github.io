@@ -1,0 +1,624 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <script src="/js/vendor/modernizr.js"></script>
+  <meta charset="utf-8">
+  <title>utils - fuccboiGDX</title>
+  <meta name="author" content="adnzzzzZ">
+
+  
+  <meta name="description" content="<!-- Utils --> mlib An utility library with tons of functions that makes operations regarding lines, polygons, circles,
+intersections and math &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fuccboi.moe/documentation/utils">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
+
+  <script src="/js/vendor/jquery.js"></script>
+  <script src="/js/vendor/fastclick.js"></script>
+
+  <script src="/js/foundation.min.js"></script>
+  <script src="/js/foundation/foundation.magellan.js"></script>
+  <script src="/js/foundation/foundation.topbar.js"></script>
+  <script src="/js/foundation/foundation.accordion.js"></script>
+  <script src="/js/foundation/foundation.orbit.js"></script>
+  <script src="/js/foundation/foundation.dropdown.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <script>
+
+  $(document).ready(function(){
+    $(document).foundation();
+  });
+
+  </script>
+
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-51118504-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar" >
+  <header role="banner" class="top-header"><!--<hgroup>
+  <h1 class="text-center">
+  	<a href="/">fuccboiGDX</a>
+  </h1>
+  
+</hgroup>-->
+
+<!--<ul class="example-orbit-content" data-orbit>
+  <li data-orbit-slide="headline-1">
+    <div>
+      <h2>Headline 1</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <div>
+      <h2>Headline 2</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div>
+      <h2>Headline 3</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+</ul>-->
+
+</header>
+  <nav role="navigation"><ul class="subscription hide" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+
+
+
+<div class="sticky">
+
+  <nav class="top-bar" data-topbar role="navigation">
+
+    <!--
+    <ul class="title-area right">
+        <li class="name">
+          <h1><a href="/">fuccboiGDX <i class="fa fa-heart"></i></i></i></a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    -->
+
+
+    <section class="top-bar-section">
+      <ul class="main-navigation right show-for-medium-up">
+          <li><a href="https://github.com/adonaac/fuccboiGDX">github</a></li>
+          <li><a href="https://twitter.com/adnzzzzZ">twitter</i></a></li>
+      </ul>
+
+      <ul class="main-navigation left">
+          <li><a href="/">fuccboiGDX</a></li>
+
+          <li class="has-dropdown">
+          <a href="/tutorials">tutorials</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Advanced</a>
+            <ul class="dropdown">
+                <li><a href="/tutorials/curvemaster">CurveMaster</a></li>
+                <li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
+            </ul>
+            </li>
+
+            <li class="has-dropdown"><a href="#">Examples</a>
+            <ul class="dropdown">
+                <li><a href="/examples#Animation">Animation</a></li>
+                <li><a href="/examples#Area">Area</a></li>
+                <li><a href="/examples#Camera">Camera</a></li>
+                <li><a href="/examples#Collision">Collision</a></li>
+                <li><a href="/examples#Gamestate">Gamestate</a></li>
+                <li><a href="/examples#Input">Input</a></li>
+                <li><a href="/examples#Layers">Layers</a></li>
+                <li><a href="/examples#Loading">Loading</a></li>
+                <li><a href="/examples#Objects">Objects</a></li>
+                <li><a href="/examples#Particles">Particles</a></li>
+                <li><a href="/examples#Random">Random</a></li>
+                <li><a href="/examples#Serialization">Serialization</a></li>
+                <li><a href="/examples#Shaders">Shaders</a></li>
+                <li><a href="/examples#Sound">Sound</a></li>
+                <li><a href="/examples#Text">Text</a></li>
+                <li><a href="/examples#Tilemap">Tilemap</a></li>
+                <li><a href="/examples#Timing">Timing</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <li class="has-dropdown">
+          <a href="/documentation">documentation</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Main</a>
+            <ul class="dropdown">
+                <li><a href="/documentation/fg">fg</a></li>
+                <li><a href="/documentation/render">Render</a></li>
+                <li><a href="/documentation/world">World</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Logic</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/area">Area</a></li>
+            <li><a href="/documentation/class">Class</a></li>
+            <li><a href="/documentation/debug">Debug</a></li>
+            <li><a href="/documentation/entity">Entity</a></li>
+            <li><a href="/documentation/gamestate">Gamestate</a></li>
+            <li><a href="/documentation/input">Input</a></li>
+            <li><a href="/documentation/loader">Loader</a></li>
+            <li><a href="/documentation/objectpool">ObjectPool</a></li>
+                <li class="has-dropdown"><a href="#">Physics</a>
+                <ul class="dropdown">
+                    <li><a href="/documentation/collision">Collision</a></li>
+                    <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
+                    <li><a href="/documentation/solid">Solid</a></li>
+                </ul>
+                </li>
+            <li><a href="/documentation/serial">Serial</a></li>
+            <li><a href="/documentation/timer">Timer</a></li>
+            <li><a href="/documentation/utils">utils</a></li>
+            <li><a href="/documentation/vector">Vector</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Visual</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/animation">Animation</a></li>
+            <li><a href="/documentation/background">Background</a></li>
+            <li><a href="/documentation/camera">Camera</a></li>
+            <li><a href="/documentation/particles">Particles</a></li>
+            <li><a href="/documentation/spritebatch">Spritebatch</a></li>
+            <li><a href="/documentation/text">Text</a></li>
+            <li><a href="/documentation/tilemap">Tilemap</a></li>
+            <li><a href="/documentation/uitools">UI Tools</a></li>
+            </ul>
+
+            <li class="has-dropdown"><a href="#">Sound</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/sound">Sound</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <!--
+          <li class="has-dropdown">
+            <a href="/no-sidebar">No Sidebar Page</a>
+
+            <ul class="dropdown">
+              <li><a href="/no-sidebar/left-sidebar">Left Sidebar Page</a></li>
+              <li><a href="/no-sidebar/right-sidebar">Right Sidebar Page</a></li>
+              <li><a href="/no-sidebar/example-formatting">Example Formatting</a></li>
+            </ul>
+
+          </li>
+
+          <li><a href="/blog">Blog</a></li>
+
+          <li><a href="/blog/archives">Archives</a></li>
+          -->
+
+      </ul>
+
+    </section>
+  </nav>
+
+</div>
+
+
+
+
+
+
+<div data-magellan-expedition>
+<div id="nav" class="fixed right show-for-large-up">
+<ul class="side-nav">
+
+<strong><a href="/documentation">documentation</a><br><br></strong>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li data-magellan-arrival="mlib"><a href="#mlib">mlib</a></li><li data-magellan-arrival="Moses"><a href="#Moses">Moses</a></li><li data-magellan-arrival="utils"><a href="#utils">utils</a></li><li data-magellan-arrival="Methods"><a href="#Methods">Methods</a></li>
+<li data-magellan-arrival='graphics.pushRotate' class='nav'><a href='#graphics.pushRotate'>graphics.pushRotate</a></li><li data-magellan-arrival='graphics.pushRotateScale' class='nav'><a href='#graphics.pushRotateScale'>graphics.pushRotateScale</a></li><li data-magellan-arrival='math.chooseWithProbability' class='nav'><a href='#math.chooseWithProbability'>math.chooseWithProbability</a></li><li data-magellan-arrival='math.clamp' class='nav'><a href='#math.clamp'>math.clamp</a></li><li data-magellan-arrival='math.isBetween' class='nav'><a href='#math.isBetween'>math.isBetween</a></li><li data-magellan-arrival='math.random' class='nav'><a href='#math.random'>math.random</a></li><li data-magellan-arrival='math.round' class='nav'><a href='#math.round'>math.round</a></li><li data-magellan-arrival='table.copy' class='nav'><a href='#table.copy'>table.copy</a></li><li data-magellan-arrival='table.random' class='nav'><a href='#table.random'>table.random</a></li><li data-magellan-arrival='angleToDirection4' class='nav'><a href='#angleToDirection4'>angleToDirection4</a></li><li data-magellan-arrival='directionToAngle4' class='nav'><a href='#directionToAngle4'>directionToAngle4</a></li>
+
+
+
+
+
+
+</ul>
+</div>
+</div>
+
+</nav>
+  <div id="main">
+    <div id="content" class="row">
+      
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
+
+  <article role="article">
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Utils</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="mlib" data-magellan-destination="mlib">mlib</h3>
+
+<p>An utility library with tons of functions that makes operations regarding lines, polygons, circles,
+intersections and math related stuff in general a lot easier than they are with vanilla LÖVE/Lua. It’s
+an exact copy of <a href="http://github.com/davisdude/mlib">mlib</a>, so refer to that for a list and an explanation
+of all functions it implements. It can be accessed through <code class="text">fg.mlib</code>.</p>
+
+<h3 id="Moses" data-magellan-destination="Moses">Moses</h3>
+
+<p>An utility library with tons of functions that makes operations on tables, arrays, lists, collections and objects
+a lot easier than they are with vanilla Lua. It’s an exact copy of <a href="http://github.com/Yonaba/Moses">Moses</a>, so refer to this 
+<a href="https://github.com/Yonaba/Moses/blob/master/doc/tutorial.md">tutorial</a> for a list and an explanation of all functions
+it implements. It can be accessed through <code class="text">fg.moses</code>, <code class="text">fg.mo</code> or <code class="text">fg.fn</code>.</p>
+
+<h3 id="utils" data-magellan-destination="utils">utils</h3>
+
+<p>The <code class="text">fg.utils</code> table holds some random utility functions…</p>
+
+<h3 id="Methods" data-magellan-destination="Methods">Methods</h3>
+
+<div id="graphics.pushRotate" data-magellan-destination="graphics.pushRotate"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">graphics.pushRotate</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, angle<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li>rotates everything around <code class="text">x, y</code> by <code class="text">angle</code> until <code class="text">love.graphics.pop()</code> is called</li>
+  <li><code>x, y</code>: the pivot position to rotate everything around</li>
+  <li><code>angle</code>: the amount to rotate things for
+<br /><br /></li>
+</ul>
+
+<div id="graphics.pushRotateScale" data-magellan-destination="graphics.pushRotateScale"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">graphics.pushRotateScale</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, angle<span class="tag">[number]</span>, scale_x<span class="tag">[number]</span>, scale_y<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li>rotates everything around <code class="text">x, y</code> by <code class="text">angle</code> with <code class="text">scale_x, scale_y</code> 
+until <code class="text">love.graphics.pop()</code> is called</li>
+  <li><code>x, y</code>: the pivot position to rotate everything around</li>
+  <li><code>angle</code>: the amount to rotate things for</li>
+  <li><code>scale_x, scale_y</code>: the amount to scale things by
+<br /><br /></li>
+</ul>
+
+<div id="math.chooseWithProbability" data-magellan-destination="math.chooseWithProbability"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">math.chooseWithProbability</span>(choices<span class="tag">[table]</span>, chances<span class="tag">[table]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns a value from the <code class="text">choices</code> table, chosen with a probability given by the <code class="text">chances</code> table    </li>
+  <li><code>choices</code>: a table containing values to be picked</li>
+  <li><code>chances</code>: a table of equal size to <code class="text">choices</code> containing the probability of each value being picked</li>
+</ul>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- 50% to print 2</span>
+<span class="comment">-- 30% to print 'hhh'</span>
+<span class="comment">-- 20% to print 3</span>
+<span class="predefined">print</span>(chooseWithProbability(<span class="map"><span class="delimiter">{</span><span class="integer">2</span>, <span class="string"><span class="delimiter">'</span><span class="content">hhh</span><span class="delimiter">'</span></span>, <span class="integer">3</span><span class="delimiter">}</span></span>, <span class="map"><span class="delimiter">{</span><span class="float">0.5</span>, <span class="float">0.3</span>, <span class="float">0.2</span><span class="delimiter">}</span></span>)
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<div id="math.clamp" data-magellan-destination="math.clamp"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">math.clamp</span>(value<span class="tag">[number]</span>, min<span class="tag">[number]</span>, max<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li>clamps <code class="text">value</code> between <code class="text">min</code> and <code class="text">max</code> 
+<br /><br /></li>
+</ul>
+
+<div id="math.isBetween" data-magellan-destination="math.isBetween"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">math.isBetween</span>(value<span class="tag">[number]</span>, min<span class="tag">[number]</span>, max<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns <code class="text">true</code> if <code class="text">value</code> is between <code class="text">min</code> and <code class="text">max</code>, <code class="text">false</code> otherwise 
+<br /><br /></li>
+</ul>
+
+<div id="math.random" data-magellan-destination="math.random"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">math.random</span>(min<span class="tag">[number]</span>, max<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns a random floating point number between <code class="text">min</code> and <code class="text">max</code>, use Lua’s <code class="text">math.random</code> for integers only
+<br /><br /></li>
+</ul>
+
+<div id="math.round" data-magellan-destination="math.round"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">math.round</span>(number<span class="tag">[number]</span>, precision<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns a number rounded to <code class="text">precision</code> decimal points</li>
+  <li><code>number</code>: the number being rounded</li>
+  <li><code>precision</code>: the precision, in terms of number of decimal places, that <code class="text">number</code> is rounded to
+<br /><br /></li>
+</ul>
+
+<div id="table.copy" data-magellan-destination="table.copy"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">table.copy</span>(table<span class="tag">[table]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns the copied table. Since tables in Lua are always references this can be useful sometimes!
+<br /><br /></li>
+</ul>
+
+<div id="table.random" data-magellan-destination="table.random"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">table.random</span>(table<span class="tag">[table]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns a random value from <code class="text">table</code> 
+<br /><br /></li>
+</ul>
+
+<div id="angleToDirection4" data-magellan-destination="angleToDirection4"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">angleToDirection4</span>(angle<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns a direction that best corresponds to <code class="text">angle</code>, all possible returned values are 
+<code class="string">'right'</code>, <code class="string">'up'</code>, <code class="string">'left'</code> and <code class="string">'down'</code> 
+<br /><br /></li>
+</ul>
+
+<div id="directionToAngle4" data-magellan-destination="directionToAngle4"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">directionToAngle4</span>(direction<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns an angle that corresponds to <code class="text">direction</code>, all possible direction values are
+<code class="string">'right'</code>, <code class="string">'up'</code>, <code class="string">'left'</code> and <code class="string">'down'</code> 
+<br /><br /></li>
+</ul>
+
+    
+      <footer>
+        
+        
+      </footer>
+    
+  </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+  
+  </div><!--.columns-->
+  
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p class="text-center">
+  <span class="credit">
+  	Made using <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/annejohnson/octofound">Octofound</a><br/>
+  </span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/documentation/utils/index.html';
+        var disqus_url = 'http://fuccboi.moe/documentation/utils/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+</body>
+</html>

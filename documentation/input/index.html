@@ -1,0 +1,811 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <script src="/js/vendor/modernizr.js"></script>
+  <meta charset="utf-8">
+  <title>Input - fuccboiGDX</title>
+  <meta name="author" content="adnzzzzZ">
+
+  
+  <meta name="description" content="<!-- Input --> Gamepads may not work correctly until LÖVE 0.9.2 is released. Example 1
+2
+3
+4
+5
+6
+7
+8 -- bind the key 'a' to the action 'move_left' &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fuccboi.moe/documentation/input">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
+
+  <script src="/js/vendor/jquery.js"></script>
+  <script src="/js/vendor/fastclick.js"></script>
+
+  <script src="/js/foundation.min.js"></script>
+  <script src="/js/foundation/foundation.magellan.js"></script>
+  <script src="/js/foundation/foundation.topbar.js"></script>
+  <script src="/js/foundation/foundation.accordion.js"></script>
+  <script src="/js/foundation/foundation.orbit.js"></script>
+  <script src="/js/foundation/foundation.dropdown.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <script>
+
+  $(document).ready(function(){
+    $(document).foundation();
+  });
+
+  </script>
+
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-51118504-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar" >
+  <header role="banner" class="top-header"><!--<hgroup>
+  <h1 class="text-center">
+  	<a href="/">fuccboiGDX</a>
+  </h1>
+  
+</hgroup>-->
+
+<!--<ul class="example-orbit-content" data-orbit>
+  <li data-orbit-slide="headline-1">
+    <div>
+      <h2>Headline 1</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <div>
+      <h2>Headline 2</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div>
+      <h2>Headline 3</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+</ul>-->
+
+</header>
+  <nav role="navigation"><ul class="subscription hide" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+
+
+
+<div class="sticky">
+
+  <nav class="top-bar" data-topbar role="navigation">
+
+    <!--
+    <ul class="title-area right">
+        <li class="name">
+          <h1><a href="/">fuccboiGDX <i class="fa fa-heart"></i></i></i></a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    -->
+
+
+    <section class="top-bar-section">
+      <ul class="main-navigation right show-for-medium-up">
+          <li><a href="https://github.com/adonaac/fuccboiGDX">github</a></li>
+          <li><a href="https://twitter.com/adnzzzzZ">twitter</i></a></li>
+      </ul>
+
+      <ul class="main-navigation left">
+          <li><a href="/">fuccboiGDX</a></li>
+
+          <li class="has-dropdown">
+          <a href="/tutorials">tutorials</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Advanced</a>
+            <ul class="dropdown">
+                <li><a href="/tutorials/curvemaster">CurveMaster</a></li>
+                <li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
+            </ul>
+            </li>
+
+            <li class="has-dropdown"><a href="#">Examples</a>
+            <ul class="dropdown">
+                <li><a href="/examples#Animation">Animation</a></li>
+                <li><a href="/examples#Area">Area</a></li>
+                <li><a href="/examples#Camera">Camera</a></li>
+                <li><a href="/examples#Collision">Collision</a></li>
+                <li><a href="/examples#Gamestate">Gamestate</a></li>
+                <li><a href="/examples#Input">Input</a></li>
+                <li><a href="/examples#Layers">Layers</a></li>
+                <li><a href="/examples#Loading">Loading</a></li>
+                <li><a href="/examples#Objects">Objects</a></li>
+                <li><a href="/examples#Particles">Particles</a></li>
+                <li><a href="/examples#Random">Random</a></li>
+                <li><a href="/examples#Serialization">Serialization</a></li>
+                <li><a href="/examples#Shaders">Shaders</a></li>
+                <li><a href="/examples#Sound">Sound</a></li>
+                <li><a href="/examples#Text">Text</a></li>
+                <li><a href="/examples#Tilemap">Tilemap</a></li>
+                <li><a href="/examples#Timing">Timing</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <li class="has-dropdown">
+          <a href="/documentation">documentation</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Main</a>
+            <ul class="dropdown">
+                <li><a href="/documentation/fg">fg</a></li>
+                <li><a href="/documentation/render">Render</a></li>
+                <li><a href="/documentation/world">World</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Logic</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/area">Area</a></li>
+            <li><a href="/documentation/class">Class</a></li>
+            <li><a href="/documentation/debug">Debug</a></li>
+            <li><a href="/documentation/entity">Entity</a></li>
+            <li><a href="/documentation/gamestate">Gamestate</a></li>
+            <li><a href="/documentation/input">Input</a></li>
+            <li><a href="/documentation/loader">Loader</a></li>
+            <li><a href="/documentation/objectpool">ObjectPool</a></li>
+                <li class="has-dropdown"><a href="#">Physics</a>
+                <ul class="dropdown">
+                    <li><a href="/documentation/collision">Collision</a></li>
+                    <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
+                    <li><a href="/documentation/solid">Solid</a></li>
+                </ul>
+                </li>
+            <li><a href="/documentation/serial">Serial</a></li>
+            <li><a href="/documentation/timer">Timer</a></li>
+            <li><a href="/documentation/utils">utils</a></li>
+            <li><a href="/documentation/vector">Vector</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Visual</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/animation">Animation</a></li>
+            <li><a href="/documentation/background">Background</a></li>
+            <li><a href="/documentation/camera">Camera</a></li>
+            <li><a href="/documentation/particles">Particles</a></li>
+            <li><a href="/documentation/spritebatch">Spritebatch</a></li>
+            <li><a href="/documentation/text">Text</a></li>
+            <li><a href="/documentation/tilemap">Tilemap</a></li>
+            <li><a href="/documentation/uitools">UI Tools</a></li>
+            </ul>
+
+            <li class="has-dropdown"><a href="#">Sound</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/sound">Sound</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <!--
+          <li class="has-dropdown">
+            <a href="/no-sidebar">No Sidebar Page</a>
+
+            <ul class="dropdown">
+              <li><a href="/no-sidebar/left-sidebar">Left Sidebar Page</a></li>
+              <li><a href="/no-sidebar/right-sidebar">Right Sidebar Page</a></li>
+              <li><a href="/no-sidebar/example-formatting">Example Formatting</a></li>
+            </ul>
+
+          </li>
+
+          <li><a href="/blog">Blog</a></li>
+
+          <li><a href="/blog/archives">Archives</a></li>
+          -->
+
+      </ul>
+
+    </section>
+  </nav>
+
+</div>
+
+
+
+
+
+
+<div data-magellan-expedition>
+<div id="nav" class="fixed right show-for-large-up">
+<ul class="side-nav">
+
+<strong><a href="/documentation">documentation</a><br><br></strong>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li data-magellan-arrival="Example"><a href="#Example">Example</a></li><li data-magellan-arrival="Description"><a href="#Description">Description</a></li><li data-magellan-arrival="Methods"><a href="#Methods">Methods</a></li>
+<li data-magellan-arrival='bind' class='nav'><a href='#bind'>bind</a></li><li data-magellan-arrival='down' class='nav'><a href='#down'>down</a></li><li data-magellan-arrival='pressed' class='nav'><a href='#pressed'>pressed</a></li><li data-magellan-arrival='released' class='nav'><a href='#released'>released</a></li><li data-magellan-arrival='unbind' class='nav'><a href='#unbind'>unbind</a></li><li data-magellan-arrival='unbindAll' class='nav'><a href='#unbindAll'>unbindAll</a></li><li data-magellan-arrival='update' class='nav'><a href='#update'>update</a></li><li data-magellan-arrival='keypressed' class='nav'><a href='#keypressed'>keypressed</a></li><li data-magellan-arrival='keyreleased' class='nav'><a href='#keyreleased'>keyreleased</a></li><li data-magellan-arrival='mousepressed' class='nav'><a href='#mousepressed'>mousepressed</a></li><li data-magellan-arrival='mousereleased' class='nav'><a href='#mousereleased'>mousereleased</a></li><li data-magellan-arrival='gamepadpressed' class='nav'><a href='#gamepadpressed'>gamepadpressed</a></li><li data-magellan-arrival='gamepadreleased' class='nav'><a href='#gamepadreleased'>gamepadreleased</a></li><li data-magellan-arrival='gamepadaxis' class='nav'><a href='#gamepadaxis'>gamepadaxis</a></li>
+<li data-magellan-arrival="Constants"><a href="#Constants">Constants</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</div>
+</div>
+
+</nav>
+  <div id="main">
+    <div id="content" class="row">
+      
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
+
+  <article role="article">
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Input</h1>
+      
+      
+    </header>
+    -->
+    <div data-alert="" class="alert-box info radius">
+    Gamepads may not work correctly until LÖVE 0.9.2 is released.
+</div>
+
+<h3 id="Example" data-magellan-destination="Example">Example</h3>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- bind the key 'a' to the action 'move_left' on initialization</span>
+fg.input:bind(<span class="string"><span class="delimiter">'</span><span class="content">a</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">move_left</span><span class="delimiter">'</span></span>)
+
+<span class="comment">-- check if the action 'move_left' is being pressed on update</span>
+<span class="keyword">if</span> fg.input:down(<span class="string"><span class="delimiter">'</span><span class="content">move_left</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+    <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
+    self.body:setLinearVelocity(<span class="integer">-200</span>, vy)
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<h3 id="Description" data-magellan-destination="Description">Description</h3>
+
+<p>The <code class="text">fg.Input</code> class handles binding keys to actions and then enables checking of actions in the <code class="text">update</code> loop. 
+The instance <code class="text">fg.input</code> is automatically created when <code class="text">fg.init()</code> is called, but you can also create your own 
+instances by doing <code class="text">input = fg.Input</code>. If you do this you must add <code class="text">input:keypressed</code>, <code class="text">input:keyreleased</code>, 
+<code class="text">input:mousepressed</code>, <code class="text">input:mousereleased</code>, <code class="text">input:gamepadpressed</code>, <code class="text">input:gamepadreleased</code>,
+<code class="text">input:gamepadaxis</code> to their respective love callbacks. The <code class="text">main.lua</code> file that ships with fuccboiGDX already does this
+for the default <code class="text">fg.input</code> instance (via the <code class="text">fg.[whatever]</code> calls).</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+<a href="#n24" name="n24">24</a>
+<a href="#n25" name="n25">25</a>
+<a href="#n26" name="n26">26</a>
+<a href="#n27" name="n27">27</a>
+<a href="#n28" name="n28">28</a>
+<a href="#n29" name="n29">29</a>
+<strong><a href="#n30" name="n30">30</a></strong>
+<a href="#n31" name="n31">31</a>
+<a href="#n32" name="n32">32</a>
+<a href="#n33" name="n33">33</a>
+<a href="#n34" name="n34">34</a>
+<a href="#n35" name="n35">35</a>
+<a href="#n36" name="n36">36</a>
+<a href="#n37" name="n37">37</a>
+<a href="#n38" name="n38">38</a>
+<a href="#n39" name="n39">39</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> love.<span class="function">load</span>()
+    fg.init()
+    input = fg.Input()
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> love.<span class="function">keypressed</span>(key)
+    fg.keypressed(key)
+    input:keypressed(key)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> love.<span class="function">keyreleased</span>(key)
+    fg.keyreleased(key)
+    input:keyreleased(key)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> love.<span class="function">mousepressed</span>(x, y, button)
+    fg.mousepressed(button)
+    input:mousepressed(button)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> love.<span class="function">mousereleased</span>(x, y, button)
+    fg.mousereleased(button)
+    input:mousereleased(button)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> love.<span class="function">gamepadpressed</span>(joystick, button)
+    fg.gamepadpressed(joystick, button)
+    input:gamepadpressed(joystick, button)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> love.<span class="function">gamepadreleased</span>(joystick, button)
+    fg.gamepadreleased(joystick, button)
+    input:gamepadreleased(joystick, button)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> love.<span class="function">gamepadaxis</span>(joystick, axis, new_value)
+    fg.gamepadaxis(joystick, axis, new_value)
+    input:gamepadaxis(joystick, axis, new_value)
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<h3 id="Methods" data-magellan-destination="Methods">Methods</h3>
+
+<div id="bind" data-magellan-destination="bind"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">bind</span>(key<span class="tag">[string]</span>, action<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>key</code>: the key constant, see <a href="#constants">Constants</a> for a complete list of possible keys </li>
+  <li><code>action</code>: the action name bound to this key
+<br /><br /></li>
+</ul>
+
+<div id="down" data-magellan-destination="down"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">down</span>(action<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns <code class="text">true</code> if the button bound to this action is down, <code class="text">false</code> otherwise</li>
+  <li><code>action</code>: the action being checked
+<br /><br /></li>
+</ul>
+
+<div id="pressed" data-magellan-destination="pressed"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">pressed</span>(action<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns <code class="text">true</code> if the button bound to this action has just been pressed, <code class="text">false</code> otherwise</li>
+  <li><code>action</code>: the action being checked
+<br /><br /></li>
+</ul>
+
+<div id="released" data-magellan-destination="released"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">released</span>(action<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns <code class="text">true</code> if the button bound to this action has just been released, <code class="text">false</code> otherwise</li>
+  <li><code>action</code>: the action being checked
+<br /><br /></li>
+</ul>
+
+<div id="unbind" data-magellan-destination="unbind"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">unbind</span>(key<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li>unbinds a key, and whatever action was bound to it will no longer be activated on key press/down/release</li>
+  <li><code>key</code>: the key being unbound 
+<br /><br /></li>
+</ul>
+
+<div id="unbindAll" data-magellan-destination="unbindAll"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">unbindAll</span>()</pre></td></table></div>
+
+<ul>
+  <li>unbinds all keys and actions
+<br /><br /></li>
+</ul>
+
+<div id="update" data-magellan-destination="update"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">update</span>()</pre></td></table></div>
+
+<ul>
+  <li>updates input state
+<br /><br /></li>
+</ul>
+
+<div id="keypressed" data-magellan-destination="keypressed"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">keypressed</span>(key<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li>function to be added to LÖVE’s <code class="text">keypressed</code> callback
+<br /><br /></li>
+</ul>
+
+<div id="keyreleased" data-magellan-destination="keyreleased"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">keyreleased</span>(key<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li>function to be added to LÖVE’s <code class="text">keyreleased</code> callback
+<br /><br /></li>
+</ul>
+
+<div id="mousepressed" data-magellan-destination="mousepressed"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">mousepressed</span>(button<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li>function to be added to LÖVE’s <code class="text">mousepressed</code> callback
+<br /><br /></li>
+</ul>
+
+<div id="mousereleased" data-magellan-destination="mousereleased"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">mousereleased</span>(button<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li>function to be added to LÖVE’s <code class="text">mousereleased</code> callback
+<br /><br /></li>
+</ul>
+
+<div id="gamepadpressed" data-magellan-destination="gamepadpressed"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">gamepadpressed</span>(joystick<span class="tag">[Joystick]</span>, button<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li>function to be added to LÖVE’s <code class="text">gamepadpressed</code> callback
+<br /><br /></li>
+</ul>
+
+<div id="gamepadreleased" data-magellan-destination="gamepadreleased"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">gamepadreleased</span>(joystick<span class="tag">[Joystick]</span>, button<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li>function to be added to LÖVE’s <code class="text">gamepadreleased</code> callback
+<br /><br /></li>
+</ul>
+
+<div id="gamepadaxis" data-magellan-destination="gamepadaxis"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">gamepadaxis</span>(joystick<span class="tag">[Joystick]</span>, axis<span class="tag">[GamepadAxis]</span>, new_value<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li>function to be added to LÖVE’s <code class="text">gamepadaxis</code> callback
+<br /><br /></li>
+</ul>
+
+<h3 id="Constants" data-magellan-destination="Constants">Constants</h3>
+
+<p>Keyboard keys remain the same as LÖVE’s <a href="http://www.love2d.org/wiki/KeyConstant">key constants</a>. Mouse and gamepad buttons have been changed to the following:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+<a href="#n24" name="n24">24</a>
+<a href="#n25" name="n25">25</a>
+<a href="#n26" name="n26">26</a>
+<a href="#n27" name="n27">27</a>
+<a href="#n28" name="n28">28</a>
+<a href="#n29" name="n29">29</a>
+<strong><a href="#n30" name="n30">30</a></strong>
+<a href="#n31" name="n31">31</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- Mouse</span>
+<span class="string"><span class="delimiter">'</span><span class="content">mouse1</span><span class="delimiter">'</span></span>
+<span class="string"><span class="delimiter">'</span><span class="content">mouse2</span><span class="delimiter">'</span></span>
+<span class="string"><span class="delimiter">'</span><span class="content">mouse3</span><span class="delimiter">'</span></span>
+<span class="string"><span class="delimiter">'</span><span class="content">mouse4</span><span class="delimiter">'</span></span>
+<span class="string"><span class="delimiter">'</span><span class="content">mouse5</span><span class="delimiter">'</span></span>
+<span class="string"><span class="delimiter">'</span><span class="content">wheelup</span><span class="delimiter">'</span></span>
+<span class="string"><span class="delimiter">'</span><span class="content">wheeldown</span><span class="delimiter">'</span></span>
+
+<span class="comment">-- Gamepad</span>
+<span class="string"><span class="delimiter">'</span><span class="content">fdown</span><span class="delimiter">'</span></span> <span class="comment">-- fdown/up/left/right = face buttons: a, b...</span>
+<span class="string"><span class="delimiter">'</span><span class="content">fup</span><span class="delimiter">'</span></span>
+<span class="string"><span class="delimiter">'</span><span class="content">fleft</span><span class="delimiter">'</span></span>
+<span class="string"><span class="delimiter">'</span><span class="content">fright</span><span class="delimiter">'</span></span>
+<span class="string"><span class="delimiter">'</span><span class="content">back</span><span class="delimiter">'</span></span>
+<span class="string"><span class="delimiter">'</span><span class="content">guide</span><span class="delimiter">'</span></span>
+<span class="string"><span class="delimiter">'</span><span class="content">start</span><span class="delimiter">'</span></span>
+<span class="string"><span class="delimiter">'</span><span class="content">leftstick</span><span class="delimiter">'</span></span> <span class="comment">-- left stick pressed or not (boolean)</span>
+<span class="string"><span class="delimiter">'</span><span class="content">rightstick</span><span class="delimiter">'</span></span> <span class="comment">-- right stick pressed or not (boolean)</span>
+<span class="string"><span class="delimiter">'</span><span class="content">l1</span><span class="delimiter">'</span></span>
+<span class="string"><span class="delimiter">'</span><span class="content">r1</span><span class="delimiter">'</span></span>
+<span class="string"><span class="delimiter">'</span><span class="content">l2</span><span class="delimiter">'</span></span> <span class="comment">-- from 0 to 1</span>
+<span class="string"><span class="delimiter">'</span><span class="content">r2</span><span class="delimiter">'</span></span> <span class="comment">-- from 0 to 1</span>
+<span class="string"><span class="delimiter">'</span><span class="content">dpup</span><span class="delimiter">'</span></span> <span class="comment">-- dpad buttons</span>
+<span class="string"><span class="delimiter">'</span><span class="content">dpdown</span><span class="delimiter">'</span></span>
+<span class="string"><span class="delimiter">'</span><span class="content">dpleft</span><span class="delimiter">'</span></span>
+<span class="string"><span class="delimiter">'</span><span class="content">dpright</span><span class="delimiter">'</span></span>
+<span class="string"><span class="delimiter">'</span><span class="content">leftx</span><span class="delimiter">'</span></span> <span class="comment">-- from -1 to 1 left stick's horizontal position</span>
+<span class="string"><span class="delimiter">'</span><span class="content">lefty</span><span class="delimiter">'</span></span> <span class="comment">-- same for vertical</span>
+<span class="string"><span class="delimiter">'</span><span class="content">rightx</span><span class="delimiter">'</span></span> <span class="comment">-- same for right stick</span>
+<span class="string"><span class="delimiter">'</span><span class="content">righty</span><span class="delimiter">'</span></span>
+</pre></td>
+</tr></table>
+</div>
+
+    
+      <footer>
+        
+        
+      </footer>
+    
+  </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+  
+  </div><!--.columns-->
+  
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p class="text-center">
+  <span class="credit">
+  	Made using <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/annejohnson/octofound">Octofound</a><br/>
+  </span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/documentation/input/index.html';
+        var disqus_url = 'http://fuccboi.moe/documentation/input/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+</body>
+</html>

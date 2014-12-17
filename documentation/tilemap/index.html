@@ -1,0 +1,903 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <script src="/js/vendor/modernizr.js"></script>
+  <meta charset="utf-8">
+  <title>Tilemap - fuccboiGDX</title>
+  <meta name="author" content="adnzzzzZ">
+
+  
+  <meta name="description" content="<!-- Tilemap --> Example 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18 -- create a new tilemap, parameters are: x, y (center position), tile width &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fuccboi.moe/documentation/tilemap">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
+
+  <script src="/js/vendor/jquery.js"></script>
+  <script src="/js/vendor/fastclick.js"></script>
+
+  <script src="/js/foundation.min.js"></script>
+  <script src="/js/foundation/foundation.magellan.js"></script>
+  <script src="/js/foundation/foundation.topbar.js"></script>
+  <script src="/js/foundation/foundation.accordion.js"></script>
+  <script src="/js/foundation/foundation.orbit.js"></script>
+  <script src="/js/foundation/foundation.dropdown.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <script>
+
+  $(document).ready(function(){
+    $(document).foundation();
+  });
+
+  </script>
+
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-51118504-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar" >
+  <header role="banner" class="top-header"><!--<hgroup>
+  <h1 class="text-center">
+  	<a href="/">fuccboiGDX</a>
+  </h1>
+  
+</hgroup>-->
+
+<!--<ul class="example-orbit-content" data-orbit>
+  <li data-orbit-slide="headline-1">
+    <div>
+      <h2>Headline 1</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <div>
+      <h2>Headline 2</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div>
+      <h2>Headline 3</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+</ul>-->
+
+</header>
+  <nav role="navigation"><ul class="subscription hide" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+
+
+
+<div class="sticky">
+
+  <nav class="top-bar" data-topbar role="navigation">
+
+    <!--
+    <ul class="title-area right">
+        <li class="name">
+          <h1><a href="/">fuccboiGDX <i class="fa fa-heart"></i></i></i></a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    -->
+
+
+    <section class="top-bar-section">
+      <ul class="main-navigation right show-for-medium-up">
+          <li><a href="https://github.com/adonaac/fuccboiGDX">github</a></li>
+          <li><a href="https://twitter.com/adnzzzzZ">twitter</i></a></li>
+      </ul>
+
+      <ul class="main-navigation left">
+          <li><a href="/">fuccboiGDX</a></li>
+
+          <li class="has-dropdown">
+          <a href="/tutorials">tutorials</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Advanced</a>
+            <ul class="dropdown">
+                <li><a href="/tutorials/curvemaster">CurveMaster</a></li>
+                <li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
+            </ul>
+            </li>
+
+            <li class="has-dropdown"><a href="#">Examples</a>
+            <ul class="dropdown">
+                <li><a href="/examples#Animation">Animation</a></li>
+                <li><a href="/examples#Area">Area</a></li>
+                <li><a href="/examples#Camera">Camera</a></li>
+                <li><a href="/examples#Collision">Collision</a></li>
+                <li><a href="/examples#Gamestate">Gamestate</a></li>
+                <li><a href="/examples#Input">Input</a></li>
+                <li><a href="/examples#Layers">Layers</a></li>
+                <li><a href="/examples#Loading">Loading</a></li>
+                <li><a href="/examples#Objects">Objects</a></li>
+                <li><a href="/examples#Particles">Particles</a></li>
+                <li><a href="/examples#Random">Random</a></li>
+                <li><a href="/examples#Serialization">Serialization</a></li>
+                <li><a href="/examples#Shaders">Shaders</a></li>
+                <li><a href="/examples#Sound">Sound</a></li>
+                <li><a href="/examples#Text">Text</a></li>
+                <li><a href="/examples#Tilemap">Tilemap</a></li>
+                <li><a href="/examples#Timing">Timing</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <li class="has-dropdown">
+          <a href="/documentation">documentation</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Main</a>
+            <ul class="dropdown">
+                <li><a href="/documentation/fg">fg</a></li>
+                <li><a href="/documentation/render">Render</a></li>
+                <li><a href="/documentation/world">World</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Logic</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/area">Area</a></li>
+            <li><a href="/documentation/class">Class</a></li>
+            <li><a href="/documentation/debug">Debug</a></li>
+            <li><a href="/documentation/entity">Entity</a></li>
+            <li><a href="/documentation/gamestate">Gamestate</a></li>
+            <li><a href="/documentation/input">Input</a></li>
+            <li><a href="/documentation/loader">Loader</a></li>
+            <li><a href="/documentation/objectpool">ObjectPool</a></li>
+                <li class="has-dropdown"><a href="#">Physics</a>
+                <ul class="dropdown">
+                    <li><a href="/documentation/collision">Collision</a></li>
+                    <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
+                    <li><a href="/documentation/solid">Solid</a></li>
+                </ul>
+                </li>
+            <li><a href="/documentation/serial">Serial</a></li>
+            <li><a href="/documentation/timer">Timer</a></li>
+            <li><a href="/documentation/utils">utils</a></li>
+            <li><a href="/documentation/vector">Vector</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Visual</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/animation">Animation</a></li>
+            <li><a href="/documentation/background">Background</a></li>
+            <li><a href="/documentation/camera">Camera</a></li>
+            <li><a href="/documentation/particles">Particles</a></li>
+            <li><a href="/documentation/spritebatch">Spritebatch</a></li>
+            <li><a href="/documentation/text">Text</a></li>
+            <li><a href="/documentation/tilemap">Tilemap</a></li>
+            <li><a href="/documentation/uitools">UI Tools</a></li>
+            </ul>
+
+            <li class="has-dropdown"><a href="#">Sound</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/sound">Sound</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <!--
+          <li class="has-dropdown">
+            <a href="/no-sidebar">No Sidebar Page</a>
+
+            <ul class="dropdown">
+              <li><a href="/no-sidebar/left-sidebar">Left Sidebar Page</a></li>
+              <li><a href="/no-sidebar/right-sidebar">Right Sidebar Page</a></li>
+              <li><a href="/no-sidebar/example-formatting">Example Formatting</a></li>
+            </ul>
+
+          </li>
+
+          <li><a href="/blog">Blog</a></li>
+
+          <li><a href="/blog/archives">Archives</a></li>
+          -->
+
+      </ul>
+
+    </section>
+  </nav>
+
+</div>
+
+
+
+
+
+
+<div data-magellan-expedition>
+<div id="nav" class="fixed right show-for-large-up">
+<ul class="side-nav">
+
+<strong><a href="/documentation">documentation</a><br><br></strong>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li data-magellan-arrival="Example"><a href="#Example">Example</a></li><li data-magellan-arrival="Description"><a href="#Description">Description</a></li><li data-magellan-arrival="Methods"><a href="#Methods">Methods</a></li>
+<li data-magellan-arrival='new' class='nav'><a href='#new'>new</a></li><li data-magellan-arrival='draw' class='nav'><a href='#draw'>draw</a></li><li data-magellan-arrival='autoTile' class='nav'><a href='#autoTile'>autoTile</a></li><li data-magellan-arrival='changeTile' class='nav'><a href='#changeTile'>changeTile</a></li><li data-magellan-arrival='removeTile' class='nav'><a href='#removeTile'>removeTile</a></li><li data-magellan-arrival='setAutoTileRules' class='nav'><a href='#setAutoTileRules'>setAutoTileRules</a></li><li data-magellan-arrival='setCollisionData' class='nav'><a href='#setCollisionData'>setCollisionData</a></li>
+<li data-magellan-arrival="Attributes"><a href="#Attributes">Attributes</a></li>
+<li data-magellan-arrival='area' class='nav'><a href='#area'>area</a></li><li data-magellan-arrival='tile_size' class='nav'><a href='#tile_size'>tile_width, tile_height</a></li><li data-magellan-arrival='tilemap_size' class='nav'><a href='#tilemap_size'>w, h</a></li><li data-magellan-arrival='position' class='nav'><a href='#position'>x, y</a></li><li data-magellan-arrival='corners' class='nav'><a href='#corners'>x1, y1, x2, y2</a></li>
+<li data-magellan-arrival="Tiled"><a href="#Tiled">Tiled</a></li>
+<li data-magellan-arrival='objects' class='nav'><a href='#objects'>objects</a></li><li data-magellan-arrival='tile_grid' class='nav'><a href='#tile_grid'>tile_grid</a></li><li data-magellan-arrival='solid_grid' class='nav'><a href='#solid_grid'>solid_grid</a></li><li data-magellan-arrival='tiled_data' class='nav'><a href='#tiled_data'>tiled_data</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</div>
+</div>
+
+</nav>
+  <div id="main">
+    <div id="content" class="row">
+      
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
+
+  <article role="article">
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Tilemap</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="Example" data-magellan-destination="Example">Example</h3>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- create a new tilemap, parameters are: x, y (center position), tile width and height, tileset image, tilemap data</span>
+<span class="keyword">local</span> <span class="local-variable">tilemap</span> = fg.Tilemap(<span class="integer">240</span>, <span class="integer">180</span>, <span class="integer">64</span>, <span class="integer">64</span>, love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">tileset.png</span><span class="delimiter">'</span></span>), <span class="map"><span class="delimiter">{</span>
+    <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+    <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+    <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+    <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+<span class="delimiter">}</span></span>)
+
+<span class="comment">-- set the tileset's auto tiling rules</span>
+tilemap:setAutoTileRules(<span class="map"><span class="delimiter">{</span><span class="integer">6</span>, <span class="integer">14</span>, <span class="integer">12</span>, <span class="integer">2</span>, <span class="integer">10</span>, <span class="integer">8</span>, <span class="integer">7</span>, <span class="integer">15</span>, <span class="integer">13</span>, <span class="integer">3</span>, <span class="integer">11</span>, <span class="integer">9</span><span class="delimiter">}</span></span>)
+
+<span class="comment">-- auto tile based on auto tiling rules</span>
+tilemap:autoTile()
+
+<span class="comment">-- if using the engine add the tilemap to the 'Default' layer so it can be drawn</span>
+<span class="comment">-- and generate box2d collision solids</span>
+fg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="content">Default</span><span class="delimiter">'</span></span>, tilemap)
+fg.world.areas[<span class="string"><span class="delimiter">'</span><span class="content">Default</span><span class="delimiter">'</span></span>]:generateCollisionSolids(tilemap)
+</pre></td>
+</tr></table>
+</div>
+
+<p>Using the code above the and the below tileset:</p>
+
+<p><img class="center" src="/assets/tileset.png" /></p>
+
+<p>We get something like this (blue lines are collision solid&#8217;s debug drawing):</p>
+
+<p><img class="center" src="/assets/tilemap.png" /></p>
+
+<h3 id="Description" data-magellan-destination="Description">Description</h3>
+
+<p>The <code class="text">fg.Tilemap</code> module deals with everything related to creating, manipulating and drawing a map made 
+of tiles. It has support for <a href="http://www.saltgames.com/2010/a-bitwise-method-for-applying-tilemaps/">autotiling</a> 
+with simple and advanced rule sets, as well as automatic box2d collision solid generation, if you&#8217;re using the 
+<code class="text">engine</code>. You can also load Tiled maps directly:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- The third argument points to the path of the .lua map exported by Tiled</span>
+<span class="keyword">local</span> <span class="local-variable">tilemap</span> = fg.Tilemap(<span class="integer">0</span>, <span class="integer">0</span>, <span class="string"><span class="delimiter">'</span><span class="content">maps/tiled_map</span><span class="delimiter">'</span></span>)
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<h3 id="Methods" data-magellan-destination="Methods">Methods</h3>
+
+<div id="new" data-magellan-destination="new"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">new</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, tile_width<span class="tag">[number]</span>, tile_height<span class="tag">[number]</span>, tileset<span class="tag">[Image]</span>, tile_grid<span class="tag">[table]</span>, settings<span class="tag">[table]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>x, y</code>: the center position of the map</li>
+  <li><code>tile_width, tile_height</code>: the width and height of each tile in this tileset</li>
+  <li><code>tileset</code>: the tileset image</li>
+  <li><code>tile_grid</code>: the 2D array containing tile map data</li>
+  <li><code>settings</code>: a table containing related settings, all values are optional</li>
+</ul>
+
+<p>Possible settings:</p>
+
+<ul>
+  <li><code>area</code>: the area/level this tilemap belongs to, defaults to the <code class="string">Default</code> area created by the engine</li>
+  <li><code>padding</code>: horizontal and vertical padding in pixels between each tile</li>
+</ul>
+
+<p>It&#8217;s also possible to use multiple tilesets for one tilemap. In this case, the number identifiers for the tiles
+in the subsequent tilesets continue from the last tile of the first, i.e. if the first tileset has 100 tiles,
+the first tile in the second tileset is the number 101.</p>
+
+<div id="new" data-magellan-destination="new"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">new</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, tile_width<span class="tag">[number]</span>, tile_height<span class="tag">[number]</span>, tilesets<span class="tag">[table[Image]]</span>, tile_grid<span class="tag">[table]</span>, settings<span class="tag">[table]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>tilesets</code>: a table containing the tileset images </li>
+</ul>
+
+<p>And finally you can just load a Tiled map by passing in its path:</p>
+
+<div id="new" data-magellan-destination="new"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">new</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, tiled_map_path<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>tiled_map_path</code>: the path to the .lua file exported by Tiled containing the map specifications 
+<br /><br /></li>
+</ul>
+
+<div id="draw" data-magellan-destination="draw"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">draw</span>()</pre></td></table></div>
+
+<ul>
+  <li>draws the tilemap, if using the <code class="text">engine</code>, use <code class="atrm">.world:addToLayer(layer_name, tilemap)</code> 
+instead
+<br /><br /></li>
+</ul>
+
+<div id="autoTile" data-magellan-destination="autoTile"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">autoTile</span>(auto_tile_rules<span class="tag">[table]</span>, extended_rules<span class="tag">[table]</span>)</pre></td></table></div>
+
+<p>The autotiling function follows the technique explained in 
+<a href="http://www.saltgames.com/2010/a-bitwise-method-for-applying-tilemaps/">this tutorial</a>. The 
+<code class="text">auto_tile_rules</code> table is a table where the position of each number corresponds to the tile number 
+based on the tileset, while the value of each number corresponds to its &#8220;bit-value&#8221;, the sum of its neighbors 
+following the <code class="number">1-2-4-8</code> scheme explained in the linked tutorial.  So, for instance, for the image 
+from the first example:</p>
+
+<p><img class="center" src="/assets/tileset.png" /></p>
+
+<p>We have the following rule set:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre><span class="map"><span class="delimiter">{</span><span class="integer">6</span>, <span class="integer">14</span>, <span class="integer">12</span>, <span class="integer">2</span>, <span class="integer">10</span>, <span class="integer">8</span>, <span class="integer">7</span>, <span class="integer">15</span>, <span class="integer">13</span>, <span class="integer">3</span>, <span class="integer">11</span>, <span class="integer">9</span><span class="delimiter">}</span></span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>The array position <code class="number">1</code> has the value <code class="number">6</code>, meaning, the tileset tile <code class="number">1</code> 
+(top left most) has a value of <code class="number">6</code>, which corresponds to a neighbor on the right and down, 
+which is exactly when that tile is used. Similarly, the array position <code class="number">7</code> has the value 
+<code class="number">7</code>, meaning, the bottom left most tile has a value that corresponds to a neighbor up, right and 
+down, which is also exactly what that particular tile is used. When you&#8217;re using your own tilesets in your 
+own games, coming up with this simple list of correspondencies is your first job before calling the 
+<code class="atrm">:autoTile</code> method. This simple list is the <code class="text">auto_tile_rules</code> table.</p>
+
+<p>Sometimes, though, tiles will collide with one another in terms of their bit-value. For instance, the below 
+tileset is an example of this:</p>
+
+<p><img class="center" src="/assets/tileset2.png" /></p>
+
+<p>Tiles <code class="number">13</code>, <code class="number">15</code> and <code class="number">8</code> all have a bit-value of <code class="number">15</code> 
+(neighbors up, down, left and right), while tiles <code class="number">16</code>, <code class="number">18</code> and <code class="number">10</code> 
+all have a bit-value of <code class="number">11</code> (neighbors up, left and right). Using a single table for this, 
+like in the previous example, isn&#8217;t enough. That&#8217;s where the <code class="text">extended_rules</code> table comes in. </p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- Create a new tilemap</span>
+tilemap = fg.Tilemap(<span class="integer">400</span>, <span class="integer">300</span>, <span class="integer">64</span>, <span class="integer">64</span>, love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">tileset.png</span><span class="delimiter">'</span></span>), <span class="map"><span class="delimiter">{</span>
+    <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+    <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+    <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+    <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+<span class="delimiter">}</span></span>)
+
+<span class="comment">-- Set auto tiling rules</span>
+tilemap:setAutoTileRules(<span class="map"><span class="delimiter">{</span><span class="integer">6</span>, <span class="integer">14</span>, <span class="integer">12</span>, <span class="integer">2</span>, <span class="integer">10</span>, <span class="integer">8</span>, <span class="integer">7</span>, <span class="integer">15</span>, <span class="integer">13</span>, <span class="integer">3</span>, <span class="integer">11</span>, <span class="integer">9</span><span class="delimiter">}</span></span>, <span class="map"><span class="delimiter">{</span>
+    <span class="comment">-- Extended rules</span>
+    <span class="map"><span class="inline-delimiter">{</span><span class="key">tile</span> = <span class="integer">13</span>, <span class="key">bit_value</span> = <span class="integer">15</span>, <span class="key">left</span> = <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">2</span><span class="inline-delimiter">}</span></span>, <span class="key">right</span> = <span class="map"><span class="inline-delimiter">{</span><span class="integer">8</span>, <span class="integer">9</span>, <span class="integer">15</span><span class="inline-delimiter">}</span></span>, <span class="key">up</span> = <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">7</span><span class="inline-delimiter">}</span></span>, <span class="key">down</span> = <span class="map"><span class="inline-delimiter">{</span><span class="integer">8</span>, <span class="integer">11</span><span class="inline-delimiter">}</span></span><span class="inline-delimiter">}</span></span>,
+    <span class="map"><span class="inline-delimiter">{</span><span class="key">tile</span> = <span class="integer">15</span>, <span class="key">bit_value</span> = <span class="integer">15</span>, <span class="key">left</span> = <span class="map"><span class="inline-delimiter">{</span><span class="integer">7</span>, <span class="integer">8</span>, <span class="integer">13</span><span class="inline-delimiter">}</span></span>, <span class="key">right</span> = <span class="map"><span class="inline-delimiter">{</span><span class="integer">2</span>, <span class="integer">3</span><span class="inline-delimiter">}</span></span>, <span class="key">up</span> = <span class="map"><span class="inline-delimiter">{</span><span class="integer">3</span>, <span class="integer">9</span><span class="inline-delimiter">}</span></span>, <span class="key">down</span> = <span class="map"><span class="inline-delimiter">{</span><span class="integer">8</span>, <span class="integer">11</span><span class="inline-delimiter">}</span></span><span class="inline-delimiter">}</span></span>,
+    <span class="map"><span class="inline-delimiter">{</span><span class="key">tile</span> = <span class="integer">16</span>, <span class="key">bit_value</span> = <span class="integer">11</span>, <span class="key">left</span> = <span class="map"><span class="inline-delimiter">{</span><span class="integer">4</span>, <span class="integer">5</span><span class="inline-delimiter">}</span></span>, <span class="key">right</span> = <span class="map"><span class="inline-delimiter">{</span><span class="integer">11</span>, <span class="integer">12</span>, <span class="integer">18</span><span class="inline-delimiter">}</span></span>, <span class="key">up</span> = <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">7</span><span class="inline-delimiter">}</span></span>, <span class="key">down</span> = <span class="predefined-constant">nil</span><span class="inline-delimiter">}</span></span>,
+    <span class="map"><span class="inline-delimiter">{</span><span class="key">tile</span> = <span class="integer">18</span>, <span class="key">bit_value</span> = <span class="integer">11</span>, <span class="key">left</span> = <span class="map"><span class="inline-delimiter">{</span><span class="integer">10</span>, <span class="integer">11</span>, <span class="integer">16</span><span class="inline-delimiter">}</span></span>, <span class="key">right</span> = <span class="map"><span class="inline-delimiter">{</span><span class="integer">5</span>, <span class="integer">6</span><span class="inline-delimiter">}</span></span>, <span class="key">up</span> = <span class="map"><span class="inline-delimiter">{</span><span class="integer">3</span>, <span class="integer">9</span><span class="inline-delimiter">}</span></span>, <span class="key">down</span> = <span class="predefined-constant">nil</span><span class="inline-delimiter">}</span></span>,
+<span class="delimiter">}</span></span>)
+</pre></td>
+</tr></table>
+</div>
+
+<p>The <code class="text">extended_rules</code> table should have additional information about the bit-value colliding tiles, 
+such that the algorithm can tell where each one should go with certainty. This information is given as a 
+table with these attributes: </p>
+
+<ul>
+  <li><code>tile</code>: the tile value being specified</li>
+  <li><code>bit_value</code>: the bit-value of the tile</li>
+  <li><code>left</code>: a table containing all possible values of tiles that can be to the left of this tile</li>
+  <li><code>right</code>: a table containing all possible values of tiles that can be to the right of this tile</li>
+  <li><code>up</code>: a table containing all possible values of tiles that can be above this tile</li>
+  <li><code>down</code>: a table containing all possible values of tiles that can be below this tile
+<br /><br /></li>
+</ul>
+
+<p>The autotiling algorithm will then first check the <code class="text">auto_tile_rules</code>  table to see if the current 
+tile being analyzed maps to something there. In case it does, it will pick that value and then check the 
+<code class="text">extended_rules</code> table to see if any tables there have that same bit-value. If they do, it will look 
+through their direction attributes as well as the neighborhood tiles of the current tile being analyzed so see 
+if they match and then if they do it will finally pick that tile. Using the new code example above and the new 
+tileset, something like this would be generated:</p>
+
+<p><img class="center" src="/assets/tilemap2.png" /></p>
+
+<p>The new corners are correctly placed because the tables in the <code class="text">extended_rule</code> table specify which 
+tiles can be neighbors to each one of those new corners.
+<br /></p>
+
+<div id="changeTile" data-magellan-destination="changeTile"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">changeTile</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, n<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>x, y</code>: the position to change  </li>
+  <li><code>n</code>: the number of the tile to change this position to<br />
+<br /></li>
+</ul>
+
+<div id="removeTile" data-magellan-destination="removeTile"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">removeTile</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>x, y</code>: the position to remove
+<br /><br /></li>
+</ul>
+
+<div id="setAutoTileRules" data-magellan-destination="setAutoTileRules"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">setAutoTileRules</span>(auto_tile_rules<span class="tag">[table]</span>, extended_rules<span class="tag">[table]</span>)</pre></td></table></div>
+
+<ul>
+  <li>sets new autotiling rules, see the full explanation on the method <code class="atrm">:autoTile</code>
+<br /><br /></li>
+</ul>
+
+<div id="setCollisionData" data-magellan-destination="setCollisionData"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">setCollisionData</span>(collision_data<span class="tag">[table]</span>)</pre></td></table></div>
+
+<p>Sets new collision data for when <code class="atrm">.world.areas[...]:generateCollisionSolids</code> is called. 
+Collision data is automatically generated to match the tile data given to the constructor, however, 
+in some types of games (anything that is top-down), only some tiles should actually collide, so that&#8217;s 
+when you should use this method.</p>
+
+<ul>
+  <li><code>collision_data</code>: a table containing the numbers <code class="number">1</code> (collision) or <code class="number">0</code> 
+(no collision) to be used for generating collision solids, width and height should be exactly the same as the 
+one from the tile_data table passed to the constructor
+<br /><br /></li>
+</ul>
+
+<h3 id="Attributes" data-magellan-destination="Attributes">Attributes</h3>
+
+<div id="area" data-magellan-destination="area"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">area</span><span class="tag">[Area]</span></pre></td></table></div>
+
+<ul>
+  <li>the area/level linked to this tilemap so it can be drawn/updated 
+<br /><br /></li>
+</ul>
+
+<div id="tile_size" data-magellan-destination="tile_size"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">tile_width</span><span class="tag">[number]</span>, .<span class="annotation">tile_height</span><span class="tag">[number]</span></pre></td></table></div>
+
+<ul>
+  <li>the width and height of tiles in this tilemap <br />
+<br /></li>
+</ul>
+
+<div id="tilemap_size" data-magellan-destination="tilemap_size"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">w</span><span class="tag">[number]</span>, .<span class="annotation">h</span><span class="tag">[number]</span></pre></td></table></div>
+
+<ul>
+  <li>the width and height of the tilemap itself
+<br /><br /></li>
+</ul>
+
+<div id="position" data-magellan-destination="position"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">x</span><span class="tag">[number]</span>, .<span class="annotation">y</span><span class="tag">[number]</span></pre></td></table></div>
+<ul>
+  <li>the center position of the tilemap
+<br /><br /></li>
+</ul>
+
+<div id="corners" data-magellan-destination="corners"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">x1</span><span class="tag">[number]</span>, .<span class="annotation">y1</span><span class="tag">[number]</span>, .<span class="annotation">x2</span><span class="tag">[number]</span>, .<span class="annotation">y2</span><span class="tag">[number]</span></pre></td></table></div>
+<ul>
+  <li>the top left and bottom right corners of the map
+<br /><br /></li>
+</ul>
+
+<h3 id="Tiled" data-magellan-destination="Tiled">Tiled</h3>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- create a tilemap from a Tiled map</span>
+<span class="keyword">local</span> <span class="local-variable">tilemap</span> = fg.Tilemap(<span class="integer">0</span>, <span class="integer">0</span>, <span class="string"><span class="delimiter">'</span><span class="content">maps/tiled_map</span><span class="delimiter">'</span></span>)
+
+<span class="comment">-- if using the engine add the tilemap to the 'Default' layer so it can be drawn</span>
+<span class="comment">-- generate box2d collision solids,</span>
+<span class="comment">-- and create all entities defined in the Tiled map</span>
+fg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="content">Default</span><span class="delimiter">'</span></span>, tilemap)
+fg.world.areas[<span class="string"><span class="delimiter">'</span><span class="content">Default</span><span class="delimiter">'</span></span>]:generateCollisionSolids(tilemap)
+fg.world.areas[<span class="string"><span class="delimiter">'</span><span class="content">Default</span><span class="delimiter">'</span></span>]:createTiledMapEntities(tilemap)
+</pre></td>
+</tr></table>
+</div>
+
+<p>Tiled maps need to be defined with two main things in mind when it comes to the <code class="text">engine</code>:
+the collision layer and the map objects. For the collision layer all you need to do in Tiled is
+create a tile layer that has the property <code class="text">collision</code> set to true.</p>
+
+<p><img class="center" src="/assets/properties-collision.png" /></p>
+
+<p>This will make it so that for that layer, any tile that is set (not empty) will act as a collision
+tile for the <code class="atrm">:generateCollisionSolids</code> call. You can either set this property on your main
+layer or you can just create another specific collision layer which you&#8217;ll fill with whatever collision
+tiles you want. </p>
+
+<p>Another way of creating collision solids is to create an object layer and to add <a href="/documentation/Solid">Solid</a>
+objects to it. Adding objects from the engine (and from your game) to Tiled is pretty straightforward, since
+all you need to define is the name of the class (in this case Solid), implement that class in your game 
+(the Solid is already implement in the engine) and then add special properties if you want. </p>
+
+<p><img class="center" src="/assets/objects-solid.png" />
+<img class="center" src="/assets/properties-solid.png" /></p>
+
+<p>When <code class="atrm">:createTiledMapEntities</code> is called, all objects defined in the map&#8217;s object layer will be automatically
+created, having their <code class="atrm">.x, .y</code> parameters filled in using their position on Tiled&#8217;s map, and having
+any additional information (width, height, custom properties) being passed via the <code class="atrm">.settings</code> table.
+If a class type is defined in Tiled but isn&#8217;t registered in the <code class="text">engine</code> (see <a href="/documentation/class">Class</a>) 
+then errors will occur and your entities will not get created.</p>
+
+<p>If you want to use Tiled + <code class="text">fg.Tilemap</code> without using the <code class="text">engine</code> then you can access 
+the already parsed Tiled map&#8217;s information through (i.e. <code class="text">tilemap.objects</code>):</p>
+
+<div id="objects" data-magellan-destination="objects"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">objects</span><span class="tag">[table]</span></pre></td></table></div>
+
+<ul>
+  <li>a table of objects, each following Tiled&#8217;s Lua exported format
+<br /><br /></li>
+</ul>
+
+<div id="tile_grid" data-magellan-destination="tile_grid"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">tile_grid</span><span class="tag">[table]</span></pre></td></table></div>
+
+<ul>
+  <li>a 2D array containing the tile layer&#8217;s data. Each number = id of that tile and for tilemaps
+with multiple tilesets, the id of tiles in the next tilesets carry from the last, meaning the id
+of the first tile in a second tileset, if the first tileset has 100 tiles, will be 101.
+<br /><br /></li>
+</ul>
+
+<div id="solid_grid" data-magellan-destination="solid_grid"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">solid_grid</span><span class="tag">[table]</span></pre></td></table></div>
+
+<ul>
+  <li>a 2D array containing collision data (1 is collision, 0 is not)
+<br /><br /></li>
+</ul>
+
+<div id="tiled_data" data-magellan-destination="tiled_data"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">tiled_data</span><span class="tag">[table]</span></pre></td></table></div>
+
+<ul>
+  <li>the raw exported Tiled Lua file, same as <code class="text">tiled_data = require('maps/tiled_map')</code>
+<br /><br /></li>
+</ul>
+
+    
+      <footer>
+        
+        
+      </footer>
+    
+  </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+  
+  </div><!--.columns-->
+  
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p class="text-center">
+  <span class="credit">
+  	Made using <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/annejohnson/octofound">Octofound</a><br/>
+  </span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/documentation/tilemap/index.html';
+        var disqus_url = 'http://fuccboi.moe/documentation/tilemap/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+</body>
+</html>

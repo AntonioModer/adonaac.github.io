@@ -6,11 +6,12 @@
 <head>
   <script src="/js/vendor/modernizr.js"></script>
   <meta charset="utf-8">
-  <title>fuccboiGDX</title>
+  <title>Debug - fuccboiGDX</title>
   <meta name="author" content="adnzzzzZ">
 
   
-  <meta name="description" content="fuccboiGDX is a 2D game making code-centric engine/framework that provides additional higher level functionalities on top of LÖVE, making game &hellip;">
+  <meta name="description" content="<!-- Debug --> Description This module takes care of game debugging and uses lovebird. fg.lovebird
+is an instance of lovebird and it&#8217;s through &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fuccboi.moe">
+  <link rel="canonical" href="http://fuccboi.moe/documentation/debug">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
@@ -63,7 +64,7 @@
 
 </head>
 
-<body  id="main_page"   class="no-sidebar" >
+<body   class="no-sidebar" >
   <header role="banner" class="top-header"><!--<hgroup>
   <h1 class="text-center">
   	<a href="/">fuccboiGDX</a>
@@ -243,6 +244,7 @@
 <div id="nav" class="fixed right show-for-large-up">
 <ul class="side-nav">
 
+<strong><a href="/documentation">documentation</a><br><br></strong>
 
 
 
@@ -264,6 +266,9 @@
 
 
 
+
+
+<li data-magellan-arrival="Description"><a href="#Description">Description</a></li>
 
 
 
@@ -314,38 +319,27 @@
   <div id="main">
     <div id="content" class="row">
       
-<div class="small-12 medium-12 large-10 large-centered columns">
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
 
   <article role="article">
-    <!---->
-    <p><strong>fuccboiGDX</strong> is a 2D game making code-centric engine/framework that provides additional higher level functionalities on top of <a href="http://love2d.org">LÖVE</a>, 
-making game creation easier, faster, and buzzword! It’s free, open source and supported on Windows, Linux and OSX.</p>
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Debug</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="Description" data-magellan-destination="Description">Description</h3>
 
-<div class="row">
-    <div class="small-4 columns text-center">
-        <a href="https://github.com/adonaac/fuccboiGDX/archive/master.zip" class="button expand">download</a>
-    </div>
+<p>This module takes care of game debugging and uses <a href="https://github.com/rxi/lovebird">lovebird</a>. <code class="text">fg.lovebird</code>
+is an instance of <code class="text">lovebird</code> and it&#8217;s through there that you can change its settings. For instance, 
+changing the port goes something like <code class="text">fg.lovebird.port = 4000</code>. </p>
 
-    <div class="small-4 columns text-center">
-        <a href="/tutorials" class="button expand">tutorials</a>
-    </div>
+<p><code class="text">lovebird</code> is disabled by default and you can enable it through <code class="text">fg.lovebird_enabled = true</code>. 
+If it&#8217;s enabled, after you run your game you can inspect its state using your browser by opening the following URL
+on your browser: <code class="text">http://localhost:8000</code>, something like the following image should appear:</p>
 
-    <div class="small-4 columns text-center">
-        <a href="/documentation" class="button expand">documentation</a>
-    </div>
-</div>
-
-<!--
-<h2 style="text-align: center">Games being made with fuccboiGDX</h2>
-<br>
-
-<ul class="example-orbit" data-orbit data-options="navigation_arrows: false; pause_on_hover:false; bullets: false; slide_number: false"> 
-    <li><img src="/assets/fight.gif"/></li> 
-    <li><img src="/assets/hitee.gif"/></li> 
-    <li><img src="/assets/ice.gif"/></li> 
-    <li><img src="/assets/attack.gif"/></li> 
-</ul>
-&#8211;>
+<p><img class="center" src="/assets/lovebird.png" /></p>
 
     
       <footer>
@@ -354,6 +348,12 @@ making game creation easier, faster, and buzzword! It’s free, open source and 
       </footer>
     
   </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
   
   </div><!--.columns-->
   
@@ -459,6 +459,22 @@ making game creation easier, faster, and buzzword! It’s free, open source and 
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/documentation/debug/index.html';
+        var disqus_url = 'http://fuccboi.moe/documentation/debug/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

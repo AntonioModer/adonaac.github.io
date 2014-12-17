@@ -1,0 +1,698 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <script src="/js/vendor/modernizr.js"></script>
+  <meta charset="utf-8">
+  <title>Timer - fuccboiGDX</title>
+  <meta name="author" content="adnzzzzZ">
+
+  
+  <meta name="description" content="<!-- Timer --> Example 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11 -- prints 2 after 2 seconds from this call have passed
+timer:after(2, function() print(2) end) -- &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fuccboi.moe/documentation/timer">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
+
+  <script src="/js/vendor/jquery.js"></script>
+  <script src="/js/vendor/fastclick.js"></script>
+
+  <script src="/js/foundation.min.js"></script>
+  <script src="/js/foundation/foundation.magellan.js"></script>
+  <script src="/js/foundation/foundation.topbar.js"></script>
+  <script src="/js/foundation/foundation.accordion.js"></script>
+  <script src="/js/foundation/foundation.orbit.js"></script>
+  <script src="/js/foundation/foundation.dropdown.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <script>
+
+  $(document).ready(function(){
+    $(document).foundation();
+  });
+
+  </script>
+
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-51118504-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar" >
+  <header role="banner" class="top-header"><!--<hgroup>
+  <h1 class="text-center">
+  	<a href="/">fuccboiGDX</a>
+  </h1>
+  
+</hgroup>-->
+
+<!--<ul class="example-orbit-content" data-orbit>
+  <li data-orbit-slide="headline-1">
+    <div>
+      <h2>Headline 1</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <div>
+      <h2>Headline 2</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div>
+      <h2>Headline 3</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+</ul>-->
+
+</header>
+  <nav role="navigation"><ul class="subscription hide" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+
+
+
+<div class="sticky">
+
+  <nav class="top-bar" data-topbar role="navigation">
+
+    <!--
+    <ul class="title-area right">
+        <li class="name">
+          <h1><a href="/">fuccboiGDX <i class="fa fa-heart"></i></i></i></a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    -->
+
+
+    <section class="top-bar-section">
+      <ul class="main-navigation right show-for-medium-up">
+          <li><a href="https://github.com/adonaac/fuccboiGDX">github</a></li>
+          <li><a href="https://twitter.com/adnzzzzZ">twitter</i></a></li>
+      </ul>
+
+      <ul class="main-navigation left">
+          <li><a href="/">fuccboiGDX</a></li>
+
+          <li class="has-dropdown">
+          <a href="/tutorials">tutorials</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Advanced</a>
+            <ul class="dropdown">
+                <li><a href="/tutorials/curvemaster">CurveMaster</a></li>
+                <li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
+            </ul>
+            </li>
+
+            <li class="has-dropdown"><a href="#">Examples</a>
+            <ul class="dropdown">
+                <li><a href="/examples#Animation">Animation</a></li>
+                <li><a href="/examples#Area">Area</a></li>
+                <li><a href="/examples#Camera">Camera</a></li>
+                <li><a href="/examples#Collision">Collision</a></li>
+                <li><a href="/examples#Gamestate">Gamestate</a></li>
+                <li><a href="/examples#Input">Input</a></li>
+                <li><a href="/examples#Layers">Layers</a></li>
+                <li><a href="/examples#Loading">Loading</a></li>
+                <li><a href="/examples#Objects">Objects</a></li>
+                <li><a href="/examples#Particles">Particles</a></li>
+                <li><a href="/examples#Random">Random</a></li>
+                <li><a href="/examples#Serialization">Serialization</a></li>
+                <li><a href="/examples#Shaders">Shaders</a></li>
+                <li><a href="/examples#Sound">Sound</a></li>
+                <li><a href="/examples#Text">Text</a></li>
+                <li><a href="/examples#Tilemap">Tilemap</a></li>
+                <li><a href="/examples#Timing">Timing</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <li class="has-dropdown">
+          <a href="/documentation">documentation</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Main</a>
+            <ul class="dropdown">
+                <li><a href="/documentation/fg">fg</a></li>
+                <li><a href="/documentation/render">Render</a></li>
+                <li><a href="/documentation/world">World</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Logic</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/area">Area</a></li>
+            <li><a href="/documentation/class">Class</a></li>
+            <li><a href="/documentation/debug">Debug</a></li>
+            <li><a href="/documentation/entity">Entity</a></li>
+            <li><a href="/documentation/gamestate">Gamestate</a></li>
+            <li><a href="/documentation/input">Input</a></li>
+            <li><a href="/documentation/loader">Loader</a></li>
+            <li><a href="/documentation/objectpool">ObjectPool</a></li>
+                <li class="has-dropdown"><a href="#">Physics</a>
+                <ul class="dropdown">
+                    <li><a href="/documentation/collision">Collision</a></li>
+                    <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
+                    <li><a href="/documentation/solid">Solid</a></li>
+                </ul>
+                </li>
+            <li><a href="/documentation/serial">Serial</a></li>
+            <li><a href="/documentation/timer">Timer</a></li>
+            <li><a href="/documentation/utils">utils</a></li>
+            <li><a href="/documentation/vector">Vector</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Visual</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/animation">Animation</a></li>
+            <li><a href="/documentation/background">Background</a></li>
+            <li><a href="/documentation/camera">Camera</a></li>
+            <li><a href="/documentation/particles">Particles</a></li>
+            <li><a href="/documentation/spritebatch">Spritebatch</a></li>
+            <li><a href="/documentation/text">Text</a></li>
+            <li><a href="/documentation/tilemap">Tilemap</a></li>
+            <li><a href="/documentation/uitools">UI Tools</a></li>
+            </ul>
+
+            <li class="has-dropdown"><a href="#">Sound</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/sound">Sound</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <!--
+          <li class="has-dropdown">
+            <a href="/no-sidebar">No Sidebar Page</a>
+
+            <ul class="dropdown">
+              <li><a href="/no-sidebar/left-sidebar">Left Sidebar Page</a></li>
+              <li><a href="/no-sidebar/right-sidebar">Right Sidebar Page</a></li>
+              <li><a href="/no-sidebar/example-formatting">Example Formatting</a></li>
+            </ul>
+
+          </li>
+
+          <li><a href="/blog">Blog</a></li>
+
+          <li><a href="/blog/archives">Archives</a></li>
+          -->
+
+      </ul>
+
+    </section>
+  </nav>
+
+</div>
+
+
+
+
+
+
+<div data-magellan-expedition>
+<div id="nav" class="fixed right show-for-large-up">
+<ul class="side-nav">
+
+<strong><a href="/documentation">documentation</a><br><br></strong>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li data-magellan-arrival="Example"><a href="#Example">Example</a></li><li data-magellan-arrival="Description"><a href="#Description">Description</a></li><li data-magellan-arrival="Methods"><a href="#Methods">Methods</a></li>
+<li data-magellan-arrival='new' class='nav'><a href='#new'>new</a></li><li data-magellan-arrival='update' class='nav'><a href='#update'>update</a></li><li data-magellan-arrival='after' class='nav'><a href='#after'>after</a></li><li data-magellan-arrival='cancel' class='nav'><a href='#cancel'>cancel</a></li><li data-magellan-arrival='clear' class='nav'><a href='#clear'>clear</a></li><li data-magellan-arrival='destroy' class='nav'><a href='#destroy'>destroy</a></li><li data-magellan-arrival='during' class='nav'><a href='#during'>during</a></li><li data-magellan-arrival='every' class='nav'><a href='#every'>every</a></li><li data-magellan-arrival='tween' class='nav'><a href='#tween'>tween</a></li>
+
+
+
+
+
+
+
+
+
+
+</ul>
+</div>
+</div>
+
+</nav>
+  <div id="main">
+    <div id="content" class="row">
+      
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
+
+  <article role="article">
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Timer</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="Example" data-magellan-destination="Example">Example</h3>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- prints 2 after 2 seconds from this call have passed</span>
+timer:after(<span class="integer">2</span>, <span class="keyword">function</span>() <span class="predefined">print</span>(<span class="integer">2</span>) <span class="keyword">end</span>)
+
+<span class="comment">-- changes the value of some boolean every 1 second, but does it only 5 times</span>
+timer:every(<span class="integer">1</span>, <span class="keyword">function</span>() some_boolean = <span class="keyword">not</span> some_boolean <span class="keyword">end</span>, <span class="integer">5</span>)
+
+<span class="comment">-- prints 'SPAM' every frame for 5 seconds</span>
+timer:during(<span class="integer">5</span>, <span class="keyword">function</span>() <span class="predefined">print</span>(<span class="string"><span class="delimiter">'</span><span class="content">SPAM</span><span class="delimiter">'</span></span>) <span class="keyword">end</span>)
+
+<span class="comment">-- tweens the x, y position of self to 500, 500 for 2 seconds using the 'in-out-cubic' tween method</span>
+timer:tween(<span class="integer">2</span>, self, <span class="map"><span class="delimiter">{</span><span class="key">x</span> = <span class="integer">500</span>, <span class="key">y</span> = <span class="integer">500</span><span class="delimiter">}</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">in-out-cubic</span><span class="delimiter">'</span></span>)
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<h3 id="Description" data-magellan-destination="Description">Description</h3>
+
+<p>The <code class="text">fg.Timer</code> module handles timers and tweens. It&#8217;s an enhanced version of 
+<a href="http://vrld.github.io/hump/#hump.timer">hump.timer</a>, with a few function name changes and with that 
+added ability of timer/tween tagging. A global <code class="text">Timer</code> is initialized automatically and can 
+be used from <code class="text">fg.timer</code>, but you may also create your own new instances by doing <code class="text">timer = fg.Timer()</code>.
+Having your own instances is useful if some of your entities rely on tagging, since tags block 
+timer/tween creation when a tag already exists, so using the global <code class="text">Timer</code> for it is not going to work.</p>
+
+<p>Timer/tween creation methods have tags enabled. Tags provide a way of identifying a certain tween so 
+that it can be cancelled if necessary. For instance, this code:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> HPBar:<span class="function">changeHp</span>()
+    <span class="comment">-- Cancel all HP bar related tweens</span>
+    self.timer:cancel(<span class="string"><span class="delimiter">'</span><span class="content">change_hp</span><span class="delimiter">'</span></span>)
+    self.timer:cancel(<span class="string"><span class="delimiter">'</span><span class="content">change_hp_back_after</span><span class="delimiter">'</span></span>)
+    self.timer:cancel(<span class="string"><span class="delimiter">'</span><span class="content">change_hp_back_tween</span><span class="delimiter">'</span></span>)
+
+    <span class="comment">-- Tween the front layer of the HP bar</span>
+    self.timer:tween(<span class="string"><span class="delimiter">'</span><span class="content">change_hp</span><span class="delimiter">'</span></span>, <span class="float">0.2</span>, self, 
+                    <span class="map"><span class="delimiter">{</span><span class="key">x_offset</span> = self.w*(player.hp/player.max_hp)<span class="delimiter">}</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">in-out-cubic</span><span class="delimiter">'</span></span>)
+
+    <span class="comment">-- Tween the back layer (lighter color) of the HP bar after 0.2 seconds</span>
+    self.timer:after(<span class="string"><span class="delimiter">'</span><span class="content">change_hp_back_after</span><span class="delimiter">'</span></span>, <span class="float">0.2</span>, <span class="keyword">function</span>()
+        self.timer:tween(<span class="string"><span class="delimiter">'</span><span class="content">change_hp_back_tween</span><span class="delimiter">'</span></span>, <span class="float">0.2</span>, self, 
+                        <span class="map"><span class="delimiter">{</span><span class="key">x_offset_back</span> = self.w*(player.hp/player.max_hp)<span class="delimiter">}</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">in-out-cubic</span><span class="delimiter">'</span></span>)
+    <span class="keyword">end</span>)
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>Does this:</p>
+
+<p><img class="center" src="/assets/hpbar.gif" /></p>
+
+<p>The effect that the HP bar has of only actually decreasing after a while is achieved because of tags. 
+The main tween <code class="string">'change_hp'</code> is done every time the player takes damage and it correponds 
+to the front layer of the HP bar. Every time <code class="atrm">:changeHP</code> is called, if another <code class="string">'change_hp'</code>
+tween is happening, it is cancelled and then immediately continued. If the <code class="atrm">:cancel</code> call didn&#8217;t exist, 
+there would be multiple tweens changing a single variable and it would look buggy.</p>
+
+<p>The back layer, controlled by <code class="string">change_hp_back_after</code> and <code class="string">'change_hp_back_tween'</code> happens 
+after <code class="number">0.2</code> seconds of the main tween. This explains why there&#8217;s a lag between taking damage and the 
+HP bar actually decreasing. And similarly, these tweens are also cancelled on <code class="atrm">:changeHP</code> call, this is 
+to avoid the same visual bugs that would occur from multiple tweens acting on one variable. Additionally, this 
+makes it so that the HP bar will only decrease after <code class="number">0.2</code> seconds of the last damage received (since 
+the <code class="string">'change_hp_back_after'</code> call is cancelled), giving it an even nicer lagging effect whenever the player
+is repeatedly damage in small bursts.
+<br /></p>
+
+<h3 id="Methods" data-magellan-destination="Methods">Methods</h3>
+
+<div id="new" data-magellan-destination="new"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">new</span>()</pre></td></table></div>
+
+<ul>
+  <li>creates a new <code class="text">Timer</code> instance 
+<br /><br /></li>
+</ul>
+
+<div id="update" data-magellan-destination="update"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">update</span>(dt<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>dt</code>: delta value passed from the main loop to update the timer
+<br /><br /></li>
+</ul>
+
+<div id="after" data-magellan-destination="after"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">after</span>(tag<span class="tag">[string[optional]]</span>, delay<span class="tag">[number]</span>, action<span class="tag">[function]</span>)</pre></td></table></div>
+
+<ul>
+  <li>calls <code class="text">action</code> after <code class="text">delay</code> seconds, if <code class="text">tag</code> is already registered then 
+cancels previously registered <code class="text">after</code> calls</li>
+  <li><code>tag</code>: the identifier for this <code class="text">after</code> call, the call is not tagged if this is omitted</li>
+  <li><code>delay</code>: the amount of seconds from this call after which <code class="text">action</code> will be called</li>
+  <li><code>action</code>: the function to be called
+<br /><br /></li>
+</ul>
+
+<div id="cancel" data-magellan-destination="cancel"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">cancel</span>(tag<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li>cancels the timer/tween attached to <code class="text">tag</code> 
+<br /><br /></li>
+</ul>
+
+<div id="clear" data-magellan-destination="clear"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">clear</span>()</pre></td></table></div>
+
+<ul>
+  <li>cancels all timers/tweens and removes all tags
+<br /><br /></li>
+</ul>
+
+<div id="destroy" data-magellan-destination="destroy"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">destroy</span>()</pre></td></table></div>
+
+<ul>
+  <li>cancels all timers/tweens, removes all tags and dereferences the timer internal object
+<br /><br /></li>
+</ul>
+
+<div id="during" data-magellan-destination="during"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">during</span>(tag<span class="tag">[string[optional]]</span>, duration<span class="tag">[number]</span>, action<span class="tag">[function]</span>, after<span class="tag">[function[optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>calls <code class="text">action</code> every frame for <code class="text">duration</code> seconds, and then <code class="text">after</code> after 
+<code class="text">duration</code> seconds, if <code class="text">tag</code> is already registered then cancels previously registered
+<code class="text">during</code> calls</li>
+  <li><code>tag</code>: the identifier for this <code class="text">during</code> call, the call is not tagged if this is omitted</li>
+  <li><code>duration</code>: the amount of seconds <code class="text">action</code> will be called for</li>
+  <li><code>action</code>: the function to be called</li>
+  <li><code>after</code>: the function to be called after <code class="text">duration</code> seconds, optional and does nothing if omitted
+<br /><br /></li>
+</ul>
+
+<div id="every" data-magellan-destination="every"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">every</span>(tag<span class="tag">[string[optional]]</span>, delay<span class="tag">[number]</span>, action<span class="tag">[function]</span>, count<span class="tag">[number[optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>calls <code class="text">action</code> every <code class="text">delay</code> seconds for <code class="text">count</code> times, if <code class="text">tag</code> is 
+already registered then cancels previously registered <code class="text">every</code> calls</li>
+  <li><code>tag</code>: the identifier for this <code class="text">every</code> call, the call is not tagged if omitted</li>
+  <li><code>delay</code>: the amount of seconds between each <code class="text">action</code> call</li>
+  <li><code>action</code>: the function to be called</li>
+  <li><code>count</code>: the maximum amount of times <code class="text">action</code> is called, defaults to infinite if omitted
+<br /><br /></li>
+</ul>
+
+<div id="tween" data-magellan-destination="tween"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">tween</span>(tag<span class="tag">[string[optional]]</span>, duration<span class="tag">[number]</span>, table<span class="tag">[table]</span>, tween_table<span class="tag">[table]</span>, tween_method<span class="tag">[string]</span>, after<span class="tag">[function[optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>tweens the attributes specified in <code class="text">tween_table</code> from <code class="text">table</code> to the values specified in <code class="text">tween_table</code> 
+using <code class="text">tween_method</code>, calls <code class="text">after</code> when the tween is done</li>
+  <li><code>tag</code>: the identifier for this <code>tween</code> call, the call is not tagged if omitted</li>
+  <li><code>duration</code>: the duration in seconds of the tween</li>
+  <li><code>table</code>: the table that is being tweened</li>
+  <li><code>tween_table</code>: the values specifying which attributes and to what values those attributes will be changed</li>
+  <li><code>tween_method</code>: the tween method used for the tween</li>
+  <li><code>after</code>: the function to be called after <code class="text">duration</code> seconds, optional and does nothing if omitted</li>
+</ul>
+
+<p>Refer to <a href="http://vrld.github.io/hump/#hump.timertween">hump.timertween</a> for more information.
+<br /><br /></p>
+
+    
+      <footer>
+        
+        
+      </footer>
+    
+  </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+  
+  </div><!--.columns-->
+  
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p class="text-center">
+  <span class="credit">
+  	Made using <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/annejohnson/octofound">Octofound</a><br/>
+  </span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/documentation/timer/index.html';
+        var disqus_url = 'http://fuccboi.moe/documentation/timer/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+</body>
+</html>

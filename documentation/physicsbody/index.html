@@ -1,0 +1,777 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <script src="/js/vendor/modernizr.js"></script>
+  <meta charset="utf-8">
+  <title>PhysicsBody - fuccboiGDX</title>
+  <meta name="author" content="adnzzzzZ">
+
+  
+  <meta name="description" content="<!-- PhysicsBody --> Example 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16 -- physics enabled entity template
+MyClass = fg.Class('MyClass', 'Entity') &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fuccboi.moe/documentation/physicsbody">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
+
+  <script src="/js/vendor/jquery.js"></script>
+  <script src="/js/vendor/fastclick.js"></script>
+
+  <script src="/js/foundation.min.js"></script>
+  <script src="/js/foundation/foundation.magellan.js"></script>
+  <script src="/js/foundation/foundation.topbar.js"></script>
+  <script src="/js/foundation/foundation.accordion.js"></script>
+  <script src="/js/foundation/foundation.orbit.js"></script>
+  <script src="/js/foundation/foundation.dropdown.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <script>
+
+  $(document).ready(function(){
+    $(document).foundation();
+  });
+
+  </script>
+
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-51118504-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar" >
+  <header role="banner" class="top-header"><!--<hgroup>
+  <h1 class="text-center">
+  	<a href="/">fuccboiGDX</a>
+  </h1>
+  
+</hgroup>-->
+
+<!--<ul class="example-orbit-content" data-orbit>
+  <li data-orbit-slide="headline-1">
+    <div>
+      <h2>Headline 1</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <div>
+      <h2>Headline 2</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div>
+      <h2>Headline 3</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+</ul>-->
+
+</header>
+  <nav role="navigation"><ul class="subscription hide" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+
+
+
+<div class="sticky">
+
+  <nav class="top-bar" data-topbar role="navigation">
+
+    <!--
+    <ul class="title-area right">
+        <li class="name">
+          <h1><a href="/">fuccboiGDX <i class="fa fa-heart"></i></i></i></a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    -->
+
+
+    <section class="top-bar-section">
+      <ul class="main-navigation right show-for-medium-up">
+          <li><a href="https://github.com/adonaac/fuccboiGDX">github</a></li>
+          <li><a href="https://twitter.com/adnzzzzZ">twitter</i></a></li>
+      </ul>
+
+      <ul class="main-navigation left">
+          <li><a href="/">fuccboiGDX</a></li>
+
+          <li class="has-dropdown">
+          <a href="/tutorials">tutorials</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Advanced</a>
+            <ul class="dropdown">
+                <li><a href="/tutorials/curvemaster">CurveMaster</a></li>
+                <li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
+            </ul>
+            </li>
+
+            <li class="has-dropdown"><a href="#">Examples</a>
+            <ul class="dropdown">
+                <li><a href="/examples#Animation">Animation</a></li>
+                <li><a href="/examples#Area">Area</a></li>
+                <li><a href="/examples#Camera">Camera</a></li>
+                <li><a href="/examples#Collision">Collision</a></li>
+                <li><a href="/examples#Gamestate">Gamestate</a></li>
+                <li><a href="/examples#Input">Input</a></li>
+                <li><a href="/examples#Layers">Layers</a></li>
+                <li><a href="/examples#Loading">Loading</a></li>
+                <li><a href="/examples#Objects">Objects</a></li>
+                <li><a href="/examples#Particles">Particles</a></li>
+                <li><a href="/examples#Random">Random</a></li>
+                <li><a href="/examples#Serialization">Serialization</a></li>
+                <li><a href="/examples#Shaders">Shaders</a></li>
+                <li><a href="/examples#Sound">Sound</a></li>
+                <li><a href="/examples#Text">Text</a></li>
+                <li><a href="/examples#Tilemap">Tilemap</a></li>
+                <li><a href="/examples#Timing">Timing</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <li class="has-dropdown">
+          <a href="/documentation">documentation</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Main</a>
+            <ul class="dropdown">
+                <li><a href="/documentation/fg">fg</a></li>
+                <li><a href="/documentation/render">Render</a></li>
+                <li><a href="/documentation/world">World</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Logic</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/area">Area</a></li>
+            <li><a href="/documentation/class">Class</a></li>
+            <li><a href="/documentation/debug">Debug</a></li>
+            <li><a href="/documentation/entity">Entity</a></li>
+            <li><a href="/documentation/gamestate">Gamestate</a></li>
+            <li><a href="/documentation/input">Input</a></li>
+            <li><a href="/documentation/loader">Loader</a></li>
+            <li><a href="/documentation/objectpool">ObjectPool</a></li>
+                <li class="has-dropdown"><a href="#">Physics</a>
+                <ul class="dropdown">
+                    <li><a href="/documentation/collision">Collision</a></li>
+                    <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
+                    <li><a href="/documentation/solid">Solid</a></li>
+                </ul>
+                </li>
+            <li><a href="/documentation/serial">Serial</a></li>
+            <li><a href="/documentation/timer">Timer</a></li>
+            <li><a href="/documentation/utils">utils</a></li>
+            <li><a href="/documentation/vector">Vector</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Visual</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/animation">Animation</a></li>
+            <li><a href="/documentation/background">Background</a></li>
+            <li><a href="/documentation/camera">Camera</a></li>
+            <li><a href="/documentation/particles">Particles</a></li>
+            <li><a href="/documentation/spritebatch">Spritebatch</a></li>
+            <li><a href="/documentation/text">Text</a></li>
+            <li><a href="/documentation/tilemap">Tilemap</a></li>
+            <li><a href="/documentation/uitools">UI Tools</a></li>
+            </ul>
+
+            <li class="has-dropdown"><a href="#">Sound</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/sound">Sound</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <!--
+          <li class="has-dropdown">
+            <a href="/no-sidebar">No Sidebar Page</a>
+
+            <ul class="dropdown">
+              <li><a href="/no-sidebar/left-sidebar">Left Sidebar Page</a></li>
+              <li><a href="/no-sidebar/right-sidebar">Right Sidebar Page</a></li>
+              <li><a href="/no-sidebar/example-formatting">Example Formatting</a></li>
+            </ul>
+
+          </li>
+
+          <li><a href="/blog">Blog</a></li>
+
+          <li><a href="/blog/archives">Archives</a></li>
+          -->
+
+      </ul>
+
+    </section>
+  </nav>
+
+</div>
+
+
+
+
+
+
+<div data-magellan-expedition>
+<div id="nav" class="fixed right show-for-large-up">
+<ul class="side-nav">
+
+<strong><a href="/documentation">documentation</a><br><br></strong>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li data-magellan-arrival="Example"><a href="#Example">Example</a></li><li data-magellan-arrival="Description"><a href="#Description">Description</a></li><li data-magellan-arrival="Methods"><a href="#Methods">Methods</a></li>
+<li data-magellan-arrival='physicsBodyNew' class='nav'><a href='#physicsBodyNew'>physicsBodyNew</a></li><li data-magellan-arrival='physicsBodyUpdate' class='nav'><a href='#physicsBodyUpdate'>physicsBodyUpdate</a></li><li data-magellan-arrival='physicsBodyDraw' class='nav'><a href='#physicsBodyDraw'>physicsBodyDraw</a></li><li data-magellan-arrival='addBody' class='nav'><a href='#addBody'>addBody</a></li><li data-magellan-arrival='addJoint' class='nav'><a href='#addJoint'>addJoint</a></li><li data-magellan-arrival='changeCollisionClass' class='nav'><a href='#changeCollisionClass'>changeCollisionClass</a></li><li data-magellan-arrival='removeBody' class='nav'><a href='#removeBody'>removeBody</a></li><li data-magellan-arrival='removeJoint' class='nav'><a href='#removeJoint'>removeJoint</a></li><li data-magellan-arrival='removeShape' class='nav'><a href='#removeShape'>removeShape</a></li>
+<li data-magellan-arrival="Attributes"><a href="#Attributes">Attributes</a></li>
+<li data-magellan-arrival='bodies' class='nav'><a href='#bodies'>bodies</a></li><li data-magellan-arrival='body' class='nav'><a href='#body'>body</a></li><li data-magellan-arrival='fixture' class='nav'><a href='#fixture'>fixture</a></li><li data-magellan-arrival='fixtures' class='nav'><a href='#fixtures'>fixtures</a></li><li data-magellan-arrival='joints' class='nav'><a href='#joints'>joints</a></li><li data-magellan-arrival='sensor' class='nav'><a href='#sensor'>sensor</a></li><li data-magellan-arrival='sensors' class='nav'><a href='#sensors'>sensors</a></li><li data-magellan-arrival='shape' class='nav'><a href='#shape'>shape</a></li><li data-magellan-arrival='shapes' class='nav'><a href='#shapes'>shapes</a></li><li data-magellan-arrival='shape_name' class='nav'><a href='#shape_name'>shape_name</a></li><li data-magellan-arrival='size' class='nav'><a href='#size'>w h</a></li><li data-magellan-arrival='r' class='nav'><a href='#r'>r</a></li><li data-magellan-arrival='s' class='nav'><a href='#s'>s</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</div>
+</div>
+
+</nav>
+  <div id="main">
+    <div id="content" class="row">
+      
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
+
+  <article role="article">
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">PhysicsBody</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="Example" data-magellan-destination="Example">Example</h3>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- physics enabled entity template</span>
+MyClass = fg.Class(<span class="string"><span class="delimiter">'</span><span class="content">MyClass</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Entity</span><span class="delimiter">'</span></span>)
+MyClass:implement(fg.PhysicsBody)
+
+<span class="keyword">function</span> MyClass:<span class="function">new</span>(area, x, y, settings)
+    MyClass.super.new(self, area, x, y, settings)
+    self:physicsBodyNew(area, x, y, settings)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> MyClass:<span class="function">update</span>(dt)
+    self:physicsBodyUpdate(dt)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> MyClass:<span class="function">draw</span>()
+    self:physicsBodyDraw()
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<h3 id="Description" data-magellan-destination="Description">Description</h3>
+
+<p>If you don&#8217;t know what mixins are, check <a href="http://notmagi.me/the-power-of-lua-and-mixins/">this</a> article I wrote about them.</p>
+
+<p>The <code class="text">PhysicsBody</code> mixin adds physics capabilities to an object. If you&#8217;re using the <code class="text">engine</code>, 
+then all your physics enabled entities should both inherit from <code class="text">Entity</code> and have the <code class="text">PhysicsBody</code>
+mixin implemented, like in the example above.
+<br /><br /></p>
+
+<h3 id="Methods" data-magellan-destination="Methods">Methods</h3>
+
+<div id="physicsBodyNew" data-magellan-destination="physicsBodyNew"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">physicsBodyNew</span>(area<span class="tag">[Area]</span>, x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, settings<span class="tag">[table[any][optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>area</code>: a reference to the area where the entity is contained</li>
+  <li><code>x, y</code>: the initial position of the entity</li>
+  <li><code>settings</code>: a table containing physics related settings, all values are optional</li>
+</ul>
+
+<p>Possible settings:</p>
+
+<ul>
+  <li><code>body_type</code>: box2d body type: <code class="string">'static'</code>, <code class="string">'dynamic'</code> or <code class="string">'kinematic'</code>, defaults to <code class="string">'dynamic'</code> </li>
+  <li><code>shape</code>: box2d shape name: <code class="string">'rectangle'</code>, <code class="string">'bsgrectangle'</code>, <code class="string">'polygon'</code>, <code class="string">'chain'</code> or <code class="string">'circle'</code>, 
+defaults to <code class="string">'rectangle'</code> </li>
+  <li><code>vertices</code>: a table of vertices to define the shape, used if the shape is either <code class="string">'polygon'</code> or <code class="string">'chain'</code>, defaults to <code class="text">nil</code> </li>
+  <li><code>loop</code>: if the <code class="string">'chain'</code> shape should loop, defaults to <code class="text">false</code></li>
+  <li><code>w, h</code>: width and height of the shape, used if the shape is either <code class="string">'rectangle'</code> or <code class="string">'bsgrectangle'</code>, defaults to <code class="number">32, 32</code> </li>
+  <li><code>s</code>: the corner cutting size in a <code class="string">'bsgrectangle'</code>, defaults to <code class="number">4</code> </li>
+  <li><code>r</code>: the radius of a <code class="string">'circle'</code>, defaults to <code class="number">16</code> </li>
+  <li><code>collision_class</code>: if this object should behave, in terms of collision ignoring (the <code class="text">.ignores</code> class variable), as another class, 
+defaults to the name of this object&#8217;s class 
+<br /><br /></li>
+</ul>
+
+<div id="physicsBodyUpdate" data-magellan-destination="physicsBodyUpdate"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">physicsBodyUpdate</span>(dt<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>dt</code>: delta value passed from the main loop to update the body
+<br /><br /></li>
+</ul>
+
+<div id="physicsBodyDraw" data-magellan-destination="physicsBodyDraw"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">physicsBodyDraw</span>()</pre></td></table></div>
+
+<ul>
+  <li>draws debug lines for the physics object if <code class="text">fg.debug_draw = true</code>
+<br /><br /></li>
+</ul>
+
+<div id="addBody" data-magellan-destination="addBody"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">addBody</span>(area<span class="tag">[Area]</span>, x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, settings<span class="tag">[table[any][optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>adds another body to this entity. Bodies/shapes/fixtures/sensors are stored in those attributes respectively; i.e. you can access all bodies via <code class="text">self.bodies[name]</code></li>
+  <li><code>area</code>: a reference to the area where the entity is contained</li>
+  <li><code>x, y</code>: the initial position of the entity</li>
+  <li><code>settings</code>: a table containing physics related settings, all values are optional</li>
+</ul>
+
+<p>The settings table follows the same specifications as in the constructor, however there&#8217;s one additional relevant possible value:</p>
+
+<ul>
+  <li><code>name</code>: a string that is the name of this body/shape/fixture/sensor, which you can use to access those objects via
+<code class="text">self.bodies[name]</code>. If omitted, defaults to <code class="string">'main'</code>.
+<br /><br /></li>
+</ul>
+
+<div id="addJoint" data-magellan-destination="addJoint"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">addJoint</span>(name<span class="tag">[string]</span>, type<span class="tag">[string]</span>, ...<span class="tag">[multiple]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>name</code>: a string that is the name of this joint, which you can use to access it via <code class="text">self.joints[name]</code></li>
+  <li><code>type</code>: a string specifying which joint type to add: 
+<code class="string">'distance'</code>,
+<code class="string">'friction'</code>,
+<code class="string">'gear'</code>,
+<code class="string">'mouse'</code>,
+<code class="string">'prismatic'</code>,
+<code class="string">'pulley'</code>,
+<code class="string">'revolute'</code>,
+<code class="string">'rope'</code>,
+<code class="string">'weld'</code> or
+<code class="string">'wheel'</code>.</li>
+  <li><code>...</code>: multiple arguments that match the arguments required by the <a href="https://love2d.org/wiki/Joint">box2d joint creation call</a>
+<br /><br /></li>
+</ul>
+
+<div id="changeCollisionClass" data-magellan-destination="changeCollisionClass"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">changeCollisionClass</span>(name<span class="tag">[string]</span>, collision_class<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>name</code>: the name of the body to be changed </li>
+  <li><code>collision_class</code>: the new collision class 
+<br /><br /></li>
+</ul>
+
+<div id="removeBody" data-magellan-destination="removeBody"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">removeBody</span>(name<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>name</code>: the name of the body to be removed 
+<br /><br /></li>
+</ul>
+
+<div id="removeJoint" data-magellan-destination="removeJoint"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">removeJoint</span>(name<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>name</code>: the name of the joint to be removed 
+<br /><br /></li>
+</ul>
+
+<div id="removeShape" data-magellan-destination="removeShape"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">removeShape</span>(name<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>name</code>: the name of the shape to be removed 
+<br /><br /></li>
+</ul>
+
+<h3 id="Attributes" data-magellan-destination="Attributes">Attributes</h3>
+
+<div id="bodies" data-magellan-destination="bodies"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">bodies</span><span class="tag">[table[Body]]</span></pre></td></table></div>
+
+<ul>
+  <li>a table containing physics bodies
+<br /><br /></li>
+</ul>
+
+<div id="body" data-magellan-destination="body"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">body</span><span class="tag">[Body]</span></pre></td></table></div>
+
+<ul>
+  <li>the physics <a href="http://www.love2d.org/wiki/Body">Body</a>, alias for <code class="text">.bodies['main']</code>
+<br /><br /></li>
+</ul>
+
+<div id="fixture" data-magellan-destination="fixture"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">fixture</span><span class="tag">[Fixture]</span></pre></td></table></div>
+
+<ul>
+  <li>the main <a href="http://www.love2d.org/wiki/Fixture">Fixture</a>, alias for <code class="text">.fixtures['main']</code>
+<br /><br /></li>
+</ul>
+
+<div id="fixtures" data-magellan-destination="fixtures"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">fixtures</span><span class="tag">[table[Fixture]]</span></pre></td></table></div>
+
+<ul>
+  <li>a table containing fixtures
+<br /><br /></li>
+</ul>
+
+<div id="joints" data-magellan-destination="joints"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">joints</span><span class="tag">[table[Joint]]</span></pre></td></table></div>
+
+<ul>
+  <li>a table containing joints
+<br /><br /></li>
+</ul>
+
+<div id="sensor" data-magellan-destination="sensor"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">sensor</span><span class="tag">[Fixture]</span></pre></td></table></div>
+
+<ul>
+  <li>the secondary <a href="http://www.love2d.org/wiki/Fixture">Fixture</a>, used for generating callbacks when two objects physically ignore each other, alias for <code class="text">.sensors['main']</code>
+<br /><br /></li>
+</ul>
+
+<div id="sensors" data-magellan-destination="sensors"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">sensors</span><span class="tag">[table[Fixture]]</span></pre></td></table></div>
+
+<ul>
+  <li>a table containing sensors
+<br /><br /></li>
+</ul>
+
+<div id="shape" data-magellan-destination="shape"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">shape</span><span class="tag">[Shape]</span></pre></td></table></div>
+
+<ul>
+  <li>the physics <a href="http://www.love2d.org/wiki/Shape">Shape</a>, alias for <code class="text">.shapes['main']</code>
+<br /><br /></li>
+</ul>
+
+<div id="shapes" data-magellan-destination="shapes"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">shapes</span><span class="tag">[table[Shape]]</span></pre></td></table></div>
+
+<ul>
+  <li>a table containing shapes
+<br /><br /></li>
+</ul>
+
+<div id="shape_name" data-magellan-destination="shape_name"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">shape_name</span><span class="tag">[string]</span></pre></td></table></div>
+
+<ul>
+  <li>the name of this object&#8217;s shape, possible values are <code class="string">'rectangle'</code>, <code class="string">'bsgrectangle'</code>, <code class="string">'polygon'</code>, <code class="string">'chain'</code> and <code class="string">'circle'</code>
+<br /><br /></li>
+</ul>
+
+<div id="size" data-magellan-destination="size"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">w</span><span class="tag">[number]</span>, .<span class="annotation">h</span><span class="tag">[number]</span></pre></td></table></div>
+
+<ul>
+  <li>width and height, set if <code class="text">.shape_name</code> is <code class="string">'rectangle'</code>, <code class="string">'bsgrectangle'</code> or <code class="string">'circle'</code>
+<br /><br /></li>
+</ul>
+
+<div id="r" data-magellan-destination="r"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">r</span><span class="tag">[number]</span></pre></td></table></div>
+
+<ul>
+  <li>radius, set if <code class="text">.shape_name</code> is <code class="string">'circle'</code> <br />
+<br /></li>
+</ul>
+
+<div id="s" data-magellan-destination="s"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">s</span><span class="tag">[number]</span></pre></td></table></div>
+
+<ul>
+  <li>corner cutting size, set if <code class="text">.shape_name</code> is <code class="string">'bsgrectangle'</code><br />
+<br /><br /></li>
+</ul>
+
+    
+      <footer>
+        
+        
+      </footer>
+    
+  </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+  
+  </div><!--.columns-->
+  
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p class="text-center">
+  <span class="credit">
+  	Made using <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/annejohnson/octofound">Octofound</a><br/>
+  </span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/documentation/physicsbody/index.html';
+        var disqus_url = 'http://fuccboi.moe/documentation/physicsbody/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+</body>
+</html>

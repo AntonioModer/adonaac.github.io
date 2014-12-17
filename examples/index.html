@@ -1,0 +1,1567 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <script src="/js/vendor/modernizr.js"></script>
+  <meta charset="utf-8">
+  <title>Examples - fuccboiGDX</title>
+  <meta name="author" content="adnzzzzZ">
+
+  
+  <meta name="description" content="<!-- Examples --> Animation Animation Animation from Spritesheet Loads an animation from a spritesheet: 1
+2
+3
+4 -- parameters: sprite sheet, frame &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fuccboi.moe/examples">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
+
+  <script src="/js/vendor/jquery.js"></script>
+  <script src="/js/vendor/fastclick.js"></script>
+
+  <script src="/js/foundation.min.js"></script>
+  <script src="/js/foundation/foundation.magellan.js"></script>
+  <script src="/js/foundation/foundation.topbar.js"></script>
+  <script src="/js/foundation/foundation.accordion.js"></script>
+  <script src="/js/foundation/foundation.orbit.js"></script>
+  <script src="/js/foundation/foundation.dropdown.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <script>
+
+  $(document).ready(function(){
+    $(document).foundation();
+  });
+
+  </script>
+
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-51118504-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar" >
+  <header role="banner" class="top-header"><!--<hgroup>
+  <h1 class="text-center">
+  	<a href="/">fuccboiGDX</a>
+  </h1>
+  
+</hgroup>-->
+
+<!--<ul class="example-orbit-content" data-orbit>
+  <li data-orbit-slide="headline-1">
+    <div>
+      <h2>Headline 1</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <div>
+      <h2>Headline 2</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div>
+      <h2>Headline 3</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+</ul>-->
+
+</header>
+  <nav role="navigation"><ul class="subscription hide" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+
+
+
+<div class="sticky">
+
+  <nav class="top-bar" data-topbar role="navigation">
+
+    <!--
+    <ul class="title-area right">
+        <li class="name">
+          <h1><a href="/">fuccboiGDX <i class="fa fa-heart"></i></i></i></a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    -->
+
+
+    <section class="top-bar-section">
+      <ul class="main-navigation right show-for-medium-up">
+          <li><a href="https://github.com/adonaac/fuccboiGDX">github</a></li>
+          <li><a href="https://twitter.com/adnzzzzZ">twitter</i></a></li>
+      </ul>
+
+      <ul class="main-navigation left">
+          <li><a href="/">fuccboiGDX</a></li>
+
+          <li class="has-dropdown">
+          <a href="/tutorials">tutorials</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Advanced</a>
+            <ul class="dropdown">
+                <li><a href="/tutorials/curvemaster">CurveMaster</a></li>
+                <li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
+            </ul>
+            </li>
+
+            <li class="has-dropdown"><a href="#">Examples</a>
+            <ul class="dropdown">
+                <li><a href="/examples#Animation">Animation</a></li>
+                <li><a href="/examples#Area">Area</a></li>
+                <li><a href="/examples#Camera">Camera</a></li>
+                <li><a href="/examples#Collision">Collision</a></li>
+                <li><a href="/examples#Gamestate">Gamestate</a></li>
+                <li><a href="/examples#Input">Input</a></li>
+                <li><a href="/examples#Layers">Layers</a></li>
+                <li><a href="/examples#Loading">Loading</a></li>
+                <li><a href="/examples#Objects">Objects</a></li>
+                <li><a href="/examples#Particles">Particles</a></li>
+                <li><a href="/examples#Random">Random</a></li>
+                <li><a href="/examples#Serialization">Serialization</a></li>
+                <li><a href="/examples#Shaders">Shaders</a></li>
+                <li><a href="/examples#Sound">Sound</a></li>
+                <li><a href="/examples#Text">Text</a></li>
+                <li><a href="/examples#Tilemap">Tilemap</a></li>
+                <li><a href="/examples#Timing">Timing</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <li class="has-dropdown">
+          <a href="/documentation">documentation</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Main</a>
+            <ul class="dropdown">
+                <li><a href="/documentation/fg">fg</a></li>
+                <li><a href="/documentation/render">Render</a></li>
+                <li><a href="/documentation/world">World</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Logic</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/area">Area</a></li>
+            <li><a href="/documentation/class">Class</a></li>
+            <li><a href="/documentation/debug">Debug</a></li>
+            <li><a href="/documentation/entity">Entity</a></li>
+            <li><a href="/documentation/gamestate">Gamestate</a></li>
+            <li><a href="/documentation/input">Input</a></li>
+            <li><a href="/documentation/loader">Loader</a></li>
+            <li><a href="/documentation/objectpool">ObjectPool</a></li>
+                <li class="has-dropdown"><a href="#">Physics</a>
+                <ul class="dropdown">
+                    <li><a href="/documentation/collision">Collision</a></li>
+                    <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
+                    <li><a href="/documentation/solid">Solid</a></li>
+                </ul>
+                </li>
+            <li><a href="/documentation/serial">Serial</a></li>
+            <li><a href="/documentation/timer">Timer</a></li>
+            <li><a href="/documentation/utils">utils</a></li>
+            <li><a href="/documentation/vector">Vector</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Visual</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/animation">Animation</a></li>
+            <li><a href="/documentation/background">Background</a></li>
+            <li><a href="/documentation/camera">Camera</a></li>
+            <li><a href="/documentation/particles">Particles</a></li>
+            <li><a href="/documentation/spritebatch">Spritebatch</a></li>
+            <li><a href="/documentation/text">Text</a></li>
+            <li><a href="/documentation/tilemap">Tilemap</a></li>
+            <li><a href="/documentation/uitools">UI Tools</a></li>
+            </ul>
+
+            <li class="has-dropdown"><a href="#">Sound</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/sound">Sound</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <!--
+          <li class="has-dropdown">
+            <a href="/no-sidebar">No Sidebar Page</a>
+
+            <ul class="dropdown">
+              <li><a href="/no-sidebar/left-sidebar">Left Sidebar Page</a></li>
+              <li><a href="/no-sidebar/right-sidebar">Right Sidebar Page</a></li>
+              <li><a href="/no-sidebar/example-formatting">Example Formatting</a></li>
+            </ul>
+
+          </li>
+
+          <li><a href="/blog">Blog</a></li>
+
+          <li><a href="/blog/archives">Archives</a></li>
+          -->
+
+      </ul>
+
+    </section>
+  </nav>
+
+</div>
+
+
+
+
+
+
+<div data-magellan-expedition>
+<div id="nav" class="fixed right show-for-large-up">
+<ul class="side-nav">
+
+
+
+<strong><a href="/tutorials">tutorials</a><br><br></strong>
+
+
+
+
+
+
+
+<li data-magellan-arrival="Animation"><a href="#Animation">Animation</a></li><li data-magellan-arrival="Area"><a href="#Area">Area</a></li><li data-magellan-arrival="Camera"><a href="#Camera">Camera</a></li><li data-magellan-arrival="Collision"><a href="#Collision">Collision</a></li><li data-magellan-arrival="Gamestate"><a href="#Gamestate">Gamestate</a></li><li data-magellan-arrival="Input"><a href="#Input">Input</a></li><li data-magellan-arrival="Layers"><a href="#Layers">Layers</a></li><li data-magellan-arrival="Loading"><a href="#Loading">Loading</a></li><li data-magellan-arrival="Objects"><a href="#Objects">Objects</a></li><li data-magellan-arrival="Particles"><a href="#Particles">Particles</a></li><li data-magellan-arrival="Random"><a href="#Random">Random</a></li><li data-magellan-arrival="Serialization"><a href="#Serialization">Serialization</a></li><li data-magellan-arrival="Shaders"><a href="#Shaders">Shaders</a></li><li data-magellan-arrival="Sound"><a href="#Sound">Sound</a></li><li data-magellan-arrival="Text"><a href="#Text">Text</a></li><li data-magellan-arrival="Tilemap"><a href="#Tilemap">Tilemap</a></li><li data-magellan-arrival="Timing"><a href="#Timing">Timing</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</div>
+</div>
+
+</nav>
+  <div id="main">
+    <div id="content" class="row">
+      
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
+
+  <article role="article">
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Examples</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="Animation" data-magellan-destination="Animation">Animation</h3>
+
+<p><a href="documentation/animation">Animation</a></p>
+
+<h5 id="Animation_from_Spritesheet">Animation from Spritesheet</h5>
+
+<p>Loads an animation from a spritesheet:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- parameters: sprite sheet, frame width, frame height, animation delay in seconds</span>
+animation = fg.Animation(love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">spritesheet.png</span><span class="delimiter">'</span></span>), <span class="integer">32</span>, <span class="integer">32</span>, <span class="float">0.1</span>)
+animation:update(dt)
+animation:draw(x, y)
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Animation_from_Texture_Atlas">Animation from Texture Atlas</h5>
+
+<p>Loads an animation from a texture atlas:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- parameters: texture atlas, starting x, y position (top-left corner of the first frame) </span>
+<span class="comment">--             of the animation on the atlas, frame width, frame height, animation delay, number of frames</span>
+animation = fg.Animation(love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">textureatlas.png</span><span class="delimiter">'</span></span>), <span class="integer">128</span>, <span class="integer">64</span>, <span class="integer">32</span>, <span class="integer">32</span>, <span class="float">0.1</span>, <span class="integer">8</span>)
+animation:update(dt)
+animation:draw(x, y)
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Changing_an_Animation's_Delay">Changing an Animation&#8217;s Delay</h5>
+
+<p>Changes an animation’s delay for all of its frames:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- where new delay is some number in seconds</span>
+<span class="keyword">for</span> i = <span class="integer">1</span>, animation.size <span class="keyword">do</span>
+    animation:setDelay(i, new_delay)
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+<p><br /><br /></p>
+
+<h3 id="Area" data-magellan-destination="Area">Area</h3>
+
+<p><a href="documentation/area">Area</a></p>
+
+<h5 id="Creating_an_Area">Creating an Area</h5>
+
+<p>Creates an area, which is a level/world where everything happens:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- parameters: area name, x, y position (top-left corner) of the area</span>
+fg.world:createArea(<span class="string"><span class="delimiter">'</span><span class="content">New_Area</span><span class="delimiter">'</span></span>, <span class="integer">0</span>, <span class="integer">0</span>)
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Activating_an_Area">Activating an Area</h5>
+
+<p>Activates an area, enabling its updating and drawing:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>fg.world.areas[<span class="string"><span class="delimiter">'</span><span class="content">New_Area</span><span class="delimiter">'</span></span>]:activate()
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Deactivating_an_Area">Deactivating an Area</h5>
+
+<p>Deactivates an area, disabling its updating and drawing:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>fg.world.areas[<span class="string"><span class="delimiter">'</span><span class="content">New_Area</span><span class="delimiter">'</span></span>]:deactivate()
+</pre></td>
+</tr></table>
+</div>
+<p><br /><br /></p>
+
+<h3 id="Camera" data-magellan-destination="Camera">Camera</h3>
+
+<p><a href="documentation/camera">Camera</a></p>
+
+<h5 id="Camera_Following">Camera Following</h5>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- parameters: the target being a table with .x, .y fields, </span>
+<span class="comment">--             a table with follow style, lerp and lead settings</span>
+fg.world.camera:follow(player, <span class="map"><span class="delimiter">{</span><span class="key">follow_style</span> = <span class="string"><span class="delimiter">'</span><span class="content">lockon</span><span class="delimiter">'</span></span>, <span class="key">lerp</span> = <span class="integer">1</span>, <span class="key">lead</span> = <span class="map"><span class="inline-delimiter">{</span><span class="key">x</span> = <span class="integer">2</span>, <span class="key">y</span> = <span class="integer">0</span><span class="inline-delimiter">}</span></span><span class="delimiter">}</span></span>)
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Camera_Shake">Camera Shake</h5>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- parameters: intensity in pixels, duration in seconds</span>
+fg.world.camera:shake(<span class="integer">5</span> <span class="float">0.5</span>)
+</pre></td>
+</tr></table>
+</div>
+<p><br /><br /></p>
+
+<h3 id="Collision" data-magellan-destination="Collision">Collision</h3>
+
+<p><a href="documentation/collision">Collision</a>, <a href="documentation/physicsbody">PhysicsBody</a></p>
+
+<h5 id="Physics_Collisions">Physics Collisions</h5>
+
+<p>A physics enabled entity that collides with other physics enabled entities of class <code class="string">'OtherClass1'</code> and <code class="string">'OtherClass2'</code>. 
+The <code class="text">onCollisionEnter</code> method gets called whenever one of the objects from those classes enters a collision with this one.</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+<a href="#n24" name="n24">24</a>
+<a href="#n25" name="n25">25</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">local</span> <span class="local-variable">Player</span> = fg.Class(<span class="string"><span class="delimiter">'</span><span class="content">Player</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Entity</span><span class="delimiter">'</span></span>)
+Player:implement(fg.PhysicsBody)
+
+Player.enter = <span class="map"><span class="delimiter">{</span><span class="string"><span class="delimiter">'</span><span class="content">OtherClass1</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">OtherClass2</span><span class="delimiter">'</span></span><span class="delimiter">}</span></span>
+
+<span class="keyword">function</span> Player:<span class="function">new</span>(area, x, y, settings)
+    Player.super.new(self, area, x, y, settings)
+    self:physicsBodyNew(area, x, y, settings)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Player:<span class="function">update</span>(dt)
+    self:physicsBodyUpdate(dt)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Player:<span class="function">draw</span>()
+    self:physicsBodyDraw()
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Player:<span class="function">onCollisionEnter</span>(other, contact)
+    <span class="keyword">if</span> other.tag == <span class="string"><span class="delimiter">'</span><span class="content">OtherClass1</span><span class="delimiter">'</span></span> <span class="keyword">then</span>
+        <span class="predefined">print</span>(<span class="string"><span class="delimiter">'</span><span class="content">Collided with </span><span class="delimiter">'</span></span> .. other.object)
+    <span class="keyword">elseif</span> other.tag == <span class="string"><span class="delimiter">'</span><span class="content">OtherClass2</span><span class="delimiter">'</span></span> <span class="keyword">then</span>
+        <span class="predefined">print</span>(<span class="string"><span class="delimiter">'</span><span class="content">Collided with </span><span class="delimiter">'</span></span> .. other.object)
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+<p><br /><br /></p>
+
+<h3 id="Gamestate" data-magellan-destination="Gamestate">Gamestate</h3>
+
+<p><a href="documentation/gamestate">Gamestate</a></p>
+
+<h5 id="Gamestate_Changing">Gamestate Changing</h5>
+
+<p>Changes between menu and game gamestates:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- in Game.lua</span>
+<span class="keyword">function</span> Game:<span class="function">enter</span>()
+    <span class="predefined">print</span>(<span class="string"><span class="delimiter">'</span><span class="content">Entered game state!</span><span class="delimiter">'</span></span>)
+<span class="keyword">end</span>
+
+<span class="comment">-- in Menu.lua</span>
+<span class="keyword">function</span> Menu:<span class="function">enter</span>()
+    <span class="predefined">print</span>(<span class="string"><span class="delimiter">'</span><span class="content">Entered menu state!</span><span class="delimiter">'</span></span>)
+<span class="keyword">end</span>
+
+<span class="comment">-- in main.lua</span>
+<span class="keyword">function</span> love.<span class="function">load</span>()
+    ... 
+    game = Game()
+    menu = Menu()
+
+    fg.Gamestate.registerEvents()
+    fg.Gamestate.switch(menu) <span class="comment">--&gt; 'Entered menu state!'</span>
+    fg.Gamestate.switch(game) <span class="comment">--&gt; 'Entered game state!'</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+<p><br /><br /></p>
+
+<h3 id="Input" data-magellan-destination="Input">Input</h3>
+
+<p><a href="documentation/input">Input</a></p>
+
+<h5 id="Input">Input</h5>
+
+<p>Handling input normally:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Game:<span class="function">new</span>()
+    <span class="comment">-- parameters: the key constant, the action name</span>
+    fg.input:bind(<span class="string"><span class="delimiter">'</span><span class="content">a</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">print_stuff</span><span class="delimiter">'</span></span>)
+    fg.input:bind(<span class="string"><span class="delimiter">'</span><span class="content">o</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">print_stuff</span><span class="delimiter">'</span></span>)
+    <span class="comment">-- if the action name is a function (an action) then that</span>
+    <span class="comment">-- will get called whenever the key constant is pressed</span>
+    fg.input:bind(<span class="string"><span class="delimiter">'</span><span class="content">f1</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() love.event.push(<span class="string"><span class="delimiter">'</span><span class="content">q</span><span class="delimiter">'</span></span>) <span class="keyword">end</span>)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Game:<span class="function">update</span>(dt)
+    <span class="keyword">if</span> fg.input:pressed(<span class="string"><span class="delimiter">'</span><span class="content">print_stuff</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+        <span class="predefined">print</span>(<span class="string"><span class="delimiter">'</span><span class="content">stuff only on the pressed frame</span><span class="delimiter">'</span></span>)
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> fg.input:down(<span class="string"><span class="delimiter">'</span><span class="content">print_stuff</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+        <span class="predefined">print</span>(<span class="string"><span class="delimiter">'</span><span class="content">stuff as long as a or o is held down</span><span class="delimiter">'</span></span>)
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Gamepad_Input">Gamepad Input</h5>
+
+<p>Handling gamepad input:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Game:<span class="function">new</span>()
+    fg.input:bind(<span class="string"><span class="delimiter">'</span><span class="content">s</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">down</span><span class="delimiter">'</span></span>)
+    fg.input:bind(<span class="string"><span class="delimiter">'</span><span class="content">dpdown</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">down</span><span class="delimiter">'</span></span>)
+    fg.input:bind(<span class="string"><span class="delimiter">'</span><span class="content">leftx</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">horizontal</span><span class="delimiter">'</span></span>)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Game:<span class="function">update</span>(dt)
+    <span class="keyword">if</span> fg.input:down(<span class="string"><span class="delimiter">'</span><span class="content">down</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+        <span class="predefined">print</span>(<span class="string"><span class="delimiter">'</span><span class="content">dpads down key or the s key are being held</span><span class="delimiter">'</span></span>)
+    <span class="keyword">end</span>
+    <span class="comment">-- Some gamepad keys return values from -1 to 1 or from 0 to 1,</span>
+    <span class="comment">-- in those cases you need to check for a value instead of a boolean:</span>
+    <span class="keyword">if</span> fg.input:down(<span class="string"><span class="delimiter">'</span><span class="content">horizontal</span><span class="delimiter">'</span></span>) &lt; <span class="integer">0</span> <span class="keyword">then</span>
+        <span class="predefined">print</span>(<span class="string"><span class="delimiter">'</span><span class="content">left stick is being held to the left</span><span class="delimiter">'</span></span>)
+    <span class="keyword">else</span> <span class="predefined">print</span>(<span class="string"><span class="delimiter">'</span><span class="content">left stick is being held to the right</span><span class="delimiter">'</span></span>) <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+<p><br /><br /></p>
+
+<h3 id="Layers" data-magellan-destination="Layers">Layers</h3>
+
+<p><a href="documentation/render#Layer">Layer</a></p>
+
+<h5 id="Creating_a_Layer">Creating a Layer</h5>
+
+<p>Creates a new layer:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>fg.world:addLayer(<span class="string"><span class="delimiter">'</span><span class="content">New_Layer</span><span class="delimiter">'</span></span>, <span class="map"><span class="delimiter">{</span><span class="key">parallax_scale</span> = <span class="integer">1</span><span class="delimiter">}</span></span>)
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Object_to_Layer">Object to Layer</h5>
+
+<p>Adds an object to a layer. Objects created with the <code class="text">fg.Class</code> call are automatically
+added to the <code class="string">'Default'</code> layer if no <code class="text">.layer</code> class or instance attribute is defined.</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>fg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="content">New_Layer</span><span class="delimiter">'</span></span>, object)
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Shader_to_Layer">Shader to Layer</h5>
+
+<p>Adds a shader to a layer and sends information to it:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- parameters: layer name, shader name, shader vertex path, shader fragment path</span>
+fg.world:addShaderToLayer(<span class="string"><span class="delimiter">'</span><span class="content">New_Layer</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Outline</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">resources/shaders/default.vert</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">resources/shaders/outline.frag</span><span class="delimiter">'</span></span>)
+
+<span class="comment">-- in some update function</span>
+<span class="comment">-- parameters: layer name, shader name, variable name, value</span>
+fg.world:sendToShader(<span class="string"><span class="delimiter">'</span><span class="content">New_Layer</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Outline</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">thickness</span><span class="delimiter">'</span></span>, <span class="integer">2</span>)
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Sorting_Layers">Sorting Layers</h5>
+
+<p>You can specifiy how layers are sorted between themselves (i.e. layer 1 is drawn before layer 2, and therefore all objects in layer 1 are 
+drawn before all objects in layer 2) as well as how the objects inside each layer are sorted.</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- Sorts layers between themselves</span>
+<span class="comment">-- parameters: a table of layer names</span>
+fg.world:setLayerOrder(<span class="map"><span class="delimiter">{</span><span class="string"><span class="delimiter">'</span><span class="content">Back</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Middle</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Default</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Front</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Effects</span><span class="delimiter">'</span></span><span class="delimiter">}</span></span>)
+
+<span class="comment">-- Sorts objects inside a layer</span>
+<span class="comment">-- in some update function</span>
+<span class="comment">-- parameters: layer name, ordering function </span>
+fg.world:sortLayerRenderOrder(<span class="string"><span class="delimiter">'</span><span class="content">New_Layer</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(a, b) <span class="keyword">return</span> a.y &lt; b.y <span class="keyword">end</span>)
+</pre></td>
+</tr></table>
+</div>
+<p><br /><br /></p>
+
+<h3 id="Loading" data-magellan-destination="Loading">Loading</h3>
+
+<p><a href="documentation/loader">Loader</a></p>
+
+<h5 id="Loading_Resources_with_LÖVE">Loading Resources with LÖVE</h5>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre>image = love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">image.png</span><span class="delimiter">'</span></span>)
+sound = love.audio.newSource(<span class="string"><span class="delimiter">'</span><span class="content">sound.ogg</span><span class="delimiter">'</span></span>)
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Loading_Resources_with_Loader">Loading Resources with Loader</h5>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Game:<span class="function">new</span>()
+    <span class="comment">-- parameters: table to hold assets, asset name, asset path</span>
+    fg.Loader.newImage(fg.Assets, <span class="string"><span class="delimiter">'</span><span class="content">image</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">image.png</span><span class="delimiter">'</span></span>)
+    fg.Loader.newSource(fg.Assets, <span class="string"><span class="delimiter">'</span><span class="content">sound</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">sound.png</span><span class="delimiter">'</span></span>)
+
+    <span class="keyword">local</span> <span class="local-variable">finished_loading</span> = <span class="predefined-constant">false</span>
+    fg.Loader.start(<span class="keyword">function</span>()
+        finished_loading = <span class="predefined-constant">true</span>
+        <span class="comment">-- Do things after everything's been loaded</span>
+    <span class="keyword">end</span>)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Game:<span class="function">update</span>(dt)
+    <span class="keyword">if</span> finished_loading <span class="keyword">then</span> 
+        <span class="comment">-- update your game</span>
+    <span class="keyword">else</span>
+        <span class="comment">-- load all assets into fg.Assets, doing it over multiple frames</span>
+        fg.Loader.update()
+        <span class="predefined">print</span>(<span class="string"><span class="delimiter">'</span><span class="content">% loaded = </span><span class="delimiter">'</span></span> .. fg.Loader.loadedCount/fg.Loader.resourceCount)
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+<p><br /><br /></p>
+
+<h3 id="Objects" data-magellan-destination="Objects">Objects</h3>
+
+<p><a href="documentation/area">Area</a>, <a href="documentation/class">Class</a>, <a href="documentation/entity">Entity</a>, <a href="documentation/world">World</a></p>
+
+<h5 id="Creating_a_Normal_Class">Creating a Normal Class</h5>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+</pre></td>
+  <td class="code"><pre>MyClass = fg.Object:extend(<span class="string"><span class="delimiter">'</span><span class="content">MyClass</span><span class="delimiter">'</span></span>)
+
+<span class="keyword">function</span> MyClass:<span class="function">new</span>()
+
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Creating_an_Engine_Class_">Creating an Engine Class </h5>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+</pre></td>
+  <td class="code"><pre>MyClass = fg.Class(<span class="string"><span class="delimiter">'</span><span class="content">MyClass</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Entity</span><span class="delimiter">'</span></span>)
+
+<span class="keyword">function</span> MyClass:<span class="function">new</span>(area, x, y, settings)
+    MyClass.super.new(self, area, x, y, settings)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> MyClass:<span class="function">update</span>(dt)
+
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> MyClass:<span class="function">draw</span>()
+
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Creating_a_Physics_Enabled_Class_">Creating a Physics Enabled Class </h5>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+</pre></td>
+  <td class="code"><pre>MyClass = fg.Class(<span class="string"><span class="delimiter">'</span><span class="content">MyClass</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Entity</span><span class="delimiter">'</span></span>)
+MyClass:implement(fg.PhysicsBody)
+
+<span class="keyword">function</span> MyClass:<span class="function">new</span>(area, x, y, settings)
+    MyClass.super.new(self, area, x, y, settings)
+    self:physicsBodyNew(area, x, y, settings)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> MyClass:<span class="function">update</span>(dt)
+    self:physicsBodyUpdate(dt)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> MyClass:<span class="function">draw</span>()
+    self:physicsBodyDraw()
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Creating_an_Engine_Object">Creating an Engine Object</h5>
+
+<p>Creates a new entity of type <code class="string">'MyClass'</code> with <code class="text">.x = 0, .y = 0, .attribute_1 = 1, .attribute_2 = 4</code>:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>fg.world:createEntity(<span class="string"><span class="delimiter">'</span><span class="content">MyClass</span><span class="delimiter">'</span></span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="map"><span class="delimiter">{</span><span class="key">attribute_1</span> = <span class="integer">1</span>, <span class="key">attribute_2</span> = <span class="integer">4</span><span class="delimiter">}</span></span>)
+</pre></td>
+</tr></table>
+</div>
+
+<p>Creates a new entity of type <code class="string">'MyClass'</code> and returns it immediately. Usually you don’t need to take care
+of engine objects manually because the engine does all updating/drawing/destroying/etc for you, but sometimes
+this is needed for various random reasons. Physics enabled entities <strong>CAN’T</strong> be created with this call or several bugs
+may happen. See the <a href="documentation/physicsbody">PhysicsBody</a>, <a href="documentation/area">Area</a> and <a href="documentation/world">World</a> sections
+for more information.</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>object = fg.world:createEntityImmediate(<span class="string"><span class="delimiter">'</span><span class="content">MyClass</span><span class="delimiter">'</span></span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="map"><span class="delimiter">{</span><span class="key">attribute_1</span> = <span class="integer">1</span>, <span class="key">attribute_2</span> = <span class="integer">4</span><span class="delimiter">}</span></span>)
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Destroying_Objects">Destroying Objects</h5>
+
+<p>To destroy an object just set the <code class="text">.dead</code> attribute to true and the object will be deleted
+and removed from the engine at the end of the current frame.</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- somewhere in MyClass.lua</span>
+self.dead = <span class="predefined-constant">true</span>
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Getting_Specific_Objects_from_an_Area">Getting Specific Objects from an Area</h5>
+
+<p>Gets all entities that the <code class="text">.attack_state</code> attribute set to <code class="string">'ranged super laser beem'</code>:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- parameters are: key to look for, value in that key to look for</span>
+entities = fg.world:getEntitiesBy(<span class="string"><span class="delimiter">'</span><span class="content">attack_state</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">ranged super laser beem</span><span class="delimiter">'</span></span>)
+</pre></td>
+</tr></table>
+</div>
+
+<p>Gets all entities that satisfy the condition of having less than <code class="number">5</code> on the <code class="text">.hp</code> attribute:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>entities = fg.world:getEntitiesWhere(<span class="keyword">function</span>(object) <span class="keyword">if</span> object.hp &lt; <span class="integer">5</span> <span class="keyword">then</span> <span class="keyword">return</span> <span class="predefined-constant">true</span> <span class="keyword">end</span> <span class="keyword">end</span>)
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Object_Parenting">Object Parenting</h5>
+
+<p>To pass a reference of yourself to a child object, adding a reference to <code class="text">self</code> when creating it does the job:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- somewhere in Player.lua</span>
+fg.world:createEntity(<span class="string"><span class="delimiter">'</span><span class="content">Projectile</span><span class="delimiter">'</span></span>, self.x, self.y, <span class="map"><span class="delimiter">{</span><span class="key">velocity</span> = <span class="integer">100</span>, <span class="key">angle</span> = self.angle, <span class="key">player_reference</span> = self<span class="delimiter">}</span></span>)
+
+<span class="comment">-- somewhere in Projectile.lua</span>
+<span class="comment">-- kills the projectile if the parent is dead</span>
+<span class="keyword">if</span> self.player_reference.dead <span class="keyword">then</span> 
+    self.dead = <span class="predefined-constant">true</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+<p><br /><br /></p>
+
+<h3 id="Particles" data-magellan-destination="Particles">Particles</h3>
+
+<p><a href="documentation/particles">Particles</a></p>
+
+<h5 id="Spawning_Particles">Spawning Particles</h5>
+
+<p>Provided you’ve already created the <code class="text">ExplosionParticles.lua</code> file on the particles editor (as described <a href="documentation/particles#Description">here</a>):</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- parameters: particle system name, x, y position</span>
+fg.world:spawnParticles(<span class="string"><span class="delimiter">'</span><span class="content">ExplosionParticles</span><span class="delimiter">'</span></span>, <span class="integer">400</span>, <span class="integer">400</span>)
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Manual_Particles">Manual Particles</h5>
+
+<p>You can also not use the editor and create particles manually. In this example we create a <code class="text">Particles</code> class and then we spawn it:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+<a href="#n24" name="n24">24</a>
+<a href="#n25" name="n25">25</a>
+<a href="#n26" name="n26">26</a>
+<a href="#n27" name="n27">27</a>
+<a href="#n28" name="n28">28</a>
+<a href="#n29" name="n29">29</a>
+<strong><a href="#n30" name="n30">30</a></strong>
+<a href="#n31" name="n31">31</a>
+<a href="#n32" name="n32">32</a>
+<a href="#n33" name="n33">33</a>
+<a href="#n34" name="n34">34</a>
+<a href="#n35" name="n35">35</a>
+<a href="#n36" name="n36">36</a>
+<a href="#n37" name="n37">37</a>
+<a href="#n38" name="n38">38</a>
+<a href="#n39" name="n39">39</a>
+<strong><a href="#n40" name="n40">40</a></strong>
+<a href="#n41" name="n41">41</a>
+<a href="#n42" name="n42">42</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- in Particles.lua</span>
+<span class="keyword">local</span> <span class="local-variable">Particles</span> = fg.Class(<span class="string"><span class="delimiter">'</span><span class="content">Particles</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Entity</span><span class="delimiter">'</span></span>)
+
+<span class="keyword">function</span> Particles:<span class="function">new</span>(area, x, y, settings)
+    Particles.super.new(self, area, x, y, settings)
+
+    <span class="keyword">local</span> <span class="local-variable">settings</span> = settings <span class="keyword">or</span> <span class="map"><span class="delimiter">{</span><span class="delimiter">}</span></span>
+    self.velocity = settings.velocity <span class="keyword">or</span> math.random(<span class="integer">50</span>, <span class="integer">150</span>)
+    self.angle = settings.angle <span class="keyword">or</span> math.random(<span class="integer">0</span>, <span class="integer">2</span>*math.pi)
+
+    self.radius = self.area.fg.utils.math.random(<span class="integer">2</span>, <span class="integer">6</span>)
+
+    self.timer = self.area.fg.Timer()
+    <span class="keyword">local</span> <span class="local-variable">r</span> = self.area.fg.utils.math.random(<span class="float">0.5</span>, <span class="integer">1</span>)
+    <span class="comment">-- Decrease the velocity of the particle over 0.5-1 seconds</span>
+    self.timer:tween(r, self, <span class="map"><span class="delimiter">{</span><span class="key">velocity</span> = <span class="integer">0</span><span class="delimiter">}</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">in-out-cubic</span><span class="delimiter">'</span></span>)
+    <span class="comment">-- Decrease the radius of the particle over 0.5-1 seconds</span>
+    self.timer:tween(r, self, <span class="map"><span class="delimiter">{</span><span class="key">radius</span> = <span class="integer">0</span><span class="delimiter">}</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">in-out-cubic</span><span class="delimiter">'</span></span>)
+    <span class="comment">-- Kill the particle after it reaches 0 velocity</span>
+    self.timer:after(r, <span class="keyword">function</span>() self.dead = <span class="predefined-constant">true</span> <span class="keyword">end</span>)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Particles:<span class="function">update</span>(dt)
+    self.timer:update(dt)
+    self.x = self.x + self.velocity*math.cos(self.angle)*dt
+    self.y = self.y + self.velocity*math.sin(self.angle)*dt
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Particles:<span class="function">draw</span>()
+    love.graphics.circle(<span class="string"><span class="delimiter">'</span><span class="content">fill</span><span class="delimiter">'</span></span>, self.x, self.y, self.radius)
+<span class="keyword">end</span>
+
+<span class="comment">-- in Projectile.lua</span>
+<span class="keyword">function</span> Projectile:<span class="function">onCollisionEnter</span>(other, contact)
+    <span class="keyword">if</span> other.tag == <span class="string"><span class="delimiter">'</span><span class="content">Solid</span><span class="delimiter">'</span></span> <span class="keyword">then</span>
+        <span class="keyword">for</span> i = <span class="integer">1</span>, <span class="integer">8</span> <span class="keyword">do</span>
+            fg.world:createEntity(<span class="string"><span class="delimiter">'</span><span class="content">Particles</span><span class="delimiter">'</span></span>, self.x, self.y, 
+                                 <span class="map"><span class="delimiter">{</span><span class="key">velocity</span> = math.random(<span class="integer">100</span>, <span class="integer">200</span>), 
+                                  <span class="key">angle</span> = math.random(<span class="integer">0</span>, <span class="integer">2</span>*math.pi)<span class="delimiter">}</span></span>)
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+<p><br /><br /></p>
+
+<h3 id="Random" data-magellan-destination="Random">Random</h3>
+
+<h5 id="Debug_Drawing">Debug Drawing</h5>
+
+<p>Debug drawing modes are available through <code class="text">fg.debug_draw</code>. When set to true it will draw blue lines showing physics bodies:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- set the F1 key to toggle debug drawing</span>
+fg.input:bind(<span class="string"><span class="delimiter">'</span><span class="content">f1</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() fg.debug_draw = <span class="keyword">not</span> fg.debug_draw <span class="keyword">end</span>)
+</pre></td>
+</tr></table>
+</div>
+
+<h3 id="Serialization" data-magellan-destination="Serialization">Serialization</h3>
+
+<p><a href="documentation/serial">Serial</a></p>
+
+<h5 id="Save_Method">Save Method</h5>
+
+<p>All objects that want to be saved need to implement a <code class="atrm">:save</code> method that returns the information to be saved:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">save</span>()
+    <span class="keyword">return</span> <span class="map"><span class="delimiter">{</span>
+        <span class="key">x</span> = self.x, <span class="key">y</span> = self.y, <span class="key">w</span> = self.h, <span class="key">h</span> = self.h,
+        <span class="key">hp</span> = self.hp, <span class="key">modifiers</span> = <span class="map"><span class="inline-delimiter">{</span><span class="key">speed</span> = self.speed, <span class="key">damage</span> = self.damage, <span class="key">range</span> = self.range<span class="inline-delimiter">}</span></span>,
+        <span class="key">items</span> = <span class="map"><span class="inline-delimiter">{</span>self.items[<span class="integer">1</span>].name, self.items[<span class="integer">2</span>].name, self.items[<span class="integer">3</span>].name<span class="inline-delimiter">}</span></span>,
+    <span class="delimiter">}</span></span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Saving_and_Loading_an_Area">Saving and Loading an Area</h5>
+
+<p>Entire areas can be saved and loaded through the <code class="atrm">:saveArea</code> and <code class="atrm">:loadArea</code> calls. When saving, only
+objects that implement the <code class="atrm">:save</code> method will be saved:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- parameters: save filename, the area to save, classes that shouldn't be saved</span>
+fg.Serial:saveArea(<span class="string"><span class="delimiter">'</span><span class="content">save_filename</span><span class="delimiter">'</span></span>, fg.world.areas[<span class="string"><span class="delimiter">'</span><span class="content">Level_1</span><span class="delimiter">'</span></span>], <span class="map"><span class="delimiter">{</span><span class="string"><span class="delimiter">'</span><span class="content">Player</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Particles</span><span class="delimiter">'</span></span><span class="delimiter">}</span></span>)
+
+<span class="comment">-- parameters: save filename, the area to load objects to</span>
+fg.Serial:loadArea(<span class="string"><span class="delimiter">'</span><span class="content">save_filename</span><span class="delimiter">'</span></span>, fg.world.areas[<span class="string"><span class="delimiter">'</span><span class="content">Level_1</span><span class="delimiter">'</span></span>])
+</pre></td>
+</tr></table>
+</div>
+<p><br /><br /></p>
+
+<h3 id="Shaders" data-magellan-destination="Shaders">Shaders</h3>
+
+<p><a href="documentation/render">Render</a>, <a href="http://love2d.org/wiki/Shader">Shader</a></p>
+
+<h5 id="Applying_Shaders_to_a_Layer">Applying Shaders to a Layer</h5>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre>fg.world:addShaderToLayer(<span class="string"><span class="delimiter">'</span><span class="content">New_Layer</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Outline</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">resources/shaders/default.vert</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">resources/shaders/outline.frag</span><span class="delimiter">'</span></span>)
+fg.world:sendToShader(<span class="string"><span class="delimiter">'</span><span class="content">New_Layer</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Outline</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">thickness</span><span class="delimiter">'</span></span>, <span class="integer">2</span>)
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Applying_Shaders_in_an_Object">Applying Shaders in an Object</h5>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">new</span>(...)
+    ...
+    self.some_shader = love.graphics.newShader(<span class="string"><span class="delimiter">'</span><span class="content">some_shader_path.frag</span><span class="delimiter">'</span></span>)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Player:<span class="function">draw</span>()
+    love.graphics.setShader(self.some_shader)
+    love.graphics.draw(self.image, self.x, self.y)
+    love.graphics.setShader()
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+<p><br /><br /></p>
+
+<h3 id="Sound" data-magellan-destination="Sound">Sound</h3>
+
+<p><a href="documentation/sound">Sound</a></p>
+
+<h5 id="Playing_a_Sound">Playing a Sound</h5>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>fg.Sound.play(<span class="string"><span class="delimiter">'</span><span class="content">sound.ogg</span><span class="delimiter">'</span></span>)
+</pre></td>
+</tr></table>
+</div>
+<p><br /><br /></p>
+
+<h3 id="Text" data-magellan-destination="Text">Text</h3>
+
+<p><a href="documentation/text">Text</a></p>
+
+<h5 id="Programming_Text">Programming Text</h5>
+
+<p>Makes the words <code class="text">WAVES WAVES WAVES</code> wavy and with an increasinly red color to the right.
+See <a href="documentation/text">Text</a> for more information.</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+</pre></td>
+  <td class="code"><pre>text = fg.Text(<span class="string"><span class="delimiter">'</span><span class="content">[WAVES WAVES WAVES](wavy; increasingRed)</span><span class="delimiter">'</span></span>, <span class="map"><span class="delimiter">{</span>
+    <span class="key">font</span> = love.graphics.newFont(<span class="string"><span class="delimiter">'</span><span class="content">Super Cool Font.ttf</span><span class="delimiter">'</span></span>, <span class="integer">60</span>)
+    <span class="key">increasingRed</span> = <span class="keyword">function</span>(dt, dc) love.graphics.setColor(c.position*<span class="integer">10</span>, <span class="integer">128</span>, <span class="integer">128</span>) <span class="keyword">end</span>
+    <span class="key">wavyInit</span> = <span class="keyword">function</span>(c) c.<span class="key">t</span> = <span class="integer">0</span> <span class="keyword">end</span>,
+    <span class="key">wavy</span> = <span class="keyword">function</span>(dt, c)
+        c.<span class="key">t</span> = c.t + dt
+        c.<span class="key">y</span> = c.y + <span class="integer">100</span>*math.cos(c.position/<span class="integer">4</span> + <span class="integer">4</span>*c.t)*dt
+    <span class="keyword">end</span>
+<span class="delimiter">}</span></span>)
+</pre></td>
+</tr></table>
+</div>
+<p><br /><br /></p>
+
+<h3 id="Tilemap" data-magellan-destination="Tilemap">Tilemap</h3>
+
+<p><a href="documentation/tilemap">Tilemap</a></p>
+
+<h5 id="Loading_a_Tilemap_with_One_Tileset">Loading a Tilemap with One Tileset</h5>
+
+<p>Loads a tilemap normally:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- parameters: x, y position of th etilemap, tile width, tile height, tileset image, tile grid</span>
+tilemap = fg.Tilemap(<span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">32</span>, <span class="integer">32</span>, love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">tileset.png</span><span class="delimiter">'</span></span>), <span class="map"><span class="delimiter">{</span>
+    <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+    <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+    <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+    <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+<span class="delimiter">}</span></span>)
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Loading_a_Tilemap_with_Multiple_Tilesets">Loading a Tilemap with Multiple Tilesets</h5>
+
+<p>Loads a tilemap that uses multiple images:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- parameters: x, y position of the tilemap, tile width, tile height, tileset image, tile grid</span>
+tilemap = fg.Tilemap(<span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">32</span>, <span class="integer">32</span>, <span class="map"><span class="delimiter">{</span>love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">tileset_1.png</span><span class="delimiter">'</span></span>), 
+                                    love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">tileset_2.png</span><span class="delimiter">'</span></span>)<span class="delimiter">}</span></span>, <span class="map"><span class="delimiter">{</span>
+    <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+    <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+    <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+    <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+<span class="delimiter">}</span></span>)
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Loading_a_Tiled_Tilemap">Loading a Tiled Tilemap</h5>
+
+<p>Loads a tilemap from Tiled:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- parameters: x, y position of the tilemap, path to the lua file exported from Tiled</span>
+tilemap = fg.Tilemap(<span class="integer">0</span>, <span class="integer">0</span>, <span class="string"><span class="delimiter">'</span><span class="content">maps/tiled_map</span><span class="delimiter">'</span></span>)
+</pre></td>
+</tr></table>
+</div>
+<p><br /><br /></p>
+
+<h3 id="Timing" data-magellan-destination="Timing">Timing</h3>
+
+<p><a href="documentation/area#hitFrameStopAdd">HitFrameStop</a>, <a href="documentation/timer">Timer</a>, <a href="documentation/timer#">Tween</a></p>
+
+<h5 id="Hit_Frame_Stop">Hit Frame Stop</h5>
+
+<p>Stops updating objects from certain classes for a few frames. Useful for doing effects where everything but a few animations
+completely freeze before hitting something.</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- parameters: number of frames to stop everything for, </span>
+<span class="comment">--             which classes to stop, in this case all classes except particles,</span>
+<span class="comment">--             an action to be performed after the 10 frames are over </span>
+fg.world:hitFrameStopAdd(<span class="integer">10</span>, <span class="map"><span class="delimiter">{</span><span class="string"><span class="delimiter">'</span><span class="content">All</span><span class="delimiter">'</span></span>, <span class="key">except</span> = <span class="map"><span class="inline-delimiter">{</span><span class="string"><span class="delimiter">'</span><span class="content">Particles</span><span class="delimiter">'</span></span><span class="inline-delimiter">}</span></span><span class="delimiter">}</span></span>, <span class="keyword">function</span>() <span class="predefined">print</span>(<span class="integer">1</span>) <span class="keyword">end</span>)
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Timing">Timing</h5>
+
+<p>Prints <code class="number">1</code> after 2 seconds, <code class="number">2</code> every 1 second and <code class="number">3</code> every frame for 5 seconds:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- parameters: duration/time, action</span>
+fg.timer:after(<span class="integer">2</span>, <span class="keyword">function</span>() <span class="predefined">print</span>(<span class="integer">1</span>) <span class="keyword">end</span>)
+fg.timer:every(<span class="integer">1</span>, <span class="keyword">function</span>() <span class="predefined">print</span>(<span class="integer">2</span>) <span class="keyword">end</span>)
+fg.timer:during(<span class="integer">5</span>, <span class="keyword">function</span>() <span class="predefined">print</span>(<span class="integer">3</span>) <span class="keyword">end</span>)
+</pre></td>
+</tr></table>
+</div>
+
+<h5 id="Tweening">Tweening</h5>
+
+<p>Tweens the <code class="text">x, y</code> position of self to <code class="number">500, 500</code> for 2 seconds using the <code class="string">'in-out-cubic'</code> tween method:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- parameters: duration, table to act upon, target values, tween method</span>
+fg.timer:tween(<span class="integer">2</span>, self, <span class="map"><span class="delimiter">{</span><span class="key">x</span> = <span class="integer">500</span>, <span class="key">y</span> = <span class="integer">500</span><span class="delimiter">}</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">in-out-cubic</span><span class="delimiter">'</span></span>)
+</pre></td>
+</tr></table>
+</div>
+
+    
+      <footer>
+        
+        
+      </footer>
+    
+  </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+  
+  </div><!--.columns-->
+  
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p class="text-center">
+  <span class="credit">
+  	Made using <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/annejohnson/octofound">Octofound</a><br/>
+  </span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/examples/index.html';
+        var disqus_url = 'http://fuccboi.moe/examples/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+</body>
+</html>

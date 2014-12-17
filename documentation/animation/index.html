@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <script src="/js/vendor/modernizr.js"></script>
+  <meta charset="utf-8">
+  <title>Animation - fuccboiGDX</title>
+  <meta name="author" content="adnzzzzZ">
+
+  
+  <meta name="description" content="<!-- Animation --> Example 1
+2
+3
+4
+5
+6
+7
+8
+9
+10 -- the above image is spritesheet.png, each of its frames is 64x64
+-- create the animation, &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fuccboi.moe/documentation/animation">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
+
+  <script src="/js/vendor/jquery.js"></script>
+  <script src="/js/vendor/fastclick.js"></script>
+
+  <script src="/js/foundation.min.js"></script>
+  <script src="/js/foundation/foundation.magellan.js"></script>
+  <script src="/js/foundation/foundation.topbar.js"></script>
+  <script src="/js/foundation/foundation.accordion.js"></script>
+  <script src="/js/foundation/foundation.orbit.js"></script>
+  <script src="/js/foundation/foundation.dropdown.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <script>
+
+  $(document).ready(function(){
+    $(document).foundation();
+  });
+
+  </script>
+
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-51118504-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar" >
+  <header role="banner" class="top-header"><!--<hgroup>
+  <h1 class="text-center">
+  	<a href="/">fuccboiGDX</a>
+  </h1>
+  
+</hgroup>-->
+
+<!--<ul class="example-orbit-content" data-orbit>
+  <li data-orbit-slide="headline-1">
+    <div>
+      <h2>Headline 1</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <div>
+      <h2>Headline 2</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div>
+      <h2>Headline 3</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+</ul>-->
+
+</header>
+  <nav role="navigation"><ul class="subscription hide" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+
+
+
+<div class="sticky">
+
+  <nav class="top-bar" data-topbar role="navigation">
+
+    <!--
+    <ul class="title-area right">
+        <li class="name">
+          <h1><a href="/">fuccboiGDX <i class="fa fa-heart"></i></i></i></a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    -->
+
+
+    <section class="top-bar-section">
+      <ul class="main-navigation right show-for-medium-up">
+          <li><a href="https://github.com/adonaac/fuccboiGDX">github</a></li>
+          <li><a href="https://twitter.com/adnzzzzZ">twitter</i></a></li>
+      </ul>
+
+      <ul class="main-navigation left">
+          <li><a href="/">fuccboiGDX</a></li>
+
+          <li class="has-dropdown">
+          <a href="/tutorials">tutorials</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Advanced</a>
+            <ul class="dropdown">
+                <li><a href="/tutorials/curvemaster">CurveMaster</a></li>
+                <li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
+            </ul>
+            </li>
+
+            <li class="has-dropdown"><a href="#">Examples</a>
+            <ul class="dropdown">
+                <li><a href="/examples#Animation">Animation</a></li>
+                <li><a href="/examples#Area">Area</a></li>
+                <li><a href="/examples#Camera">Camera</a></li>
+                <li><a href="/examples#Collision">Collision</a></li>
+                <li><a href="/examples#Gamestate">Gamestate</a></li>
+                <li><a href="/examples#Input">Input</a></li>
+                <li><a href="/examples#Layers">Layers</a></li>
+                <li><a href="/examples#Loading">Loading</a></li>
+                <li><a href="/examples#Objects">Objects</a></li>
+                <li><a href="/examples#Particles">Particles</a></li>
+                <li><a href="/examples#Random">Random</a></li>
+                <li><a href="/examples#Serialization">Serialization</a></li>
+                <li><a href="/examples#Shaders">Shaders</a></li>
+                <li><a href="/examples#Sound">Sound</a></li>
+                <li><a href="/examples#Text">Text</a></li>
+                <li><a href="/examples#Tilemap">Tilemap</a></li>
+                <li><a href="/examples#Timing">Timing</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <li class="has-dropdown">
+          <a href="/documentation">documentation</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Main</a>
+            <ul class="dropdown">
+                <li><a href="/documentation/fg">fg</a></li>
+                <li><a href="/documentation/render">Render</a></li>
+                <li><a href="/documentation/world">World</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Logic</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/area">Area</a></li>
+            <li><a href="/documentation/class">Class</a></li>
+            <li><a href="/documentation/debug">Debug</a></li>
+            <li><a href="/documentation/entity">Entity</a></li>
+            <li><a href="/documentation/gamestate">Gamestate</a></li>
+            <li><a href="/documentation/input">Input</a></li>
+            <li><a href="/documentation/loader">Loader</a></li>
+            <li><a href="/documentation/objectpool">ObjectPool</a></li>
+                <li class="has-dropdown"><a href="#">Physics</a>
+                <ul class="dropdown">
+                    <li><a href="/documentation/collision">Collision</a></li>
+                    <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
+                    <li><a href="/documentation/solid">Solid</a></li>
+                </ul>
+                </li>
+            <li><a href="/documentation/serial">Serial</a></li>
+            <li><a href="/documentation/timer">Timer</a></li>
+            <li><a href="/documentation/utils">utils</a></li>
+            <li><a href="/documentation/vector">Vector</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Visual</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/animation">Animation</a></li>
+            <li><a href="/documentation/background">Background</a></li>
+            <li><a href="/documentation/camera">Camera</a></li>
+            <li><a href="/documentation/particles">Particles</a></li>
+            <li><a href="/documentation/spritebatch">Spritebatch</a></li>
+            <li><a href="/documentation/text">Text</a></li>
+            <li><a href="/documentation/tilemap">Tilemap</a></li>
+            <li><a href="/documentation/uitools">UI Tools</a></li>
+            </ul>
+
+            <li class="has-dropdown"><a href="#">Sound</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/sound">Sound</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <!--
+          <li class="has-dropdown">
+            <a href="/no-sidebar">No Sidebar Page</a>
+
+            <ul class="dropdown">
+              <li><a href="/no-sidebar/left-sidebar">Left Sidebar Page</a></li>
+              <li><a href="/no-sidebar/right-sidebar">Right Sidebar Page</a></li>
+              <li><a href="/no-sidebar/example-formatting">Example Formatting</a></li>
+            </ul>
+
+          </li>
+
+          <li><a href="/blog">Blog</a></li>
+
+          <li><a href="/blog/archives">Archives</a></li>
+          -->
+
+      </ul>
+
+    </section>
+  </nav>
+
+</div>
+
+
+
+
+
+
+<div data-magellan-expedition>
+<div id="nav" class="fixed right show-for-large-up">
+<ul class="side-nav">
+
+<strong><a href="/documentation">documentation</a><br><br></strong>
+
+
+
+
+
+
+
+
+
+
+
+<li data-magellan-arrival="Example"><a href="#Example">Example</a></li><li data-magellan-arrival="Description"><a href="#Description">Description</a></li><li data-magellan-arrival="Methods"><a href="#Methods">Methods</a></li>
+<li data-magellan-arrival='new' class='nav'><a href='#new'>new</a></li><li data-magellan-arrival='update' class='nav'><a href='#update'>update</a></li><li data-magellan-arrival='draw' class='nav'><a href='#draw'>draw</a></li><li data-magellan-arrival='addFrame' class='nav'><a href='#addFrame'>addFrame</a></li><li data-magellan-arrival='getHeight' class='nav'><a href='#getHeight'>getHeight</a></li><li data-magellan-arrival='getWidth' class='nav'><a href='#getWidth'>getWidth</a></li><li data-magellan-arrival='play' class='nav'><a href='#play'>play</a></li><li data-magellan-arrival='reset' class='nav'><a href='#reset'>reset</a></li><li data-magellan-arrival='seek' class='nav'><a href='#seek'>seek</a></li><li data-magellan-arrival='setDelay' class='nav'><a href='#setDelay'>setDelay</a></li><li data-magellan-arrival='setMode' class='nav'><a href='#setMode'>setMode</a></li><li data-magellan-arrival='setSpeed' class='nav'><a href='#setSpeed'>setSpeed</a></li><li data-magellan-arrival='stop' class='nav'><a href='#stop'>stop</a></li>
+<li data-magellan-arrival="Attributes"><a href="#Attributes">Attributes</a></li>
+<li data-magellan-arrival='current_frame' class='nav'><a href='#current_frame'>current_frame</a></li><li data-magellan-arrival='frame_height' class='nav'><a href='#frame_height'>frame_height</a></li><li data-magellan-arrival='frame_width' class='nav'><a href='#frame_width'>frame_width</a></li><li data-magellan-arrival='size' class='nav'><a href='#size'>size</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</div>
+</div>
+
+</nav>
+  <div id="main">
+    <div id="content" class="row">
+      
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
+
+  <article role="article">
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Animation</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="Example" data-magellan-destination="Example">Example</h3>
+
+<p><img class="center" src="/assets/girlrun.png" title="spritesheet.png" /></p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- the above image is spritesheet.png, each of its frames is 64x64</span>
+<span class="comment">-- create the animation, parameters are: image, width, height, delay</span>
+animation = fg.Animation(love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">spritesheet.png</span><span class="delimiter">'</span></span>), <span class="integer">64</span>, <span class="integer">64</span>, <span class="float">0.1</span>)
+
+<span class="comment">-- update the animation</span>
+animation:update(dt)
+
+<span class="comment">-- draw the animation</span>
+animation:draw(x, y)
+<span class="comment">-- the below image is the result, 'loop' mode is set by default</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p><img class="center" src="/assets/girlrun.gif" /></p>
+
+<h3 id="Description" data-magellan-destination="Description">Description</h3>
+
+<p>The <code class="text">fg.Animation</code> class handles the creation of animated sprites from sprite sheets. 
+You have control over what to do with the animation itself, since it’s returned and you just hold it in a variable. 
+The draw operation, like LÖVE’s, also takes rotation, scaling and shearing parameters after <code class="text">x, y</code>. The module
+also supports reading sprite sheets from texture atlases on top of isolated spritesheets.
+<br /><br /></p>
+
+<h3 id="Methods" data-magellan-destination="Methods">Methods</h3>
+
+<div id="new" data-magellan-destination="new"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">new</span>(image<span class="tag">[Image]</span>, width<span class="tag">[number]</span>, height<span class="tag">[number]</span>, delay<span class="tag">[number]</span>, frames<span class="tag">[number[optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>image</code>: the sprite sheet containing the full animation</li>
+  <li><code>width, height</code>: the width and height of each frame </li>
+  <li><code>delay</code>: the delay between each frame in seconds</li>
+  <li><code>frames</code>: the number of frames to use for this animation, omitting this parameter or passing <code class="number">0</code> tells the library to automatically handle it
+<br /><br /></li>
+</ul>
+
+<div id="new" data-magellan-destination="new"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">new</span>(image<span class="tag">[Image]</span>, x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, width<span class="tag">[number]</span>, height<span class="tag">[number]</span>, delay<span class="tag">[number]</span>, frames<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>image</code>: the texture atlas containing the full animation and </li>
+  <li><code>x, y</code>: the top-left position of the first animation frame</li>
+  <li><code>width, height</code>: the width and height of each frame</li>
+  <li><code>delay</code>: the delay between each frame in seconds</li>
+  <li><code>frames</code>: the number of frames to use for this animation, can’t be omitted or <code class="number">0</code> when using a texture atlas
+<br /><br /></li>
+</ul>
+
+<div id="update" data-magellan-destination="update"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">update</span>(dt<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>dt</code>: delta value passed from the main loop to update the animation
+<br /><br /></li>
+</ul>
+
+<div id="draw" data-magellan-destination="draw"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">draw</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>x, y</code>: position to draw the animation, with optional values as seen in <a href="http://www.love2d.org/wiki/love.graphics.draw">love.graphics.draw</a>
+<br /><br /></li>
+</ul>
+
+<div id="addFrame" data-magellan-destination="addFrame"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">addFrame</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, width<span class="tag">[number]</span>, height<span class="tag">[number]</span>, delay<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>x, y</code>: left top coordinate of the frame on the original sprite sheet</li>
+  <li><code>width, height</code>: the width and height of each frame</li>
+  <li><code>delay</code>: the delay between each frame in seconds
+<br /><br /></li>
+</ul>
+
+<div id="getHeight" data-magellan-destination="getHeight"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">getHeight</span>()</pre></td></table></div>
+
+<ul>
+  <li>returns the height of the current frame
+<br /><br /></li>
+</ul>
+
+<div id="getWidth" data-magellan-destination="getWidth"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">getWidth</span>()</pre></td></table></div>
+
+<ul>
+  <li>returns the width of the current frame
+<br /><br /></li>
+</ul>
+
+<div id="play" data-magellan-destination="play"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">play</span>()</pre></td></table></div>
+
+<ul>
+  <li>starts the animation if it was stopped
+<br /><br /></li>
+</ul>
+
+<div id="reset" data-magellan-destination="reset"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">reset</span>()</pre></td></table></div>
+
+<ul>
+  <li>goes back to the first frame
+<br /><br /></li>
+</ul>
+
+<div id="seek" data-magellan-destination="seek"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">seek</span>(frame<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>frame</code>: the frame position to seek, minimum is <code class="number">1</code> and maximum is <code class="text">.size</code>
+<br /><br /></li>
+</ul>
+
+<div id="setDelay" data-magellan-destination="setDelay"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">setDelay</span>(frame<span class="tag">[number]</span>, delay<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>frame</code>: the frame position to set the delay</li>
+  <li><code>delay</code>: the new delay
+<br /><br /></li>
+</ul>
+
+<div id="setMode" data-magellan-destination="setMode"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">setMode</span>(mode<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>mode</code>: the animation play mode</li>
+</ul>
+
+<p>Possible modes:</p>
+
+<ul>
+  <li><code>'loop'</code>: loops the animation after it’s over</li>
+  <li><code>'once'</code>: plays the animation only once</li>
+  <li><code>'bounce'</code>: play it once, play it in reverse, play it again (looping)
+<br /><br /></li>
+</ul>
+
+<div id="setSpeed" data-magellan-destination="setSpeed"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">setSpeed</span>(speed<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>speed</code>: the speed to play the animation at, <code class="number">1</code> is normal, <code class="number">2</code> is twice as fast…
+<br /><br /></li>
+</ul>
+
+<div id="stop" data-magellan-destination="stop"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">stop</span>()</pre></td></table></div>
+
+<ul>
+  <li>stops the animation
+<br /><br /></li>
+</ul>
+
+<h3 id="Attributes" data-magellan-destination="Attributes">Attributes</h3>
+
+<div id="current_frame" data-magellan-destination="current_frame"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">current_frame</span><span class="tag">[number]</span></pre></td></table></div>
+
+<ul>
+  <li>the frame currently being displayed, minimum is <code class="number">1</code> and maximum is <code class="text">.size</code>
+<br /><br /></li>
+</ul>
+
+<div id="frame_height" data-magellan-destination="frame_height"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">frame_height</span><span class="tag">[number]</span></pre></td></table></div>
+
+<ul>
+  <li>the height of the animation, can also be accessed through <code class="atrm">:getHeight</code>
+<br /><br /></li>
+</ul>
+
+<div id="frame_width" data-magellan-destination="frame_width"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">frame_width</span><span class="tag">[number]</span></pre></td></table></div>
+
+<ul>
+  <li>the width of the animation, can also be accessed through <code class="atrm">:getWidth()</code>
+<br /><br /></li>
+</ul>
+
+<div id="size" data-magellan-destination="size"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">size</span><span class="tag">[number]</span></pre></td></table></div>
+
+<ul>
+  <li>the number of frames the animation has
+<br /><br /></li>
+</ul>
+
+    
+      <footer>
+        
+        
+      </footer>
+    
+  </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+  
+  </div><!--.columns-->
+  
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p class="text-center">
+  <span class="credit">
+  	Made using <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/annejohnson/octofound">Octofound</a><br/>
+  </span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/documentation/animation/index.html';
+        var disqus_url = 'http://fuccboi.moe/documentation/animation/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+</body>
+</html>

@@ -6,11 +6,22 @@
 <head>
   <script src="/js/vendor/modernizr.js"></script>
   <meta charset="utf-8">
-  <title>fuccboiGDX</title>
+  <title>Background - fuccboiGDX</title>
   <meta name="author" content="adnzzzzZ">
 
   
-  <meta name="description" content="fuccboiGDX is a 2D game making code-centric engine/framework that provides additional higher level functionalities on top of LÖVE, making game &hellip;">
+  <meta name="description" content="<!-- Background --> Example 1
+2
+3
+4
+5
+6
+7
+8
+9
+10 -- create two new layers
+fg.world:addLayer('BG1', {parallax_scale = 0.8})
+fg.world:addLayer('BG2 &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +29,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fuccboi.moe">
+  <link rel="canonical" href="http://fuccboi.moe/documentation/background">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
@@ -63,7 +74,7 @@
 
 </head>
 
-<body  id="main_page"   class="no-sidebar" >
+<body   class="no-sidebar" >
   <header role="banner" class="top-header"><!--<hgroup>
   <h1 class="text-center">
   	<a href="/">fuccboiGDX</a>
@@ -243,6 +254,7 @@
 <div id="nav" class="fixed right show-for-large-up">
 <ul class="side-nav">
 
+<strong><a href="/documentation">documentation</a><br><br></strong>
 
 
 
@@ -256,6 +268,12 @@
 
 
 
+
+
+<li data-magellan-arrival="Example"><a href="#Example">Example</a></li><li data-magellan-arrival="Description"><a href="#Description">Description</a></li><li data-magellan-arrival="Methods"><a href="#Methods">Methods</a></li>
+<li data-magellan-arrival='new' class='nav'><a href='#new'>new</a></li><li data-magellan-arrival='update' class='nav'><a href='#update'>update</a></li><li data-magellan-arrival='draw' class='nav'><a href='#draw'>draw</a></li>
+<li data-magellan-arrival="Attributes"><a href="#Attributes">Attributes</a></li>
+<li data-magellan-arrival='position' class='nav'><a href='#position'>x y</a></li><li data-magellan-arrival='size' class='nav'><a href='#size'>w h</a></li>
 
 
 
@@ -314,38 +332,88 @@
   <div id="main">
     <div id="content" class="row">
       
-<div class="small-12 medium-12 large-10 large-centered columns">
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
 
   <article role="article">
-    <!---->
-    <p><strong>fuccboiGDX</strong> is a 2D game making code-centric engine/framework that provides additional higher level functionalities on top of <a href="http://love2d.org">LÖVE</a>, 
-making game creation easier, faster, and buzzword! It’s free, open source and supported on Windows, Linux and OSX.</p>
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Background</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="Example" data-magellan-destination="Example">Example</h3>
 
-<div class="row">
-    <div class="small-4 columns text-center">
-        <a href="https://github.com/adonaac/fuccboiGDX/archive/master.zip" class="button expand">download</a>
-    </div>
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- create two new layers</span>
+fg.world:addLayer(<span class="string"><span class="delimiter">'</span><span class="content">BG1</span><span class="delimiter">'</span></span>, <span class="map"><span class="delimiter">{</span><span class="key">parallax_scale</span> = <span class="float">0.8</span><span class="delimiter">}</span></span>)
+fg.world:addLayer(<span class="string"><span class="delimiter">'</span><span class="content">BG2</span><span class="delimiter">'</span></span>, <span class="map"><span class="delimiter">{</span><span class="key">parallax_scale</span> = <span class="float">0.9</span><span class="delimiter">}</span></span>)
 
-    <div class="small-4 columns text-center">
-        <a href="/tutorials" class="button expand">tutorials</a>
-    </div>
+<span class="comment">-- add backgrounds to layers, background parameters are: x, y (center) position, background image</span>
+fg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="content">BG1</span><span class="delimiter">'</span></span>, fg.Background(<span class="integer">320</span>, <span class="integer">300</span>, love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">bg_back.png</span><span class="delimiter">'</span></span>)))
+fg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="content">BG2</span><span class="delimiter">'</span></span>, fg.Background(<span class="integer">320</span>, <span class="integer">320</span>, love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">bg_mid.png</span><span class="delimiter">'</span></span>)))
 
-    <div class="small-4 columns text-center">
-        <a href="/documentation" class="button expand">documentation</a>
-    </div>
+<span class="comment">-- sets the order in which to draw layers, here draws 'BG1' -&gt; 'BG2' -&gt; 'Default'</span>
+fg.world:setLayerOrder(<span class="map"><span class="delimiter">{</span><span class="string"><span class="delimiter">'</span><span class="content">BG1</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">BG2</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Default</span><span class="delimiter">'</span></span><span class="delimiter">}</span></span>)
+</pre></td>
+</tr></table>
 </div>
+<p><br /></p>
 
-<!--
-<h2 style="text-align: center">Games being made with fuccboiGDX</h2>
-<br>
+<h3 id="Description" data-magellan-destination="Description">Description</h3>
 
-<ul class="example-orbit" data-orbit data-options="navigation_arrows: false; pause_on_hover:false; bullets: false; slide_number: false"> 
-    <li><img src="/assets/fight.gif"/></li> 
-    <li><img src="/assets/hitee.gif"/></li> 
-    <li><img src="/assets/ice.gif"/></li> 
-    <li><img src="/assets/attack.gif"/></li> 
+<p>The <code class="text">fg.Background</code> class handles the creation of <code class="text">Background</code> objects. Those are used 
+so they can be added to layers and then drawn. Layers can have different parallax values, 
+so you can have multiple backgrounds on different layers, moving at different speeds as the camera moves around.
+<br /><br /></p>
+
+<h3 id="Methods" data-magellan-destination="Methods">Methods</h3>
+
+<div id="new" data-magellan-destination="new"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">new</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, image<span class="tag">[Image]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>x, y</code>: the center position of the background </li>
+  <li><code>image</code>: the background image
+<br /><br /></li>
 </ul>
-&#8211;>
+
+<div id="draw" data-magellan-destination="draw"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">draw</span>()</pre></td></table></div>
+
+<ul>
+  <li>draws the background
+<br /><br /></li>
+</ul>
+
+<h3 id="Attributes" data-magellan-destination="Attributes">Attributes</h3>
+
+<div id="position" data-magellan-destination="position"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">x</span><span class="tag">[number]</span>, .<span class="annotation">y</span><span class="tag">[number]</span></pre></td></table></div>
+
+<ul>
+  <li>the center position of the background <br />
+<br /></li>
+</ul>
+
+<div id="size" data-magellan-destination="size"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">w</span><span class="tag">[number]</span>, .<span class="annotation">h</span><span class="tag">[number]</span></pre></td></table></div>
+
+<ul>
+  <li>the width and height of the background, calculated automatically from its image
+<br /><br /></li>
+</ul>
 
     
       <footer>
@@ -354,6 +422,12 @@ making game creation easier, faster, and buzzword! It’s free, open source and 
       </footer>
     
   </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
   
   </div><!--.columns-->
   
@@ -459,6 +533,22 @@ making game creation easier, faster, and buzzword! It’s free, open source and 
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/documentation/background/index.html';
+        var disqus_url = 'http://fuccboi.moe/documentation/background/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

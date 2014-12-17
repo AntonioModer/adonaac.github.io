@@ -1,0 +1,679 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <script src="/js/vendor/modernizr.js"></script>
+  <meta charset="utf-8">
+  <title>Serial - fuccboiGDX</title>
+  <meta name="author" content="adnzzzzZ">
+
+  
+  <meta name="description" content="<!-- Serial --> Example 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16 -- saves a level
+fg.Serial:saveArea('save_filename', fg.world.areas['Level_1']) -- &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fuccboi.moe/documentation/serial">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
+
+  <script src="/js/vendor/jquery.js"></script>
+  <script src="/js/vendor/fastclick.js"></script>
+
+  <script src="/js/foundation.min.js"></script>
+  <script src="/js/foundation/foundation.magellan.js"></script>
+  <script src="/js/foundation/foundation.topbar.js"></script>
+  <script src="/js/foundation/foundation.accordion.js"></script>
+  <script src="/js/foundation/foundation.orbit.js"></script>
+  <script src="/js/foundation/foundation.dropdown.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <script>
+
+  $(document).ready(function(){
+    $(document).foundation();
+  });
+
+  </script>
+
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-51118504-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar" >
+  <header role="banner" class="top-header"><!--<hgroup>
+  <h1 class="text-center">
+  	<a href="/">fuccboiGDX</a>
+  </h1>
+  
+</hgroup>-->
+
+<!--<ul class="example-orbit-content" data-orbit>
+  <li data-orbit-slide="headline-1">
+    <div>
+      <h2>Headline 1</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <div>
+      <h2>Headline 2</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div>
+      <h2>Headline 3</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+</ul>-->
+
+</header>
+  <nav role="navigation"><ul class="subscription hide" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+
+
+
+<div class="sticky">
+
+  <nav class="top-bar" data-topbar role="navigation">
+
+    <!--
+    <ul class="title-area right">
+        <li class="name">
+          <h1><a href="/">fuccboiGDX <i class="fa fa-heart"></i></i></i></a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    -->
+
+
+    <section class="top-bar-section">
+      <ul class="main-navigation right show-for-medium-up">
+          <li><a href="https://github.com/adonaac/fuccboiGDX">github</a></li>
+          <li><a href="https://twitter.com/adnzzzzZ">twitter</i></a></li>
+      </ul>
+
+      <ul class="main-navigation left">
+          <li><a href="/">fuccboiGDX</a></li>
+
+          <li class="has-dropdown">
+          <a href="/tutorials">tutorials</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Advanced</a>
+            <ul class="dropdown">
+                <li><a href="/tutorials/curvemaster">CurveMaster</a></li>
+                <li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
+            </ul>
+            </li>
+
+            <li class="has-dropdown"><a href="#">Examples</a>
+            <ul class="dropdown">
+                <li><a href="/examples#Animation">Animation</a></li>
+                <li><a href="/examples#Area">Area</a></li>
+                <li><a href="/examples#Camera">Camera</a></li>
+                <li><a href="/examples#Collision">Collision</a></li>
+                <li><a href="/examples#Gamestate">Gamestate</a></li>
+                <li><a href="/examples#Input">Input</a></li>
+                <li><a href="/examples#Layers">Layers</a></li>
+                <li><a href="/examples#Loading">Loading</a></li>
+                <li><a href="/examples#Objects">Objects</a></li>
+                <li><a href="/examples#Particles">Particles</a></li>
+                <li><a href="/examples#Random">Random</a></li>
+                <li><a href="/examples#Serialization">Serialization</a></li>
+                <li><a href="/examples#Shaders">Shaders</a></li>
+                <li><a href="/examples#Sound">Sound</a></li>
+                <li><a href="/examples#Text">Text</a></li>
+                <li><a href="/examples#Tilemap">Tilemap</a></li>
+                <li><a href="/examples#Timing">Timing</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <li class="has-dropdown">
+          <a href="/documentation">documentation</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Main</a>
+            <ul class="dropdown">
+                <li><a href="/documentation/fg">fg</a></li>
+                <li><a href="/documentation/render">Render</a></li>
+                <li><a href="/documentation/world">World</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Logic</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/area">Area</a></li>
+            <li><a href="/documentation/class">Class</a></li>
+            <li><a href="/documentation/debug">Debug</a></li>
+            <li><a href="/documentation/entity">Entity</a></li>
+            <li><a href="/documentation/gamestate">Gamestate</a></li>
+            <li><a href="/documentation/input">Input</a></li>
+            <li><a href="/documentation/loader">Loader</a></li>
+            <li><a href="/documentation/objectpool">ObjectPool</a></li>
+                <li class="has-dropdown"><a href="#">Physics</a>
+                <ul class="dropdown">
+                    <li><a href="/documentation/collision">Collision</a></li>
+                    <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
+                    <li><a href="/documentation/solid">Solid</a></li>
+                </ul>
+                </li>
+            <li><a href="/documentation/serial">Serial</a></li>
+            <li><a href="/documentation/timer">Timer</a></li>
+            <li><a href="/documentation/utils">utils</a></li>
+            <li><a href="/documentation/vector">Vector</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Visual</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/animation">Animation</a></li>
+            <li><a href="/documentation/background">Background</a></li>
+            <li><a href="/documentation/camera">Camera</a></li>
+            <li><a href="/documentation/particles">Particles</a></li>
+            <li><a href="/documentation/spritebatch">Spritebatch</a></li>
+            <li><a href="/documentation/text">Text</a></li>
+            <li><a href="/documentation/tilemap">Tilemap</a></li>
+            <li><a href="/documentation/uitools">UI Tools</a></li>
+            </ul>
+
+            <li class="has-dropdown"><a href="#">Sound</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/sound">Sound</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <!--
+          <li class="has-dropdown">
+            <a href="/no-sidebar">No Sidebar Page</a>
+
+            <ul class="dropdown">
+              <li><a href="/no-sidebar/left-sidebar">Left Sidebar Page</a></li>
+              <li><a href="/no-sidebar/right-sidebar">Right Sidebar Page</a></li>
+              <li><a href="/no-sidebar/example-formatting">Example Formatting</a></li>
+            </ul>
+
+          </li>
+
+          <li><a href="/blog">Blog</a></li>
+
+          <li><a href="/blog/archives">Archives</a></li>
+          -->
+
+      </ul>
+
+    </section>
+  </nav>
+
+</div>
+
+
+
+
+
+
+<div data-magellan-expedition>
+<div id="nav" class="fixed right show-for-large-up">
+<ul class="side-nav">
+
+<strong><a href="/documentation">documentation</a><br><br></strong>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li data-magellan-arrival="Example"><a href="#Example">Example</a></li><li data-magellan-arrival="Description"><a href="#Description">Description</a></li><li data-magellan-arrival="Methods"><a href="#Methods">Methods</a></li>
+<li data-magellan-arrival='loadArea' class='nav'><a href='#loadArea'>loadArea</a></li><li data-magellan-arrival='loadObject' class='nav'><a href='#loadObject'>loadObject</a></li><li data-magellan-arrival='saveArea' class='nav'><a href='#saveArea'>saveArea</a></li><li data-magellan-arrival='saveObject' class='nav'><a href='#saveObject'>saveObject</a></li><li data-magellan-arrival='serialize' class='nav'><a href='#serialize'>serialize</a></li>
+<li data-magellan-arrival="Saving_and_Loading"><a href="#Saving_and_Loading">Saving and Loading</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</div>
+</div>
+
+</nav>
+  <div id="main">
+    <div id="content" class="row">
+      
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
+
+  <article role="article">
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Serial</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="Example" data-magellan-destination="Example">Example</h3>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- saves a level</span>
+fg.Serial:saveArea(<span class="string"><span class="delimiter">'</span><span class="content">save_filename</span><span class="delimiter">'</span></span>, fg.world.areas[<span class="string"><span class="delimiter">'</span><span class="content">Level_1</span><span class="delimiter">'</span></span>])
+
+<span class="comment">-- loads a level</span>
+fg.Serial:loadArea(<span class="string"><span class="delimiter">'</span><span class="content">save_filename</span><span class="delimiter">'</span></span>, fg.world.areas[<span class="string"><span class="delimiter">'</span><span class="content">Level_1</span><span class="delimiter">'</span></span>])
+
+<span class="comment">-- saves an object if it implements a save function</span>
+fg.Serial:saveObject(<span class="string"><span class="delimiter">'</span><span class="content">save_filename</span><span class="delimiter">'</span></span>, entity)
+
+<span class="comment">-- loads an object</span>
+data = fg.Serial:loadObject(<span class="string"><span class="delimiter">'</span><span class="content">save_filename</span><span class="delimiter">'</span></span>)
+fg.Serial:loadObject(<span class="string"><span class="delimiter">'</span><span class="content">save_filename</span><span class="delimiter">'</span></span>, fg.world.areas[<span class="string"><span class="delimiter">'</span><span class="content">Level_1</span><span class="delimiter">'</span></span>])
+
+<span class="comment">-- simple table serialization</span>
+<span class="keyword">local</span> <span class="local-variable">a</span> = <span class="map"><span class="delimiter">{</span><span class="integer">1</span>, <span class="string"><span class="delimiter">'</span><span class="content">2</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() <span class="predefined">print</span>(<span class="integer">3</span>) <span class="keyword">end</span><span class="delimiter">}</span></span>
+fg.Serial.serialize(<span class="string"><span class="delimiter">'</span><span class="content">save_filename</span><span class="delimiter">'</span></span>, a)
+</pre></td>
+</tr></table>
+</div>
+
+<h3 id="Description" data-magellan-destination="Description">Description</h3>
+
+<p>The <code class="text">fg.Serial</code> module handles data saving and loading. You can serialize tables normally, save
+and load objects or save and load <code class="text">engine</code> areas. It uses <a href="https://github.com/gvx/Ser">Ser</a> internally
+for the serialization call. All files are saved to a specific folder as defined by <a href="https://love2d.org/wiki/love.filesystem">LÖVE’s filesystem module</a>,
+so you don’t need to specify paths when saving your data.
+<br /><br /></p>
+
+<h3 id="Methods" data-magellan-destination="Methods">Methods</h3>
+
+<div id="loadArea" data-magellan-destination="loadArea"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">loadArea</span>(filename<span class="tag">[string]</span>, area<span class="tag">[Area[optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>filename</code>: the name of the file that contains the saved data</li>
+  <li><code>area</code>: a reference to the area that the saved objects should be loaded to, if omitted will return the loaded data as a table (not as the rebuilt area)
+<br /><br /></li>
+</ul>
+
+<div id="loadObject" data-magellan-destination="loadObject"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">loadObject</span>(filename<span class="tag">[string]</span>, area<span class="tag">[Area[optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>filename</code>: the name of the file that contains the saved data</li>
+  <li><code>area</code>: the name of the area to load this object to, if omitted will return the loaded data as a table (not as the rebuilt object)
+<br /><br /></li>
+</ul>
+
+<div id="saveArea" data-magellan-destination="saveArea"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">saveArea</span>(filename<span class="tag">[string]</span>, area<span class="tag">[Area]</span>, dropped_classes<span class="tag">[table[string][optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>filename</code>: the name of the file to save data to</li>
+  <li><code>area</code>: the area to get the data from</li>
+  <li><code>dropped_classes</code>: a table of strings saying which classes of objects shouldn’t be saved, if omitted all objects that implement a <code class="atrm">:save</code> method will be saved</li>
+</ul>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- don't save instances of class Player and Particles</span>
+fg.Serial:saveArea(<span class="string"><span class="delimiter">'</span><span class="content">save_filename</span><span class="delimiter">'</span></span>, fg.world.areas[<span class="string"><span class="delimiter">'</span><span class="content">Level_1</span><span class="delimiter">'</span></span>], <span class="map"><span class="delimiter">{</span><span class="string"><span class="delimiter">'</span><span class="content">Player</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Particles</span><span class="delimiter">'</span></span><span class="delimiter">}</span></span>)
+</pre></td>
+</tr></table>
+</div>
+
+<div id="saveObject" data-magellan-destination="saveObject"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">saveObject</span>(filename<span class="tag">[string]</span>, object<span class="tag">[table]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>filename</code>: the name of the file to save data to</li>
+  <li><code>object</code>: the object to get the data from, must implement a <code class="atrm">:save</code> method 
+<br /><br /></li>
+</ul>
+
+<div id="serialize" data-magellan-destination="serialize"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">serialize</span>(filename<span class="tag">[string]</span>, table<span class="tag">[table]</span>)</pre></td></table></div>
+
+<ul>
+  <li><a href="https://github.com/gvx/Ser">ser’s</a> main serialization function</li>
+  <li><code>filename</code>: the name of the file to save data to</li>
+  <li><code>table</code>: the table to get the save data from 
+<br /><br /></li>
+</ul>
+
+<h3 id="Saving_and_Loading" data-magellan-destination="Saving_and_Loading">Saving and Loading</h3>
+
+<p>So that objects can be saved and loaded, either individually or through areas, they need to implement a <code class="atrm">:save</code> method.
+This method needs to simply return a table containing the information that is supposed to be saved, without containing any type
+of custom userdata or references to other objects that might contain custom userdata. The table returned from this function is
+what will get passed to <a href="https://github.com/gvx/Ser">Ser’s</a> serialize function and then stored in a file.</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">save</span>()
+    <span class="keyword">return</span> <span class="map"><span class="delimiter">{</span>
+        <span class="key">x</span> = self.x, <span class="key">y</span> = self.y, <span class="key">w</span> = self.w, <span class="key">h</span> = self.h,
+        <span class="key">hp</span> = self.hp, <span class="key">modifiers</span> = <span class="map"><span class="inline-delimiter">{</span><span class="key">speed</span> = <span class="float">1.5</span>, <span class="key">damage</span> = <span class="integer">2</span>, <span class="key">range</span> = <span class="integer">3</span><span class="inline-delimiter">}</span></span>,
+        <span class="key">items</span> = <span class="map"><span class="inline-delimiter">{</span>self.items[<span class="integer">1</span>].name, self.items[<span class="integer">2</span>].name, self.items[<span class="integer">3</span>].name<span class="inline-delimiter">}</span></span>,
+    <span class="delimiter">}</span></span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>Loading an object will simply take the table returned from the save method and store in the file and pass it as the
+<code class="text">settings</code> table on object creation. In the particular case of the example above it would do this automatically:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">local</span> <span class="local-variable">object</span> = fg.Serial.loadObject(<span class="string"><span class="delimiter">'</span><span class="content">Player</span><span class="delimiter">'</span></span>)
+fg.world:createEntity(<span class="string"><span class="delimiter">'</span><span class="content">Player</span><span class="delimiter">'</span></span>, object.x, object.y, <span class="map"><span class="delimiter">{</span><span class="key">w</span> = object.w, <span class="key">h</span> = object.h, <span class="key">hp</span> = object.hp, ...<span class="delimiter">}</span></span>)
+</pre></td>
+</tr></table>
+</div>
+
+<p>And so when creating the constructor of your class you need to keep the save method in mind. For instance, the items
+table contains a list of strings with item names, but my Player class’ <code class="text">.items</code> table actually holds references
+to <code class="text">Item</code> objects, but I can’t save those objects directly. So I pass strings, and then on the Player class’
+constructor I recreate the objects:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">new</span>(area, x, y, settings)
+    ...
+    self.items = <span class="map"><span class="delimiter">{</span><span class="delimiter">}</span></span>
+    <span class="comment">-- Recreate items from Item class if settings.items is set</span>
+    <span class="keyword">for</span> _, v <span class="keyword">in</span> <span class="predefined">ipairs</span>(settings.items <span class="keyword">or</span> <span class="map"><span class="delimiter">{</span><span class="delimiter">}</span></span>) <span class="keyword">do</span>
+        table.insert(self.items, Item(v))
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    
+      <footer>
+        
+        
+      </footer>
+    
+  </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+  
+  </div><!--.columns-->
+  
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p class="text-center">
+  <span class="credit">
+  	Made using <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/annejohnson/octofound">Octofound</a><br/>
+  </span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/documentation/serial/index.html';
+        var disqus_url = 'http://fuccboi.moe/documentation/serial/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,953 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <script src="/js/vendor/modernizr.js"></script>
+  <meta charset="utf-8">
+  <title>Basic Programming Concepts - fuccboiGDX</title>
+  <meta name="author" content="adnzzzzZ">
+
+  
+  <meta name="description" content="<!-- Basic Programming Concepts --> First Steps This tutorial will teach you about the very basic concepts behind computer programming. If you know &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fuccboi.moe/tutorials/basic_programming_concepts">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
+
+  <script src="/js/vendor/jquery.js"></script>
+  <script src="/js/vendor/fastclick.js"></script>
+
+  <script src="/js/foundation.min.js"></script>
+  <script src="/js/foundation/foundation.magellan.js"></script>
+  <script src="/js/foundation/foundation.topbar.js"></script>
+  <script src="/js/foundation/foundation.accordion.js"></script>
+  <script src="/js/foundation/foundation.orbit.js"></script>
+  <script src="/js/foundation/foundation.dropdown.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <script>
+
+  $(document).ready(function(){
+    $(document).foundation();
+  });
+
+  </script>
+
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-51118504-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar" >
+  <header role="banner" class="top-header"><!--<hgroup>
+  <h1 class="text-center">
+  	<a href="/">fuccboiGDX</a>
+  </h1>
+  
+</hgroup>-->
+
+<!--<ul class="example-orbit-content" data-orbit>
+  <li data-orbit-slide="headline-1">
+    <div>
+      <h2>Headline 1</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <div>
+      <h2>Headline 2</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div>
+      <h2>Headline 3</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+</ul>-->
+
+</header>
+  <nav role="navigation"><ul class="subscription hide" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+
+
+
+<div class="sticky">
+
+  <nav class="top-bar" data-topbar role="navigation">
+
+    <!--
+    <ul class="title-area right">
+        <li class="name">
+          <h1><a href="/">fuccboiGDX <i class="fa fa-heart"></i></i></i></a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    -->
+
+
+    <section class="top-bar-section">
+      <ul class="main-navigation right show-for-medium-up">
+          <li><a href="https://github.com/adonaac/fuccboiGDX">github</a></li>
+          <li><a href="https://twitter.com/adnzzzzZ">twitter</i></a></li>
+      </ul>
+
+      <ul class="main-navigation left">
+          <li><a href="/">fuccboiGDX</a></li>
+
+          <li class="has-dropdown">
+          <a href="/tutorials">tutorials</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Advanced</a>
+            <ul class="dropdown">
+                <li><a href="/tutorials/curvemaster">CurveMaster</a></li>
+                <li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
+            </ul>
+            </li>
+
+            <li class="has-dropdown"><a href="#">Examples</a>
+            <ul class="dropdown">
+                <li><a href="/examples#Animation">Animation</a></li>
+                <li><a href="/examples#Area">Area</a></li>
+                <li><a href="/examples#Camera">Camera</a></li>
+                <li><a href="/examples#Collision">Collision</a></li>
+                <li><a href="/examples#Gamestate">Gamestate</a></li>
+                <li><a href="/examples#Input">Input</a></li>
+                <li><a href="/examples#Layers">Layers</a></li>
+                <li><a href="/examples#Loading">Loading</a></li>
+                <li><a href="/examples#Objects">Objects</a></li>
+                <li><a href="/examples#Particles">Particles</a></li>
+                <li><a href="/examples#Random">Random</a></li>
+                <li><a href="/examples#Serialization">Serialization</a></li>
+                <li><a href="/examples#Shaders">Shaders</a></li>
+                <li><a href="/examples#Sound">Sound</a></li>
+                <li><a href="/examples#Text">Text</a></li>
+                <li><a href="/examples#Tilemap">Tilemap</a></li>
+                <li><a href="/examples#Timing">Timing</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <li class="has-dropdown">
+          <a href="/documentation">documentation</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Main</a>
+            <ul class="dropdown">
+                <li><a href="/documentation/fg">fg</a></li>
+                <li><a href="/documentation/render">Render</a></li>
+                <li><a href="/documentation/world">World</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Logic</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/area">Area</a></li>
+            <li><a href="/documentation/class">Class</a></li>
+            <li><a href="/documentation/debug">Debug</a></li>
+            <li><a href="/documentation/entity">Entity</a></li>
+            <li><a href="/documentation/gamestate">Gamestate</a></li>
+            <li><a href="/documentation/input">Input</a></li>
+            <li><a href="/documentation/loader">Loader</a></li>
+            <li><a href="/documentation/objectpool">ObjectPool</a></li>
+                <li class="has-dropdown"><a href="#">Physics</a>
+                <ul class="dropdown">
+                    <li><a href="/documentation/collision">Collision</a></li>
+                    <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
+                    <li><a href="/documentation/solid">Solid</a></li>
+                </ul>
+                </li>
+            <li><a href="/documentation/serial">Serial</a></li>
+            <li><a href="/documentation/timer">Timer</a></li>
+            <li><a href="/documentation/utils">utils</a></li>
+            <li><a href="/documentation/vector">Vector</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Visual</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/animation">Animation</a></li>
+            <li><a href="/documentation/background">Background</a></li>
+            <li><a href="/documentation/camera">Camera</a></li>
+            <li><a href="/documentation/particles">Particles</a></li>
+            <li><a href="/documentation/spritebatch">Spritebatch</a></li>
+            <li><a href="/documentation/text">Text</a></li>
+            <li><a href="/documentation/tilemap">Tilemap</a></li>
+            <li><a href="/documentation/uitools">UI Tools</a></li>
+            </ul>
+
+            <li class="has-dropdown"><a href="#">Sound</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/sound">Sound</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <!--
+          <li class="has-dropdown">
+            <a href="/no-sidebar">No Sidebar Page</a>
+
+            <ul class="dropdown">
+              <li><a href="/no-sidebar/left-sidebar">Left Sidebar Page</a></li>
+              <li><a href="/no-sidebar/right-sidebar">Right Sidebar Page</a></li>
+              <li><a href="/no-sidebar/example-formatting">Example Formatting</a></li>
+            </ul>
+
+          </li>
+
+          <li><a href="/blog">Blog</a></li>
+
+          <li><a href="/blog/archives">Archives</a></li>
+          -->
+
+      </ul>
+
+    </section>
+  </nav>
+
+</div>
+
+
+
+
+
+
+<div data-magellan-expedition>
+<div id="nav" class="fixed right show-for-large-up">
+<ul class="side-nav">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</div>
+</div>
+
+</nav>
+  <div id="main">
+    <div id="content" class="row">
+      
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
+
+  <article role="article">
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Basic Programming Concepts</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="first_steps" data-magellan-destination="first_steps">First Steps</h3>
+
+<p>This tutorial will teach you about the very basic concepts behind computer programming. If you know absolutely nothing about programming but you wanna make games,
+this is the right place to start! Before we actually start, though, you have to download a few things:</p>
+
+<p><strong>Text editor</strong>: this is what you use to create files containing commands that the computer runs. You could use Notepad if you wanted to, since it can create files,
+but there are text editors made just for programming that provide a lot of useful functionality. Two really good ones are: <a href="http://notepad-plus-plus.org/">Notepad++</a> 
+and <a href="http://www.sublimetext.com/">Sublime Text</a>.</p>
+
+<p><strong>Lua</strong>: Lua is a very beginner friendly language that is simple to understand, while being extremely powerful and expressible. 
+If you use Windows, then you should install <a href="http://code.google.com/p/luaforwindows/downloads/list">Lua for Windows</a>. If you use OSX or Linux then you should already have Lua installed, 
+and you can run its interpreter by typing <code>lua</code> in a terminal.</p>
+
+<p><strong>LÖVE</strong>: LÖVE is a 2D game making framework and it’s what you use to draw things to the screen, receive input from a keyboard/mouse/gamepad, play sounds, and so on… It’s also what Mogamett 
+uses as the base for access to all of those functionalities. You can download it <a href="http://love2d.org/">here</a>.</p>
+
+<p>This tutorial is divided in two parts. The first deals with basic programming concepts and uses only Lua. The second deals with applying those concepts into making a simple game, and uses
+both Lua and LÖVE. By the end of reading this and following along on your own computer (<strong>and also doing the exercises!!!</strong>), you should have the skills to make simple games using LÖVE. 
+Anyway, are you ready? Then let’s go~!!!
+<br />
+<br /></p>
+
+<h3 id="program_structure" data-magellan-destination="program_structure">Program Structure</h3>
+
+<p>The structure of a program in any language usually follows the same set of rules:</p>
+
+<ul>
+    <li> A file containing commands is given to the computer; </li>
+    <li> The computer runs each command contained on the file, line by line, in a top down manner; </li>
+    <li> The computer stops execution when it reaches the end of the file. </li> 
+</ul>
+
+<p>So, to see that happening, let’s first create a file. Open up your text editor and create a file named <code>numbers.lua</code>. In it, add the following commands
+(the numbers to the left side are line number markers, they’re not part of what you should add to the file):</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+</pre></td>
+  <td class="code"><pre><span class="predefined">print</span>(<span class="integer">1</span>)
+<span class="predefined">print</span>(<span class="integer">2</span>)
+<span class="predefined">print</span>(<span class="integer">3</span>)
+</pre></td>
+</tr></table>
+</div>
+
+<p>To tell the computer to run the file, we’re gonna use the Lua interpreter. You’ve installed it previously if you’re on Windows (Lua for Windows). Open a terminal
+(don’t know how to do it? Google it) and change to the directory (Google it) where you created the <code>numbers.lua</code> file. After that, type <code>lua numbers.lua</code>, and
+the numbers <code>1 2 3</code> should be printed to the screen, like in the image below:</p>
+
+<p><img class="center" src="/../../assets/numbers.png" /></p>
+
+<p>What’s happening here is exactly as the rules previously stated said. A file is given to the computer and the computer runs it line by line. In this case, each line’s command is 
+<code>print</code>, a function (I’ll use function interchangeably with command from now on) which simply prints to the screen whatever you tell it to print. We’re telling each print 
+function to print one number, and so it does in the order we told it to. Each statement is independent of the other, such that if we remove <code>print(2)</code> then the output when 
+you <code>lua numbers.lua</code> again will be <code>1 3</code>.</p>
+
+<p>But we can tell the print function to print other types of things, like an addition, or a subtraction, or a string (google it)! Add these to your <code>numbers.lua</code> file, run it and see
+the output. The <code>numbers.lua</code> file should look something like this:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+</pre></td>
+  <td class="code"><pre><span class="predefined">print</span>(<span class="integer">1</span>)
+<span class="predefined">print</span>(<span class="integer">2</span>)
+<span class="predefined">print</span>(<span class="integer">3</span>)
+<span class="predefined">print</span>(<span class="integer">2</span>+<span class="integer">2</span>)
+<span class="predefined">print</span>(<span class="integer">6</span><span class="integer">-1</span>)
+<span class="predefined">print</span>(<span class="string"><span class="delimiter">'</span><span class="content">Hello~!</span><span class="delimiter">'</span></span>)
+</pre></td>
+</tr></table>
+</div>
+
+<p>And the output something like this:</p>
+
+<p><img class="center" src="/../../assets/hello.png" /></p>
+
+<p>Throughout all tutorials there will be exercises. Those exercises can be skipped if you feel like it, but you’ll learn more processes and ways of behaving related to programming 
+if you actually do them. The main goal behind doing them is making things stick in your head, as well as teaching you how to Google things. Googling is a big part of being a programmer and 
+you should learn to look for answers on your own. You should be especially capable of creating a reasonable mental model of something by reading different explanations that you find on Google. 
+All exercises have answers, but you should only look at those after you’ve actually tried answering them by means of Google or something else. <strong>The answers, and to an extent, the questions, 
+are not important. The process of coming to those answers is important. If you simply read the questions and read the answers, you will not have exercised what the exercise tries to exercise, 
+and you will gain nothing out of it.</strong> If you already know the answers, then just skip them until you start getting to exercises where you don’t.</p>
+
+<dl class="accordion" data-accordion="">
+<dd>
+<a href="#panel1">Exercises</a>
+<div id="panel1" class="content">
+<ol>
+    <li> What&#8217;s another way of running Lua programs? <br />
+        <dl class="accordion" data-accordion="">
+        <dd>
+        <a href="#panel7">Answer</a>
+        <div id="panel7" class="content answer">
+            Using the interactive Lua interpreter.
+        </div>
+        </dd>
+        </dl>
+    </li>
+    <li> What&#8217;s a string and why does it have to be enclosed in quotes? <br />
+        <dl class="accordion" data-accordion="">
+        <dd>
+        <a href="#panel8">Answer</a>
+        <div id="panel8" class="content answer">
+            A string is a sequence of characters (text data) and it has to be 
+            enclosed in some way so that the computer (more specifically the compiler) can tell that it is text data instead of being a program command. 
+        </div>
+        </dd>
+        </dl>
+    </li>
+    <li> What&#8217;s the command line and how do you change directories using it? 
+        <dl class="accordion" data-accordion="">
+        <dd>
+        <a href="#panel9">Answer</a>
+        <div id="panel9" class="content answer">
+            Command line interpreters are programs that take commands
+            and act on them, much like normal programs. The normal terminals that you have on Windows, OSX and Linux simply implement a bunch of useful functions related
+            to the operating system at hand. Such a function is cd, which changes the current directory to the directory provided as an argument to it. 
+        </div>
+        </dd>
+        </dl>
+    </li>
+</ol>
+</div>
+</dd>
+</dl>
+<p><br /></p>
+
+<h3 id="variables" data-magellan-destination="variables">Variables</h3>
+
+<p>Computers are uncanilly good at remembering things. Unlike our mind’s memory, which works in a fuzzy associative way, a computer’s memory works more like a storage.
+Except that it’s a storage with perfect cataloging, cloning and teleporting powers: you know exactly where each package is and you can type in its address and press a button; the package is then
+cloned and the copy is instantly teleported to you. Addresses for this storage usually look something like this: <code>0x3A28213A</code>, <code>0x6339392C</code>, <code>0x7363682E</code>, which 
+are numbers using the hexadecimal numeral system. </p>
+
+<p><img class="center" src="/../../assets/pointers.png" /></p>
+
+<p>Remembering those numbers every time you want to get a package from the storage is extremely tiresome and difficult, though. So what early storage 
+people did was add the ability to refer to a certain address by a name that they picked: this is called a <code>variable</code>.</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">local</span> <span class="local-variable">a</span>
+a = <span class="integer">1</span>
+<span class="predefined">print</span>(a)
+</pre></td>
+</tr></table>
+</div>
+
+<p>Here <code>a</code> is a variable. The output of this piece of code, if you run it, is <code>1</code>, and to understand why that is I’ll define two operations: 
+<code>load</code> and <code>store</code>. Using the storage analogy, the <code>load</code> operation does the following: receive a handle/name, translate that handle into a storage address, 
+clone the package contained in that address and teleport the copied package to a temporary location. The <code>store</code> operation does the following: receive a handle and a package, 
+translate that handle into a storage address, teleport the package into the address, overwriting whatever other package was there.</p>
+
+<p>So now we can understand, in terms of <code>load</code> and <code>store</code>, what’s going on with the code sample up there.</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">local</span> <span class="local-variable">a</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>The first line simply defines the <code>a</code> handle. This allocates a memory address that corresponds to this variable.</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>a = <span class="integer">1</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>The second line is a <code>store</code> operation. In programming, <code>store</code> operations use a single <code>=</code> sign. So <code>a = 1</code> really means <em>a receives 1</em>
+or <em>1 is stored in a</em>. The proper way of expressing this operation in terms of <code>store</code> would be: <code>store a, 1</code>.</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre><span class="predefined">print</span>(a)
+</pre></td>
+</tr></table>
+</div>
+
+<p>The third line is the most complicated one. It does two things: a <code>load</code> operation and a function call.
+The computer (more specifically the compiler) knows that <code>a</code> is a programmer defined handle and that it corresponds to a certain address in memory, and it also knows 
+that the <code>print</code> function wants the value contained in that address. So what it does is: <code>load temp, a</code>. Here <code>temp</code> is a temporary location in which the value 
+<code>1</code> (the value contained in the address of the handle <code>a</code>) will be held - there are many temporary locations available and we can use them freely. After that, when the 
+<code>print</code> function does its job, it will use <code>temp</code> to fetch the value of <code>a</code>. And so then the value <code>1</code> is printed to the screen.</p>
+
+<dl class="accordion" data-accordion="">
+<dd>
+<a href="#panel2">Exercises</a>
+<div id="panel2" class="content">
+<ol>
+    <li> What&#8217;s the output from the following commands? (do it yourself by hand first, run it after)<br /><br />
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">local</span> <span class="local-variable">a</span>
+<span class="keyword">local</span> <span class="local-variable">b</span>
+a = <span class="integer">1</span>
+b = <span class="integer">2</span>
+<span class="predefined">print</span>(a+b)
+</pre></td>
+</tr></table>
+</div>
+    <dl class="accordion" data-accordion="">
+    <dd>
+    <a href="#panel3">Answer</a>
+    <div id="panel3" class="content answer-code">
+        local a; <br />
+        local b; <br />
+        store a, 1 (a is 1); <br />
+        store b, 2 (b is 2); <br />
+        load temp1, a (temp1 is 1); <br />
+        load temp2, b (temp2 is 2); <br />
+        print(temp1+temp2) (output is 3) <br />
+    </div>
+    </dd>
+    </dl>
+    </li>
+    <br />
+    <li> What&#8217;s the output from the following commands?<br /><br />
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">local</span> <span class="local-variable">a</span>
+<span class="keyword">local</span> <span class="local-variable">b</span>
+a = <span class="integer">1</span>
+b = a
+<span class="predefined">print</span>(a+b)
+</pre></td>
+</tr></table>
+</div>
+    <dl class="accordion" data-accordion="">
+    <dd>
+    <a href="#panel4">Answer</a>
+    <div id="panel4" class="content answer-code">
+        local a; <br />
+        local b; <br />
+        store a, 1 (a is 1); <br />
+        load temp1, a (temp1 is 1); <br />
+        store b, temp1 (b is 1); <br />
+        load temp1, a (temp1 is 1); <br />
+        load temp2, b (temp2 is 1); <br />
+        print(temp1+temp2) (output is 2) <br />
+    </div>
+    </dd>
+    </dl>
+    </li>
+    <br />
+    <li> What&#8217;s the output from the following commands?<br /><br />
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">local</span> <span class="local-variable">a</span>
+<span class="keyword">local</span> <span class="local-variable">b</span>
+<span class="keyword">local</span> <span class="local-variable">c</span>
+a = <span class="integer">1</span>
+b = a
+c = a
+a = <span class="integer">2</span>
+<span class="predefined">print</span>(a+b-c)
+</pre></td>
+</tr></table>
+</div>
+    <dl class="accordion" data-accordion="">
+    <dd>
+    <a href="#panel5">Answer</a>
+    <div id="panel5" class="content answer-code">
+        local a; <br />
+        local b; <br />
+        local c; <br />
+        store a, 1 (a is 1); <br />
+        load temp1, a (temp1 is 1); <br />
+        store b, temp1 (b is 1); <br />
+        store c, temp1 (c is 1); <br />
+        store a, 2 (a is 2); <br />
+        load temp1, a (temp1 is 2); <br />
+        load temp2, b (temp2 is 1); <br />
+        load temp3, c (temp3 is 1); <br />
+        print(temp1+temp2-temp3) (output is 2) <br />
+    </div>
+    </dd>
+    </dl>
+    </li>
+    <br />
+    <li> What&#8217;s the output from the following commands?<br /><br />
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">local</span> <span class="local-variable">a</span>
+<span class="keyword">local</span> <span class="local-variable">b</span>
+<span class="keyword">local</span> <span class="local-variable">c</span>
+a = <span class="integer">3</span>
+b = <span class="integer">2</span>
+<span class="predefined">print</span>(a*b)
+c = b
+a = c
+b = a
+a = b
+<span class="predefined">print</span>(a+b*c)
+</pre></td>
+</tr></table>
+</div>
+    <dl class="accordion" data-accordion="">
+    <dd>
+    <a href="#panel6">Answer</a>
+    <div id="panel6" class="content answer-code">
+        local a; <br />
+        local b; <br />
+        local c; <br />
+        store a, 3 (a is 3); <br />
+        store b, 2 (b is 2); <br />
+        load temp1, a (temp1 is 3); <br />
+        load temp2, b (temp2 is 2); <br />
+        print(temp1*temp2) (output is 6); <br />
+        load temp1, c (temp1 is 2); <br />
+        store c, temp1 (c is 2); <br />
+        load temp1, c (temp1 is 2); <br />
+        store a, temp1 (a is 2); <br />
+        load temp1, a (temp1 is 2); <br />
+        store b, temp1 (b is 2); <br />
+        load temp1, b (temp1 is 2); <br />
+        store a, temp1 (a is 2); <br />
+        print(temp1+temp2*temp3) (output is 6, PEMDAS applies to programming as well)
+    </div>
+    </dd>
+    </dl>
+    </li>
+    <br />
+
+    <li> When a variable is not initialized, it contains garbage. Garbage means random values that polluted the memory address before the variable started pointing to it.
+    In a language like C, when you create variable but don&#8217;t assign any values to it right away, your variable will point to this garbage. In Lua, though, garbage is <code>nil</code>,
+    a value that represents useless information. The <code>print</code> function prints <code>nil</code> with no problems. Mathematical operations fail and halt the program&#8217;s
+    execution if one of the values being operated upon is <code>nil</code>. With that in mind, what&#8217;s the output of the following commands?<br /><br />
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">local</span> <span class="local-variable">a</span>
+<span class="keyword">local</span> <span class="local-variable">b</span>
+a = <span class="integer">2</span>
+<span class="predefined">print</span>(b)
+<span class="predefined">print</span>(a)
+a = b
+b = <span class="integer">4</span>
+<span class="predefined">print</span>(a+b)
+</pre></td>
+</tr></table>
+</div>
+    <dl class="accordion" data-accordion="">
+    <dd>
+    <a href="#panel10">Answer</a>
+    <div id="panel10" class="content answer-code">
+        local a; <br />
+        local b; <br />
+        store a, 2 (a is 2); <br />
+        load temp1, b (temp1 is nil); <br />
+        print(temp1) (output is nil); <br />
+        load temp1, a (temp1 is 2); <br />
+        print(temp1) (output is 2); <br />
+        load temp1, b (temp1 is nil); <br />
+        store a, temp1 (a is nil); <br />
+        store b, 4 (b is 4); <br />
+        load temp1, a (temp1 is nil); <br />
+        load temp2, b (temp2 is 4); <br />
+        print(temp1+temp2) (error, addition with nil breaks program execution)
+    </div>
+    </dd>
+    </dl>
+    </li>
+    <br />
+
+    <li>Assume that <code>print</code> and <code>local</code> are <code>operations</code>. Using only <code>load</code>, <code>store</code> and <code>operation</code>, what&#8217;s the order 
+    of execution of the following programs? (i.e. <code>operation</code>, <code>operation</code>, <code>load</code>, <code>store</code>, <code>operation</code>)  Additionally, what are the final
+    values of <code>a</code>, <code>b</code> and <code>c</code>?<br /><br />
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">local</span> <span class="local-variable">a</span>
+<span class="keyword">local</span> <span class="local-variable">b</span>
+<span class="keyword">local</span> <span class="local-variable">c</span>
+a = <span class="integer">1</span>
+b = <span class="integer">2</span>
+c = <span class="integer">3</span>
+<span class="predefined">print</span>(a+b+c)
+a = b+c*a
+a = a+a
+c = <span class="integer">2</span>*c
+b = a+c
+b = b+b
+<span class="predefined">print</span>(a+b+c)
+</pre></td>
+</tr></table>
+</div>
+    <dl class="accordion" data-accordion="">
+    <dd>
+    <a href="#panel11">Answer</a>
+    <div id="panel11" class="content answer-code">
+        operation <br />
+        operation <br />
+        operation <br />
+        store <br />
+        store <br />
+        store <br />
+        load <br />
+        load <br />
+        load <br />
+        operation <br />
+        load <br />
+        load <br />
+        load <br />
+        store (in reality you can&#8217;t do b+c*a in one instruction, like, store a, tempb+tempc*tempa, but since this is not what I&#8217;m covering here it&#8217;s okay (albeit hand-wavey), if you&#8217;re
+        more interested look up how add, sub, mul and div assembly instructions work)
+        load <br />
+        store (can save one instruction since it&#8217;s a+a) <br />
+        load <br />
+        store (2 is a value, doesn&#8217;t need a load) <br />
+        load <br />
+        load <br />
+        store <br />
+        load (can save one instruction again since it&#8217;s b+b) <br />
+        store <br />
+        load <br />
+        load <br />
+        load <br />
+        operation <br />
+        And the final values are: a = 10, b = 32 and c = 6
+    </div>
+    </dd>
+    </dl>
+    
+    </li>
+</ol>
+</div>
+</dd>
+</dl>
+<p><br /></p>
+
+<h3 id="types" data-magellan-destination="types">Types</h3>
+
+    
+  </article>
+  
+  </div><!--.columns-->
+  
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p class="text-center">
+  <span class="credit">
+  	Made using <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/annejohnson/octofound">Octofound</a><br/>
+  </span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+</body>
+</html>

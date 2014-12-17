@@ -6,11 +6,23 @@
 <head>
   <script src="/js/vendor/modernizr.js"></script>
   <meta charset="utf-8">
-  <title>fuccboiGDX</title>
+  <title>Group - fuccboiGDX</title>
   <meta name="author" content="adnzzzzZ">
 
   
-  <meta name="description" content="fuccboiGDX is a 2D game making code-centric engine/framework that provides additional higher level functionalities on top of LÖVE, making game &hellip;">
+  <meta name="description" content="<!-- Group --> Example 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11 -- create enemy group
+enemy_group = mg.Group('Enemy') -- add some enemies
+enemy_group:add(enemy_1) &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +30,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fuccboi.moe">
+  <link rel="canonical" href="http://fuccboi.moe/documentation/group">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
@@ -63,7 +75,7 @@
 
 </head>
 
-<body  id="main_page"   class="no-sidebar" >
+<body   class="no-sidebar" >
   <header role="banner" class="top-header"><!--<hgroup>
   <h1 class="text-center">
   	<a href="/">fuccboiGDX</a>
@@ -314,38 +326,182 @@
   <div id="main">
     <div id="content" class="row">
       
-<div class="small-12 medium-12 large-10 large-centered columns">
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
 
   <article role="article">
-    <!---->
-    <p><strong>fuccboiGDX</strong> is a 2D game making code-centric engine/framework that provides additional higher level functionalities on top of <a href="http://love2d.org">LÖVE</a>, 
-making game creation easier, faster, and buzzword! It’s free, open source and supported on Windows, Linux and OSX.</p>
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Group</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="example" data-magellan-destination="example">Example</h3>
 
-<div class="row">
-    <div class="small-4 columns text-center">
-        <a href="https://github.com/adonaac/fuccboiGDX/archive/master.zip" class="button expand">download</a>
-    </div>
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- create enemy group</span>
+enemy_group = mg.Group(<span class="string"><span class="delimiter">'</span><span class="content">Enemy</span><span class="delimiter">'</span></span>)
 
-    <div class="small-4 columns text-center">
-        <a href="/tutorials" class="button expand">tutorials</a>
-    </div>
+<span class="comment">-- add some enemies</span>
+enemy_group:add(enemy_1)
+enemy_group:add(enemy_2)
 
-    <div class="small-4 columns text-center">
-        <a href="/documentation" class="button expand">documentation</a>
-    </div>
+<span class="comment">-- deal damage to all enemies</span>
+group:apply(<span class="keyword">function</span>(enemy)
+    enemy.hp = enemy.hp - math.random(<span class="integer">2</span>, <span class="integer">4</span>)
+<span class="keyword">end</span>)
+</pre></td>
+</tr></table>
 </div>
+<p><br /></p>
 
-<!--
-<h2 style="text-align: center">Games being made with fuccboiGDX</h2>
-<br>
+<h3 id="description" data-magellan-destination="description">Description</h3>
 
-<ul class="example-orbit" data-orbit data-options="navigation_arrows: false; pause_on_hover:false; bullets: false; slide_number: false"> 
-    <li><img src="/assets/fight.gif"/></li> 
-    <li><img src="/assets/hitee.gif"/></li> 
-    <li><img src="/assets/ice.gif"/></li> 
-    <li><img src="/assets/attack.gif"/></li> 
+<p>The <code class="text">mg.Group</code> class handles the creation of groups: logical bundling of entities for extra organization and handling of multiple related entities.
+Multiple instances are automatically created on <code class="text">mg.world.groups</code>, more specifically, one instance of a Group is created for each class created with 
+the <code class="text">mg.class</code> call. the is so that the call <code class="text">mg.world:createEntity('group_name', ...)</code> adds each entity type to the appropriate Group.
+Alternatively, you can create your own groups by calling <code class="text">group = mg.Group('group_name')</code>.</p>
+
+<h3 id="methods" data-magellan-destination="methods">Methods</h3>
+
+<div><table class="CodeRay">
+<td class="code"><pre>
+:<span class="annotation">new</span>(name<span class="tag">[string]</span>)
+</pre></td>
+</table></div>
+
+<ul>
+  <li><code>name</code>: the name of the group 
+<br /><br /></li>
 </ul>
-&#8211;>
+
+<div><table class="CodeRay">
+<td class="code"><pre>
+:<span class="annotation">update</span>(dt)
+</pre></td>
+</table></div>
+
+<ul>
+  <li>updates all entities contained in the group that have an <code class="text">update</code> function implemented </li>
+  <li><code>dt</code>: delta value passed from the main loop to update the camera
+<br /><br /></li>
+</ul>
+
+<div><table class="CodeRay">
+<td class="code"><pre>
+:<span class="annotation">draw</span>()
+</pre></td>
+</table></div>
+
+<ul>
+  <li>draws all entities contained in the group that have a <code class="text">draw</code> function implemented 
+<br /><br /></li>
+</ul>
+
+<div><table class="CodeRay">
+<td class="code"><pre>
+:<span class="annotation">add</span>(entity<span class="tag">[table]</span>)
+</pre></td>
+</table></div>
+
+<ul>
+  <li><code>entity</code>: the object to be added to the group 
+<br /><br /></li>
+</ul>
+
+<div><table class="CodeRay">
+<td class="code"><pre>
+:<span class="annotation">apply</span>(action<span class="tag">[function]</span>)
+</pre></td>
+</table></div>
+
+<ul>
+  <li>applies a function to all entities in the group</li>
+  <li><code>action</code>: the function to be applied, it should receive one argument: the current entity being acted upon </li>
+</ul>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+</pre></td>
+  <td class="code"><pre>group:apply(<span class="keyword">function</span>(entity)
+    entity:doSomething()
+<span class="keyword">end</span>)
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<div><table class="CodeRay">
+<td class="code"><pre>
+:<span class="annotation">destroy</span>()
+</pre></td>
+</table></div>
+
+<ul>
+  <li>removes all references to all entities from the group
+<br /><br /></li>
+</ul>
+
+<div><table class="CodeRay">
+<td class="code"><pre>
+:<span class="annotation">getEntities</span>()
+</pre></td>
+</table></div>
+
+<ul>
+  <li><code>table</code> returns a table containing a reference to all entities from the group 
+<br /><br /></li>
+</ul>
+
+<div><table class="CodeRay">
+<td class="code"><pre>
+:<span class="annotation">remove</span>(id<span class="tag">[number]</span>)
+</pre></td>
+</table></div>
+
+<ul>
+  <li><code>id</code>: the id of the entity to be removed 
+<br /><br /></li>
+</ul>
+
+<h3 id="attributes" data-magellan-destination="attributes">Attributes</h3>
+
+<div><table class="CodeRay">
+<td class="code"><pre>
+.<span class="annotation">name</span><span class="tag">[string]</span>
+</pre></td>
+</table></div>
+
+<ul>
+  <li>the name of the group 
+<br /><br /></li>
+</ul>
+
+<div><table class="CodeRay">
+<td class="code"><pre>
+.<span class="annotation">entities</span><span class="tag">[table]</span>
+</pre></td>
+</table></div>
+
+<ul>
+  <li>the table containing all entities, can also be accessed through <code class="atrm">:getEntities()</code> 
+<br /><br /></li>
+</ul>
+
 
     
       <footer>
@@ -354,6 +510,12 @@ making game creation easier, faster, and buzzword! It’s free, open source and 
       </footer>
     
   </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
   
   </div><!--.columns-->
   
@@ -459,6 +621,22 @@ making game creation easier, faster, and buzzword! It’s free, open source and 
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/documentation/group/index.html';
+        var disqus_url = 'http://fuccboi.moe/documentation/group/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

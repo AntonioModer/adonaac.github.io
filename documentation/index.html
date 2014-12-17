@@ -6,11 +6,11 @@
 <head>
   <script src="/js/vendor/modernizr.js"></script>
   <meta charset="utf-8">
-  <title>fuccboiGDX</title>
+  <title>documentation - fuccboiGDX</title>
   <meta name="author" content="adnzzzzZ">
 
   
-  <meta name="description" content="fuccboiGDX is a 2D game making code-centric engine/framework that provides additional higher level functionalities on top of LÖVE, making game &hellip;">
+  <meta name="description" content="<!-- Documentation --> fuccboiGDX is composed of two parts: the framework and the engine. The framework contains some user created LÖVE libraries &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fuccboi.moe">
+  <link rel="canonical" href="http://fuccboi.moe/documentation">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
@@ -63,7 +63,7 @@
 
 </head>
 
-<body  id="main_page"   class="no-sidebar" >
+<body   class="no-sidebar" >
   <header role="banner" class="top-header"><!--<hgroup>
   <h1 class="text-center">
   	<a href="/">fuccboiGDX</a>
@@ -236,6 +236,41 @@
 
 
 
+<div id="nav" class="fixed right show-for-large-up">
+<ul class="side-nav">
+
+<strong><a href="/documentation">documentation</a><br><br></strong>
+<li><a href="/documentation/fg">fg</a></li>
+<li><a href="/documentation/animation">Animation</a></li>
+<li><a href="/documentation/area">Area (Engine)</a></li>
+<li><a href="/documentation/background">Background</a></li>
+<li><a href="/documentation/camera">Camera</a></li>
+<li><a href="/documentation/class">Class</a></li>
+<li><a href="/documentation/collision">Collision (Engine)</a></li>
+<li><a href="/documentation/debug">Debug</a></li>
+<li><a href="/documentation/entity">Entity (Engine)</a></li>
+<li><a href="/documentation/gamestate">Gamestate</a></li>
+<li><a href="/documentation/input">Input</a></li>
+<li><a href="/documentation/loader">Loader</a></li>
+<li><a href="/documentation/objectpool">ObjectPool (Engine)</a></li>
+<li><a href="/documentation/particles">Particles</a></li>
+<li><a href="/documentation/physicsbody">PhysicsBody (Engine)</a></li>
+<li><a href="/documentation/render">Render (Engine)</a></li>
+<li><a href="/documentation/serial">Serial</a></li>
+<li><a href="/documentation/solid">Solid (Engine)</a></li>
+<li><a href="/documentation/sound">Sound</a></li>
+<li><a href="/documentation/spritebatch">Spritebatch</a></li>
+<li><a href="/documentation/text">Text</a></li>
+<li><a href="/documentation/tilemap">Tilemap</a></li>
+<li><a href="/documentation/timer">Timer</a></li>
+<li><a href="/documentation/uitools">UI Tools</a></li>
+<li><a href="/documentation/utils">Utils</a></li>
+<li><a href="/documentation/vector">Vector</a></li>
+<li><a href="/documentation/world">World (Engine)</a></li>
+
+</ul>
+</div>
+
 
 
 
@@ -314,38 +349,82 @@
   <div id="main">
     <div id="content" class="row">
       
-<div class="small-12 medium-12 large-10 large-centered columns">
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
 
   <article role="article">
-    <!---->
-    <p><strong>fuccboiGDX</strong> is a 2D game making code-centric engine/framework that provides additional higher level functionalities on top of <a href="http://love2d.org">LÖVE</a>, 
-making game creation easier, faster, and buzzword! It’s free, open source and supported on Windows, Linux and OSX.</p>
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Documentation</h1>
+      
+      
+    </header>
+    -->
+    <p><strong>fuccboiGDX</strong> is composed of two parts: the <code class="text">framework</code> and the <code class="text">engine</code>.</p>
 
-<div class="row">
-    <div class="small-4 columns text-center">
-        <a href="https://github.com/adonaac/fuccboiGDX/archive/master.zip" class="button expand">download</a>
-    </div>
+<p>The <code class="text">framework</code> contains some <a href="http://www.love2d.org/wiki/Category:Libraries">user created LÖVE libraries</a> 
+that are useful for game development. Most libraries chosen are <a href="http://www.infoq.com/presentations/Simple-Made-Easy">simple</a>, 
+self-contained and composable so that they can be used independently of each other with few problems. This is in a similar 
+fashion to how LÖVE’s own modules work.</p>
 
-    <div class="small-4 columns text-center">
-        <a href="/tutorials" class="button expand">tutorials</a>
-    </div>
+<p>The <code class="text">engine</code> uses modules from the framework as well as a bunch of glue code to build a higher level
+programming experience <strong>at the cost of customizability and control</strong>. The features provided by the engine have the goal of 
+making the programmer’s life easier, taking care of some tedious work usually goes into making a game, things like: box2d
+wrappers, collision handling, map saving/loading, levels, pooling, and so on…</p>
 
-    <div class="small-4 columns text-center">
-        <a href="/documentation" class="button expand">documentation</a>
-    </div>
-</div>
+<p>The words <code class="text">framework</code> and <code class="text">engine</code> will be used throughout the documentation
+and usually you only have to pay more attention when the <code class="text">engine</code> is mentioned, since it implies that 
+things are tied together in sometimes initially unintuitive or unexpected ways. I’ve taken care of documenting those parts
+extensively so hopefully they aren’t that much of a problem.</p>
 
-<!--
-<h2 style="text-align: center">Games being made with fuccboiGDX</h2>
-<br>
+<h3 id="Modules" data-magellan-destination="Modules">Modules</h3>
 
-<ul class="example-orbit" data-orbit data-options="navigation_arrows: false; pause_on_hover:false; bullets: false; slide_number: false"> 
-    <li><img src="/assets/fight.gif"/></li> 
-    <li><img src="/assets/hitee.gif"/></li> 
-    <li><img src="/assets/ice.gif"/></li> 
-    <li><img src="/assets/attack.gif"/></li> 
+<p><strong>Main</strong></p>
+
+<ul>
+  <li><a href="fg">fg</a> - core, contains everything </li>
+  <li><a href="render">Render</a> - orchestrates all engine rendering functionality (inside the <code class="text">fg.world</code> instance)</li>
+  <li><a href="world">World</a> - orchestrates all engine functionality, an instance named <code class="text">fg.world</code> is automatically created on initialization</li>
 </ul>
-&#8211;>
+
+<p><strong>Logic</strong></p>
+
+<ul>
+  <li><a href="area">Area</a> - an area/level/map where objects reside in</li>
+  <li><a href="class">Class</a> - object orientation library, <a href="https://github.com/rxi/classic">rxi/classic</a></li>
+  <li><a href="collision">Collision</a> - internal module used for handling box2d collisions, read to understand how collisions are handled </li>
+  <li><a href="debug">Debug</a> - browser-based debug console for LÖVE, <a href="https://github.com/rxi/lovebird">rxi/lovebird</a></li>
+  <li><a href="entity">Entity</a> - base class for all engine game objects </li>
+  <li><a href="gamestate">Gamestate</a> - game state system, <a href="http://vrld.github.io/hump/#hump.gamestate">vrld/hump.gamestate</a></li>
+  <li><a href="input">Input</a> - binds keys to actions, allows for pressed/released checks outside of LÖVE’s callbacks and supports gamepads</li>
+  <li><a href="loader">Loader</a> - threaded resource loader, <a href="https://github.com/kikito/love-loader">kikito/love-loader</a></li>
+  <li><a href="pool">ObjectPool</a> - object pooling for higher performance on objects that are killed/created often</li>
+  <li><a href="physicsbody">PhysicsBody</a> - mixin used for adding physics capabilities to an object </li>
+  <li><a href="serial">Serial</a> - serialization for areas, objects and tables, uses <a href="https://github.com/gvx/Ser">gvx/Ser</a> internally</li>
+  <li><a href="solid">Solid</a> - the base collision solid entity</li>
+  <li><a href="timer">Timer</a> - timers, tweens and allows timer/tween tagging, an enhanced version of <a href="http://vrld.github.io/hump/#hump.timer">vrld/hump.timer</a> </li>
+  <li><a href="utils">Utils</a> - random utility functions, <a href="https://github.com/Yonaba/Moses">Yonaba/Moses</a>, <a href="https://github.com/davisdude/mlib">davisdude/mlib</a></li>
+  <li><a href="vector">Vector</a> - 2D vector class, <a href="http://vrld.github.io/hump/#hump.vector">vrld/hump.vector</a></li>
+</ul>
+
+<p><strong>Visual</strong></p>
+
+<ul>
+  <li><a href="animation">Animation</a> - creates animated sprites from sprite sheet images, an enhanced version of <a href="https://love2d.org/wiki/AnAL">bartbes/AnAL</a></li>
+  <li><a href="background">Background</a> - backgrounds for use with parallaxed layers</li>
+  <li><a href="camera">Camera</a> - similar to <a href="http://haxeflixel.com/demos/FlxCamera/">HaxeFlixel’s camera</a> with a few improvements, an enhanced version of <a href="http://vlrd.github.io/hump/#hump.camera">vrld/hump.camera</a></li>
+  <li><a href="particles">Particles (Engine)</a> - a simple particle systems module, also has an editor for editing particle systems</li>
+  <li><a href="spritebatch">Spritebatch</a> - batch draw calls from a single image for more performant draw code</li>
+  <li><a href="text">Text</a> - programmable text drawing</li>
+  <li><a href="tilemap">Tilemap</a> - tilemaps with autotiling, collision solid generation and Tiled support </li>
+  <li><a href="uitools">UI Tools</a> - UI module for building tools, <a href="https://github.com/KennyShields/LoveFrames">KennyShields/loveframes</a> </li>
+</ul>
+
+<p><strong>Sound</strong></p>
+
+<ul>
+  <li><a href="sound">Sound</a> - sound management system, <a href="https://love2d.org/wiki/TEsound">(Ensayia &amp; Taehl)/TEsound</a>
+<br /><br /></li>
+</ul>
 
     
       <footer>
@@ -354,6 +433,12 @@ making game creation easier, faster, and buzzword! It’s free, open source and 
       </footer>
     
   </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
   
   </div><!--.columns-->
   
@@ -459,6 +544,22 @@ making game creation easier, faster, and buzzword! It’s free, open source and 
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/documentation/index.html';
+        var disqus_url = 'http://fuccboi.moe/documentation/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

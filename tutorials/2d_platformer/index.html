@@ -1,0 +1,1653 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <script src="/js/vendor/modernizr.js"></script>
+  <meta charset="utf-8">
+  <title>2D Platformer - fuccboiGDX</title>
+  <meta name="author" content="adnzzzzZ">
+
+  
+  <meta name="description" content="<!-- 2D Platformer --> Knowledge Requirements Essential Programming Concepts (variables, conditionals, etc&#8230;) Lua
+LÖVE
+Essential Game &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fuccboi.moe/tutorials/2d_platformer">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
+
+  <script src="/js/vendor/jquery.js"></script>
+  <script src="/js/vendor/fastclick.js"></script>
+
+  <script src="/js/foundation.min.js"></script>
+  <script src="/js/foundation/foundation.magellan.js"></script>
+  <script src="/js/foundation/foundation.topbar.js"></script>
+  <script src="/js/foundation/foundation.accordion.js"></script>
+  <script src="/js/foundation/foundation.orbit.js"></script>
+  <script src="/js/foundation/foundation.dropdown.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <script>
+
+  $(document).ready(function(){
+    $(document).foundation();
+  });
+
+  </script>
+
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-51118504-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar" >
+  <header role="banner" class="top-header"><!--<hgroup>
+  <h1 class="text-center">
+  	<a href="/">fuccboiGDX</a>
+  </h1>
+  
+</hgroup>-->
+
+<!--<ul class="example-orbit-content" data-orbit>
+  <li data-orbit-slide="headline-1">
+    <div>
+      <h2>Headline 1</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <div>
+      <h2>Headline 2</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div>
+      <h2>Headline 3</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+</ul>-->
+
+</header>
+  <nav role="navigation"><ul class="subscription hide" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+
+
+
+<div class="sticky">
+
+  <nav class="top-bar" data-topbar role="navigation">
+
+    <!--
+    <ul class="title-area right">
+        <li class="name">
+          <h1><a href="/">fuccboiGDX <i class="fa fa-heart"></i></i></i></a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    -->
+
+
+    <section class="top-bar-section">
+      <ul class="main-navigation right show-for-medium-up">
+          <li><a href="https://github.com/adonaac/fuccboiGDX">github</a></li>
+          <li><a href="https://twitter.com/adnzzzzZ">twitter</i></a></li>
+      </ul>
+
+      <ul class="main-navigation left">
+          <li><a href="/">fuccboiGDX</a></li>
+
+          <li class="has-dropdown">
+          <a href="/tutorials">tutorials</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Advanced</a>
+            <ul class="dropdown">
+                <li><a href="/tutorials/curvemaster">CurveMaster</a></li>
+                <li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
+            </ul>
+            </li>
+
+            <li class="has-dropdown"><a href="#">Examples</a>
+            <ul class="dropdown">
+                <li><a href="/examples#Animation">Animation</a></li>
+                <li><a href="/examples#Area">Area</a></li>
+                <li><a href="/examples#Camera">Camera</a></li>
+                <li><a href="/examples#Collision">Collision</a></li>
+                <li><a href="/examples#Gamestate">Gamestate</a></li>
+                <li><a href="/examples#Input">Input</a></li>
+                <li><a href="/examples#Layers">Layers</a></li>
+                <li><a href="/examples#Loading">Loading</a></li>
+                <li><a href="/examples#Objects">Objects</a></li>
+                <li><a href="/examples#Particles">Particles</a></li>
+                <li><a href="/examples#Random">Random</a></li>
+                <li><a href="/examples#Serialization">Serialization</a></li>
+                <li><a href="/examples#Shaders">Shaders</a></li>
+                <li><a href="/examples#Sound">Sound</a></li>
+                <li><a href="/examples#Text">Text</a></li>
+                <li><a href="/examples#Tilemap">Tilemap</a></li>
+                <li><a href="/examples#Timing">Timing</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <li class="has-dropdown">
+          <a href="/documentation">documentation</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Main</a>
+            <ul class="dropdown">
+                <li><a href="/documentation/fg">fg</a></li>
+                <li><a href="/documentation/render">Render</a></li>
+                <li><a href="/documentation/world">World</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Logic</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/area">Area</a></li>
+            <li><a href="/documentation/class">Class</a></li>
+            <li><a href="/documentation/debug">Debug</a></li>
+            <li><a href="/documentation/entity">Entity</a></li>
+            <li><a href="/documentation/gamestate">Gamestate</a></li>
+            <li><a href="/documentation/input">Input</a></li>
+            <li><a href="/documentation/loader">Loader</a></li>
+            <li><a href="/documentation/objectpool">ObjectPool</a></li>
+                <li class="has-dropdown"><a href="#">Physics</a>
+                <ul class="dropdown">
+                    <li><a href="/documentation/collision">Collision</a></li>
+                    <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
+                    <li><a href="/documentation/solid">Solid</a></li>
+                </ul>
+                </li>
+            <li><a href="/documentation/serial">Serial</a></li>
+            <li><a href="/documentation/timer">Timer</a></li>
+            <li><a href="/documentation/utils">utils</a></li>
+            <li><a href="/documentation/vector">Vector</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Visual</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/animation">Animation</a></li>
+            <li><a href="/documentation/background">Background</a></li>
+            <li><a href="/documentation/camera">Camera</a></li>
+            <li><a href="/documentation/particles">Particles</a></li>
+            <li><a href="/documentation/spritebatch">Spritebatch</a></li>
+            <li><a href="/documentation/text">Text</a></li>
+            <li><a href="/documentation/tilemap">Tilemap</a></li>
+            <li><a href="/documentation/uitools">UI Tools</a></li>
+            </ul>
+
+            <li class="has-dropdown"><a href="#">Sound</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/sound">Sound</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <!--
+          <li class="has-dropdown">
+            <a href="/no-sidebar">No Sidebar Page</a>
+
+            <ul class="dropdown">
+              <li><a href="/no-sidebar/left-sidebar">Left Sidebar Page</a></li>
+              <li><a href="/no-sidebar/right-sidebar">Right Sidebar Page</a></li>
+              <li><a href="/no-sidebar/example-formatting">Example Formatting</a></li>
+            </ul>
+
+          </li>
+
+          <li><a href="/blog">Blog</a></li>
+
+          <li><a href="/blog/archives">Archives</a></li>
+          -->
+
+      </ul>
+
+    </section>
+  </nav>
+
+</div>
+
+
+
+
+
+
+<div data-magellan-expedition>
+<div id="nav" class="fixed right show-for-large-up">
+<ul class="side-nav">
+
+
+
+<strong><a href="/tutorials">tutorials</a><br><br></strong>
+
+
+
+
+
+<li data-magellan-arrival="Player_Creation"><a href="#Player_Creation">Player Creation</a></li><li data-magellan-arrival="Animations_and_Movement"><a href="#Animations_and_Movement">Animations and Movement</a></li><li data-magellan-arrival="Tilemap"><a href="#Tilemap">Tilemap</a></li><li data-magellan-arrival="Jump"><a href="#Jump">Jump</a></li><li data-magellan-arrival="Camera_and_Background"><a href="#Camera_and_Background">Camera and Background</a></li><li data-magellan-arrival="The_End"><a href="#The_End">The End</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</div>
+</div>
+
+</nav>
+  <div id="main">
+    <div id="content" class="row">
+      
+<div class="small-12 medium-12 large-10 large-centered columns">
+
+  <article role="article">
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">2D Platformer</h1>
+      
+      
+    </header>
+    -->
+    <dl class="accordion" data-accordion=""><dd><a href="#requirements">Knowledge Requirements</a><div id="requirements" class="content">
+<ul class="require">
+<li>Essential Programming Concepts (variables, conditionals, etc&#8230;) </li>
+<li><a href="http://nova-fusion.com/2012/08/27/lua-for-programmers-part-1/">Lua</a></li>
+<li>LÖVE</li>
+<li>Essential Game Programming (Pong, Tetris, &#8230;)</li>
+<li>Object Oriented Programming</li>
+</ul>
+</div></dd></dl>
+
+<p><img class="center" src="/assets/2dplatformer.gif" /></p>
+
+<p>This tutorial will teach you about some of the basic features of the engine through building a 2D platformer.
+You should have fuccboiGDX <a href="/downloads/fuccboi.zip">downloaded</a> and <a href="/tutorials#Getting_Started">set up</a> properly.
+<br /><br /></p>
+
+<h3 id="Player_Creation" data-magellan-destination="Player_Creation">Player Creation</h3>
+
+<p>The first thing we’re gonna do is create a basic Player class. Since we want to use the engine and get box2d physics out of the box,
+we want it to be a physics entity. Using the <a href="/examples#Physics_Template">physics entity template</a>, we get something like this:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- in Player.lua</span>
+<span class="keyword">local</span> <span class="local-variable">Player</span> = fg.Class(<span class="string"><span class="delimiter">'</span><span class="content">Player</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Entity</span><span class="delimiter">'</span></span>)
+Player:implement(fg.PhysicsBody)
+
+<span class="keyword">function</span> Player:<span class="function">new</span>(area, x, y, settings)
+    Player.super.new(self, area, x, y, settings)
+    self:physicsBodyNew(area, x, y, settings)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Player:<span class="function">update</span>(dt)
+    self:physicsBodyUpdate(dt)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Player:<span class="function">draw</span>()
+    self:physicsBodyDraw()
+<span class="keyword">end</span>
+
+<span class="keyword">return</span> Player
+</pre></td>
+</tr></table>
+</div>
+
+<p>To understand everything that’s going on with that code: <a href="/documentation/class">Class</a>, <a href="/documentation/collision">Collision</a>, 
+<a href="/documentation/entity">Entity</a> and <a href="/documentation/physicsbody">PhysicsBody</a>. </p>
+
+<p>With that in mind, to spawn a player we do this:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- in Game.lua</span>
+Player = require <span class="string"><span class="delimiter">'</span><span class="content">Player</span><span class="delimiter">'</span></span>
+
+<span class="keyword">function</span> Game:<span class="function">new</span>()
+    fg.world:createEntity(<span class="string"><span class="delimiter">'</span><span class="content">Player</span><span class="delimiter">'</span></span>, fg.screen_width/<span class="integer">2</span>, fg.screen_height/<span class="integer">2</span>)
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>Exactly what’s happening here is that every class you create with the <code class="text">mg.Class</code> call can be spawned by the <code class="text">fg.world:createEntity</code> call, 
+since that class gets automatically added to the engine (see more about this <a href="/documentation/world#Creation_Methods">here</a>). If you run all the above you should see a blue square on the 
+center of the screen. These are the player’s physics body’s debug drawing lines. You can turn off debug drawing by doing <code class="text">fg.debug_draw = false</code>.</p>
+
+<p>Another thing to note here is that <code class="text">fg.world:createEntity</code> is an alias for <code class="text">fg.world.areas['Default']:createEntity</code>, since the engine works
+through areas/levels. It just happens that the <code class="string">'Default'</code> one is created automatically and has aliases created for each one of its methods for simplicity. 
+You can learn more about areas <a href="/documentation/area">here</a>.
+<br /><br /></p>
+
+<h3 id="Animations_and_Movement" data-magellan-destination="Animations_and_Movement">Animations and Movement</h3>
+
+<p>Squares aren’t that interesting, though, so adding some visuals to the player would be nice. To do this we’re gonna use the following sprite:</p>
+
+<p><img class="center" src="/assets/idle.png" /></p>
+
+<p>Using the <a href="/documentation/animation">Animation</a> module we can quickly create an animation from a spritesheet. In this case we have a single sprite, but it can
+also be used for just loading single images:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">new</span>(area, x, y, settings)
+    Player.super.new(self, area, x, y, settings)
+    self:physicsBodyNew(area, x, y, settings)
+
+    self.idle = fg.Animation(love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">idle.png</span><span class="delimiter">'</span></span>), <span class="integer">32</span>, <span class="integer">32</span>, <span class="integer">0</span>)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Player:<span class="function">update</span>(dt)
+    self:physicsBodyUpdate(dt)
+    self.idle:update(dt)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Player:<span class="function">draw</span>()
+    self:physicsBodyDraw()
+    self.idle:draw(self.x, self.y, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span>, self.idle.frame_width/<span class="integer">2</span>, self.idle.frame_height/<span class="integer">2</span>)
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>LÖVE’s draw function works by specifying the top left position of the image, so when we draw our animation we have to make sure 
+to offset it by its width and height (the last 2 parameters), since positions are always the center of an object. If you run the 
+above you should see the player sprite on top of the blue square. </p>
+
+<dl class="accordion" data-accordion=""><dd><a href="#exercises_size">Exercises</a><div id="exercises_size" class="content">
+    1. The physics body of the player doesn&#8217;t really match his sprite&#8217;s width and height. How would you go about changing it so it does? (<strong>hint</strong>: 
+    <a href="/documentation/physicsbody#methods">PhysicsBody constructor&#8217;s settings</a>)
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_size_answer_1">Answer</a><div id="exercises_size_answer_1" class="content answer">
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- in Game.lua</span>
+<span class="keyword">function</span> Game:<span class="function">new</span>()
+    fg.world:createEntity(<span class="string"><span class="delimiter">'</span><span class="content">Player</span><span class="delimiter">'</span></span>, fg.screen_width/<span class="integer">2</span>, fg.screen_height/<span class="integer">2</span>, 
+                         <span class="map"><span class="delimiter">{</span><span class="key">w</span> = <span class="integer">16</span>, <span class="key">h</span> = <span class="integer">28</span><span class="delimiter">}</span></span>)
+<span class="keyword">end</span>
+
+<span class="comment">-- in Player.lua</span>
+<span class="keyword">function</span> Player:<span class="function">draw</span>()
+    self:physicsBodyDraw()
+    self.idle:draw(self.x, self.y, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span>, 
+                   self.idle.frame_width/<span class="integer">2</span>, self.idle.frame_height/<span class="integer">2</span> + <span class="integer">2</span>)
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+    <br />
+
+    2. What&#8217;s another way of accessing an animation&#8217;s width and height? (<strong>hint</strong>: 
+    <a href="/documentation/animation#methods">Animation methods</a>)
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_size_answer_2">Answer</a><div id="exercises_size_answer_2" class="content answer">
+        For an animation, :getWidth/Height are the same as .frame_width/height:<br /><br />
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">draw</span>()
+    ...
+    self.idle:draw(self.x, self.y, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span>, 
+                   self.idle:getWidth()/<span class="integer">2</span>, self.idle:getHeight()/<span class="integer">2</span>)
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+</div></dd></dl>
+<p><br /></p>
+
+<p>Now that we have an image attached to our player body, we can try making it move. We’re going to do this by using the <a href="/documentation/input">Input</a> module. 
+In a platformer, we mainly move left and right, so first let’s bind those keys to actions:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">new</span>(...)
+    ...
+    fg.input:bind(<span class="string"><span class="delimiter">'</span><span class="content">a</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">move_left</span><span class="delimiter">'</span></span>)
+    fg.input:bind(<span class="string"><span class="delimiter">'</span><span class="content">d</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">move_right</span><span class="delimiter">'</span></span>)
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>If you want to use a gamepad then you can do it by using <code class="string">'dpleft'</code> and <code class="string">'dpright'</code> on top of <code class="string">'a'</code> and <code class="string">'d'</code>:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">new</span>(...)
+    ...
+    fg.input:bind(<span class="string"><span class="delimiter">'</span><span class="content">a</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">move_left</span><span class="delimiter">'</span></span>)
+    fg.input:bind(<span class="string"><span class="delimiter">'</span><span class="content">d</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">move_right</span><span class="delimiter">'</span></span>)
+    fg.input:bind(<span class="string"><span class="delimiter">'</span><span class="content">dpleft</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">move_left</span><span class="delimiter">'</span></span>)
+    fg.input:bind(<span class="string"><span class="delimiter">'</span><span class="content">dpright</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">move_right</span><span class="delimiter">'</span></span>)
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>And then we can check if that action is being pressed:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> fg.input:down(<span class="string"><span class="delimiter">'</span><span class="content">move_left</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> fg.input:down(<span class="string"><span class="delimiter">'</span><span class="content">move_right</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>To actually make the character move we just insert the movement code into each one of those <code class="text">ifs</code>. Since we’re using box2d, making an object move has to
+be done through its <a href="http://www.love2d.org/wiki/Body">Body</a>. A very misinformed argument that a lot of people make when talking about physics engines is that they seem to make 
+games feel sluggish, slow and with a lack of control. That is only true if you only move your bodies by applying forces to them. We’re not going to do that! Instead, we’ll set 
+its velocity directly, using the <code class="atrm">:setLinearVelocity</code> call. In this way, you can do velocity and acceleration calculations yourself, and then only apply 
+the final velocity to the body. This gives you as much control as you need over how an object moves. See more on this <a href="http://www.iforce2d.net/b2dtut/constant-speed">here</a>.</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> fg.input:down(<span class="string"><span class="delimiter">'</span><span class="content">move_left</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+        <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
+        self.body:setLinearVelocity(<span class="integer">-150</span>, vy)
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> fg.input:down(<span class="string"><span class="delimiter">'</span><span class="content">move_right</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+        <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
+        self.body:setLinearVelocity(<span class="integer">150</span>, vy)
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>Because we only want to set the x component, we first need to get the body’s current velocity to use it on the component we don’t want changed (in this case the y component). In any case,
+if you run the above you’ll notice that the player never stops moving to one side or the other. This is because you’re setting the body’s linear velocity to <code class="number">150</code> or
+<code class="number">-150</code> and never decreasing it. To fix that, we add damping:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> fg.input:down(<span class="string"><span class="delimiter">'</span><span class="content">move_left</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+        <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
+        self.body:setLinearVelocity(<span class="integer">-150</span>, vy)
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> fg.input:down(<span class="string"><span class="delimiter">'</span><span class="content">move_right</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+        <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
+        self.body:setLinearVelocity(<span class="integer">150</span>, vy)
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> fg.input:down(<span class="string"><span class="delimiter">'</span><span class="content">move_left</span><span class="delimiter">'</span></span>) <span class="keyword">and</span> <span class="keyword">not</span> fg.input:down(<span class="string"><span class="delimiter">'</span><span class="content">move_right</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+        <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
+        self.body:setLinearVelocity(<span class="float">0.8</span>*vx, vy)
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>What we’re doing here is simply multiplying the player’s x velocity by <code class="number">0.8</code> every frame if he’s not moving left nor right. This gives it a nice stopping motion that isn’t
+too abrupt nor too slow. Different values will have different effects, for instance, <code class="number">0.95</code> will feel very slow, while <code class="number">0.5</code> will feel very abrupt.</p>
+
+<p>Now that we have proper movement we could add a running animation:</p>
+
+<p><img class="center" src="/assets/run.png" /></p>
+
+<p>And to load this animation:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">new</span>(...)
+    ...
+    self.idle = fg.Animation(love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">idle.png</span><span class="delimiter">'</span></span>), <span class="integer">32</span>, <span class="integer">32</span>, <span class="integer">0</span>)
+    self.run = fg.Animation(love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">run.png</span><span class="delimiter">'</span></span>), <span class="integer">32</span>, <span class="integer">32</span>, <span class="float">0.18</span>)
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>The <code class="number">0.18</code> value is the amount of time passed between each frame change. For the velocity we have now (<code class="number">150</code>), this value feels pretty nice.</p>
+
+<p>If you run the game, you’ll notice nothing has changed, though. That’s because you’re neither updating the animation nor drawing it. But we have multiple animations now, how do we know when to 
+update/draw each one? A way is adding a variable that will hold the current animation state, and change that state based on some criteria. Something like this:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">new</span>(...)
+    ...
+    self.animation_state = <span class="string"><span class="delimiter">'</span><span class="content">idle</span><span class="delimiter">'</span></span>
+    self.idle = fg.Animation(love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">idle.png</span><span class="delimiter">'</span></span>), <span class="integer">32</span>, <span class="integer">32</span>, <span class="integer">0</span>)
+    self.run = fg.Animation(love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">run.png</span><span class="delimiter">'</span></span>), <span class="integer">32</span>, <span class="integer">32</span>, <span class="float">0.18</span>)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Player:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
+    <span class="keyword">if</span> math.abs(vx) &lt; <span class="integer">25</span> <span class="keyword">then</span> self.animation_state = <span class="string"><span class="delimiter">'</span><span class="content">idle</span><span class="delimiter">'</span></span>
+    <span class="keyword">else</span> self.animation_state = <span class="string"><span class="delimiter">'</span><span class="content">run</span><span class="delimiter">'</span></span> <span class="keyword">end</span>
+    self[self.animation_state]:update(dt)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Player:<span class="function">draw</span>()
+    ...
+    self[self.animation_state]:draw(self.x, self.y, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span>, 
+                                    self[self.animation_state].frame_width/<span class="integer">2</span>, 
+                                    self[self.animation_state].frame_height/<span class="integer">2</span> + <span class="integer">2</span>)
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p><code class="text">.animation_state</code> can either be <code class="string">'idle'</code> or <code class="string">'run'</code>, which are the same names as the ones we 
+have for our variables holding the animations. This is why <code class="text">self[self.animation_state]</code> is a valid way of accessing the current animation. We set the
+current animation by simply checking the player’s x velocity: if it’s lower than <code class="number">25</code> we set it to idle, otherwise the player is running.</p>
+
+<dl class="accordion" data-accordion=""><dd><a href="#exercises_run">Exercises</a><div id="exercises_run" class="content">
+    1. Make it so that the player can also be moved by using the gamepad&#8217;s left stick.
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_run_answer_1">Answer</a><div id="exercises_run_answer_1" class="content answer">
+        The analog buttons of a gamepad (sticks and L2/R2) return numbers instead of booleans. In the case of the left stick, there&#8217;s a number going from -1 to 1
+        for the horizontal position of the stick as well as the vertical one. We&#8217;re only interested in the horizontal position (left, right) so we only care about
+        the &#8216;leftx&#8217; button. We bind this and then check to see if its pressed. If it is, we move the player normally, if isn&#8217;t then we apply damping.<br /><br />
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">new</span>(...)
+    ...
+    fg.input:bind(<span class="string"><span class="delimiter">'</span><span class="content">leftx</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">move_horizontal</span><span class="delimiter">'</span></span>)
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Player:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">local</span> <span class="local-variable">x</span> = fg.input:down(<span class="string"><span class="delimiter">'</span><span class="content">move_horizontal</span><span class="delimiter">'</span></span>)
+    <span class="keyword">if</span> x <span class="keyword">then</span>
+        <span class="keyword">if</span> x &lt; <span class="integer">0</span> <span class="keyword">then</span> 
+            <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
+            self.body:setLinearVelocity(<span class="integer">-150</span>, vy)
+        <span class="keyword">elseif</span> x &gt; <span class="integer">0</span> <span class="keyword">then</span>
+            <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
+            self.body:setLinearVelocity(<span class="integer">150</span>, vy)
+        <span class="keyword">end</span>
+    <span class="keyword">else</span>
+        <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
+        self.body:setLinearVelocity(<span class="integer">48</span>*dt*vx, vy)
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+    <br />
+
+    2. So far the player can only look to the right. How would you change the code so that he&#8217;s also capable of looking to the left? (<strong>hint</strong>: 
+    create a variable named direction that can be either <code class="string">'left'</code> or <code class="string">'right'</code> and use <a href="http://www.love2d.org/wiki/love.graphics.draw">
+    draw&#8217;s scaling parameter</a> with -1 on the x component to flip the current image)
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_run_answer_2">Answer</a><div id="exercises_run_answer_2" class="content answer">
+        The most interesting part of this is the flip. Whenever you scale something by -1 it flips around the point that thing is being drawn at, in this case,
+        the top left of the sprite. Naturally, the character is mirrored around this point and therefore moves to the left. To fix this, instead of subtracting half the sprite&#8217;s width, we add it.
+        <br /><br />
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+<a href="#n24" name="n24">24</a>
+<a href="#n25" name="n25">25</a>
+<a href="#n26" name="n26">26</a>
+<a href="#n27" name="n27">27</a>
+<a href="#n28" name="n28">28</a>
+<a href="#n29" name="n29">29</a>
+<strong><a href="#n30" name="n30">30</a></strong>
+<a href="#n31" name="n31">31</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">new</span>(...)
+    ...
+    self.direction = <span class="string"><span class="delimiter">'</span><span class="content">right</span><span class="delimiter">'</span></span>
+    ...
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Player:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> fg.input:down(<span class="string"><span class="delimiter">'</span><span class="content">move_left</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+        self.direction = <span class="string"><span class="delimiter">'</span><span class="content">left</span><span class="delimiter">'</span></span>
+        ...
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> fg.input:down(<span class="string"><span class="delimiter">'</span><span class="content">move_right</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+        self.direction = <span class="string"><span class="delimiter">'</span><span class="content">right</span><span class="delimiter">'</span></span>
+        ...
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Player:<span class="function">draw</span>()
+    ...
+    <span class="keyword">if</span> self.direction == <span class="string"><span class="delimiter">'</span><span class="content">right</span><span class="delimiter">'</span></span> <span class="keyword">then</span>
+        self[self.animation_state]:draw(self.x, self.y, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span>, 
+                                        self[self.animation_state].frame_width/<span class="integer">2</span>, 
+                                        self[self.animation_state].frame_height/<span class="integer">2</span> + <span class="integer">2</span>)
+    <span class="keyword">elseif</span> self.direction == <span class="string"><span class="delimiter">'</span><span class="content">left</span><span class="delimiter">'</span></span> <span class="keyword">then</span>
+        self[self.animation_state]:draw(self.x, self.y, <span class="integer">0</span>, <span class="integer">-1</span>, <span class="integer">1</span>, 
+                                        self[self.animation_state].frame_width/<span class="integer">2</span>, 
+                                        self[self.animation_state].frame_height/<span class="integer">2</span> + <span class="integer">2</span>)
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+</div></dd></dl>
+<p><br /></p>
+
+<h3 id="Tilemap" data-magellan-destination="Tilemap">Tilemap</h3>
+
+<p>We have a character that moves left and right, with animations and everything. But in a platformer we also need to be able to jump! But how to jump without gravity?
+You can’t. Well, you can but you’d just go up endlessly until you hit something, and if there’s nothing to hit then you’d just die because you’d freeze as you go up in the sky.
+So we should add some gravity to the <a href="http://www.love2d.org/wiki/World">physics world</a> to prevent this from happening:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Game:<span class="function">new</span>()
+    ...
+    fg.world.box2d_world:setGravity(<span class="integer">0</span>, <span class="integer">20</span>*<span class="integer">32</span>)
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>The character also looks pretty small on the screen. We can fix that by scaling the screen up and doubling the screen size:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Game:<span class="function">new</span>()
+    ...
+    fg.screen_scale = <span class="integer">2</span>
+    fg.setScreenSize(<span class="integer">960</span>, <span class="integer">720</span>)
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>If you run the game now you’ll see that the character looks bigger and that he falls down. But he falls offscreen! Since we added gravity, the world is just behaving like we told it to, however
+there’s nothing holding the character in place so he’ll just keep falling forever. Something we can do to fix this is define a map. Using the <a href="/documentation/tilemap">Tilemap</a> module, we can
+create a tilemap that is able to collide with world objects pretty easily. The tileset we’re going to use is this one:</p>
+
+<p><img class="center" src="/assets/tileset-normal.png" /></p>
+
+<p>And the code to create the map:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Game:<span class="function">new</span>()
+    ...
+    tilemap = fg.Tilemap(<span class="integer">400</span>, <span class="integer">420</span>, <span class="integer">32</span>, <span class="integer">32</span>, love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">tileset-normal.png</span><span class="delimiter">'</span></span>), <span class="map"><span class="delimiter">{</span>
+        <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+        <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+        <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+        <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+        <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+        <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+        <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+        <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+        <span class="map"><span class="inline-delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="inline-delimiter">}</span></span>,
+    <span class="delimiter">}</span></span>
+    tilemap:setAutoTileRules(<span class="map"><span class="delimiter">{</span><span class="integer">6</span>, <span class="integer">14</span>, <span class="integer">12</span>, <span class="integer">2</span>, <span class="integer">10</span>, <span class="integer">8</span>, <span class="integer">7</span>, <span class="integer">15</span>, <span class="integer">13</span>, <span class="integer">3</span>, <span class="integer">11</span>, <span class="integer">9</span><span class="delimiter">}</span></span>)
+    tilemap:autoTile()
+    fg.world:generateCollisionSolids(tilemap)
+    fg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="content">Default</span><span class="delimiter">'</span></span>, tilemap)
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>If you can get the player to spawn inside the thingy, then you’ll see that it will collide with the map and not fall off the screen anymore.</p>
+
+<dl class="accordion" data-accordion=""><dd><a href="#exercises_tilemap">Exercises</a><div id="exercises_tilemap" class="content">
+    1. Why is the tilemap only using 1s and 0s? What happens if you use other numbers? Which numbers can actually be used? And how does all this relate to the
+    <code class="atrm">:autoTile</code> and to the <code class="atrm">:setAutoTileRules</code> call? (<strong>hint</strong>: <a href="/documentation/tilemap">Tilemap</a> module)
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_tilemap_answer_1">Answer</a><div id="exercises_tilemap_answer_1" class="content answer">
+        The tilemap is only using 1s and 0s because the auto tile call will set the tiles automatically based on the auto tile rules. The possible values are however
+        many tiles your tileset has, in this case it&#8217;s 12. Any value other than 0 will be recognized as an active tile and changed by the :autoTile call. If that call isn&#8217;t made
+        then the numbers will correspond to whatever tile has that number from the tileset. The numbers from the tileset are read in a top-down, left-right manner. So top left is 1,
+        top right is 6, bottom left is 7 and bottom right is 12.
+    </div></dd></dl>
+    <br />
+
+    2. What does the <code class="atrm">:generateCollisionSolids</code> method do? (<strong>hint</strong>: <a href="/documentation/area#Creation_Methods">Area&#8217;s creation methods</a>)
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_tilemap_answer_2">Answer</a><div id="exercises_tilemap_answer_2" class="content answer">
+        It automatically generates world collision solids based on the collision data from the tilemap. Collision data is generated by default to match all non 0 tiles, but can
+        be changed using the :setCollisionData method.
+    </div></dd></dl>
+</div></dd></dl>
+<p><br /></p>
+
+<h3 id="Jump" data-magellan-destination="Jump">Jump</h3>
+
+<p>Now that we have gravity in, we can add the jump. Jumping is actually fairly simple… Since we’re using box2d all we have to do is set the y velocity component to a negative value and the body 
+will go up in the air; gravity will pull the body down, so you get a pretty decent jump arc effortlessly:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">new</span>(...)
+    ...
+    fg.input:bind(<span class="string"><span class="delimiter">'</span><span class="content"> </span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">jump</span><span class="delimiter">'</span></span>)
+    fg.input:bind(<span class="string"><span class="delimiter">'</span><span class="content">fdown</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">jump</span><span class="delimiter">'</span></span>)
+    ...
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Player:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> fg.input:pressed(<span class="string"><span class="delimiter">'</span><span class="content">jump</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+        <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
+        self.body:setLinearVelocity(vx, <span class="integer">-250</span>)
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>If you run the above you can now jump by pressing space. Play around with different impulse and gravity values until you get something that feels right. </p>
+
+<p>We can also add jumping and falling animations to the player. We’re gonna use these sprites:</p>
+
+<p><img class="center" src="/assets/jump.png" />
+<img class="center" src="/assets/fall.png" /></p>
+
+<p>On top of just adding the animations, we need to figure out a way to make sure that the right animations play when the player is jumping. One way of doing this
+is adding a <code class="text">.jumping</code> boolean. Whenever the player presses the jump button we set this to true, and then set the animation based on if this is true or not.
+If the player is falling (y velocity &gt; 0), then we set the animation to be the falling one instead. This can all be done like this:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">new</span>(...)
+    ...
+    self.jumping = <span class="predefined-constant">false</span>
+    self.jump = fg.Animation(love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">jump.png</span><span class="delimiter">'</span></span>), <span class="integer">32</span>, <span class="integer">32</span>, <span class="integer">0</span>)
+    self.fall = fg.Animation(love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">fall.png</span><span class="delimiter">'</span></span>), <span class="integer">32</span>, <span class="integer">32</span>, <span class="integer">0</span>)
+    ...
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Player:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> fg.input:pressed(<span class="string"><span class="delimiter">'</span><span class="content">jump</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+        ...
+        self.jumping = <span class="predefined-constant">true</span>
+        ...
+    <span class="keyword">end</span>
+    ...
+    <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
+    <span class="keyword">if</span> math.abs(vx) &lt; <span class="integer">25</span> <span class="keyword">then</span> self.animation_state = <span class="string"><span class="delimiter">'</span><span class="content">idle</span><span class="delimiter">'</span></span>
+    <span class="keyword">else</span> self.animation_state = <span class="string"><span class="delimiter">'</span><span class="content">run</span><span class="delimiter">'</span></span> <span class="keyword">end</span>
+    <span class="keyword">if</span> self.jumping <span class="keyword">then</span> self.animation_state = <span class="string"><span class="delimiter">'</span><span class="content">jump</span><span class="delimiter">'</span></span> <span class="keyword">end</span>
+    <span class="keyword">if</span> vy &gt; <span class="integer">5</span> <span class="keyword">then</span> self.animation_state = <span class="string"><span class="delimiter">'</span><span class="content">fall</span><span class="delimiter">'</span></span> <span class="keyword">end</span>
+    self[self.animation_state]:update(dt)
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>Running this, you’ll notice one problem: after the player jumps he never changes to another animation. This happens because <code class="text">self.jumping</code> is set to true but never
+set to false again. We want to set it to false when the player hits the ground. To do that, we’ll use fuccboiGDX’s <a href="/documentation/collision">Collision</a> system. First, set the player to
+generate a collision callback whenever he enters collision with a <a href="/documentation/solid">Solid</a>:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+</pre></td>
+  <td class="code"><pre>Player = fg.Class(<span class="string"><span class="delimiter">'</span><span class="content">Player</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Entity</span><span class="delimiter">'</span></span>)
+Player:implement(fg.PhysicsBody)
+
+Player.enter = <span class="map"><span class="delimiter">{</span><span class="string"><span class="delimiter">'</span><span class="content">Solid</span><span class="delimiter">'</span></span><span class="delimiter">}</span></span>
+
+<span class="keyword">function</span> Player:<span class="function">new</span>(...)
+...
+</pre></td>
+</tr></table>
+</div>
+
+<p>Then, we define the collision callback function and set the jumping boolean to false whenever the collided object is a Solid:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">onCollisionEnter</span>(other, contact)
+    <span class="keyword">if</span> other.tag == <span class="string"><span class="delimiter">'</span><span class="content">Solid</span><span class="delimiter">'</span></span> <span class="keyword">then</span>
+        self.jumping = <span class="predefined-constant">false</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>And now whenever you jump, the jumping boolean is set to true, and then whenever you enter contact with a solid again (in a jump this usually happens when you hit the ground again)
+it will be set to false and the animation state can go back to normal.</p>
+
+<p>Another simple problem that happens and has to do with jumping: if you keep pressing the movement key near a wall you’ll get stuck midair. This has to do with how box2d handles its
+object’s friction. It can be easily fixed by doing:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">new</span>(...)
+    Player.super.new(self, area, x, y, settings)
+    self:physicsBodyNew(area, x, y, settings)
+
+    self.fixture:setFriction(<span class="integer">0</span>)
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>Objects with 0 friction will always slide and not get stuck on each other. I really recommend reading <a href="http://www.box2d.org/manual.html">box2d’s manual</a> 
+as well as most tutorials <a href="http://www.iforce2d.net/b2dtut/">here</a> to learn how box2d behaves better.</p>
+
+<dl class="accordion" data-accordion=""><dd><a href="#exercises_jump">Exercises</a><div id="exercises_jump" class="content">
+    1. If you press space multiple times, the player will jump multiple times. How would you go about limitting the number of jumps the player can perform? 
+    (<strong>hint</strong>: create a <code class="text">.max_jumps</code> variable and a <code class="text">.jumps_left</code> variable)
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_jump_answer_1">Answer</a><div id="exercises_jump_answer_1" class="content answer">
+        The .max_jumps variable has the maximum number of jumps the player can perform. Set it to 1. The .jumps_left variable initially has the maximum number of jumps, which is also 1.
+        When the player jumps, decrease the .jumps_left variable, and before each jump add a check to see if the number of jumps left is higher than 1.
+        When the player reaches the ground, set the .jumps_left variable to .max_jumps, since the player needs to be able to jump again. <br /><br />
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+<a href="#n24" name="n24">24</a>
+<a href="#n25" name="n25">25</a>
+<a href="#n26" name="n26">26</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">new</span>(...)
+    ...
+    self.max_jumps = <span class="integer">1</span>
+    self.jumps_left = self.max_jumps
+    ...
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Player:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> fg.input:pressed(<span class="string"><span class="delimiter">'</span><span class="content">jump</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+        <span class="keyword">if</span> self.jumps_left &gt; <span class="integer">0</span> <span class="keyword">then</span>
+            self.jumping = <span class="predefined-constant">true</span>
+            <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
+            self.body:setLinearVelocity(vx, <span class="integer">-250</span>)
+            self.jumps_left = self.jumps_left - <span class="integer">1</span>
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> Player:<span class="function">onCollisionEnter</span>(other, contact)
+    <span class="keyword">if</span> other.tag == <span class="string"><span class="delimiter">'</span><span class="content">Solid</span><span class="delimiter">'</span></span> <span class="keyword">then</span>
+        self.jumping = <span class="predefined-constant">false</span>
+        self.jumps_left = self.max_jumps
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+    <br />
+
+    2. You&#8217;ll notice that jumping and hitting a Solid (like the sides of the map) before you start falling changes your animation. This happens because the jumping boolean
+    is set to false whenever you hit any Solid, its position not being accounted for. How would you fix this so that the animation only gets reset when you hit solids below you?
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_jump_answer_2">Answer</a><div id="exercises_jump_answer_2" class="content answer">
+        Check the player&#8217;s bottom position with the solid&#8217;s top position, if it&#8217;s less, then the player is above the ground. <br /><br />
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">onCollisionEnter</span>(other, contact)
+    <span class="keyword">if</span> other.tag == <span class="string"><span class="delimiter">'</span><span class="content">Solid</span><span class="delimiter">'</span></span> <span class="keyword">then</span>
+        <span class="keyword">local</span> <span class="local-variable">solid_top</span> = other.object.y - other.object.h/<span class="integer">2</span>
+        <span class="keyword">local</span> <span class="local-variable">player_bottom</span> = self.y + self.h/<span class="integer">2</span> - <span class="integer">4</span>
+        <span class="keyword">if</span> solid_top &gt; player_bottom <span class="keyword">then</span>
+            self.jumping = <span class="predefined-constant">false</span>
+            self.jumps_left = self.max_jumps
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+    <br />
+
+    3. Right now when the player jumps he never stops midair. Something that lots of platformers do is let the player control the jump height a bit. 
+    How would you do this? (<strong>hint</strong>: use <code class="text">fg.input:released</code>)
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_jump_answer_3">Answer</a><div id="exercises_jump_answer_3" class="content answer">
+        When the player releases the jump key and he is still moving up, set its y velocity component to 0: <br /><br />
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> fg.input:released(<span class="string"><span class="delimiter">'</span><span class="content">jump</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+        <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
+        <span class="keyword">if</span> vy &lt; <span class="integer">0</span> <span class="keyword">then</span> self.body:setLinearVelocity(vx, <span class="integer">0</span>) <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+    <br />
+
+    4. Having all this done, there&#8217;s another problem: tapping the space key makes the player only jump slightly. Another thing that lots of platformers do
+    is set a minimum jump height. How would you even do that?!? (<strong>hint</strong>: use the <a href="/documentation/timer">Timer</a> module)
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_jump_answer_4">Answer</a><div id="exercises_jump_answer_4" class="content answer">
+        This one is a bit more complicated, that&#8217;s why it&#8217;s the last exercise! There are certainly multiple ways of solving this problem, but this was the one I found.
+        To add a minimum jump height we have to keep track of how long has it been since the player pressed the jump button and then only after a certain amount of time,
+        let the player release the jump button. Of course, the player can actually release it before our time, but we have to make sure the actual physics body doesn&#8217;t know this.
+        To do this we add a .jump_press_time variable: when the jump key is pressed, this variable holds the time it was pressed. Then, when the jump key is released we take the
+        difference between the current time and the time jump was pressed. If it&#8217;s more than some threshold value, we stop jumping. This should be obvious: if the player is above
+        our desired minimum height and he releases the jump key, he should stop jumping normally. The tricky condition comes if the player is below our minimum jump height (= the difference
+        is less than our threshold): we have to make sure that the jump is only stopped after enough time has passed&#8230; This is done is line 20. <br /><br />
+        
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">update</span>(dt)
+    ...
+    <span class="keyword">if</span> fg.input:pressed(<span class="string"><span class="delimiter">'</span><span class="content">jump</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+        <span class="keyword">if</span> self.jumps_left &gt; <span class="integer">0</span> <span class="keyword">then</span>
+            self.jumping = <span class="predefined-constant">true</span>
+            <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
+            self.body:setLinearVelocity(vx, <span class="integer">-250</span>)
+            self.jumps_left = self.jumps_left - <span class="integer">1</span>
+            self.jump_press_time = love.timer.getTime()
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> fg.input:released(<span class="string"><span class="delimiter">'</span><span class="content">jump</span><span class="delimiter">'</span></span>) <span class="keyword">then</span>
+        <span class="keyword">local</span> <span class="local-variable">stopJump</span> = <span class="keyword">function</span>()
+            self.jump_press_time = <span class="integer">0</span>
+            <span class="keyword">local</span> <span class="local-variable">vx</span>, <span class="local-variable">vy</span> = self.body:getLinearVelocity()
+            <span class="keyword">if</span> vy &lt; <span class="integer">0</span> <span class="keyword">then</span> self.body:setLinearVelocity(vx, <span class="integer">0</span>) <span class="keyword">end</span>
+        <span class="keyword">end</span>
+        <span class="keyword">local</span> <span class="local-variable">dt</span> = love.timer.getTime() - self.jump_press_time
+        <span class="keyword">if</span> dt &gt;= <span class="float">0.125</span> <span class="keyword">then</span> stopJump()
+        <span class="keyword">else</span> fg.timer:after(<span class="float">0.125</span> - dt, <span class="keyword">function</span>() stopJump() <span class="keyword">end</span>) <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+    </div></dd></dl>
+</div></dd></dl>
+<p><br /></p>
+
+<h3 id="Camera_and_Background" data-magellan-destination="Camera_and_Background">Camera and Background</h3>
+
+<p>So far as the player moves in space, nothing else moves with him. We can fix that by using the <a href="/documentation/camera">Camera</a> module.
+The camera module has some advanced features that are of use to any game at all. Since we’re using the <code class="text">engine</code>, we’ll use instantiated camera
+inside the World class to follow the player around:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">new</span>(...)
+    ...
+    fg.world.camera:follow(self, <span class="map"><span class="delimiter">{</span><span class="key">lerp</span> = <span class="integer">1</span>, <span class="key">follow_style</span> = <span class="string"><span class="delimiter">'</span><span class="content">platformer</span><span class="delimiter">'</span></span><span class="delimiter">}</span></span>)
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>You can add <code class="text">fg.world.camera.debug_draw = true</code> to see the camera’s debug drawing information. You should see some information about the follow style, lerp and lead values
+as well as the camera’s deadzone. For a platformer it’s a thin but tall window around the player, meaning that if the player jumps the camera doesn’t follow him directly as not to bother whoever
+is watching the screen too much. Play around with different lerp and lead values, as well as tracking styles to see what they all do. More information about all of this can be found in the 
+<a href="/documentation/camera">Camera module page</a>.</p>
+
+<dl class="accordion" data-accordion=""><dd><a href="#exercises_camera">Exercises</a><div id="exercises_camera" class="content">
+    1. Using fuccboiGDX&#8217;s camera module, what are the basic concepts behind the implementation of most of the features presented in this video? (<strong>hint</strong>: 
+    <a href="/documentation/camera#Attributes">Camera&#8217;s attributes</a>)<br /><br />
+<div class="embed-video-container center"><iframe width="480" height="360" src="http://www.youtube.com/embed/aAKwZt3aXQM " frameborder="0" allowfullscreen=""></iframe></div>
+<br />
+    <dl class="accordion" data-accordion=""><dd><a href="#exercises_camera_answer_1">Answer</a><div id="exercises_camera_answer_1" class="content answer">
+        Using tha Camera&#8217;s .target attribute. To make the camera move/focus towards certain objects, calculate the middle point between the target objects (usually player + something else)
+        and then set the .target attribute to that point every frame. That attribute usually takes an entire object, but it really only uses the .x and .y attributes, so you can simply pass
+        a named table as well, like this: {x = (player.x + desired_target.x)/2, y = (player.y + desired_target.y)/2}. We can achieve the &#8220;leading&#8221; behavior for the rocket part near the end
+        by playing with the .follow_lead attribute, which places the camera in front of the target based on its velocity. For a smooth camera movement we can play with the lerp value.
+        For the player not leaving a certain area of the screen we can use custom deadzones.
+    </div></dd></dl>
+</div></dd></dl>
+<p><br /></p>
+
+<p>Now for the last part: backgrounds. So far the back of the screen is completely black, let’s fix that by using these images:</p>
+
+<p><img class="center" src="/assets/bg-back.png" />
+<img class="center" src="/assets/bg-mid.png" /></p>
+
+<p>fuccboiGDX supports the creation of <a href="/documentation/background">Background</a> objects, which are just images with <code class="text">x, y</code> attributes. The <code class="text">engine</code>
+also uses the concepts of layers. Each layer has objects added to it, and then you can apply certain operations to each layer.
+We wanna create two new layers with different parallax values, one for the back background
+and one for the front one. After that, we wanna add both images in a position that covers most of our tilemap, like this:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> Game:<span class="function">new</span>()
+    ...
+    fg.world:addLayer(<span class="string"><span class="delimiter">'</span><span class="content">BG1</span><span class="delimiter">'</span></span>, <span class="map"><span class="delimiter">{</span><span class="key">parallax_scale</span> = <span class="float">0.8</span><span class="delimiter">}</span></span>)
+    fg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="content">BG1</span><span class="delimiter">'</span></span>, fg.Background(<span class="integer">380</span>, <span class="integer">260</span>, love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">bg-back.png</span><span class="delimiter">'</span></span>)))
+    fg.world:addLayer(<span class="string"><span class="delimiter">'</span><span class="content">BG2</span><span class="delimiter">'</span></span>, <span class="map"><span class="delimiter">{</span><span class="key">parallax_scale</span> = <span class="float">0.9</span><span class="delimiter">}</span></span>)
+    fg.world:addToLayer(<span class="string"><span class="delimiter">'</span><span class="content">BG2</span><span class="delimiter">'</span></span>, fg.Background(<span class="integer">440</span>, <span class="integer">270</span>, love.graphics.newImage(<span class="string"><span class="delimiter">'</span><span class="content">bg-mid.png</span><span class="delimiter">'</span></span>)))
+    fg.world:setLayerOrder(<span class="map"><span class="delimiter">{</span><span class="string"><span class="delimiter">'</span><span class="content">BG1</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">BG2</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Default</span><span class="delimiter">'</span></span><span class="delimiter">}</span></span>)
+    ...
+<span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>The <code class="number">0.8</code> and <code class="number">0.9</code> values correspond to that layer’s parallax scale. Closer to <code class="number">1</code> means closer to the screen,
+closer to <code class="number">0</code> means further away. The <code class="atrm">:setLayerOrder</code> method receives a table of strings, each string representing a layer name. It will then
+save that table, so that when the drawing operations are done, it draws all layers according to the order specified. In this case, <code class="string">'BG1'</code> is drawn first (because it’s the back background),
+then <code class="string">'BG2'</code>, and then the <code class="string">'Default'</code> layer where everything with an unspecified layer name goes to.
+<br /></p>
+
+<h3 id="The_End" data-magellan-destination="The_End">The End</h3>
+
+<p>And that’s it! We’ve covered quite a bit of functionality that fuccboiGDX provides. If you finished all the exercises you should also have a good idea on how to read fuccboiGDX’s documentation
+and how to figure out things for yourself. And you should also have a small game that plays something like this:</p>
+
+<p><img class="center" src="/assets/2dplatformer.gif" /></p>
+
+<p>You can find the full source code the complete game <a href="https://github.com/adonaac/fuccboiGDX-tutorials/tree/master/advanced/2DPlatformer">here</a>.</p>
+
+    
+      <footer>
+        
+        
+      </footer>
+    
+  </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+  
+  </div><!--.columns-->
+  
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p class="text-center">
+  <span class="credit">
+  	Made using <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/annejohnson/octofound">Octofound</a><br/>
+  </span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/tutorials/2d_platformer/index.html';
+        var disqus_url = 'http://fuccboi.moe/tutorials/2d_platformer/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+</body>
+</html>

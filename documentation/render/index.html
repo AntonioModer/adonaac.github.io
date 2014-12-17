@@ -1,0 +1,689 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <script src="/js/vendor/modernizr.js"></script>
+  <meta charset="utf-8">
+  <title>Render - fuccboiGDX</title>
+  <meta name="author" content="adnzzzzZ">
+
+  
+  <meta name="description" content="<!-- Render --> Render The render module takes care of drawing everything in the engine. It&#8217;s attached to the fg.world
+instance and so all its &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fuccboi.moe/documentation/render">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
+
+  <script src="/js/vendor/jquery.js"></script>
+  <script src="/js/vendor/fastclick.js"></script>
+
+  <script src="/js/foundation.min.js"></script>
+  <script src="/js/foundation/foundation.magellan.js"></script>
+  <script src="/js/foundation/foundation.topbar.js"></script>
+  <script src="/js/foundation/foundation.accordion.js"></script>
+  <script src="/js/foundation/foundation.orbit.js"></script>
+  <script src="/js/foundation/foundation.dropdown.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <script>
+
+  $(document).ready(function(){
+    $(document).foundation();
+  });
+
+  </script>
+
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-51118504-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar" >
+  <header role="banner" class="top-header"><!--<hgroup>
+  <h1 class="text-center">
+  	<a href="/">fuccboiGDX</a>
+  </h1>
+  
+</hgroup>-->
+
+<!--<ul class="example-orbit-content" data-orbit>
+  <li data-orbit-slide="headline-1">
+    <div>
+      <h2>Headline 1</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <div>
+      <h2>Headline 2</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div>
+      <h2>Headline 3</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+</ul>-->
+
+</header>
+  <nav role="navigation"><ul class="subscription hide" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+
+
+
+<div class="sticky">
+
+  <nav class="top-bar" data-topbar role="navigation">
+
+    <!--
+    <ul class="title-area right">
+        <li class="name">
+          <h1><a href="/">fuccboiGDX <i class="fa fa-heart"></i></i></i></a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    -->
+
+
+    <section class="top-bar-section">
+      <ul class="main-navigation right show-for-medium-up">
+          <li><a href="https://github.com/adonaac/fuccboiGDX">github</a></li>
+          <li><a href="https://twitter.com/adnzzzzZ">twitter</i></a></li>
+      </ul>
+
+      <ul class="main-navigation left">
+          <li><a href="/">fuccboiGDX</a></li>
+
+          <li class="has-dropdown">
+          <a href="/tutorials">tutorials</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Advanced</a>
+            <ul class="dropdown">
+                <li><a href="/tutorials/curvemaster">CurveMaster</a></li>
+                <li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
+            </ul>
+            </li>
+
+            <li class="has-dropdown"><a href="#">Examples</a>
+            <ul class="dropdown">
+                <li><a href="/examples#Animation">Animation</a></li>
+                <li><a href="/examples#Area">Area</a></li>
+                <li><a href="/examples#Camera">Camera</a></li>
+                <li><a href="/examples#Collision">Collision</a></li>
+                <li><a href="/examples#Gamestate">Gamestate</a></li>
+                <li><a href="/examples#Input">Input</a></li>
+                <li><a href="/examples#Layers">Layers</a></li>
+                <li><a href="/examples#Loading">Loading</a></li>
+                <li><a href="/examples#Objects">Objects</a></li>
+                <li><a href="/examples#Particles">Particles</a></li>
+                <li><a href="/examples#Random">Random</a></li>
+                <li><a href="/examples#Serialization">Serialization</a></li>
+                <li><a href="/examples#Shaders">Shaders</a></li>
+                <li><a href="/examples#Sound">Sound</a></li>
+                <li><a href="/examples#Text">Text</a></li>
+                <li><a href="/examples#Tilemap">Tilemap</a></li>
+                <li><a href="/examples#Timing">Timing</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <li class="has-dropdown">
+          <a href="/documentation">documentation</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Main</a>
+            <ul class="dropdown">
+                <li><a href="/documentation/fg">fg</a></li>
+                <li><a href="/documentation/render">Render</a></li>
+                <li><a href="/documentation/world">World</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Logic</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/area">Area</a></li>
+            <li><a href="/documentation/class">Class</a></li>
+            <li><a href="/documentation/debug">Debug</a></li>
+            <li><a href="/documentation/entity">Entity</a></li>
+            <li><a href="/documentation/gamestate">Gamestate</a></li>
+            <li><a href="/documentation/input">Input</a></li>
+            <li><a href="/documentation/loader">Loader</a></li>
+            <li><a href="/documentation/objectpool">ObjectPool</a></li>
+                <li class="has-dropdown"><a href="#">Physics</a>
+                <ul class="dropdown">
+                    <li><a href="/documentation/collision">Collision</a></li>
+                    <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
+                    <li><a href="/documentation/solid">Solid</a></li>
+                </ul>
+                </li>
+            <li><a href="/documentation/serial">Serial</a></li>
+            <li><a href="/documentation/timer">Timer</a></li>
+            <li><a href="/documentation/utils">utils</a></li>
+            <li><a href="/documentation/vector">Vector</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Visual</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/animation">Animation</a></li>
+            <li><a href="/documentation/background">Background</a></li>
+            <li><a href="/documentation/camera">Camera</a></li>
+            <li><a href="/documentation/particles">Particles</a></li>
+            <li><a href="/documentation/spritebatch">Spritebatch</a></li>
+            <li><a href="/documentation/text">Text</a></li>
+            <li><a href="/documentation/tilemap">Tilemap</a></li>
+            <li><a href="/documentation/uitools">UI Tools</a></li>
+            </ul>
+
+            <li class="has-dropdown"><a href="#">Sound</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/sound">Sound</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <!--
+          <li class="has-dropdown">
+            <a href="/no-sidebar">No Sidebar Page</a>
+
+            <ul class="dropdown">
+              <li><a href="/no-sidebar/left-sidebar">Left Sidebar Page</a></li>
+              <li><a href="/no-sidebar/right-sidebar">Right Sidebar Page</a></li>
+              <li><a href="/no-sidebar/example-formatting">Example Formatting</a></li>
+            </ul>
+
+          </li>
+
+          <li><a href="/blog">Blog</a></li>
+
+          <li><a href="/blog/archives">Archives</a></li>
+          -->
+
+      </ul>
+
+    </section>
+  </nav>
+
+</div>
+
+
+
+
+
+
+<div data-magellan-expedition>
+<div id="nav" class="fixed right show-for-large-up">
+<ul class="side-nav">
+
+<strong><a href="/documentation">documentation</a><br><br></strong>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li data-magellan-arrival="Render"><a href="#Render">Render</a></li><li data-magellan-arrival="Layer"><a href="#Layer">Layer</a></li>
+<li data-magellan-arrival="Layer_Methods"><a href="#Layer_Methods">Layer Methods</a></li>
+<li data-magellan-arrival='addLayer' class='nav'><a href='#addLayer'>addLayer</a></li><li data-magellan-arrival='addShaderToLayer' class='nav'><a href='#addShaderToLayer'>addShaderToLayer</a></li><li data-magellan-arrival='addToLayer' class='nav'><a href='#addToLayer'>addToLayer</a></li><li data-magellan-arrival='sendToShader' class='nav'><a href='#sendToShader'>sendToShader</a></li><li data-magellan-arrival='setShaderClassList' class='nav'><a href='#setShaderClassList'>setShaderClassList</a></li><li data-magellan-arrival='setLayerOrder' class='nav'><a href='#setLayerOrder'>setLayerOrder</a></li><li data-magellan-arrival='sortLayerRenderOrder' class='nav'><a href='#sortLayerRenderOrder'>sortLayerRenderOrder</a></li><li data-magellan-arrival='sortRenderOrder' class='nav'><a href='#sortRenderOrder'>sortRenderOrder</a></li> 
+<li data-magellan-arrival="Render_Methods"><a href="#Render_Methods">Render Methods</a></li>
+<li data-magellan-arrival='renderAttach' class='nav'><a href='#renderAttach'>renderAttach</a></li><li data-magellan-arrival='renderDetach' class='nav'><a href='#renderDetach'>renderDetach</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</div>
+</div>
+
+</nav>
+  <div id="main">
+    <div id="content" class="row">
+      
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
+
+  <article role="article">
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Render</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="Render" data-magellan-destination="Render">Render</h3>
+
+<p>The <code class="text">render</code> module takes care of drawing everything in the <code class="text">engine</code>. It&#8217;s attached to the <code class="text">fg.world</code>
+instance and so all its functions should be called from there. It provides access to a <a href="/documentation/camera">camera</a>, as well as
+layers to which you can add objects and then sort their draw order, add layer/screen-wide shaders, etc, etc.</p>
+
+<h3 id="Layer" data-magellan-destination="Layer">Layer</h3>
+
+<p>Layers are useful for separating objects into groups and then sorting those objects/groups in whatever way necessary
+in your game. The <code class="text">render</code> module has a list of layers and offers a few functions to interface with them.
+The funcionality for now is limited to drawing orders (object draw order inside a layer and draw order of layers in relation
+to one another) and shaders (apply a layer/screen-wide shader to a certain layer). Each class/object needs to have 
+its layer defined, otherwise the <code class="string">'Default'</code> one is picked. If defined, fuccboiGDX automatically adds new objects to the appropriate layer.
+A layer can be set as a class variable or as an object attribute, the latter having preference if both are defined.</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+</pre></td>
+  <td class="code"><pre>MyClass = fg.class(<span class="string"><span class="delimiter">'</span><span class="content">MyClass</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Entity</span><span class="delimiter">'</span></span>)
+
+MyClass.layer = <span class="string"><span class="delimiter">'</span><span class="content">Front</span><span class="delimiter">'</span></span>
+
+MyClass:init(world, x, y, settings)
+    ...
+    self.layer = <span class="string"><span class="delimiter">'</span><span class="content">Back</span><span class="delimiter">'</span></span>
+<span class="keyword">end</span>
+...
+
+<span class="comment">-- in this example the layer used will be 'Back'</span>
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<h3 id="Layer_Methods" data-magellan-destination="Layer_Methods">Layer Methods</h3>
+
+<div id="addLayer" data-magellan-destination="addLayer"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">addLayer</span>(layer_name<span class="tag">[string]</span>, settings<span class="tag">[table[any][optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>adds a layer to the world, a layer named <code class="string">'Default'</code> is added by default and all objects are placed in it if
+they (or their class) have no layer attribute defined</li>
+  <li><code>layer_name</code>: the name of the layer to be added</li>
+  <li><code>settings</code>: a table with settings for the layer</li>
+</ul>
+
+<p>Possible settings:</p>
+
+<ul>
+  <li><code>not_sortable</code>: makes it so that the objects inside this layer can&#8217;t be sorted when <code class="atrm">:sortRenderOrder</code> is called</li>
+  <li><code>parallax_scale</code>: how close or far away this layer is from the camera, <code class="number">1</code> is the normal value, <code class="number">&lt;1</code> is closer <code class="number">&gt;1</code> is further away
+<br /><br /></li>
+</ul>
+
+<div id="addShaderToLayer" data-magellan-destination="addShaderToLayer"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">addShaderToLayer</span>(layer_name<span class="tag">[string]</span>, shader_name<span class="tag">[string]</span>, shader_vertex_path<span class="tag">[string]</span>, shader_fragment_path<span class="tag">[string]</span>)</pre></td></table></div>
+
+<ul>
+  <li>adds a shader with the identifier <code class="text">shader_name</code> to the layer named <code class="text">layer_name</code>. The canvas created
+by this layer (to which all its objects get drawn to) will then be affected by this shader.</li>
+  <li><code>layer_name</code>: the name of the layer the shader is being added to</li>
+  <li><code>shader_name</code>: the name of the shader to be added</li>
+  <li><code>shader_vertex_path</code>: the path to the vertex shader</li>
+  <li><code>shader_fragment_path</code>: the path to the fragment shader</li>
+</ul>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre>fg.world:addLayer(<span class="string"><span class="delimiter">'</span><span class="content">Blood_Floor</span><span class="delimiter">'</span></span>)
+fg.world:addShaderToLayer(<span class="string"><span class="delimiter">'</span><span class="content">Blood_Floor</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Outline</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">resources/shaders/default.vert</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">resources/shaders/outline.frag</span><span class="delimiter">'</span></span>)
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<div id="addToLayer" data-magellan-destination="addToLayer"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">addToLayer</span>(layer_name<span class="tag">[string]</span>, entity<span class="tag">[Entity]</span>)</pre></td></table></div>
+
+<ul>
+  <li>adds <code class="text">entity</code> to the layer named <code class="string">layer_name</code>, used internally most of the time but useful for adding <a href="/documentation/spritebatch">spritebatches</a> or
+<a href="/documentation/background">backgrounds</a> when needed</li>
+  <li><code>layer_name</code>: the name of the layer where the entity will be added</li>
+  <li><code>entity</code>: the entity to be added
+<br /><br /></li>
+</ul>
+
+<div id="sendToShader" data-magellan-destination="sendToShader"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">sendToShader</span>(layer_name<span class="tag">[string]</span>, shader_name<span class="tag">[variable]</span>, string<span class="tag">[value]</span>, any<span class="tag">[]</span>)</pre></td></table></div>
+<ul>
+  <li>sends the <code class="text">variable, value</code> pair to the shader, see <a href="https://www.love2d.org/wiki/Shader:send">Shader:send</a> for more information</li>
+  <li><code>layer_name</code>: the name of the layer being affected by this value</li>
+  <li><code>shader_name</code>: the name of the shader on that layer being affected by this value</li>
+  <li><code>variable</code>: the name of the variable</li>
+  <li><code>value</code>: the value of the variable</li>
+</ul>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- in some update function</span>
+fg.world:sendToShader(<span class="string"><span class="delimiter">'</span><span class="content">Blood_Floor</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Outline</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">brightness</span><span class="delimiter">'</span></span>, <span class="float">0.4</span>)
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<div id="setShaderClassList" data-magellan-destination="setShaderClassList"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">setShaderClassList</span>(layer_name<span class="tag">[string]</span>, shader_name<span class="tag">[string]</span>, class_list<span class="tag">[table[string]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>makes it so that the classes defined in <code class="text">list</code> are the only ones in this layer affected by this shader</li>
+  <li><code>layer_name</code>: the name of the layer</li>
+  <li><code>shader_name</code>: the name of the shader</li>
+  <li><code>class_list</code>: a list of class names defining which classes get affected by this shader on this layer
+<br /><br /></li>
+</ul>
+
+<div id="setLayerOrder" data-magellan-destination="setLayerOrder"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">setLayerOrder</span>(layers_order<span class="tag">[table[string]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>sets the rendering order for all layers</li>
+  <li><code>layers_order</code>: the layer order table, first layers are drawn first, last are drawn last</li>
+</ul>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>fg.world:setLayerOrder(<span class="map"><span class="delimiter">{</span><span class="string"><span class="delimiter">'</span><span class="content">Back</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Middle</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Default</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Front</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Effects</span><span class="delimiter">'</span></span><span class="delimiter">}</span></span>)
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<div id="sortLayerRenderOrder" data-magellan-destination="sortLayerRenderOrder"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">sortLayerRenderOrder</span>(layer_name<span class="tag">[string]</span>, order_function<span class="tag">[function]</span>)</pre></td></table></div>
+
+<ul>
+  <li>sorts all objects in the layer named <code class="text">layer_name</code> according to <code class="text">order_function</code> </li>
+  <li><code>layer_name</code>: the name of the layer being sorted</li>
+  <li><code>order_function</code>: the order function, see <a href="http://lua-users.org/wiki/TableLibraryTutorial">table.sort</a> for more information
+<br /><br /></li>
+</ul>
+
+<div id="sortRenderOrder" data-magellan-destination="sortRenderOrder"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">sortRenderOrder</span>(order_function<span class="tag">[function]</span>)</pre></td></table></div>
+
+<ul>
+  <li>sorts all objects in the all layers according to <code class="text">order_function</code> </li>
+  <li><code>order_function</code>: the order function, see <a href="http://lua-users.org/wiki/TableLibraryTutorial">table.sort</a> for more information</li>
+</ul>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- sorts all objects according to their .y attribute, useful for games in a Zelda-ish topdown angle</span>
+<span class="comment">-- in some update function</span>
+fg.world:sortRenderOrder(<span class="keyword">function</span>(a, b) <span class="keyword">return</span> a.y &lt; b.y <span class="keyword">end</span>)
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<h3 id="Render_Methods" data-magellan-destination="Render_Methods">Render Methods</h3>
+
+<div id="renderAttach" data-magellan-destination="renderAttach"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">renderAttach</span>()</pre></td></table></div>
+
+<ul>
+  <li>attaches <code class="text">fg.world.camera</code>, applying all its transformations until <code class="atrm">:renderDetach()</code> is called 
+<br /><br /></li>
+</ul>
+
+<div id="renderDetach" data-magellan-destination="renderDetach"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">renderDetach</span>()</pre></td></table></div>
+
+<ul>
+  <li>detaches the camera, removing all its transformations
+<br /><br /></li>
+</ul>
+
+    
+      <footer>
+        
+        
+      </footer>
+    
+  </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+  
+  </div><!--.columns-->
+  
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p class="text-center">
+  <span class="credit">
+  	Made using <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/annejohnson/octofound">Octofound</a><br/>
+  </span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/documentation/render/index.html';
+        var disqus_url = 'http://fuccboi.moe/documentation/render/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,864 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <script src="/js/vendor/modernizr.js"></script>
+  <meta charset="utf-8">
+  <title>Area - fuccboiGDX</title>
+  <meta name="author" content="adnzzzzZ">
+
+  
+  <meta name="description" content="<!-- Area --> Example 1
+2
+3
+4
+5
+6
+7
+8
+9
+10 -- Create a new area
+fg.world:createArea('Level_1', 0, 0) -- Create a bunch of objects to it
+fg.world. &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://fuccboi.moe/documentation/area">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
+
+  <script src="/js/vendor/jquery.js"></script>
+  <script src="/js/vendor/fastclick.js"></script>
+
+  <script src="/js/foundation.min.js"></script>
+  <script src="/js/foundation/foundation.magellan.js"></script>
+  <script src="/js/foundation/foundation.topbar.js"></script>
+  <script src="/js/foundation/foundation.accordion.js"></script>
+  <script src="/js/foundation/foundation.orbit.js"></script>
+  <script src="/js/foundation/foundation.dropdown.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <script>
+
+  $(document).ready(function(){
+    $(document).foundation();
+  });
+
+  </script>
+
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-51118504-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="no-sidebar" >
+  <header role="banner" class="top-header"><!--<hgroup>
+  <h1 class="text-center">
+  	<a href="/">fuccboiGDX</a>
+  </h1>
+  
+</hgroup>-->
+
+<!--<ul class="example-orbit-content" data-orbit>
+  <li data-orbit-slide="headline-1">
+    <div>
+      <h2>Headline 1</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <div>
+      <h2>Headline 2</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div>
+      <h2>Headline 3</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+</ul>-->
+
+</header>
+  <nav role="navigation"><ul class="subscription hide" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+
+
+
+<div class="sticky">
+
+  <nav class="top-bar" data-topbar role="navigation">
+
+    <!--
+    <ul class="title-area right">
+        <li class="name">
+          <h1><a href="/">fuccboiGDX <i class="fa fa-heart"></i></i></i></a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+    -->
+
+
+    <section class="top-bar-section">
+      <ul class="main-navigation right show-for-medium-up">
+          <li><a href="https://github.com/adonaac/fuccboiGDX">github</a></li>
+          <li><a href="https://twitter.com/adnzzzzZ">twitter</i></a></li>
+      </ul>
+
+      <ul class="main-navigation left">
+          <li><a href="/">fuccboiGDX</a></li>
+
+          <li class="has-dropdown">
+          <a href="/tutorials">tutorials</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Advanced</a>
+            <ul class="dropdown">
+                <li><a href="/tutorials/curvemaster">CurveMaster</a></li>
+                <li><a href="/tutorials/2d_platformer">2D Platformer</a></li>
+            </ul>
+            </li>
+
+            <li class="has-dropdown"><a href="#">Examples</a>
+            <ul class="dropdown">
+                <li><a href="/examples#Animation">Animation</a></li>
+                <li><a href="/examples#Area">Area</a></li>
+                <li><a href="/examples#Camera">Camera</a></li>
+                <li><a href="/examples#Collision">Collision</a></li>
+                <li><a href="/examples#Gamestate">Gamestate</a></li>
+                <li><a href="/examples#Input">Input</a></li>
+                <li><a href="/examples#Layers">Layers</a></li>
+                <li><a href="/examples#Loading">Loading</a></li>
+                <li><a href="/examples#Objects">Objects</a></li>
+                <li><a href="/examples#Particles">Particles</a></li>
+                <li><a href="/examples#Random">Random</a></li>
+                <li><a href="/examples#Serialization">Serialization</a></li>
+                <li><a href="/examples#Shaders">Shaders</a></li>
+                <li><a href="/examples#Sound">Sound</a></li>
+                <li><a href="/examples#Text">Text</a></li>
+                <li><a href="/examples#Tilemap">Tilemap</a></li>
+                <li><a href="/examples#Timing">Timing</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <li class="has-dropdown">
+          <a href="/documentation">documentation</a>
+          <ul class="dropdown">
+            <li class="has-dropdown"><a href="#">Main</a>
+            <ul class="dropdown">
+                <li><a href="/documentation/fg">fg</a></li>
+                <li><a href="/documentation/render">Render</a></li>
+                <li><a href="/documentation/world">World</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Logic</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/area">Area</a></li>
+            <li><a href="/documentation/class">Class</a></li>
+            <li><a href="/documentation/debug">Debug</a></li>
+            <li><a href="/documentation/entity">Entity</a></li>
+            <li><a href="/documentation/gamestate">Gamestate</a></li>
+            <li><a href="/documentation/input">Input</a></li>
+            <li><a href="/documentation/loader">Loader</a></li>
+            <li><a href="/documentation/objectpool">ObjectPool</a></li>
+                <li class="has-dropdown"><a href="#">Physics</a>
+                <ul class="dropdown">
+                    <li><a href="/documentation/collision">Collision</a></li>
+                    <li><a href="/documentation/physicsbody">PhysicsBody</a></li>
+                    <li><a href="/documentation/solid">Solid</a></li>
+                </ul>
+                </li>
+            <li><a href="/documentation/serial">Serial</a></li>
+            <li><a href="/documentation/timer">Timer</a></li>
+            <li><a href="/documentation/utils">utils</a></li>
+            <li><a href="/documentation/vector">Vector</a></li>
+            </ul>
+            </li>
+            <li class="has-dropdown"><a href="#">Visual</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/animation">Animation</a></li>
+            <li><a href="/documentation/background">Background</a></li>
+            <li><a href="/documentation/camera">Camera</a></li>
+            <li><a href="/documentation/particles">Particles</a></li>
+            <li><a href="/documentation/spritebatch">Spritebatch</a></li>
+            <li><a href="/documentation/text">Text</a></li>
+            <li><a href="/documentation/tilemap">Tilemap</a></li>
+            <li><a href="/documentation/uitools">UI Tools</a></li>
+            </ul>
+
+            <li class="has-dropdown"><a href="#">Sound</a>
+            <ul class="dropdown">
+            <li><a href="/documentation/sound">Sound</a></li>
+            </ul>
+            </li>
+          </ul>
+          </li>
+
+          <!--
+          <li class="has-dropdown">
+            <a href="/no-sidebar">No Sidebar Page</a>
+
+            <ul class="dropdown">
+              <li><a href="/no-sidebar/left-sidebar">Left Sidebar Page</a></li>
+              <li><a href="/no-sidebar/right-sidebar">Right Sidebar Page</a></li>
+              <li><a href="/no-sidebar/example-formatting">Example Formatting</a></li>
+            </ul>
+
+          </li>
+
+          <li><a href="/blog">Blog</a></li>
+
+          <li><a href="/blog/archives">Archives</a></li>
+          -->
+
+      </ul>
+
+    </section>
+  </nav>
+
+</div>
+
+
+
+
+
+
+<div data-magellan-expedition>
+<div id="nav" class="fixed right show-for-large-up">
+<ul class="side-nav">
+
+<strong><a href="/documentation">documentation</a><br><br></strong>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li data-magellan-arrival="Example"><a href="#Example">Example</a></li><li data-magellan-arrival="Description"><a href="#Description">Description</a></li>
+<li data-magellan-arrival="Area_Methods"><a href="#Area_Methods">Area Methods</a></li>
+<li data-magellan-arrival='activate' class='nav'><a href='#activate'>activate</a></li><li data-magellan-arrival='deactivate' class='nav'><a href='#deactivate'>deactivate</a></li>
+<li data-magellan-arrival="Creation_Methods"><a href="#Creation_Methods">Creation Methods</a></li>
+<li data-magellan-arrival='createEntity' class='nav'><a href='#createEntity'>createEntity</a></li><li data-magellan-arrival='createEntityImmediate' class='nav'><a href='#createEntityImmediate'>createEntityImmediate</a></li><li data-magellan-arrival='createTiledMapEntities' class='nav'><a href='#createTiledMapEntities'>createTiledMapEntities</a></li><li data-magellan-arrival='generateCollisionSolids' class='nav'><a href='#generateCollisionSolids'>generateCollisionSolids</a></li>
+<li data-magellan-arrival="HitFrameStop_Methods"><a href="#HitFrameStop_Methods">HitFrameStop Methods</a></li>
+<li data-magellan-arrival='hitFrameStopAdd' class='nav'><a href='#hitFrameStopAdd'>hitFrameStopAdd</a></li>
+<li data-magellan-arrival="Query_Methods"><a href="#Query_Methods">Query Methods</a></li>
+<li data-magellan-arrival='applyAreaCircle' class='nav'><a href='#applyAreaCircle'>applyAreaCircle</a></li><li data-magellan-arrival='applyAreaLine' class='nav'><a href='#applyAreaLine'>applyAreaLine</a></li><li data-magellan-arrival='applyAreaPolygon' class='nav'><a href='#applyAreaPolygon'>applyAreaPolygon</a></li><li data-magellan-arrival='applyAreaRectangle' class='nav'><a href='#applyAreaRectangle'>applyAreaRectangle</a></li><li data-magellan-arrival='queryAreaCircle' class='nav'><a href='#queryAreaCircle'>queryAreaCircle</a></li><li data-magellan-arrival='queryAreaLine' class='nav'><a href='#queryAreaLine'>queryAreaLine</a></li><li data-magellan-arrival='queryAreaPolygon' class='nav'><a href='#queryAreaPolygon'>queryAreaPolygon</a></li><li data-magellan-arrival='queryAreaRectangle' class='nav'><a href='#queryAreaRectangle'>queryAreaRectangle</a></li><li data-magellan-arrival='queryClosestAreaCircle' class='nav'><a href='#queryClosestAreaCircle'>queryClosestAreaCircle</a></li><li data-magellan-arrival='getEntitiesBy' class='nav'><a href='#getEntitiesBy'>getEntitiesBy</a></li><li data-magellan-arrival='getEntitiesWhere' class='nav'><a href='#getEntitiesWhere'>getEntitiesWhere</a></li>
+<li data-magellan-arrival="Attributes"><a href="#Attributes">Attributes</a></li>
+<li data-magellan-arrival='active' class='nav'><a href='#active'>active</a></li><li data-magellan-arrival='fg' class='nav'><a href='#fg'>fg</a></li><li data-magellan-arrival='position' class='nav'><a href='#position'>x y</a></li><li data-magellan-arrival='world' class='nav'><a href='#world'>world</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</div>
+</div>
+
+</nav>
+  <div id="main">
+    <div id="content" class="row">
+      
+<div class="small-12 medium-12 large-11 large-push-1 large-10 large-centered columns">
+
+  <article role="article">
+    <!--
+    <header class="page-header">
+      <h1 class="page-title">Area</h1>
+      
+      
+    </header>
+    -->
+    <h3 id="Example" data-magellan-destination="Example">Example</h3>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- Create a new area</span>
+fg.world:createArea(<span class="string"><span class="delimiter">'</span><span class="content">Level_1</span><span class="delimiter">'</span></span>, <span class="integer">0</span>, <span class="integer">0</span>)
+
+<span class="comment">-- Create a bunch of objects to it</span>
+fg.world.areas[<span class="string"><span class="delimiter">'</span><span class="content">Level_1</span><span class="delimiter">'</span></span>]:createEntity(<span class="string"><span class="delimiter">'</span><span class="content">Player</span><span class="delimiter">'</span></span>, <span class="integer">200</span>, <span class="integer">100</span>)
+fg.world.areas[<span class="string"><span class="delimiter">'</span><span class="content">Level_1</span><span class="delimiter">'</span></span>]:createEntity(<span class="string"><span class="delimiter">'</span><span class="content">Solid</span><span class="delimiter">'</span></span>, <span class="integer">200</span>, <span class="integer">200</span>, <span class="map"><span class="delimiter">{</span><span class="key">w</span> = <span class="integer">200</span>, <span class="key">h</span> = <span class="integer">50</span><span class="delimiter">}</span></span>)
+fg.world.areas[<span class="string"><span class="delimiter">'</span><span class="content">Level_1</span><span class="delimiter">'</span></span>]:createEntity(<span class="string"><span class="delimiter">'</span><span class="content">Solid</span><span class="delimiter">'</span></span>, <span class="integer">200</span>, <span class="integer">-100</span>, <span class="map"><span class="delimiter">{</span><span class="key">w</span> = <span class="integer">200</span>, <span class="key">h</span> = <span class="integer">50</span><span class="delimiter">}</span></span>)
+
+<span class="comment">-- Activate the area so that objects are created/drawn/updated</span>
+fg.world.areas[<span class="string"><span class="delimiter">'</span><span class="content">Level_1</span><span class="delimiter">'</span></span>]:activate()
+</pre></td>
+</tr></table>
+</div>
+
+<h3 id="Description" data-magellan-destination="Description">Description</h3>
+
+<p>The <code class="text">fg.Area</code> module handles the creation/deletion/updating of engine object, 
+querying the world for objects in a certain area/position/condition,
+saving/loading all objects in the area for when you have to transition from one are to another (changing levels),
+as well as a bunch of other smaller utilities (like hitFrameStops). Area instances are created in the 
+<code class="text">fg.world</code> instance and can be manipulated by doing <code class="text">fg.world.areas['area_name']:method</code>. Omitting
+<code class="text">.areas['area_name']</code> and doing <code class="text">fg.world:method</code> is an alias for <code class="text">fg.world.areas['Default']:method</code>,
+which uses the <code class="string">'Default'</code> area.</p>
+
+<p>Areas are the main way of getting information about the level you&#8217;re currently in as well as organizing your entities
+in separate logical bundles that can also be manipulated; think of it as literally a zone/level/area/map in a game
+where the loading screen usually appears (although for 2D games the loading screen is probably unnecessary most of the time
+since you can just load everything and have it in memory from when the game is launched).</p>
+
+<h3 id="Area_Methods" data-magellan-destination="Area_Methods">Area Methods</h3>
+
+<div id="activate" data-magellan-destination="activate"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">activate</span>()</pre></td></table></div>
+
+<ul>
+  <li>activates the area, enabling drawing and updating of its entities
+<br /><br /></li>
+</ul>
+
+<div id="deactivate" data-magellan-destination="deactivate"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">deactivate</span>()</pre></td></table></div>
+
+<ul>
+  <li>deactivates the area, disabling drawing and updating of its entities
+<br /><br /></li>
+</ul>
+
+<h3 id="Creation_Methods" data-magellan-destination="Creation_Methods">Creation Methods</h3>
+
+<div id="createEntity" data-magellan-destination="createEntity"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">createEntity</span>(entity_type<span class="tag">[string]</span>, x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, settings<span class="tag">[table[any][optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>creates an entity <strong>at the end of the current frame</strong>, if you need to rely on this entity&#8217;s creation to do stuff on this frame then
+use <code class="text">createEntityImmediate</code>; physics enabled classes should be created at the end of the frame (with this call) otherwise bugs are generated if
+an object is trying to be created while the box2d world is updating</li>
+  <li><code>entity_type</code>: the type of the entity to be created, available types are all classes created with the <code class="text">fg.Class</code> call </li>
+  <li><code>x, y</code>: the initial position to spawn the entity at</li>
+  <li><code>settings</code>: the table with additional settings, the entity is added attributes defined by this table
+<br /></li>
+</ul>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- creates a Player and defines its .v, .hp and .damage attributes</span>
+fg.world:createEntity(<span class="string"><span class="delimiter">'</span><span class="content">Player</span><span class="delimiter">'</span></span>, <span class="integer">400</span>, <span class="integer">300</span>, <span class="map"><span class="delimiter">{</span><span class="key">v</span> = <span class="integer">300</span>, <span class="key">hp</span> = <span class="integer">50</span>, <span class="key">damage</span> = <span class="integer">10</span><span class="delimiter">}</span></span>)
+</pre></td>
+</tr></table>
+</div>
+
+<div id="createEntityImmediate" data-magellan-destination="createEntityImmediate"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">createEntityImmediate</span>(type<span class="tag">[string]</span>, x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, settings<span class="tag">[table[any][optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns the created entity, use this when you need an entity to be created <strong>RIGHT NOW!!!</strong> instead of at the end of the frame</li>
+  <li><code>entity_type</code>: the type of the entity to be created, available types are all classes created with the <code class="text">fg.Class</code> call </li>
+  <li><code>x, y</code>: the initial position to spawn the entity at</li>
+  <li><code>settings</code>: the table with additional settings, the entity is added attributes defined by this table; for this call specifically, if the
+attribute <code class="text">no_layer</code> is set to true, then this entity won&#8217;t be added to any rendering layers, this can be useful when creating object hierarchies and
+so letting the parent object draw the child object manually instead of letting the rendering module do it automatically
+<br /></li>
+</ul>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- creates a Player and defines its .v, .hp and .damage attributes</span>
+player = fg.world:createEntityImmediate(<span class="string"><span class="delimiter">'</span><span class="content">Player</span><span class="delimiter">'</span></span>, <span class="integer">400</span>, <span class="integer">300</span>, <span class="map"><span class="delimiter">{</span><span class="key">v</span> = <span class="integer">300</span>, <span class="key">hp</span> = <span class="integer">50</span>, <span class="key">damage</span> = <span class="integer">10</span><span class="delimiter">}</span></span>)
+</pre></td>
+</tr></table>
+</div>
+
+<div id="createTiledMapEntities" data-magellan-destination="createTiledMapEntities"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">createTiledMapEntities</span>(tilemap<span class="tag">[Tilemap]</span>)</pre></td></table></div>
+
+<ul>
+  <li>generates entities defined by a Tiled map tilemap</li>
+  <li><code>tilemap</code>: the tilemap to use as reference for collision solid generation 
+<br /><br /></li>
+</ul>
+
+<div id="generateCollisionSolids" data-magellan-destination="generateCollisionSolids"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">generateCollisionSolids</span>(tilemap<span class="tag">[Tilemap]</span>)</pre></td></table></div>
+
+<ul>
+  <li>generates collision <a href="/documentation/solid">Solids</a> based on the tilemap&#8217;s collision data</li>
+  <li><code>tilemap</code>: the tilemap to use as reference for entity generation 
+<br /><br /></li>
+</ul>
+
+<h3 id="HitFrameStop_Methods" data-magellan-destination="HitFrameStop_Methods">HitFrameStop Methods</h3>
+
+<div id="hitFrameStopAdd" data-magellan-destination="hitFrameStopAdd"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">hitFrameStopAdd</span>(number_of_frames<span class="tag">[number]</span>, groups<span class="tag">[table[optional]]</span>, after_function<span class="tag">[function[optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>stops every object from the classes specified in the <code class="text">groups</code> table from updating for <code class="text">number_of_frames</code>, executing <code class="text">after_function</code> after those frames end</li>
+  <li><code>number_of_frames</code>: the number of frames to stop the objects by</li>
+  <li><code>groups</code>: the classes to stop</li>
+  <li><code>after_function</code>: the function to be executed right before all objects go back to being updated</li>
+</ul>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- Stops all instances of objects from the classes Player, Enemy and Particles</span>
+<span class="comment">-- from being updated for 10 frames, printing 1 after it's all done</span>
+fg.world:hitFrameStopAdd(<span class="integer">10</span>, <span class="map"><span class="delimiter">{</span><span class="string"><span class="delimiter">'</span><span class="content">Player</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Enemy</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Particles</span><span class="delimiter">'</span></span><span class="delimiter">}</span></span>, <span class="keyword">function</span>() <span class="predefined">print</span>(<span class="integer">1</span>) <span class="keyword">end</span>)
+
+<span class="comment">-- Stops all instances of all classes except for the Particles class from being updated for 20 frames</span>
+fg.world:hitFrameStopAdd(<span class="integer">20</span>, <span class="map"><span class="delimiter">{</span><span class="string"><span class="delimiter">'</span><span class="content">All</span><span class="delimiter">'</span></span>, <span class="key">except</span> = <span class="map"><span class="inline-delimiter">{</span><span class="string"><span class="delimiter">'</span><span class="content">Particles</span><span class="delimiter">'</span></span><span class="inline-delimiter">}</span></span><span class="delimiter">}</span></span>)
+
+<span class="comment">-- Stops all instances of all classes from being update for 30 frames, printing 2 after it's all done</span>
+fg.world:hitFrameStopAdd(<span class="integer">30</span>, <span class="keyword">function</span>() <span class="predefined">print</span>(<span class="integer">2</span>) <span class="keyword">end</span>)
+</pre></td>
+</tr></table>
+</div>
+<p><br /></p>
+
+<h3 id="Query_Methods" data-magellan-destination="Query_Methods">Query Methods</h3>
+
+<p><code class="text">apply</code> functions apply some action to all entities inside an area: </p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- deals damage to all Enemy1, Enemy2, Enemy3 type of enemies inside a 32x32 rectangle around world coordinate 400, 300</span>
+fg.world:applyAreaRectangle(<span class="integer">400</span>, <span class="integer">300</span>, <span class="integer">32</span>, <span class="integer">32</span>, <span class="map"><span class="delimiter">{</span><span class="string"><span class="delimiter">'</span><span class="content">Enemy1</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Enemy2</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Enemy3</span><span class="delimiter">'</span></span><span class="delimiter">}</span></span>, <span class="keyword">function</span>(enemy)
+    enemy:dealDamage(math.random(<span class="integer">5</span>, <span class="integer">10</span>))
+<span class="keyword">end</span>)
+</pre></td>
+</tr></table>
+</div>
+
+<div id="applyAreaCircle" data-magellan-destination="applyAreaCircle"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">applyAreaCircle</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, radius<span class="tag">[number]</span>, object_types<span class="tag">[table[string]]</span>, action<span class="tag">[function]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>x, y</code>: the center of the circle being checked for entities</li>
+  <li><code>radius</code>: the radius of the circle being checked for entities</li>
+  <li><code>object_types</code>: the class names of the entities that should be acted upon</li>
+  <li><code>action</code>: the action to be applied, must receive a single argument: the current entity being acted upon
+<br /><br /></li>
+</ul>
+
+<div id="applyAreaLine" data-magellan-destination="applyAreaLine"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">applyAreaLine</span>(x1<span class="tag">[number]</span>, y1<span class="tag">[number]</span>, x2<span class="tag">[number]</span>, y2<span class="tag">[number]</span>, object_types<span class="tag">[table[string]]</span>, action<span class="tag">[function]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>x1, y1, x2, y2</code>: the initial and end points the line being checked for entities</li>
+  <li><code>object_types</code>: the class names of the entities that should be acted upon</li>
+  <li><code>action</code>: the action to be applied, must receive a single argument: the current entity being acted upon
+<br /><br /></li>
+</ul>
+
+<div id="applyAreaPolygon" data-magellan-destination="applyAreaPolygon"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">applyAreaPolygon</span>(polygon_points<span class="tag">[table[number]]</span>, object_types<span class="tag">[table[string]]</span>, action<span class="tag">[function]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>polygon_points</code>: the <code class="text">x1, y1, x2, y2, ..., xn, yn</code> points of the polygon</li>
+  <li><code>object_types</code>: the class names of the entities that should be acted upon</li>
+  <li><code>action</code>: the action to be applied, must receive a single argument: the current entity being acted upon
+<br /><br /></li>
+</ul>
+
+<div id="applyAreaRectangle" data-magellan-destination="applyAreaRectangle"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">applyAreaRectangle</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, width<span class="tag">[number]</span>, height<span class="tag">[number]</span>, object_types<span class="tag">[table[string]]</span>, action<span class="tag">[function]</span>)</pre></td></table></div>
+
+<ul>
+  <li><code>x, y</code>: the center of the rectangle being checked for entities</li>
+  <li><code>width, height</code>: the size of the rectangle being checked for entities</li>
+  <li><code>object_types</code>: the class names of the entities that should be acted upon</li>
+  <li><code>action</code>: the action to be applied, must receive a single argument: the current entity being acted upon
+<br /><br /></li>
+</ul>
+
+<p><code class="text">query</code> functions return all entities inside an area: </p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+</pre></td>
+  <td class="code"><pre><span class="comment">-- deals damage to all Enemy1, Enemy2, Enemy3 type of enemies inside a 32x32 rectangle around world coordinate 400, 300</span>
+entities = fg.world:queryAreaRectangle(<span class="integer">400</span>, <span class="integer">300</span>, <span class="integer">32</span>, <span class="integer">32</span>, <span class="map"><span class="delimiter">{</span><span class="string"><span class="delimiter">'</span><span class="content">Enemy1</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Enemy2</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Enemy3</span><span class="delimiter">'</span></span><span class="delimiter">}</span></span>)
+<span class="keyword">for</span> _, entity <span class="keyword">in</span> <span class="predefined">ipairs</span>(entities) <span class="keyword">do</span> entity:dealDamage(math.random(<span class="integer">5</span>, <span class="integer">10</span>)) <span class="keyword">end</span>
+</pre></td>
+</tr></table>
+</div>
+
+<div id="queryAreaCircle" data-magellan-destination="queryAreaCircle"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">queryAreaCircle</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, radius<span class="tag">[number]</span>, object_types<span class="tag">[table[string]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns a table containing the entities inside this area</li>
+  <li><code>x, y</code>: the center of the circle being checked for entities</li>
+  <li><code>radius</code>: the radius of the circle being checked for entities</li>
+  <li><code>object_types</code>: the class names of the entities that should be acted upon
+<br /><br /></li>
+</ul>
+
+<div id="queryAreaLine" data-magellan-destination="queryAreaLine"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">queryAreaLine</span>(x1<span class="tag">[number]</span>, y1<span class="tag">[number]</span>, x2<span class="tag">[number]</span>, y2<span class="tag">[number]</span>, object_types<span class="tag">[table[string]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns a table containing the entities inside this area</li>
+  <li><code>x1, y1, x2, y2</code>: the initial and final points the line being checked for entities</li>
+  <li><code>object_types</code>: the class names of the entities that should be acted upon
+<br /><br /></li>
+</ul>
+
+<div id="queryAreaPolygon" data-magellan-destination="queryAreaPolygon"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">queryAreaPolygon</span>(polygon_points<span class="tag">[table[number]]</span>, object_types<span class="tag">[table[string]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns a table containing the entities inside the area defined by this polygon</li>
+  <li><code>polygon_points</code>: the <code class="text">x1, y1, x2, y2, ..., xn, yn</code> points of the polygon</li>
+  <li><code>object_types</code>: the class names of the entities that should be acted upon</li>
+</ul>
+
+<div id="queryAreaRectangle" data-magellan-destination="queryAreaRectangle"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">queryAreaRectangle</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, width<span class="tag">[number]</span>, height<span class="tag">[number]</span>, object_types<span class="tag">[table[string]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns a table containing the entities inside this area</li>
+  <li><code>x, y</code>: the center of the rectangle being checked for entities</li>
+  <li><code>width, height</code>: the size of the rectangle being checked for entities</li>
+  <li><code>object_types</code>: the class names of the entities that should be acted upon
+<br /><br /></li>
+</ul>
+
+<div id="queryClosestAreaCircle" data-magellan-destination="queryClosestAreaCircle"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">queryClosestAreaCircle</span>(ids<span class="tag">[table[number]]</span>, x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, radius<span class="tag">[number]</span>, object_types<span class="tag">[table[string]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns the closest entity to position <code class="text">x, y</code> inside <code class="text">radius</code> </li>
+  <li><code>ids</code>: a table of numbers (object ids) saying which objects to ignore, usually <code class="text">{self.id}</code>, meaning that it shouldn&#8217;t
+consider the object that called it when doing the proximity calculations</li>
+  <li><code>x, y</code>: the center of the circle being checked for entities</li>
+  <li><code>radius</code>: the radius of the circle being checked for entities</li>
+  <li><code>object_types</code>: the class names of the entities that should be acted upon
+<br /><br /></li>
+</ul>
+
+<div id="getEntitiesBy" data-magellan-destination="getEntitiesBy"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">getEntitiesBy</span>(key<span class="tag">[string]</span>, value<span class="tag">[any]</span>, object_types<span class="tag">[table[string][optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns a table of entities where <code class="text">entity.key == value</code></li>
+  <li><code>key</code>: the key (as a string) to look for</li>
+  <li><code>value</code>: the value to look for</li>
+  <li><code>object_types</code>: the class names of the entities that should be acted upon, if omitted defaults to all classes
+<br /><br /></li>
+</ul>
+
+<div id="getEntitiesWhere" data-magellan-destination="getEntitiesWhere"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">getEntitiesWhere</span>(condition<span class="tag">[function]</span>, object_types<span class="tag">[table[string][optional]]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns a table of entities where condition is satisfied</li>
+  <li><code>condition</code>: the condition to be satisfied</li>
+  <li><code>object_types</code>: the class names of the entities that should be acted upon, if omitted defaults to all classes</li>
+</ul>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>entities = fg.world:getEntitiesWhere(<span class="keyword">function</span>(object) <span class="keyword">if</span> object.hp &lt; <span class="integer">5</span> <span class="keyword">then</span> <span class="keyword">return</span> <span class="predefined-constant">true</span> <span class="keyword">end</span> <span class="keyword">end</span>)
+</pre></td>
+</tr></table>
+</div>
+<p><br /><br /></p>
+
+<h3 id="Attributes" data-magellan-destination="Attributes">Attributes</h3>
+
+<div id="active" data-magellan-destination="active"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">active</span><span class="tag">[boolean]</span></pre></td></table></div>
+
+<ul>
+  <li>if the area is active (and drawing/updating) or not	
+<br /><br /></li>
+</ul>
+
+<div id="fg" data-magellan-destination="fg"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">fg</span><span class="tag">[table]</span></pre></td></table></div>
+
+<ul>
+  <li>a reference to the variable that holds the entire engine/framework
+<br /><br /></li>
+</ul>
+
+<div id="position" data-magellan-destination="position"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">x</span><span class="tag">[number]</span>, .<span class="annotation">y</span><span class="tag">[number]</span></pre></td></table></div>
+
+<ul>
+  <li>the top-left position of the area; all entities created will be offset by this position	
+<br /><br /></li>
+</ul>
+
+<div id="world" data-magellan-destination="world"></div>
+<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">world</span><span class="tag">[World]</span></pre></td></table></div>
+
+<ul>
+  <li>a reference to the <code class="text">fg.world</code> instance that holds this area
+<br /><br /></li>
+</ul>
+
+    
+      <footer>
+        
+        
+      </footer>
+    
+  </article>
+  
+    <section>
+        <br><br>
+      <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </section>
+  
+  </div><!--.columns-->
+  
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p class="text-center">
+  <span class="credit">
+  	Made using <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/annejohnson/octofound">Octofound</a><br/>
+  </span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'fuccboigdx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://fuccboi.moe/documentation/area/index.html';
+        var disqus_url = 'http://fuccboi.moe/documentation/area/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+</body>
+</html>

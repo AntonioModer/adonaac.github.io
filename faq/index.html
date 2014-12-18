@@ -6,12 +6,11 @@
 <head>
   <script src="/js/vendor/modernizr.js"></script>
   <meta charset="utf-8">
-  <title>utils - fuccboiGDX</title>
+  <title>FAQ - fuccboiGDX</title>
   <meta name="author" content="adnzzzzZ">
 
   
-  <meta name="description" content="<!-- Utils --> mlib An utility library with tons of functions that makes operations regarding lines, polygons, circles,
-intersections and math &hellip;">
+  <meta name="description" content="<!-- FAQ --> Should I use fuccboiGDX for my game? No. The API is still being heavily changed and also it isn’t super amazingly well tested to cover &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -19,7 +18,7 @@ intersections and math &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://fuccboi.moe/documentation/utils">
+  <link rel="canonical" href="http://fuccboi.moe/faq">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="fuccboiGDX" type="application/atom+xml">
@@ -245,7 +244,6 @@ intersections and math &hellip;">
 <div id="nav" class="fixed right show-for-large-up">
 <ul class="side-nav">
 
-<strong><a href="/documentation">documentation</a><br><br></strong>
 
 
 
@@ -303,10 +301,6 @@ intersections and math &hellip;">
 
 
 
-
-
-<li data-magellan-arrival="mlib"><a href="#mlib">mlib</a></li><li data-magellan-arrival="Moses"><a href="#Moses">Moses</a></li><li data-magellan-arrival="utils"><a href="#utils">utils</a></li><li data-magellan-arrival="Methods"><a href="#Methods">Methods</a></li>
-<li data-magellan-arrival='graphics.pushRotate' class='nav'><a href='#graphics.pushRotate'>graphics.pushRotate</a></li><li data-magellan-arrival='graphics.pushRotateScale' class='nav'><a href='#graphics.pushRotateScale'>graphics.pushRotateScale</a></li><li data-magellan-arrival='math.chooseWithProbability' class='nav'><a href='#math.chooseWithProbability'>math.chooseWithProbability</a></li><li data-magellan-arrival='math.clamp' class='nav'><a href='#math.clamp'>math.clamp</a></li><li data-magellan-arrival='math.isBetween' class='nav'><a href='#math.isBetween'>math.isBetween</a></li><li data-magellan-arrival='math.random' class='nav'><a href='#math.random'>math.random</a></li><li data-magellan-arrival='math.round' class='nav'><a href='#math.round'>math.round</a></li><li data-magellan-arrival='table.copy' class='nav'><a href='#table.copy'>table.copy</a></li><li data-magellan-arrival='table.random' class='nav'><a href='#table.random'>table.random</a></li><li data-magellan-arrival='angleToDirection4' class='nav'><a href='#angleToDirection4'>angleToDirection4</a></li><li data-magellan-arrival='directionToAngle4' class='nav'><a href='#directionToAngle4'>directionToAngle4</a></li>
 
 
 
@@ -326,144 +320,32 @@ intersections and math &hellip;">
   <article role="article">
     <!--
     <header class="page-header">
-      <h1 class="page-title">Utils</h1>
+      <h1 class="page-title">FAQ</h1>
       
       
     </header>
     -->
-    <h3 id="mlib" data-magellan-destination="mlib">mlib</h3>
+    <p><strong>Should I use fuccboiGDX for my game?</strong></p>
 
-<p>An utility library with tons of functions that makes operations regarding lines, polygons, circles,
-intersections and math related stuff in general a lot easier than they are with vanilla LÖVE/Lua. It’s
-an exact copy of <a href="http://github.com/davisdude/mlib">mlib</a>, so refer to that for a list and an explanation
-of all functions it implements. It can be accessed through <code class="text">fg.mlib</code>.</p>
+<p>No. The API is still being heavily changed and also it isn’t super amazingly well tested to cover all use cases ever.
+If you want to try it out for small games or prototypes it should be fine, but I’d advise against it for more complete games, 
+since there are other more mature engines/frameworks out there.</p>
 
-<h3 id="Moses" data-magellan-destination="Moses">Moses</h3>
+<p><strong>Examples of games that are being made with fuccboiGDX?</strong></p>
 
-<p>An utility library with tons of functions that makes operations on tables, arrays, lists, collections and objects
-a lot easier than they are with vanilla Lua. It’s an exact copy of <a href="http://github.com/Yonaba/Moses">Moses</a>, so refer to this 
-<a href="https://github.com/Yonaba/Moses/blob/master/doc/tutorial.md">tutorial</a> for a list and an explanation of all functions
-it implements. It can be accessed through <code class="text">fg.moses</code>, <code class="text">fg.mo</code> or <code class="text">fg.fn</code>.</p>
+<p>I’m working on two games that use the engine:</p>
 
-<h3 id="utils" data-magellan-destination="utils">utils</h3>
+<p><img class="center" src="/assets/ice.gif" />
+<img class="center" src="/assets/hitee.gif" /></p>
 
-<p>The <code class="text">fg.utils</code> table holds some random utility functions…</p>
+<p><strong>Why is it called fuccboiGDX?</strong></p>
 
-<h3 id="Methods" data-magellan-destination="Methods">Methods</h3>
-
-<div id="graphics.pushRotate" data-magellan-destination="graphics.pushRotate"></div>
-<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">graphics.pushRotate</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, angle<span class="tag">[number]</span>)</pre></td></table></div>
-
-<ul>
-  <li>rotates everything around <code class="text">x, y</code> by <code class="text">angle</code> until <code class="text">love.graphics.pop()</code> is called</li>
-  <li><code>x, y</code>: the pivot position to rotate everything around</li>
-  <li><code>angle</code>: the amount to rotate things for
-<br /><br /></li>
-</ul>
-
-<div id="graphics.pushRotateScale" data-magellan-destination="graphics.pushRotateScale"></div>
-<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">graphics.pushRotateScale</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>, angle<span class="tag">[number]</span>, scale_x<span class="tag">[number]</span>, scale_y<span class="tag">[number]</span>)</pre></td></table></div>
-
-<ul>
-  <li>rotates everything around <code class="text">x, y</code> by <code class="text">angle</code> with <code class="text">scale_x, scale_y</code> 
-until <code class="text">love.graphics.pop()</code> is called</li>
-  <li><code>x, y</code>: the pivot position to rotate everything around</li>
-  <li><code>angle</code>: the amount to rotate things for</li>
-  <li><code>scale_x, scale_y</code>: the amount to scale things by
-<br /><br /></li>
-</ul>
-
-<div id="math.chooseWithProbability" data-magellan-destination="math.chooseWithProbability"></div>
-<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">math.chooseWithProbability</span>(choices<span class="tag">[table]</span>, chances<span class="tag">[table]</span>)</pre></td></table></div>
-
-<ul>
-  <li>returns a value from the <code class="text">choices</code> table, chosen with a probability given by the <code class="text">chances</code> table    </li>
-  <li><code>choices</code>: a table containing values to be picked</li>
-  <li><code>chances</code>: a table of equal size to <code class="text">choices</code> containing the probability of each value being picked</li>
-</ul>
-
-<div><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-</pre></td>
-  <td class="code"><pre><span class="comment">-- 50% to print 2</span>
-<span class="comment">-- 30% to print 'hhh'</span>
-<span class="comment">-- 20% to print 3</span>
-<span class="predefined">print</span>(chooseWithProbability(<span class="map"><span class="delimiter">{</span><span class="integer">2</span>, <span class="string"><span class="delimiter">'</span><span class="content">hhh</span><span class="delimiter">'</span></span>, <span class="integer">3</span><span class="delimiter">}</span></span>, <span class="map"><span class="delimiter">{</span><span class="float">0.5</span>, <span class="float">0.3</span>, <span class="float">0.2</span><span class="delimiter">}</span></span>)
-</pre></td>
-</tr></table>
-</div>
-<p><br /></p>
-
-<div id="math.clamp" data-magellan-destination="math.clamp"></div>
-<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">math.clamp</span>(value<span class="tag">[number]</span>, min<span class="tag">[number]</span>, max<span class="tag">[number]</span>)</pre></td></table></div>
-
-<ul>
-  <li>clamps <code class="text">value</code> between <code class="text">min</code> and <code class="text">max</code> 
-<br /><br /></li>
-</ul>
-
-<div id="math.isBetween" data-magellan-destination="math.isBetween"></div>
-<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">math.isBetween</span>(value<span class="tag">[number]</span>, min<span class="tag">[number]</span>, max<span class="tag">[number]</span>)</pre></td></table></div>
-
-<ul>
-  <li>returns <code class="text">true</code> if <code class="text">value</code> is between <code class="text">min</code> and <code class="text">max</code>, <code class="text">false</code> otherwise 
-<br /><br /></li>
-</ul>
-
-<div id="math.random" data-magellan-destination="math.random"></div>
-<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">math.random</span>(min<span class="tag">[number]</span>, max<span class="tag">[number]</span>)</pre></td></table></div>
-
-<ul>
-  <li>returns a random floating point number between <code class="text">min</code> and <code class="text">max</code>, use Lua’s <code class="text">math.random</code> for integers only
-<br /><br /></li>
-</ul>
-
-<div id="math.round" data-magellan-destination="math.round"></div>
-<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">math.round</span>(number<span class="tag">[number]</span>, precision<span class="tag">[number]</span>)</pre></td></table></div>
-
-<ul>
-  <li>returns a number rounded to <code class="text">precision</code> decimal points</li>
-  <li><code>number</code>: the number being rounded</li>
-  <li><code>precision</code>: the precision, in terms of number of decimal places, that <code class="text">number</code> is rounded to
-<br /><br /></li>
-</ul>
-
-<div id="table.copy" data-magellan-destination="table.copy"></div>
-<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">table.copy</span>(table<span class="tag">[table]</span>)</pre></td></table></div>
-
-<ul>
-  <li>returns the copied table. Since tables in Lua are always references this can be useful sometimes!
-<br /><br /></li>
-</ul>
-
-<div id="table.random" data-magellan-destination="table.random"></div>
-<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">table.random</span>(table<span class="tag">[table]</span>)</pre></td></table></div>
-
-<ul>
-  <li>returns a random value from <code class="text">table</code> 
-<br /><br /></li>
-</ul>
-
-<div id="angleToDirection4" data-magellan-destination="angleToDirection4"></div>
-<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">angleToDirection4</span>(angle<span class="tag">[number]</span>)</pre></td></table></div>
-
-<ul>
-  <li>returns a direction that best corresponds to <code class="text">angle</code>, all possible returned values are 
-<code class="string">'right'</code>, <code class="string">'up'</code>, <code class="string">'left'</code> and <code class="string">'down'</code> 
-<br /><br /></li>
-</ul>
-
-<div id="directionToAngle4" data-magellan-destination="directionToAngle4"></div>
-<div><table class="CodeRay"><td class="code"><pre>.<span class="annotation">directionToAngle4</span>(direction<span class="tag">[string]</span>)</pre></td></table></div>
-
-<ul>
-  <li>returns an angle that corresponds to <code class="text">direction</code>, all possible direction values are
-<code class="string">'right'</code>, <code class="string">'up'</code>, <code class="string">'left'</code> and <code class="string">'down'</code> 
-<br /><br /></li>
-</ul>
+<p>First of all I know why you’re asking that and let me interject for a moment. You’re probably pronouncing
+<em>fuccboi</em> so that it sounds like “fuck boy”, but that is <strong>wrong</strong>. The <em>u</em> in <em>fucc</em> is supposed to sound like the <em>u</em>
+in <em>gucci</em> or like <em>foo</em> in <em>foobar</em>, and the <em>o</em> in <em>boi</em> should be closed, like in <em>coast</em> or <em>koi</em>. So <em>fuccboi</em> should sound like
+“foochboi”. Having that said, I know that most people will pronounce it like “fuck boy” anyways, which is why I added <strong>GDX</strong> at in the end.
+<strong>GDX</strong> is a combination of letters that passes a lot of <strong>professionalism</strong> and so it’s used to offset the naturally dirty minds 
+of everyone in the world.</p>
 
     
       <footer>
@@ -589,8 +471,8 @@ until <code class="text">love.graphics.pop()</code> is called</li>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://fuccboi.moe/documentation/utils/index.html';
-        var disqus_url = 'http://fuccboi.moe/documentation/utils/index.html';
+        var disqus_identifier = 'http://fuccboi.moe/faq/index.html';
+        var disqus_url = 'http://fuccboi.moe/faq/index.html';
         var disqus_script = 'embed.js';
       
     (function () {

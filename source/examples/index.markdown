@@ -10,7 +10,7 @@ sidebar: false
 
 {% title Animation %}
 
-[Animation](documentation/animation)
+[Animation](/documentation/animation)
 
 {% title2 Animation from Spritesheet %}
 
@@ -49,7 +49,7 @@ end
 
 {% title Area %}
 
-[Area](documentation/area)
+[Area](/documentation/area)
 
 {% title2 Creating an Area %}
 
@@ -79,7 +79,7 @@ fg.world.areas['New_Area']:deactivate()
 
 {% title Camera %}
 
-[Camera](documentation/camera)
+[Camera](/documentation/camera)
 
 {% title2 Camera Following %}
 
@@ -99,7 +99,7 @@ fg.world.camera:shake(5 0.5)
 
 {% title Collision %}
 
-[Collision](documentation/collision), [PhysicsBody](documentation/physicsbody)
+[Collision](/documentation/collision), [PhysicsBody](/documentation/physicsbody)
 
 {% title2 Physics Collisions %}
 
@@ -137,7 +137,7 @@ end
 
 {% title Gamestate %}
 
-[Gamestate](documentation/gamestate)
+[Gamestate](/documentation/gamestate)
 
 {% title2 Gamestate Changing %}
 
@@ -169,7 +169,7 @@ end
 
 {% title Input %}
 
-[Input](documentation/input)
+[Input](/documentation/input)
 
 {% title2 Input %}
 
@@ -221,7 +221,7 @@ end
 
 {% title Layers %}
 
-[Layer](documentation/render#Layer)
+[Layer](/documentation/render#Layer)
 
 {% title2 Creating a Layer %}
 
@@ -272,7 +272,7 @@ fg.world:sortLayerRenderOrder('New_Layer', function(a, b) return a.y < b.y end)
 
 {% title Loading %}
 
-[Loader](documentation/loader)
+[Loader](/documentation/loader)
 
 {% title2 Loading Resources with LÖVE %}
 
@@ -310,7 +310,7 @@ end
 
 {% title Objects %}
 
-[Area](documentation/area), [Class](documentation/class), [Entity](documentation/entity), [World](documentation/world)
+[Area](/documentation/area), [Class](/documentation/class), [Entity](/documentation/entity), [World](/documentation/world)
 
 {% title2 Creating a Normal Class %}
 
@@ -371,7 +371,7 @@ fg.world:createEntity('MyClass', 0, 0, {attribute_1 = 1, attribute_2 = 4})
 Creates a new entity of type {% string 'MyClass' %} and returns it immediately. Usually you don't need to take care
 of engine objects manually because the engine does all updating/drawing/destroying/etc for you, but sometimes
 this is needed for various random reasons. Physics enabled entities **CAN'T** be created with this call or several bugs
-may happen. See the [PhysicsBody](documentation/physicsbody), [Area](documentation/area) and [World](documentation/world) sections
+may happen. See the [PhysicsBody](/documentation/physicsbody), [Area](/documentation/area) and [World](/documentation/world) sections
 for more information.
 
 ~~~ lua
@@ -421,7 +421,7 @@ end
 
 {% title Particles %}
 
-[Particles](documentation/particles)
+[Particles](/documentation/particles)
 
 {% title2 Spawning Particles %}
 
@@ -495,7 +495,7 @@ fg.input:bind('f1', function() fg.debug_draw = not fg.debug_draw end)
 
 {% title Serialization %}
 
-[Serial](documentation/serial)
+[Serial](/documentation/serial)
 
 {% title2 Save Method %}
 
@@ -527,7 +527,7 @@ fg.Serial:loadArea('save_filename', fg.world.areas['Level_1'])
 
 {% title Shaders %}
 
-[Render](documentation/render), [Shader](http://love2d.org/wiki/Shader)
+[Render](/documentation/render), [Shader](http://love2d.org/wiki/Shader)
 
 {% title2 Applying Shaders to a Layer %}
 
@@ -554,7 +554,7 @@ end
 
 {% title Sound %}
 
-[Sound](documentation/sound)
+[Sound](/documentation/sound)
 
 {% title2 Playing a Sound %}
 
@@ -565,12 +565,12 @@ fg.Sound.play('sound.ogg')
 
 {% title Text %}
 
-[Text](documentation/text)
+[Text](/documentation/text)
 
 {% title2 Programming Text %}
 
 Makes the words {% text WAVES WAVES WAVES %} wavy and with an increasinly red color to the right.
-See [Text](documentation/text) for more information.
+See [Text](/documentation/text) for more information.
 
 ~~~ lua
 text = fg.Text('[WAVES WAVES WAVES](wavy; increasingRed)', {
@@ -587,7 +587,7 @@ text = fg.Text('[WAVES WAVES WAVES](wavy; increasingRed)', {
 
 {% title Tilemap %}
 
-[Tilemap](documentation/tilemap)
+[Tilemap](/documentation/tilemap)
 
 {% title2 Loading a Tilemap with One Tileset %}
 
@@ -630,7 +630,7 @@ tilemap = fg.Tilemap(0, 0, 'maps/tiled_map')
 
 {% title Timing %}
 
-[HitFrameStop](documentation/area#hitFrameStopAdd), [Timer](documentation/timer), [Tween](documentation/timer#)
+[HitFrameStop](/documentation/area#hitFrameStopAdd), [Timer](/documentation/timer), [Tween](/documentation/timer#)
 
 {% title2 Hit Frame Stop %}
 

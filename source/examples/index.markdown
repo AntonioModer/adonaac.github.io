@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Examples 
+title: examples 
 subtitle:
 comments: true
 sharing: false
@@ -425,7 +425,7 @@ end
 
 {% title2 Spawning Particles %}
 
-Provided you've already created the {% text ExplosionParticles.lua %} file on the particles editor (as described [here](documentation/particles#Description)):
+Provided you've already created the {% text ExplosionParticles.lua %} file on the particles editor (as described [here](/documentation/particles#Description)):
 
 ~~~ lua
 -- parameters: particle system name, x, y position

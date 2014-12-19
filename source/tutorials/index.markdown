@@ -41,7 +41,7 @@ or who want to get a feel for how coding things with fuccboiGDX works.
 **Advanced**
 
 *   [CurveMaster](curvemaster) - enhanced Pong clone using the {% text framework %};
-*   [2D Platformer](2d-platformer) - simple 2D platformer using box2d physics and the {% text engine %};
+*   [2D Platformer](2d_platformer) - simple 2D platformer using box2d physics and the {% text engine %};
 
 **Examples**
 

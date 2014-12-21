@@ -8,6 +8,10 @@ footer: true
 sidebar: false 
 ---
 
+<div data-alert class="alert-box info radius">
+    Resizing and scaling the screen may cause unexpected bugs with cameras when using the engine. If that happens pls report
+</div>
+
 {% title Render %}
 
 The {% text render %} module takes care of drawing everything in the {% text engine %}. It's attached to the {% text fg.world %}

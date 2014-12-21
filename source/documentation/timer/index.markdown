@@ -127,7 +127,8 @@ cancels previously registered {% text after %} calls
 *   calls {% text action %} every {% text delay %} seconds for {% text count %} times, if {% text tag %} is 
 already registered then cancels previously registered {% text every %} calls
 *   {% param tag %}: the identifier for this {% text every %} call, the call is not tagged if omitted
-*   {% param delay %}: the amount of seconds between each {% text action %} call
+*   {% param delay %}: the amount of seconds between each {% text action %} call, can also be a table with two numbers in it, in which case a random
+delay between those two numbers is chosen each time (first number must be smaller than the second)
 *   {% param action %}: the function to be called
 *   {% param count %}: the maximum amount of times {% text action %} is called, defaults to infinite if omitted
 <br><br>

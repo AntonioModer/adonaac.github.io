@@ -55,6 +55,11 @@ end
 *   if the entity is dead or alive, dead entities get automatically removed from the world at the end of the frame
 <br><br>
 
+{% attribute fg fg table %}
+
+*   a reference to the fuccboiGDX main table
+<br><br>
+
 {% attribute id id number %}
 
 *   the unique identifier of the entity 

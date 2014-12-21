@@ -8,6 +8,11 @@ footer: true
 sidebar: false 
 ---
 
+<div data-alert class="alert-box info radius">
+    Resizing and scaling the screen may cause unexpected bugs with cameras
+    if the zoom calls are used with the engine. Try to use fg.screen_scale instead.
+</div>
+
 {% title Example %}
 
 ~~~ lua

@@ -10,8 +10,7 @@
   <meta name="author" content="adnzzzzZ">
 
   
-  <meta name="description" content="<!-- Render --> Render The render module takes care of drawing everything in the engine. It&#8217;s attached to the fg.world
-instance and so all its &hellip;">
+  <meta name="description" content="<!-- Render --> Resizing and scaling the screen may cause unexpected bugs with cameras when using the engine. If that happens pls report Render The &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -334,9 +333,13 @@ instance and so all its &hellip;">
       
     </header>
     -->
-    <h3 id="Render" data-magellan-destination="Render">Render</h3>
+    <div data-alert="" class="alert-box info radius">
+    Resizing and scaling the screen may cause unexpected bugs with cameras when using the engine. If that happens pls report
+</div>
 
-<p>The <code class="text">render</code> module takes care of drawing everything in the <code class="text">engine</code>. It&#8217;s attached to the <code class="text">fg.world</code>
+<h3 id="Render" data-magellan-destination="Render">Render</h3>
+
+<p>The <code class="text">render</code> module takes care of drawing everything in the <code class="text">engine</code>. It’s attached to the <code class="text">fg.world</code>
 instance and so all its functions should be called from there. It provides access to a <a href="/documentation/camera">camera</a>, as well as
 layers to which you can add objects and then sort their draw order, add layer/screen-wide shaders, etc, etc.</p>
 
@@ -393,7 +396,7 @@ they (or their class) have no layer attribute defined</li>
 <p>Possible settings:</p>
 
 <ul>
-  <li><code>not_sortable</code>: makes it so that the objects inside this layer can&#8217;t be sorted when <code class="atrm">:sortRenderOrder</code> is called</li>
+  <li><code>not_sortable</code>: makes it so that the objects inside this layer can’t be sorted when <code class="atrm">:sortRenderOrder</code> is called</li>
   <li><code>parallax_scale</code>: how close or far away this layer is from the camera, <code class="number">1</code> is the normal value, <code class="number">&lt;1</code> is closer <code class="number">&gt;1</code> is further away
 <br /><br /></li>
 </ul>

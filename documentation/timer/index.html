@@ -516,7 +516,8 @@ cancels previously registered <code class="text">after</code> calls</li>
   <li>calls <code class="text">action</code> every <code class="text">delay</code> seconds for <code class="text">count</code> times, if <code class="text">tag</code> is 
 already registered then cancels previously registered <code class="text">every</code> calls</li>
   <li><code>tag</code>: the identifier for this <code class="text">every</code> call, the call is not tagged if omitted</li>
-  <li><code>delay</code>: the amount of seconds between each <code class="text">action</code> call</li>
+  <li><code>delay</code>: the amount of seconds between each <code class="text">action</code> call, can also be a table with two numbers in it, in which case a random
+delay between those two numbers is chosen each time (first number must be smaller than the second)</li>
   <li><code>action</code>: the function to be called</li>
   <li><code>count</code>: the maximum amount of times <code class="text">action</code> is called, defaults to infinite if omitted
 <br /><br /></li>

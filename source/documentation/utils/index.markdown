@@ -8,6 +8,15 @@ footer: true
 sidebar: false 
 ---
 
+{% title lurker %}
+
+A library that allows live code reloading (as the game is running), which can help with debugging as well
+as optimizing tweaking processes. It's an exact copy of [lurker](http://github.com/rxi/lurker), so refer to that for a list
+and an explanation of all functions it implements. It can be accessed through {% text fg.lurker %}. {% text fg.lurker_enabled %} is set
+to {% text false %} by default because setting it to true makes it look for changes constantly, which depending on how fast
+your computer is can be pretty slow for big projects. Use something like {% text fg.input:bind('f1', function() fg.lurker.scan() end) %}
+so that you can reload files whenever you press {% string 'f1' %} instead of having lurker try to do it automatically all the time.
+
 {% title mlib %}
 
 An utility library with tons of functions that makes operations regarding lines, polygons, circles,

@@ -48,7 +48,7 @@ extensively so hopefully they aren't that much of a problem.
 *   [Serial](serial) - serialization for areas, objects and tables, uses [gvx/Ser](https://github.com/gvx/Ser) internally
 *   [Solid](solid) - the base collision solid entity
 *   [Timer](timer) - timers, tweens and allows timer/tween tagging, an enhanced version of [vrld/hump.timer](http://vrld.github.io/hump/#hump.timer) 
-*   [Utils](utils) - random utility functions, [Yonaba/Moses](https://github.com/Yonaba/Moses), [davisdude/mlib](https://github.com/davisdude/mlib)
+*   [Utils](utils) - random utility functions, [rxi/lurker](http://github.com/rxi/lurker), [Yonaba/Moses](https://github.com/Yonaba/Moses), [davisdude/mlib](https://github.com/davisdude/mlib)
 *   [Vector](vector) - 2D vector class, [vrld/hump.vector](http://vrld.github.io/hump/#hump.vector)
 
 **Visual**

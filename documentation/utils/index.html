@@ -10,8 +10,8 @@
   <meta name="author" content="adnzzzzZ">
 
   
-  <meta name="description" content="<!-- Utils --> mlib An utility library with tons of functions that makes operations regarding lines, polygons, circles,
-intersections and math &hellip;">
+  <meta name="description" content="<!-- Utils --> lurker A library that allows live code reloading (as the game is running), which can help with debugging as well
+as optimizing &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -305,7 +305,7 @@ intersections and math &hellip;">
 
 
 
-<li data-magellan-arrival="mlib"><a href="#mlib">mlib</a></li><li data-magellan-arrival="Moses"><a href="#Moses">Moses</a></li><li data-magellan-arrival="utils"><a href="#utils">utils</a></li><li data-magellan-arrival="Methods"><a href="#Methods">Methods</a></li>
+<li data-magellan-arrival="lurker"><a href="#lurker">lurker</a></li><li data-magellan-arrival="mlib"><a href="#mlib">mlib</a></li><li data-magellan-arrival="Moses"><a href="#Moses">Moses</a></li><li data-magellan-arrival="utils"><a href="#utils">utils</a></li><li data-magellan-arrival="Methods"><a href="#Methods">Methods</a></li>
 <li data-magellan-arrival='graphics.pushRotate' class='nav'><a href='#graphics.pushRotate'>graphics.pushRotate</a></li><li data-magellan-arrival='graphics.pushRotateScale' class='nav'><a href='#graphics.pushRotateScale'>graphics.pushRotateScale</a></li><li data-magellan-arrival='math.chooseWithProbability' class='nav'><a href='#math.chooseWithProbability'>math.chooseWithProbability</a></li><li data-magellan-arrival='math.clamp' class='nav'><a href='#math.clamp'>math.clamp</a></li><li data-magellan-arrival='math.isBetween' class='nav'><a href='#math.isBetween'>math.isBetween</a></li><li data-magellan-arrival='math.random' class='nav'><a href='#math.random'>math.random</a></li><li data-magellan-arrival='math.round' class='nav'><a href='#math.round'>math.round</a></li><li data-magellan-arrival='table.copy' class='nav'><a href='#table.copy'>table.copy</a></li><li data-magellan-arrival='table.random' class='nav'><a href='#table.random'>table.random</a></li><li data-magellan-arrival='angleToDirection4' class='nav'><a href='#angleToDirection4'>angleToDirection4</a></li><li data-magellan-arrival='directionToAngle4' class='nav'><a href='#directionToAngle4'>directionToAngle4</a></li>
 
 
@@ -331,7 +331,16 @@ intersections and math &hellip;">
       
     </header>
     -->
-    <h3 id="mlib" data-magellan-destination="mlib">mlib</h3>
+    <h3 id="lurker" data-magellan-destination="lurker">lurker</h3>
+
+<p>A library that allows live code reloading (as the game is running), which can help with debugging as well
+as optimizing tweaking processes. It’s an exact copy of <a href="http://github.com/rxi/lurker">lurker</a>, so refer to that for a list
+and an explanation of all functions it implements. It can be accessed through <code class="text">fg.lurker</code>. <code class="text">fg.lurker_enabled</code> is set
+to <code class="text">false</code> by default because setting it to true makes it look for changes constantly, which depending on how fast
+your computer is can be pretty slow for big projects. Use something like <code class="text">fg.input:bind('f1', function() fg.lurker.scan() end)</code>
+so that you can reload files whenever you press <code class="string">'f1'</code> instead of having lurker try to do it automatically all the time.</p>
+
+<h3 id="mlib" data-magellan-destination="mlib">mlib</h3>
 
 <p>An utility library with tons of functions that makes operations regarding lines, polygons, circles,
 intersections and math related stuff in general a lot easier than they are with vanilla LÖVE/Lua. It’s

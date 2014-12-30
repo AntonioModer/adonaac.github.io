@@ -429,7 +429,7 @@ constructor that much:</p>
     <span class="keyword">local</span> <span class="local-variable">settings</span> = settings <span class="keyword">or</span> <span class="map"><span class="delimiter">{</span><span class="delimiter">}</span></span>
     self.x, self.y = x, y
     self.r = settings.r <span class="keyword">or</span> <span class="integer">30</span>
-    self.v = settings.v <span class="keyword">or</span> mg.Vector(<span class="integer">400</span>, <span class="integer">400</span>)
+    self.v = settings.v <span class="keyword">or</span> fg.Vector(<span class="integer">400</span>, <span class="integer">400</span>)
     self.angle = settings.angle <span class="keyword">or</span> <span class="integer">0</span>
 <span class="keyword">end</span>
 </pre></td>
@@ -459,7 +459,7 @@ does). So on object creation we can do:</p>
 </div>
 
 <p>And this creates a ball with <code class="text">angle = math.pi/4</code>, 
-<code class="text">v = mg.Vector(400, 400)</code> and <code class="text">r = 30</code>. This construct is 
+<code class="text">v = fg.Vector(400, 400)</code> and <code class="text">r = 30</code>. This construct is 
 the same as the one used by <code class="text">engine</code> entities, and it’s a pretty flexible 
 and useful way of organizing object construction. </p>
 
@@ -583,7 +583,7 @@ Ball:</p>
 <a href="#n15" name="n15">15</a>
 <a href="#n16" name="n16">16</a>
 </pre></td>
-  <td class="code"><pre>Paddle = mg.Class(<span class="string"><span class="delimiter">'</span><span class="content">Paddle</span><span class="delimiter">'</span></span>)
+  <td class="code"><pre>Paddle = fg.Class(<span class="string"><span class="delimiter">'</span><span class="content">Paddle</span><span class="delimiter">'</span></span>)
 
 <span class="keyword">function</span> Paddle:<span class="function">new</span>(x, y, settings)
     <span class="keyword">local</span> <span class="local-variable">settings</span> = settings <span class="keyword">or</span> <span class="map"><span class="delimiter">{</span><span class="delimiter">}</span></span>
@@ -987,7 +987,7 @@ be removed from the balls list and not updated anymore after it’s been set to 
 
     3. How would you make it so that every new ball is spawned at a random angle?
     <dl class="accordion" data-accordion=""><dd><a href="#exercises_game_loop_3">Answer</a><div id="exercises_game_loop_3" class="content answer">
-        Specify the new ball&#8217;s angle. In this case, use the mg.utils.math.random function to pick an angle between 0 and 360 degrees. Another possible way is doing it directly
+        Specify the new ball&#8217;s angle. In this case, use the fg.utils.math.random function to pick an angle between 0 and 360 degrees. Another possible way is doing it directly
         on the ball&#8217;s constructor, self.angle = fg.utils.math.random(0, 2*math.pi).<br /><br />
         
 <div><table class="CodeRay"><tr>
@@ -1928,8 +1928,8 @@ and that the one outlined here is only a very particular one.</p>
     ...
     <span class="keyword">if</span> (self.x - self.r/<span class="integer">2</span> &lt;= paddle1.x + paddle1.w/<span class="integer">2</span>) <span class="keyword">and</span> 
        (self.y &gt;= paddle1.y - paddle1.h/<span class="integer">2</span>) <span class="keyword">and</span> (self.y &lt;= paddle1.y + paddle1.h/<span class="integer">2</span>) <span class="keyword">then</span>
-        mg.timer:cancel(<span class="string"><span class="delimiter">'</span><span class="content">r_speed_add</span><span class="delimiter">'</span></span>)
-        mg.timer:tween(<span class="string"><span class="delimiter">'</span><span class="content">r_speed_add</span><span class="delimiter">'</span></span>, <span class="float">1.5</span>, self, <span class="map"><span class="delimiter">{</span><span class="key">r</span> = <span class="integer">30</span> - math.abs(<span class="float">12.5</span>*self.angle_speed)<span class="delimiter">}</span></span>, 
+        fg.timer:cancel(<span class="string"><span class="delimiter">'</span><span class="content">r_speed_add</span><span class="delimiter">'</span></span>)
+        fg.timer:tween(<span class="string"><span class="delimiter">'</span><span class="content">r_speed_add</span><span class="delimiter">'</span></span>, <span class="float">1.5</span>, self, <span class="map"><span class="delimiter">{</span><span class="key">r</span> = <span class="integer">30</span> - math.abs(<span class="float">12.5</span>*self.angle_speed)<span class="delimiter">}</span></span>, 
                        <span class="string"><span class="delimiter">'</span><span class="content">in-out-cubic</span><span class="delimiter">'</span></span>)
     <span class="keyword">end</span>
     ...

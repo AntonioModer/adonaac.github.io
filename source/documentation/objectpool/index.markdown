@@ -14,11 +14,16 @@ An [object pooling](http://gameprogrammingpatterns.com/object-pool.html) module 
 [ImpactJS'](http://impactjs.com/documentation/entity-pooling) entity pooling system. Both those links
 do a good job of explaining why pooling is necessary and how it works.
 
-fuccboiGDX's pooling system needs two things so that it can work: on an {% text engine %} class (one
+fuccboiGDX's pooling system needs three things so that it can work: on an {% text engine %} class (one
 that inherits from Entity) a {% text .pool_enabled %} class attribute with the size of the pool to be
-created for that class; and a {% call :reset %} function that is called every time the object created 
-needs to be reused. This call will usually do the same things as the constructor does, and it receives
-as arguments the {% text x, y %} values for its position as well as the {% text settings %} table.
+created for that class; a {% call :reset %} function that is called every time the object created 
+needs to be reused (this call will usually do the same things as the constructor does, and it receives
+as arguments the {% text x, y %} values for its position as well as the {% text settings %} table); and
+finally, the {% call :initializePools %} call has to be called once everything in your game is loaded. If
+using the Loader module for instance, do {% text fg.world.areas[current_area]:initializePools %} after all
+assets are done loading, since this call will actually create all objects at once, and if objects need the assets
+then you wanna initialize pools only after the assets are loaded. You need to initialize pools for each area
+you create.
 
 ~~~ lua
 MyClass = fg.Class('MyClass', 'Entity')

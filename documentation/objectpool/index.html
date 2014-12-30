@@ -336,11 +336,16 @@ do a good &hellip;">
 <a href="http://impactjs.com/documentation/entity-pooling">ImpactJS&#8217;</a> entity pooling system. Both those links
 do a good job of explaining why pooling is necessary and how it works.</p>
 
-<p>fuccboiGDX&#8217;s pooling system needs two things so that it can work: on an <code class="text">engine</code> class (one
+<p>fuccboiGDX&#8217;s pooling system needs three things so that it can work: on an <code class="text">engine</code> class (one
 that inherits from Entity) a <code class="text">.pool_enabled</code> class attribute with the size of the pool to be
-created for that class; and a <code class="atrm">:reset</code> function that is called every time the object created 
-needs to be reused. This call will usually do the same things as the constructor does, and it receives
-as arguments the <code class="text">x, y</code> values for its position as well as the <code class="text">settings</code> table.</p>
+created for that class; a <code class="atrm">:reset</code> function that is called every time the object created 
+needs to be reused (this call will usually do the same things as the constructor does, and it receives
+as arguments the <code class="text">x, y</code> values for its position as well as the <code class="text">settings</code> table); and
+finally, the <code class="atrm">:initializePools</code> call has to be called once everything in your game is loaded. If
+using the Loader module for instance, do <code class="text">fg.world.areas[current_area]:initializePools</code> after all
+assets are done loading, since this call will actually create all objects at once, and if objects need the assets
+then you wanna initialize pools only after the assets are loaded. You need to initialize pools for each area
+you create.</p>
 
 <div><table class="CodeRay"><tr>
   <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>

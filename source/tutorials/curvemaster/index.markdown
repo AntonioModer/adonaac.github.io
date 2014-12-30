@@ -73,7 +73,7 @@ function Ball:new(x, y, settings)
     local settings = settings or {}
     self.x, self.y = x, y
     self.r = settings.r or 30
-    self.v = settings.v or mg.Vector(400, 400)
+    self.v = settings.v or fg.Vector(400, 400)
     self.angle = settings.angle or 0
 end
 ~~~
@@ -92,7 +92,7 @@ end
 ~~~
 
 And this creates a ball with {% text angle = math.pi/4 %}, 
-{% text v = mg.Vector(400, 400) %} and {% text r = 30 %}. This construct is 
+{% text v = fg.Vector(400, 400) %} and {% text r = 30 %}. This construct is 
 the same as the one used by {% text engine %} entities, and it's a pretty flexible 
 and useful way of organizing object construction. 
 
@@ -160,7 +160,7 @@ To add the paddles we create a Paddle class in a similar fashion to the way we d
 Ball:
 
 ~~~ lua
-Paddle = mg.Class('Paddle')
+Paddle = fg.Class('Paddle')
 
 function Paddle:new(x, y, settings)
     local settings = settings or {}
@@ -430,7 +430,7 @@ end
 
     3. How would you make it so that every new ball is spawned at a random angle?
     {% aaccopen [exercises_game_loop_3] [Answer] %}
-        Specify the new ball's angle. In this case, use the mg.utils.math.random function to pick an angle between 0 and 360 degrees. Another possible way is doing it directly
+        Specify the new ball's angle. In this case, use the fg.utils.math.random function to pick an angle between 0 and 360 degrees. Another possible way is doing it directly
         on the ball's constructor, self.angle = fg.utils.math.random(0, 2*math.pi).<br><br>
         {{ exercises_game_loop_3 | markdownify }}
     {% accclose %}
@@ -981,8 +981,8 @@ function Paddle:update(dt)
     ...
     if (self.x - self.r/2 <= paddle1.x + paddle1.w/2) and 
        (self.y >= paddle1.y - paddle1.h/2) and (self.y <= paddle1.y + paddle1.h/2) then
-        mg.timer:cancel('r_speed_add')
-        mg.timer:tween('r_speed_add', 1.5, self, {r = 30 - math.abs(12.5*self.angle_speed)}, 
+        fg.timer:cancel('r_speed_add')
+        fg.timer:tween('r_speed_add', 1.5, self, {r = 30 - math.abs(12.5*self.angle_speed)}, 
                        'in-out-cubic')
     end
     ...

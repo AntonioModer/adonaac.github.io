@@ -582,8 +582,10 @@ Ball:</p>
 <a href="#n14" name="n14">14</a>
 <a href="#n15" name="n15">15</a>
 <a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
 </pre></td>
-  <td class="code"><pre>Paddle = fg.Class(<span class="string"><span class="delimiter">'</span><span class="content">Paddle</span><span class="delimiter">'</span></span>)
+  <td class="code"><pre><span class="keyword">local</span> <span class="local-variable">Paddle</span> = fg.Class(<span class="string"><span class="delimiter">'</span><span class="content">Paddle</span><span class="delimiter">'</span></span>)
 
 <span class="keyword">function</span> Paddle:<span class="function">new</span>(x, y, settings)
     <span class="keyword">local</span> <span class="local-variable">settings</span> = settings <span class="keyword">or</span> <span class="map"><span class="delimiter">{</span><span class="delimiter">}</span></span>
@@ -599,6 +601,8 @@ Ball:</p>
 <span class="keyword">function</span> Paddle:<span class="function">draw</span>()
     love.graphics.rectangle(<span class="string"><span class="delimiter">'</span><span class="content">fill</span><span class="delimiter">'</span></span>, self.x - self.w/<span class="integer">2</span>, self.y - self.h/<span class="integer">2</span>, self.w, self.h)
 <span class="keyword">end</span>
+
+<span class="keyword">return</span> Paddle
 </pre></td>
 </tr></table>
 </div>

@@ -160,7 +160,7 @@ To add the paddles we create a Paddle class in a similar fashion to the way we d
 Ball:
 
 ~~~ lua
-Paddle = fg.Class('Paddle')
+local Paddle = fg.Class('Paddle')
 
 function Paddle:new(x, y, settings)
     local settings = settings or {}
@@ -176,6 +176,8 @@ end
 function Paddle:draw()
     love.graphics.rectangle('fill', self.x - self.w/2, self.y - self.h/2, self.w, self.h)
 end
+
+return Paddle
 ~~~
 
 This makes it so that the paddle follows the mouse position on the y axis. To create 

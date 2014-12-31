@@ -43,7 +43,7 @@ extensively so hopefully they aren't that much of a problem.
 *   [Gamestate](gamestate) - game state system, [vrld/hump.gamestate](http://vrld.github.io/hump/#hump.gamestate)
 *   [Input](input) - binds keys to actions, allows for pressed/released checks outside of LÖVE's callbacks and supports gamepads
 *   [Loader](loader) - threaded resource loader, [kikito/love-loader](https://github.com/kikito/love-loader)
-*   [ObjectPool](pool) - object pooling for higher performance on objects that are killed/created often
+*   [ObjectPool](objectpool) - object pooling for higher performance on objects that are killed/created often
 *   [PhysicsBody](physicsbody) - mixin used for adding physics capabilities to an object 
 *   [Serial](serial) - serialization for areas, objects and tables, uses [gvx/Ser](https://github.com/gvx/Ser) internally
 *   [Solid](solid) - the base collision solid entity

@@ -1275,7 +1275,7 @@ as well as most tutorials <a href="http://www.iforce2d.net/b2dtut/">here</a> to 
     2. You&#8217;ll notice that jumping and hitting a Solid (like the sides of the map) before you start falling changes your animation. This happens because the jumping boolean
     is set to false whenever you hit any Solid, its position not being accounted for. How would you fix this so that the animation only gets reset when you hit solids below you?
     <dl class="accordion" data-accordion=""><dd><a href="#exercises_jump_answer_2">Answer</a><div id="exercises_jump_answer_2" class="content answer">
-        Check the player&#8217;s bottom position with the solid&#8217;s top position, if it&#8217;s less, then the player is above the ground. <br /><br />
+        Check the player&#8217;s bottom position with the collision&#8217;s y position, if it&#8217;s less, then the player is above the ground. <br /><br />
         
 <div><table class="CodeRay"><tr>
   <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
@@ -1291,9 +1291,9 @@ as well as most tutorials <a href="http://www.iforce2d.net/b2dtut/">here</a> to 
 </pre></td>
   <td class="code"><pre><span class="keyword">function</span> Player:<span class="function">onCollisionEnter</span>(other, contact)
     <span class="keyword">if</span> other.tag == <span class="string"><span class="delimiter">'</span><span class="content">Solid</span><span class="delimiter">'</span></span> <span class="keyword">then</span>
-        <span class="keyword">local</span> <span class="local-variable">solid_top</span> = other.object.y - other.object.h/<span class="integer">2</span>
+        <span class="keyword">local</span> <span class="local-variable">x1</span>, <span class="local-variable">y1</span>, <span class="local-variable">x2</span>, <span class="local-variable">y2</span> = contact:getPositions()
         <span class="keyword">local</span> <span class="local-variable">player_bottom</span> = self.y + self.h/<span class="integer">2</span> - <span class="integer">4</span>
-        <span class="keyword">if</span> solid_top &gt; player_bottom <span class="keyword">then</span>
+        <span class="keyword">if</span> y1 &gt; player_bottom <span class="keyword">then</span>
             self.jumping = <span class="predefined-constant">false</span>
             self.jumps_left = self.max_jumps
         <span class="keyword">end</span>

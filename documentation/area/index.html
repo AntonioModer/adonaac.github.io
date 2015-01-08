@@ -473,9 +473,27 @@ player = fg.world:createEntityImmediate(<span class="string"><span class="delimi
 
 <ul>
   <li>generates collision <a href="/documentation/solid">Solids</a> based on the tilemap&#8217;s collision data</li>
-  <li><code>tilemap</code>: the tilemap to use as reference for entity generation 
-<br /><br /></li>
+  <li><code>tilemap</code>: the tilemap to use as reference for entity generation </li>
 </ul>
+
+<p>It&#8217;s important to notice that on a few edge cases this algorithm doesn&#8217;t work, such as when a hole
+shares a corner with another hole, like this:</p>
+
+<div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+</pre></td>
+  <td class="code"><pre><span class="map"><span class="delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">0</span><span class="delimiter">}</span></span>
+<span class="map"><span class="delimiter">{</span><span class="integer">1</span>, <span class="integer">0</span>, <span class="integer">1</span><span class="delimiter">}</span></span>
+<span class="map"><span class="delimiter">{</span><span class="integer">1</span>, <span class="integer">1</span>, <span class="integer">1</span><span class="delimiter">}</span></span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>As those bugs happen I&#8217;ll try to fix most of them, but this is a pretty tricky problem to solve with 100% robustness, so
+if you keep running into those issues just generate collision solids manually either through Tiled or code alone.
+<br /><br /></p>
 
 <h3 id="HitFrameStop_Methods" data-magellan-destination="HitFrameStop_Methods">HitFrameStop Methods</h3>
 

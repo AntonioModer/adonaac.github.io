@@ -25,8 +25,9 @@
 13
 14
 15
-16 -- saves a level
-fg.Serial:saveArea('save_filename', fg.world.areas['Level_1']) -- &hellip;">
+16
+17 -- saves a level
+fg.Serial:saveArea('save_filename', fg.world.areas['Level_1 &hellip;">
   
 
   <meta name="HandheldFriendly" content="True">
@@ -366,6 +367,7 @@ fg.Serial:saveArea('save_filename', fg.world.areas['Level_1']) -- &hellip;">
 <a href="#n14" name="n14">14</a>
 <a href="#n15" name="n15">15</a>
 <a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
 </pre></td>
   <td class="code"><pre><span class="comment">-- saves a level</span>
 fg.Serial:saveArea(<span class="string"><span class="delimiter">'</span><span class="content">save_filename</span><span class="delimiter">'</span></span>, fg.world.areas[<span class="string"><span class="delimiter">'</span><span class="content">Level_1</span><span class="delimiter">'</span></span>])
@@ -381,8 +383,9 @@ data = fg.Serial:loadObject(<span class="string"><span class="delimiter">'</span
 fg.Serial:loadObject(<span class="string"><span class="delimiter">'</span><span class="content">save_filename</span><span class="delimiter">'</span></span>, fg.world.areas[<span class="string"><span class="delimiter">'</span><span class="content">Level_1</span><span class="delimiter">'</span></span>])
 
 <span class="comment">-- simple table serialization</span>
-<span class="keyword">local</span> <span class="local-variable">a</span> = <span class="map"><span class="delimiter">{</span><span class="integer">1</span>, <span class="string"><span class="delimiter">'</span><span class="content">2</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() <span class="predefined">print</span>(<span class="integer">3</span>) <span class="keyword">end</span><span class="delimiter">}</span></span>
-fg.Serial.serialize(<span class="string"><span class="delimiter">'</span><span class="content">save_filename</span><span class="delimiter">'</span></span>, a)
+<span class="keyword">local</span> <span class="local-variable">a</span> = <span class="map"><span class="delimiter">{</span><span class="integer">1</span>, <span class="string"><span class="delimiter">'</span><span class="content">2</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span><span class="delimiter">}</span></span>
+<span class="predefined">print</span>(fg.Serial.serialize(a))
+<span class="comment">-- prints return {1, &quot;2&quot;, true}</span>
 </pre></td>
 </tr></table>
 </div>
@@ -444,12 +447,11 @@ fg.Serial:saveArea(<span class="string"><span class="delimiter">'</span><span cl
 </ul>
 
 <div id="serialize" data-magellan-destination="serialize"></div>
-<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">serialize</span>(filename<span class="tag">[string]</span>, table<span class="tag">[table]</span>)</pre></td></table></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">serialize</span>(table<span class="tag">[table]</span>)</pre></td></table></div>
 
 <ul>
   <li><a href="https://github.com/gvx/Ser">ser’s</a> main serialization function</li>
-  <li><code>filename</code>: the name of the file to save data to</li>
-  <li><code>table</code>: the table to get the save data from 
+  <li><code>table</code>: the table to serialize
 <br /><br /></li>
 </ul>
 

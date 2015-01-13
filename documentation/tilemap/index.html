@@ -316,7 +316,7 @@
 
 
 <li data-magellan-arrival="Example"><a href="#Example">Example</a></li><li data-magellan-arrival="Description"><a href="#Description">Description</a></li><li data-magellan-arrival="Methods"><a href="#Methods">Methods</a></li>
-<li data-magellan-arrival='new' class='nav'><a href='#new'>new</a></li><li data-magellan-arrival='draw' class='nav'><a href='#draw'>draw</a></li><li data-magellan-arrival='autoTile' class='nav'><a href='#autoTile'>autoTile</a></li><li data-magellan-arrival='changeTile' class='nav'><a href='#changeTile'>changeTile</a></li><li data-magellan-arrival='removeTile' class='nav'><a href='#removeTile'>removeTile</a></li><li data-magellan-arrival='setAutoTileRules' class='nav'><a href='#setAutoTileRules'>setAutoTileRules</a></li><li data-magellan-arrival='setCollisionData' class='nav'><a href='#setCollisionData'>setCollisionData</a></li>
+<li data-magellan-arrival='new' class='nav'><a href='#new'>new</a></li><li data-magellan-arrival='draw' class='nav'><a href='#draw'>draw</a></li><li data-magellan-arrival='autoTile' class='nav'><a href='#autoTile'>autoTile</a></li><li data-magellan-arrival='changeTile' class='nav'><a href='#changeTile'>changeTile</a></li><li data-magellan-arrival='getTile' class='nav'><a href='#getTile'>getTile</a></li><li data-magellan-arrival='removeTile' class='nav'><a href='#removeTile'>removeTile</a></li><li data-magellan-arrival='setAutoTileRules' class='nav'><a href='#setAutoTileRules'>setAutoTileRules</a></li><li data-magellan-arrival='setCollisionData' class='nav'><a href='#setCollisionData'>setCollisionData</a></li>
 <li data-magellan-arrival="Attributes"><a href="#Attributes">Attributes</a></li>
 <li data-magellan-arrival='area' class='nav'><a href='#area'>area</a></li><li data-magellan-arrival='tile_size' class='nav'><a href='#tile_size'>tile_width, tile_height</a></li><li data-magellan-arrival='tilemap_size' class='nav'><a href='#tilemap_size'>w, h</a></li><li data-magellan-arrival='position' class='nav'><a href='#position'>x, y</a></li><li data-magellan-arrival='corners' class='nav'><a href='#corners'>x1, y1, x2, y2</a></li>
 <li data-magellan-arrival="Tiled"><a href="#Tiled">Tiled</a></li>
@@ -582,6 +582,15 @@ tiles can be neighbors to each one of those new corners.
 <ul>
   <li><code>x, y</code>: the position to change  </li>
   <li><code>n</code>: the number of the tile to change this position to<br />
+<br /></li>
+</ul>
+
+<div id="getTile" data-magellan-destination="getTile"></div>
+<div><table class="CodeRay"><td class="code"><pre>:<span class="annotation">getTile</span>(x<span class="tag">[number]</span>, y<span class="tag">[number]</span>)</pre></td></table></div>
+
+<ul>
+  <li>returns the tile id in position <code class="text">x, y</code></li>
+  <li><code>x, y</code>: the position to get 
 <br /></li>
 </ul>
 

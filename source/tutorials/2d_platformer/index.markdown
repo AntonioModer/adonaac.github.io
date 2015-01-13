@@ -583,9 +583,9 @@ end
 ~~~ lua
 function Player:onCollisionEnter(other, contact)
     if other.tag == 'Solid' then
-        local solid_top = other.object.y - other.object.h/2
+        local x1, y1, x2, y2 = contact:getPositions()
         local player_bottom = self.y + self.h/2 - 4
-        if solid_top > player_bottom then
+        if y1 > player_bottom then
             self.jumping = false
             self.jumps_left = self.max_jumps
         end
@@ -649,7 +649,7 @@ end
     2. You'll notice that jumping and hitting a Solid (like the sides of the map) before you start falling changes your animation. This happens because the jumping boolean
     is set to false whenever you hit any Solid, its position not being accounted for. How would you fix this so that the animation only gets reset when you hit solids below you?
     {% aaccopen [exercises_jump_answer_2] [Answer] %}
-        Check the player's bottom position with the solid's top position, if it's less, then the player is above the ground. <br><br>
+        Check the player's bottom position with the collision's y position, if it's less, then the player is above the ground. <br><br>
         {{ exercises_jump_answer_2 | markdownify }}
     {% accclose %}
     <br>

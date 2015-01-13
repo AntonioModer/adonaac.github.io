@@ -25,8 +25,9 @@ data = fg.Serial:loadObject('save_filename')
 fg.Serial:loadObject('save_filename', fg.world.areas['Level_1'])
 
 -- simple table serialization
-local a = {1, '2', function() print(3) end}
-fg.Serial.serialize('save_filename', a)
+local a = {1, '2', true}
+print(fg.Serial.serialize(a))
+-- prints return {1, "2", true}
 ~~~
 
 {% title Description %}
@@ -68,11 +69,10 @@ fg.Serial:saveArea('save_filename', fg.world.areas['Level_1'], {'Player', 'Parti
 *   {% param object %}: the object to get the data from, must implement a {% call :save %} method 
 <br><br>
 
-{% method serialize filename string table table %}
+{% method serialize table table %}
 
 *   [ser's](https://github.com/gvx/Ser) main serialization function
-*   {% param filename %}: the name of the file to save data to
-*   {% param table %}: the table to get the save data from 
+*   {% param table %}: the table to serialize
 <br><br>
 
 {% title Saving and Loading %}

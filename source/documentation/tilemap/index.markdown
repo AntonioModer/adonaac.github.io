@@ -173,6 +173,12 @@ tiles can be neighbors to each one of those new corners.
 *   {% param n %}: the number of the tile to change this position to  
 <br>
 
+{% method getTile x number y number %}
+
+*   returns the tile id in position {% text x, y %}
+*   {% param x, y %}: the position to get 
+<br>
+
 {% method removeTile x number y number %}
 
 *   {% param x, y %}: the position to remove

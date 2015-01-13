@@ -92,6 +92,18 @@ player = fg.world:createEntityImmediate('Player', 400, 300, {v = 300, hp = 50, d
 
 *   generates collision [Solids](/documentation/solid) based on the tilemap's collision data
 *   {% param tilemap %}: the tilemap to use as reference for entity generation 
+
+It's important to notice that on a few edge cases this algorithm doesn't work, such as when a hole
+shares a corner with another hole, like this:
+
+~~~ lua
+{1, 1, 0}
+{1, 0, 1}
+{1, 1, 1}
+~~~
+
+As those bugs happen I'll try to fix most of them, but this is a pretty tricky problem to solve with 100% robustness, so
+if you keep running into those issues just generate collision solids manually either through Tiled or code alone.
 <br><br>
 
 {% title HitFrameStop Methods %}
